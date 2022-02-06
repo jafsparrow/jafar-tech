@@ -21,6 +21,7 @@ export const selectProductconsideringcart = createSelector(
   selectCart,
   (currproducts, cart) => {
     var products = currproducts.map((p) => p);
+
     var newProductsArr: Array<ProdCue> = [];
     let cartItems: CartItem[] = cart.cartItems;
 
