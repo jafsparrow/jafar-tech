@@ -1,0 +1,15 @@
+<div class="tabs-container">
+  <div class="tab-container">
+    <mat-tab-group>
+      <mat-tab
+        *ngFor="let section of prodcutByCategory$ | async | keyvalue"
+        [label]="section.key"
+      >
+        <qr-ui-menu-product-card
+          *ngFor="let product of section.value"
+          [product]="product"
+        ></qr-ui-menu-product-card>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

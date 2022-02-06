@@ -1,0 +1,43 @@
+<div class="select-product-view-container">
+  <div class="product-image-container">
+    <img
+      src="https://image.shutterstock.com/image-photo/glass-100-orange-juice-sacs-600w-1489857866.jpg"
+      alt=""
+      class="product-image"
+    />
+  </div>
+
+  <h3>{{ product.name | titlecase }}</h3>
+  <p>
+    {{ product.description }}
+  </p>
+
+  <mat-divider></mat-divider>
+  <p>Chooose from following</p>
+
+  <mat-divider></mat-divider>
+
+  <div class="count-control-container">
+    <qr-ui-count-control [(count)]="selectedCount"></qr-ui-count-control>
+  </div>
+
+  <div>
+    <p class="error-message" *ngIf="error">
+      {{ error }}
+    </p>
+    <button
+      mat-raised-button
+      color="primary"
+      class="add-button"
+      (click)="clickToCart()"
+    >
+      Add for {{ selectedCount * product.price }} ₹
+    </button>
+  </div>
+
+  <div class="close-button">
+    <button mat-button mat-dialog-close (click)="closeButtonClicked()">
+      Back to Menu
+    </button>
+  </div>
+</div>

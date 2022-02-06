@@ -1,0 +1,18 @@
+<div class="menu-product-card-container" *ngIf="product">
+  <div class="item-card-container">
+    <mat-card class="item-card">
+      <div class="product-desc-area">
+        <h3>{{ product.name | titlecase }}</h3>
+        <p>{{ product.description | slice: 0:150 }}...</p>
+        <span class="fill-blank"></span>
+        <div class="count-price-wrapper">
+          <span class="count-in-cart" *ngIf="count">{{ count }} x</span
+          ><span class="item-price">{{ product.price }} ₹ </span>
+        </div>
+      </div>
+      <div class="product-image-area">
+        <img [src]="product.image" class="product-image" alt="" />
+      </div>
+    </mat-card>
+  </div>
+</div>

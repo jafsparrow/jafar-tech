@@ -1,0 +1,39 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@jafar-tech/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@jafar-tech/shared/data-access": [
+        "libs/shared/data-access/src/index.ts"
+      ],
+      "@jafar-tech/table-qr-cart-data-access": [
+        "libs/table-qr/cart/data-access/src/index.ts"
+      ],
+      "@jafar-tech/table-qr-cart-features-list": [
+        "libs/table-qr/cart/features/list/src/index.ts"
+      ],
+      "@jafar-tech/table-qr-products-data-access": [
+        "libs/table-qr/products/data-access/src/index.ts"
+      ],
+      "@jafar-tech/table-qr-products-features-list": [
+        "libs/table-qr/products/features/list/src/index.ts"
+      ],
+      "@jafar-tech/table-qr-ui": ["libs/table-qr-ui/src/index.ts"],
+      "@jafar-tech/table-qr/shell": ["libs/table-qr/shell/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

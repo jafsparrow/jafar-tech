@@ -1,0 +1,15 @@
+.dialog-container {
+  display: flex;
+  justify-content: center;
+}
+
+.dialog-content-container {
+  // max-width: 400px;
+  position: relative;
+  padding: 10px;
+}
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}

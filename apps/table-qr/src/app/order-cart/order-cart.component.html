@@ -1,0 +1,49 @@
+<!-- <mat-card class="cart-container">
+  <div class="basket-title-container">
+    <span class="basket-title-text">My Basket</span>
+    <span class="basket-title-close-button">x</span>
+  </div>
+
+  <button (click)="getProducts()">load</button>
+  <div class="cart-items-container">
+    <div class="cart-item" *ngFor="let product of ($cart | async)?.items">
+      <div class="cart-count-control">
+        <qr-ui-count-control [(count)]="product.count"></qr-ui-count-control>
+      </div>
+      <div class="cart-item-detail">
+        <h3>{{ product.name }}</h3>
+        <h4>mix of amazing creepss</h4>
+      </div>
+      <div class="cart-item-price">{{ product.price * product.count }}</div>
+    </div>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div class="cart-total">
+    <span class="total-text">Total</span>
+    <span class="total-amount">{{ ($cart | async)?.totalAmout }}</span>
+  </div>
+
+  <mat-divider></mat-divider>
+  <div class="note-button-container">
+    <div class="note-container">
+      <mat-form-field class="note-input" appearance="fill">
+        <mat-label>Leave a note</mat-label>
+        <textarea matInput placeholder="Ex. Sugar free"></textarea>
+      </mat-form-field>
+    </div>
+
+    <button mat-raised-button color="primary" class="place-order-button">
+      <div class="place-order-button-text-container">
+        <span class="total-count-text">3</span>
+        <span class="place-order-text">Place Order</span>
+        <span class="total-amount-text">77</span>
+      </div>
+    </button>
+
+    <div class="close-button">
+      <button mat-button mat-dialog-close>Back to Menu</button>
+    </div>
+  </div>
+</mat-card> -->

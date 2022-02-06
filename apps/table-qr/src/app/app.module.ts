@@ -1,0 +1,57 @@
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { AppComponent } from './app.component';
+import { NxWelcomeComponent } from './nx-welcome.component';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ProductCountDialogComponent } from './product-count-dialog/product-count-dialog.component';
+
+import { OrderCartComponent } from './order-cart/order-cart.component';
+
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { RouterModule } from '@angular/router';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    NxWelcomeComponent,
+    ProductCountDialogComponent,
+    OrderCartComponent,
+  ],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot([
+      {
+        path: 'shell',
+        loadChildren: () =>
+          import('@jafar-tech/table-qr/shell').then(
+            (m) => m.TableQrShellModule
+          ),
+      },
+      {
+        path: 'products',
+        loadChildren: () =>
+          import('@jafar-tech/table-qr-products-features-list').then(
+            (m) => m.ProductsFeaturesListModule
+          ),
+      },
+
+      {
+        path: '',
+        redirectTo: 'shell',
+        pathMatch: 'full',
+      },
+    ]),
+    StoreModule.forRoot({}, {}),
+    EffectsModule.forRoot([]),
+    HttpClientModule,
+    BrowserAnimationsModule,
+  ],
+  providers: [],
+
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
