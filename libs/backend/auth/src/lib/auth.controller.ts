@@ -8,4 +8,9 @@ export class AuthController {
   getUser() {
     return `hello fucker ${this.config.get<string>('environment')}`;
   }
+
+  createUser() {}
+  login() {}
+  updateUser() {}
+  deactivateUser() {}
 }
