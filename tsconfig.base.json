@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@jafar-tech/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@jafar-tech/backend/auth": ["libs/backend/auth/src/index.ts"],
       "@jafar-tech/shared/data-access": [
         "libs/shared/data-access/src/index.ts"
       ],

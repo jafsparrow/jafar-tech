@@ -68,6 +68,40 @@
       },
       "tags": []
     },
+    "backend-auth": {
+      "root": "libs/backend/auth",
+      "sourceRoot": "libs/backend/auth/src",
+      "projectType": "library",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/backend/auth",
+            "tsConfig": "libs/backend/auth/tsconfig.lib.json",
+            "packageJson": "libs/backend/auth/package.json",
+            "main": "libs/backend/auth/src/index.ts",
+            "assets": ["libs/backend/auth/*.md"]
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/backend/auth/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/backend/auth"],
+          "options": {
+            "jestConfig": "libs/backend/auth/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
     "cart": {
       "projectType": "library",
       "root": "libs/cart",
