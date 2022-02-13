@@ -1,7 +1,12 @@
 import { Product } from '@jafar-tech/shared/data-access';
 
 import { createReducer, on } from '@ngrx/store';
-import { loadProductsFail, loadProductsSuccess } from './product.actions';
+import {
+  loadProductsCategoryVice,
+  loadProductsCategoryViceSuccess,
+  loadProductsFail,
+  loadProductsSuccess,
+} from './product.actions';
 
 export const PRODUCTS_FEATURE_KEY = 'products';
 
@@ -16,4 +21,12 @@ const initialState: ProductState = {
 export const productsReducer = createReducer(
   initialState,
   on(loadProductsSuccess, (state, { products }) => ({ ...state, products }))
+);
+
+export const categoryviseProductsReducer = createReducer(
+  initialState,
+  on(loadProductsCategoryViceSuccess, (state, { productsByCat }) => ({
+    ...state,
+    productsByCat,
+  }))
 );
