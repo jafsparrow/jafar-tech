@@ -2,12 +2,30 @@ import { BackendAuthModule } from '@jafar-tech/backend/auth';
 import { BackendCoreModule } from '@jafar-tech/backend/core';
 import { BackendProductsModule } from '@jafar-tech/backend/products';
 import { Module } from '@nestjs/common';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { MongooseModule } from '@nestjs/mongoose';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 @Module({
-  imports: [BackendCoreModule, BackendAuthModule, BackendProductsModule],
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
+    // MongooseModule.forRootAsync({
+    //   imports: [ConfigService],
+    //   useFactory: async (configService: ConfigService) => {
+    //     uri: configService.get<string>('MONGO_ATLAS');
+    //   },
+    //   inject: [ConfigService],
+    // }),
+
+    MongooseModule.forRoot(
+      'mongodb+srv://tableqr:Temp1234@cluster0.y7xyc.mongodb.net/tableqr?retryWrites=true&w=majority'
+    ),
+    BackendCoreModule,
+    BackendAuthModule,
+    BackendProductsModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
