@@ -14,11 +14,16 @@ export class ProductService {
     let categoryVice = {};
 
     products.map((item) => {
-      if (categoryVice[item.category]) {
-        categoryVice[item.category] = [...categoryVice[item.category], item];
-      } else {
-        categoryVice[item.category] = [];
-      }
+      // if (categoryVice[item.category]) {
+      //   categoryVice[item.category] = [...categoryVice[item.category], item];
+      // } else {
+      //   categoryVice[item.category] = [];
+      // }
+
+      categoryVice[item.category] = [
+        ...(categoryVice[item.category] || []),
+        item,
+      ];
     });
 
     return categoryVice;
