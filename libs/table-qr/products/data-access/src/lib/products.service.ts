@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Product } from '@jafar-tech/shared/data-access';
-import { Observable, of } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -49,6 +49,19 @@ export class ProductsService {
   constructor(private httpClient: HttpClient) {}
 
   loadDruids(): Observable<Product[]> {
+    return this.httpClient
+      .get<Product[]>('http://localhost:3335/api/products/list')
+      .pipe(map((data: any) => data['chicken']));
+    this.httpClient
+      .get('http://localhost:3335/api/products/list')
+      .subscribe((result) => console.log(result));
+
     return of(this.PRODUCTS);
+  }
+
+  loadProductsCategoryVice(): Observable<{ [Key: string]: Product[] }> {
+    return this.httpClient.get<{ [Key: string]: Product[] }>(
+      'http://localhost:3335/api/products/list'
+    );
   }
 }
