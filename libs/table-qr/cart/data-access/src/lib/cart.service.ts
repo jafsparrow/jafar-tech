@@ -9,11 +9,33 @@ import { Observable, of } from 'rxjs';
 export class CartService {
   cartItems: CartItem[] = [
     {
-      product: { id: '1234', name: 'Evan', price: 33, type: 'none' },
+      product: {
+        id: '1234',
+        name: 'Evan',
+        price: 33,
+        category: 'juice',
+        isAvailable: true,
+        onSale: true,
+        image: '',
+        description: 'ehllosdfsdf',
+        archived: true,
+        popular: true,
+      },
       count: 5,
     },
     {
-      product: { id: '1235', name: 'Chau', price: 44, type: 'none' },
+      product: {
+        id: '1235',
+        name: 'Chau',
+        price: 44,
+        category: 'chicken',
+        isAvailable: true,
+        onSale: true,
+        image: '',
+        description: 'ehllosdfsdf',
+        archived: true,
+        popular: true,
+      },
       count: 2,
     },
   ];

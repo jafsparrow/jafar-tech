@@ -3,6 +3,7 @@ import { Product } from '@jafar-tech/shared/data-access';
 import { addToCart, selectCart } from '@jafar-tech/table-qr-cart-data-access';
 import {
   loadProducts,
+  loadProductsCategoryVice,
   selectAllProducts,
   selectProductByCategories,
   selectProductconsideringcart,
@@ -17,7 +18,6 @@ import { Store } from '@ngrx/store';
 export class ContainerComponent implements OnInit {
   allProducts$ = this.store.select(selectAllProducts);
   prodcutByCategory$ = this.store.select(selectProductByCategories);
-  productFilterThroughcart = this.store.select(selectProductconsideringcart);
   cart$ = this.store.select(selectCart);
 
   count = 5;
@@ -26,7 +26,7 @@ export class ContainerComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(loadProducts());
-    // this.productFilterThroughcart.subscribe((item) => console.log(item));
+    this.store.dispatch(loadProductsCategoryVice());
   }
 
   openProductViewDialog() {}

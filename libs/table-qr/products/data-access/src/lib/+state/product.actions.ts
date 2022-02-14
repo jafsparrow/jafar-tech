@@ -18,11 +18,11 @@ export const loadProductsCategoryVice = createAction(
 );
 
 export const loadProductsCategoryViceSuccess = createAction(
-  '[] Load categoryvise products',
+  '[] Load categoryvise products success',
   props<{ productsByCat: CategoryViseProducts }>()
 );
 
 export const loadProductsCategoryViceFail = createAction(
-  '[] Load Products Failed',
+  '[] Load categoryvise Failed',
   props<{ error: any }>()
 );

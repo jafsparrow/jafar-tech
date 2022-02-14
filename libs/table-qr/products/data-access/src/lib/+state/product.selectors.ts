@@ -48,14 +48,19 @@ export const selectProductconsideringcart = createSelector(
 );
 
 export const selectProductByCategories = createSelector(
-  selectAllProducts,
-  (products) => {
-    return products.reduce((acc, item) => {
-      acc[item.type] = [...(acc[item.type] || []), item];
-      return acc;
-    }, <{ [key: string]: any }>{});
-  }
+  selectProductState,
+  (state) => state.productsByCat
 );
+
+// export const selectProductByCategories = createSelector(
+//   selectAllProducts,
+//   (products) => {
+//     return products.reduce((acc, item) => {
+//       acc[item.type] = [...(acc[item.type] || []), item];
+//       return acc;
+//     }, <{ [key: string]: any }>{});
+//   }
+// );
 // export const selectDruidEntities = createSelector(selectAllDruids, (state) => {
 //     return state.reduce((acc, druid) => {
 //       acc[druid.id] = druid;

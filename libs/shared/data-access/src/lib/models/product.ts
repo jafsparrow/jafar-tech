@@ -8,6 +8,8 @@
 //   isActive?: boolean;
 // }
 
+import { StringMap } from '@angular/compiler/src/compiler_facade_interface';
+
 export interface Category {
   id: number;
   menuId: string;
@@ -24,13 +26,14 @@ export interface Category {
   hours?: null[] | null;
 }
 export interface Product {
-  id: number;
+  id: string;
   image: string;
   description: string;
   isAvailable: boolean;
   onSale: boolean;
   price: number;
   name: string;
+  category: string;
   archived: boolean;
   video?: string;
   popular: boolean;

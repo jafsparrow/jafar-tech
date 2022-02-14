@@ -19,29 +19,33 @@ export class ProductsEffects {
     private actions$: Actions
   ) {}
 
-  loadProducts$ = createEffect(() => {
-    return this.actions$.pipe(
-      ofType(loadProducts),
-      switchMap(() =>
-        this.productService.loadDruids().pipe(
-          map((products) => loadProductsSuccess({ products })),
-          catchError((error) => of(loadProductsFail({ error })))
-        )
-      )
-    );
-  });
+  // loadProducts$ = createEffect(() => {
+  //   return this.actions$.pipe(
+  //     ofType(loadProducts),
+  //     switchMap(() =>
+  //       this.productService.loadDruids().pipe(
+  //         map((products) => {
+  //           console.log('loading products');
+  //           return loadProductsSuccess({ products });
+  //         }),
+  //         catchError((error) => of(loadProductsFail({ error })))
+  //       )
+  //     )
+  //   );
+  // });
 
   loadProductCategoryVice$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(loadProductsCategoryVice),
-      switchMap(() => {
-        return this.productService.loadProductsCategoryVice().pipe(
-          map((productsByCat) =>
-            loadProductsCategoryViceSuccess({ productsByCat })
-          ),
+      switchMap(() =>
+        this.productService.loadProductsCategoryVice().pipe(
+          map((data) => {
+            console.log('inside cat prod loading effect');
+            return loadProductsCategoryViceSuccess({ productsByCat: data });
+          }),
           catchError((error) => of(loadProductsCategoryViceFail({ error })))
-        );
-      })
+        )
+      )
     );
   });
 }

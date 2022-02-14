@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 
 import {
   loadProducts,
+  loadProductsCategoryVice,
   selectAllProducts,
   selectProductByCategories,
 } from '@jafar-tech/table-qr-products-data-access';
@@ -23,8 +24,7 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(loadProducts());
-
-    this.prodcutByCategory$.subscribe((data) => console.log(data));
+    // this.prodcutByCategory$.subscribe((data) => console.log(data));
   }
   addToCart(product: any) {
     console.log(product);
