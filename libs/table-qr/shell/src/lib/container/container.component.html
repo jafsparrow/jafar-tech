@@ -6,8 +6,6 @@
 
 <div class="tabs-container">
   <div class="tab-container">
-    {{ prodcutByCategory$ | async | json }}
-
     <mat-tab-group>
       <mat-tab
         *ngFor="let section of prodcutByCategory$ | async | keyvalue"
