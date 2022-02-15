@@ -12,38 +12,20 @@ export const selectAllProducts = createSelector(
   (state) => state.products
 );
 
+export const selectProductsCategoryVice = createSelector(
+  selectProductState,
+  (state) => state.productsByCat
+);
+
 export interface ProdCue extends Product {
   count?: number;
 }
 
-export const selectProductconsideringcart = createSelector(
-  selectAllProducts,
+export const selectProductConsideringcart = createSelector(
+  selectProductsCategoryVice,
   selectCart,
-  (currproducts, cart) => {
-    var products = currproducts.map((p) => p);
-
-    var newProductsArr: Array<ProdCue> = [];
-    let cartItems: CartItem[] = cart.cartItems;
-
-    if (cart.cartItems.length < 1) {
-      newProductsArr = products;
-    }
-    for (var j = 0; j < products.length; j++) {
-      var currProduct = products[j];
-      var newItem: any = {};
-      for (var i = 0; i < cartItems.length; i++) {
-        var currCartItem = cartItems[i];
-        if (currCartItem.product.id == currProduct.id) {
-          newItem = { ...currProduct, count: currCartItem.count };
-          break;
-        } else {
-          newItem = { ...currProduct };
-        }
-      }
-      newProductsArr.push(newItem);
-    }
-    // console.log('out prod', newProductsArr);
-    return newProductsArr;
+  (categoryviceProducts, cart) => {
+    return [];
   }
 );
 
