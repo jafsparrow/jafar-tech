@@ -17,6 +17,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDividerModule } from '@angular/material/divider';
 import { SelectProductViewComponent } from './select-product-view/select-product-view.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { BottomCartSummaryComponent } from './bottom-cart-summary/bottom-cart-summary.component';
 
 @NgModule({
   imports: [
@@ -34,6 +35,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     MenuProductCardComponent,
     SelectProductViewComponent,
     ToolbarComponent,
+    BottomCartSummaryComponent,
   ],
   exports: [
     CountControlComponent,
@@ -41,6 +43,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     SelectProductViewComponent,
     ToolbarComponent,
     MatTabsModule,
+    BottomCartSummaryComponent,
   ],
 })
 export class TableQrUiModule {}
