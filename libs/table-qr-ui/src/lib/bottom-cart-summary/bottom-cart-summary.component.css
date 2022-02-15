@@ -1,0 +1,10 @@
+.bottom-cart-summary-container {
+  position: sticky;
+  padding: 15px;
+  background-color: black;
+  color: white;
+  font-weight: 400;
+  display: flex;
+  justify-content: space-between;
+  bottom: 0;
+}
