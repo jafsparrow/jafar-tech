@@ -7,6 +7,6 @@ export interface CartItem {
 
 export interface Cart {
   createdAt?: Date;
-  cartItems: CartItem[];
+  cartItems: { [key: string]: CartItem };
   total: number;
 }
