@@ -26,7 +26,7 @@ export interface Category {
   hours?: null[] | null;
 }
 export interface Product {
-  id: string;
+  _id: string;
   image: string;
   description: string;
   isAvailable: boolean;
