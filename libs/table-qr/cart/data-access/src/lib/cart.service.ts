@@ -10,7 +10,7 @@ export class CartService {
   cartItems: CartItem[] = [
     {
       product: {
-        id: '1234',
+        _id: '1234',
         name: 'Evan',
         price: 33,
         category: 'juice',
@@ -25,7 +25,7 @@ export class CartService {
     },
     {
       product: {
-        id: '1235',
+        _id: '1235',
         name: 'Chau',
         price: 44,
         category: 'chicken',
@@ -42,7 +42,7 @@ export class CartService {
 
   CART: Cart = {
     total: 33,
-    cartItems: this.cartItems,
+    cartItems: {},
   };
   constructor(private httpClient: HttpClient) {}
 

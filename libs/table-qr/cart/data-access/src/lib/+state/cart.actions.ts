@@ -17,3 +17,13 @@ export const addToCart = createAction(
   '[Cart] add item to cart',
   props<{ item: CartItem }>()
 );
+
+export const updateCart = createAction(
+  '[Cart] update item to cart',
+  props<{ item: CartItem }>()
+);
+
+export const removeFromCart = createAction(
+  '[Cart] remove item to cart',
+  props<{ itemId: string }>()
+);
