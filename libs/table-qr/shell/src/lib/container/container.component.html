@@ -18,3 +18,11 @@
     </mat-tab>
   </mat-tab-group>
 </div>
+
+<ng-container *ngIf="{ count: cartCount$ | async } as objCount">
+  <qr-ui-bottom-cart-summary
+    *ngIf="objCount.count && objCount.count > 0"
+    [cartProductsCount]="objCount.count"
+    [cartTotal]="cartTotal$ | async"
+  ></qr-ui-bottom-cart-summary
+></ng-container>

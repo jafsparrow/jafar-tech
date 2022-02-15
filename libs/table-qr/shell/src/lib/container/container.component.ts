@@ -6,6 +6,7 @@ import {
   removeFromCart,
   selectInCartProductCount,
   selectNumberOfItemsInCart,
+  selectCartTotal,
 } from '@jafar-tech/table-qr-cart-data-access';
 import {
   loadProducts,
@@ -25,6 +26,7 @@ export class ContainerComponent implements OnInit {
   allProducts$ = this.store.select(selectAllProducts);
   prodcutByCategory$ = this.store.select(selectProductByCategories);
   cartCount$ = this.store.select(selectNumberOfItemsInCart);
+  cartTotal$ = this.store.select(selectCartTotal);
 
   count = 5;
 
