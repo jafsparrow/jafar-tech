@@ -1,23 +1,20 @@
-<!-- <qr-ui-toolbar></qr-ui-toolbar> -->
+<qr-ui-toolbar [cartItemCount]="cartCount$ | async"></qr-ui-toolbar>
 <!-- <jafar-tech-product-list></jafar-tech-product-list> -->
-<jafar-tech-cart></jafar-tech-cart>
-
-{{ cart$ | async | json }}
 
 <div class="tabs-container">
-  <div class="tab-container">
-    <mat-tab-group>
-      <mat-tab
-        *ngFor="let section of prodcutByCategory$ | async | keyvalue"
-        [label]="section.key | titlecase"
-      >
+  <mat-tab-group>
+    <mat-tab
+      *ngFor="let section of prodcutByCategory$ | async | keyvalue"
+      [label]="section.key | titlecase"
+    >
+      <div *ngFor="let product of section.value">
+        <button (click)="removeFromCart(product)">clickme</button>
         <qr-ui-menu-product-card
-          *ngFor="let product of section.value"
           [product]="product"
-          [selectedCount]="4"
+          [selectedCount]="getInCartProductCount(product) | async"
           (click)="addToCart(product)"
         ></qr-ui-menu-product-card>
-      </mat-tab>
-    </mat-tab-group>
-  </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
 </div>
