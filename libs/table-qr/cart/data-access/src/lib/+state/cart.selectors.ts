@@ -19,6 +19,10 @@ export const selectNumberOfItemsInCart = createSelector(
   (state) => Object.keys(state.cartItems).length
 );
 
+export const selectCartTotal = createSelector(selectCartState, (state) =>
+  getTotalCartAmout(state)
+);
+
 export const selectInCartProductCount = createSelector(
   selectCart,
   (state: Cart, props: any) => {
@@ -29,3 +33,9 @@ export const selectInCartProductCount = createSelector(
       : 0;
   }
 );
+
+export const getTotalCartAmout = (state: Cart): number | null =>
+  Object.values(state.cartItems).reduce(
+    (tot, cartItem) => tot + cartItem.product.price * cartItem.count,
+    0
+  );
