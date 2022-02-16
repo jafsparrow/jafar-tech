@@ -6,7 +6,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./select-product-view.component.scss'],
 })
 export class SelectProductViewComponent implements OnInit {
-  @Input('selectedCount') selectedCount!: number;
+  @Input('selectedCount') selectedCount!: number | null;
   @Input('product') product: any;
   @Input('error') error: any = 'hello';
   @Output()
@@ -17,11 +17,11 @@ export class SelectProductViewComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    console.log('error', this.error);
+    // console.log('error', this.error);
   }
 
   clickToCart() {
-    console.log('click to cart');
+    // console.log('click to cart');
 
     this.addProductToCart.emit(this.selectedCount);
   }

@@ -6,7 +6,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./count-control.component.scss'],
 })
 export class CountControlComponent implements OnInit {
-  @Input('count') count!: number;
+  @Input('count') count!: number | null;
 
   @Output() countChange = new EventEmitter<number>();
 
@@ -25,7 +25,7 @@ export class CountControlComponent implements OnInit {
   }
 
   reCount(delta: number) {
-    this.count = this.count + delta;
+    this.count = this.count! + delta;
     this.countChange.emit(this.count);
   }
 }

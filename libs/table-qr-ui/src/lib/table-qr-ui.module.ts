@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CountControlComponent } from './count-control/count-control.component';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { MatIconModule } from '@angular/material/icon';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -22,7 +20,6 @@ import { BottomCartSummaryComponent } from './bottom-cart-summary/bottom-cart-su
 @NgModule({
   imports: [
     CommonModule,
-    // BrowserAnimationsModule,
     MatIconModule,
     MatButtonModule,
     MatCardModule,
@@ -36,13 +33,18 @@ import { BottomCartSummaryComponent } from './bottom-cart-summary/bottom-cart-su
     SelectProductViewComponent,
     ToolbarComponent,
     BottomCartSummaryComponent,
+    SelectProductViewComponent,
   ],
   exports: [
+    MatTabsModule,
+    MatDividerModule,
+    MatButtonModule,
+    MatIconModule,
     CountControlComponent,
     MenuProductCardComponent,
     SelectProductViewComponent,
     ToolbarComponent,
-    MatTabsModule,
+
     BottomCartSummaryComponent,
   ],
 })
