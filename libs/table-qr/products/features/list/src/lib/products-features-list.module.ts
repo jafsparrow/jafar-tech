@@ -7,6 +7,9 @@ import { CartDataAccessModule } from '@jafar-tech/table-qr-cart-data-access';
 
 import { MatTabsModule } from '@angular/material/tabs';
 import { TableQrUiModule } from '@jafar-tech/table-qr-ui';
+import { TableQrProductsFeaturesDetailModule } from '@jafar-tech/table-qr/products/features/detail';
+
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   imports: [
@@ -16,6 +19,8 @@ import { TableQrUiModule } from '@jafar-tech/table-qr-ui';
     CartDataAccessModule,
     MatTabsModule,
     TableQrUiModule,
+    TableQrProductsFeaturesDetailModule,
+    MatDialogModule,
   ],
   declarations: [ProductListComponent],
   exports: [ProductListComponent],

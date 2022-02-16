@@ -11,6 +11,8 @@ import {
 } from '@jafar-tech/table-qr-cart-data-access';
 import { CartItem, Product } from '@jafar-tech/shared/data-access';
 import { Observable } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { ProductDetailComponent } from '@jafar-tech/table-qr/products/features/detail';
 
 @Component({
   selector: 'jafar-tech-product-list',
@@ -22,14 +24,20 @@ export class ProductListComponent implements OnInit {
   cartCount$ = this.store.select(selectNumberOfItemsInCart);
   cartTotal$ = this.store.select(selectCartTotal);
 
-  constructor(private store: Store) {}
+  constructor(private store: Store, private dialog: MatDialog) {}
 
   ngOnInit(): void {}
 
   getInCartProductCount(product: Product): Observable<any> {
     return this.store.select(selectInCartProductCount, { id: product._id });
   }
-  openProductViewDialog() {}
+  openProductViewDialog(product: Product) {
+    this.dialog.open(ProductDetailComponent, {
+      data: {
+        product,
+      },
+    });
+  }
 
   addToCart(product: Product) {
     const cartItem = {

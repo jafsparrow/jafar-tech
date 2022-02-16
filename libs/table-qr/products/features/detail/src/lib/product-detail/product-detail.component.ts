@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import {
   addToCart,
@@ -6,42 +7,50 @@ import {
 } from '@jafar-tech/table-qr-cart-data-access';
 import { Store } from '@ngrx/store';
 
+import { Product } from '@jafar-tech/shared/data-access';
+import { Observable } from 'rxjs';
+
+export interface DialogData {
+  product: Product;
+}
+
 @Component({
   selector: 'jafar-tech-product-detail',
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css'],
 })
 export class ProductDetailComponent implements OnInit {
-  constructor(private router: Router, private store: Store) {}
+  productInTheCartAlready$: Observable<number | null>;
+  constructor(
+    private router: Router,
+    private store: Store,
+    @Inject(MAT_DIALOG_DATA) public dialogData: DialogData,
+    private dialog: MatDialog
+  ) {
+    this.productInTheCartAlready$ = this.store.select(
+      selectInCartProductCount,
+      {
+        id: this.dialogData.product._id,
+      }
+    );
+  }
 
-  productInTheCartAlready$ = this.store.select(selectInCartProductCount, {
-    id: '620872e9586ea1c3df27941b',
-  });
-  sampleProd = {
-    _id: '620872e9586ea1c3df27941b',
-    category: 'juice',
-    popular: false,
-    video: 'dd',
-    archived: false,
-    price: 33,
-    onSale: true,
-    isAvailable: true,
-    image: 'd',
-    description: 'amul treety',
-    name: 'cuckhedo crop truthy',
-  };
+  get selectedProduct() {
+    return this.dialogData.product;
+  }
 
   ngOnInit(): void {}
 
   closeButtonClicked() {
-    this.router.navigate(['..']);
+    this.dialog.closeAll();
   }
 
   addToCart(count: number) {
     const cartItem = {
-      product: this.sampleProd,
+      product: this.selectedProduct,
       count: count,
     };
     this.store.dispatch(addToCart({ item: cartItem }));
+    this.dialog.closeAll();
   }
 }

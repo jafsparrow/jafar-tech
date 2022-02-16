@@ -6,11 +6,10 @@
     >
       <div *ngFor="let product of section.value">
         <button (click)="removeFromCart(product)">clickme</button>
-        <button (click)="addToCart(product)">add me</button>
+        <button (click)="openProductViewDialog(product)">add me</button>
         <qr-ui-menu-product-card
           [product]="product"
           [selectedCount]="getInCartProductCount(product) | async"
-          routerLink="../detail"
         ></qr-ui-menu-product-card>
       </div>
     </mat-tab>

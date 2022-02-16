@@ -20,13 +20,6 @@ const routes: Routes = [
             (m) => m.ProductsFeaturesListModule
           ),
       },
-      {
-        path: 'detail',
-        loadChildren: () =>
-          import('@jafar-tech/table-qr/products/features/detail').then(
-            (m) => m.TableQrProductsFeaturesDetailModule
-          ),
-      },
     ],
   },
 ];
