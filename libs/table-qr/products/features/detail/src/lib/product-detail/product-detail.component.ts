@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { selectInCartProductCount } from '@jafar-tech/table-qr-cart-data-access';
+import {
+  addToCart,
+  selectInCartProductCount,
+} from '@jafar-tech/table-qr-cart-data-access';
 import { Store } from '@ngrx/store';
 
 @Component({
@@ -18,12 +21,12 @@ export class ProductDetailComponent implements OnInit {
     _id: '620872e9586ea1c3df27941b',
     category: 'juice',
     popular: false,
-    video: null,
+    video: 'dd',
     archived: false,
     price: 33,
     onSale: true,
     isAvailable: true,
-    image: null,
+    image: 'd',
     description: 'amul treety',
     name: 'cuckhedo crop truthy',
   };
@@ -32,5 +35,13 @@ export class ProductDetailComponent implements OnInit {
 
   closeButtonClicked() {
     this.router.navigate(['..']);
+  }
+
+  addToCart(count: number) {
+    const cartItem = {
+      product: this.sampleProd,
+      count: count,
+    };
+    this.store.dispatch(addToCart({ item: cartItem }));
   }
 }
