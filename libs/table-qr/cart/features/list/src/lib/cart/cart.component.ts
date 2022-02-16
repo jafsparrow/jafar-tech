@@ -22,18 +22,37 @@ export class CartComponent implements OnInit {
     return Object.values(cart.cartItems);
   }
 
+  getCartItemTotal(cartItem: CartItem): number {
+    return (
+      (cartItem.modifiers!.reduce(
+        (prev, curr) => prev + parseInt(curr.price?.toString()),
+        0
+      ) +
+        cartItem.product.price) *
+      cartItem.count
+    );
+  }
+
   productCountChange($event: any, cartItem: CartItem) {
     var newCount = $event;
     // console.log('newcount', newCount);
+
     if (newCount) {
       this.store.dispatch(
         addToCart({ item: { ...cartItem, count: newCount } })
       );
     } else {
+      var key = '';
+      cartItem.modifiers?.forEach(
+        (modifier) => (key = key + modifier.id?.toString())
+      );
+
+      var generatedId = `${cartItem.product._id}${key}`;
       alert(
         `Are you sure, don't want ${cartItem.product.name} in the cart..? `
       );
-      this.store.dispatch(removeFromCart({ itemId: cartItem.product._id }));
+      console.log('geenrated key i ncomponent', cartItem.product._id + key);
+      this.store.dispatch(removeFromCart({ itemId: generatedId }));
     }
   }
 }

@@ -8,7 +8,7 @@ import {
 } from '@jafar-tech/table-qr-cart-data-access';
 import { Store } from '@ngrx/store';
 
-import { CartItem, Product } from '@jafar-tech/shared/data-access';
+import { CartItem, Modifier, Product } from '@jafar-tech/shared/data-access';
 import { Observable } from 'rxjs';
 
 export interface DialogData {
@@ -22,6 +22,8 @@ export interface DialogData {
 })
 export class ProductDetailComponent implements OnInit {
   productInTheCartAlready$: Observable<number | null>;
+
+  selectedModifiers: { [Key: number]: Modifier } = {};
   constructor(
     private router: Router,
     private store: Store,
@@ -51,18 +53,27 @@ export class ProductDetailComponent implements OnInit {
       const cartItem: CartItem = {
         product: this.selectedProduct,
         count: count,
-        modifiers: [
-          {
-            description: 'sumo stuff',
-            price: 30,
-            id: 1,
-          },
-        ],
+        modifiers: Object.values(this.selectedModifiers),
       };
       this.store.dispatch(addToCart({ item: cartItem }));
     } else {
       this.store.dispatch(removeFromCart({ itemId: this.selectedProduct._id }));
     }
     this.dialog.closeAll();
+  }
+
+  modifierSelectionUpdate($event: any) {
+    this.selectedModifiers[$event.group] = $event.modifier;
+    console.log(this.selectedModifiers);
+  }
+
+  get productTotalWhenAddedModifier() {
+    return (
+      this.selectedProduct.price +
+      Object.values(this.selectedModifiers).reduce(
+        (prev, curr) => prev + parseInt(curr?.price.toString()),
+        0
+      )
+    );
   }
 }

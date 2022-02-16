@@ -21,11 +21,13 @@
         </div>
         <div class="cart-item-detail">
           <h3>{{ cartItem.product.name }}</h3>
-          <h4>mix of amazing creepss</h4>
+          <div *ngIf="cartItem.modifiers as modifiers">
+            <span *ngFor="let modifier of modifiers"
+              >{{ modifier.description }} ,</span
+            >
+          </div>
         </div>
-        <div class="cart-item-price">
-          {{ cartItem.product.price * cartItem.count }} ₹
-        </div>
+        <div class="cart-item-price">{{ getCartItemTotal(cartItem) }} ₹</div>
       </div>
     </div>
 

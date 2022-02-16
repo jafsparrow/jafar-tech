@@ -21,7 +21,7 @@ export const cartReducer = createReducer(
     var newCartItem = { ...item };
     var key = '';
     newCartItem.modifiers?.forEach(
-      (modifier) => (key = key + modifier.description?.toString())
+      (modifier) => (key = key + modifier.id?.toString())
     );
     var generatedId = `${item.product._id}${key}`;
     var cartItems = { ...state.cartItems };
@@ -29,6 +29,8 @@ export const cartReducer = createReducer(
       ...(cartItems[generatedId] || []),
       ...newCartItem,
     };
+
+    console.log(cartItems);
 
     return {
       ...state,

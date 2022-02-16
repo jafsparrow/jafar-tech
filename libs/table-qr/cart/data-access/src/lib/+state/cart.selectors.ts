@@ -7,10 +7,17 @@ export const selectCartState = createFeatureSelector<Cart>(CART_FEATURE_KEY);
 export const selectCart = createSelector(selectCartState, (state) => {
   return {
     ...state,
-    total: Object.values(state.cartItems).reduce(
-      (tot, cartItem) => tot + cartItem.product.price * cartItem.count,
-      0
-    ),
+    total: Object.values(state.cartItems).reduce((tot, cartItem) => {
+      return (
+        tot +
+        (cartItem.product.price +
+          cartItem.modifiers!.reduce(
+            (prev, curr) => prev + parseInt(curr?.price.toString()),
+            0
+          )) *
+          cartItem.count
+      );
+    }, 0),
   };
 });
 

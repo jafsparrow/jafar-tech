@@ -20,13 +20,14 @@
   >
     <!-- <h4>choose from the following</h4> -->
 
-    <label id="example-radio-group-label">Choose from following</label>
+    <p>Choose from following</p>
 
-    <ng-container *ngFor="let modifierGroup of modifierGroups">
+    <ng-container *ngFor="let modifierGroup of modifierGroups; let i = index">
       <p id="example-radio-group-label">{{ modifierGroup.description }}</p>
       <mat-radio-group
-        [(ngModel)]="favoriteSeason"
-        *ngFor="let modifier of modifierGroup.modifiers"
+        name="{{ i.toString() }}"
+        *ngFor="let modifier of modifierGroup.modifiers; let j = index"
+        (change)="radioSelectionChange($event, modifier, j)"
       >
         <mat-radio-button
           class="modifier-radio-group"
@@ -54,7 +55,7 @@
       class="add-button"
       (click)="clickToCart()"
     >
-      Add for {{ selectedCount! * product!.price }} ₹
+      Add for {{ modifierAppliedTotal }} ₹
     </button>
   </div>
 
