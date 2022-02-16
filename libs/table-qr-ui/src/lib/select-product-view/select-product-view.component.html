@@ -16,7 +16,6 @@
   <p>Chooose from following</p>
 
   <mat-divider></mat-divider>
-
   <div class="count-control-container">
     <qr-ui-count-control [(count)]="selectedCount"></qr-ui-count-control>
   </div>
@@ -31,7 +30,7 @@
       class="add-button"
       (click)="clickToCart()"
     >
-      Add for {{ selectedCount * product.price }} ₹
+      Add for {{ selectedCount! * product!.price }} ₹
     </button>
   </div>
 
