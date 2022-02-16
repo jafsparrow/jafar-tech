@@ -24,12 +24,7 @@ export class ProductListComponent implements OnInit {
 
   constructor(private store: Store) {}
 
-  ngOnInit(): void {
-    // this.store.dispatch(loadProducts());
-    // this.store.dispatch(loadProductsCategoryVice());
-
-    this.prodcutByCategory$.subscribe((data) => console.log(data));
-  }
+  ngOnInit(): void {}
 
   getInCartProductCount(product: Product): Observable<any> {
     return this.store.select(selectInCartProductCount, { id: product._id });
