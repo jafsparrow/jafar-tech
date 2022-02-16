@@ -458,6 +458,32 @@
       },
       "tags": []
     },
+    "table-qr-products-features-detail": {
+      "projectType": "library",
+      "root": "libs/table-qr/products/features/detail",
+      "sourceRoot": "libs/table-qr/products/features/detail/src",
+      "prefix": "jafar-tech",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/table-qr/products/features/detail"],
+          "options": {
+            "jestConfig": "libs/table-qr/products/features/detail/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/table-qr/products/features/detail/src/**/*.ts",
+              "libs/table-qr/products/features/detail/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "table-qr-products-features-list": {
       "projectType": "library",
       "root": "libs/table-qr/products/features/list",
@@ -478,6 +504,32 @@
             "lintFilePatterns": [
               "libs/table-qr/products/features/list/src/**/*.ts",
               "libs/table-qr/products/features/list/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "table-qr-products-features-shell": {
+      "projectType": "library",
+      "root": "libs/table-qr/products/features/shell",
+      "sourceRoot": "libs/table-qr/products/features/shell/src",
+      "prefix": "jafar-tech",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/table-qr/products/features/shell"],
+          "options": {
+            "jestConfig": "libs/table-qr/products/features/shell/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/table-qr/products/features/shell/src/**/*.ts",
+              "libs/table-qr/products/features/shell/src/**/*.html"
             ]
           }
         }

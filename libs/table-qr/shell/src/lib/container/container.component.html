@@ -1,28 +1,4 @@
 <qr-ui-toolbar [cartItemCount]="cartCount$ | async"></qr-ui-toolbar>
 <!-- <jafar-tech-product-list></jafar-tech-product-list> -->
 
-<div class="tabs-container">
-  <mat-tab-group>
-    <mat-tab
-      *ngFor="let section of prodcutByCategory$ | async | keyvalue"
-      [label]="section.key | titlecase"
-    >
-      <div *ngFor="let product of section.value">
-        <button (click)="removeFromCart(product)">clickme</button>
-        <qr-ui-menu-product-card
-          [product]="product"
-          [selectedCount]="getInCartProductCount(product) | async"
-          (click)="addToCart(product)"
-        ></qr-ui-menu-product-card>
-      </div>
-    </mat-tab>
-  </mat-tab-group>
-</div>
-
-<ng-container *ngIf="{ count: cartCount$ | async } as objCount">
-  <qr-ui-bottom-cart-summary
-    *ngIf="objCount.count && objCount.count > 0"
-    [cartProductsCount]="objCount.count"
-    [cartTotal]="cartTotal$ | async"
-  ></qr-ui-bottom-cart-summary
-></ng-container>
+<router-outlet></router-outlet>

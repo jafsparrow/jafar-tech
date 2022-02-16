@@ -23,40 +23,12 @@ import { Observable } from 'rxjs';
   styleUrls: ['./container.component.css'],
 })
 export class ContainerComponent implements OnInit {
-  allProducts$ = this.store.select(selectAllProducts);
-  prodcutByCategory$ = this.store.select(selectProductByCategories);
   cartCount$ = this.store.select(selectNumberOfItemsInCart);
-  cartTotal$ = this.store.select(selectCartTotal);
-
-  count = 5;
 
   constructor(private store: Store) {}
 
   ngOnInit(): void {
-    this.store.dispatch(loadProducts());
+    console.log('inste oninit of container component');
     this.store.dispatch(loadProductsCategoryVice());
-    this.cartCount$.subscribe((count) => console.log(count));
-  }
-
-  getInCartProductCount(product: Product): Observable<any> {
-    return this.store.select(selectInCartProductCount, { id: product._id });
-  }
-  openProductViewDialog() {}
-
-  addToCart(product: Product) {
-    const cartItem = {
-      product: product,
-      count: 1,
-    };
-    this.store.dispatch(addToCart({ item: cartItem }));
-  }
-
-  removeFromCart(product: Product) {
-    const cartItem = {
-      product: product,
-      count: 1,
-    };
-
-    this.store.dispatch(removeFromCart({ itemId: product._id }));
   }
 }

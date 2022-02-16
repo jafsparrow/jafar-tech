@@ -1,20 +1,30 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductsFeaturesListModule } from '@jafar-tech/table-qr-products-features-list';
-import { CartFeaturesListModule } from '@jafar-tech/table-qr-cart-features-list';
 import { ContainerComponent } from './container/container.component';
 import { RouterModule } from '@angular/router';
 import { TableQrUiModule } from '@jafar-tech/table-qr-ui';
+import { CartDataAccessModule } from '@jafar-tech/table-qr-cart-data-access';
+import { ProductsDataAccessModule } from '@jafar-tech/table-qr-products-data-access';
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild([{ path: '', component: ContainerComponent }]),
-    ProductsFeaturesListModule,
-    CartFeaturesListModule,
+    RouterModule.forChild([
+      {
+        path: 'products',
+        component: ContainerComponent,
+        loadChildren: () =>
+          import('@jafar-tech/table-qr/products/features/shell').then(
+            (m) => m.TableQrProductsFeaturesShellModule
+          ),
+      },
+      { path: '', pathMatch: 'full', redirectTo: 'products' },
+    ]),
     TableQrUiModule,
+    ProductsDataAccessModule,
+    CartDataAccessModule,
   ],
   declarations: [ContainerComponent],
-  exports: [ContainerComponent],
+  exports: [],
 })
 export class TableQrShellModule {}

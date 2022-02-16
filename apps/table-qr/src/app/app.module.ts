@@ -23,28 +23,27 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([
-      {
-        path: 'shell',
-        loadChildren: () =>
-          import('@jafar-tech/table-qr/shell').then(
-            (m) => m.TableQrShellModule
-          ),
-      },
-      {
-        path: 'products',
-        loadChildren: () =>
-          import('@jafar-tech/table-qr-products-features-list').then(
-            (m) => m.ProductsFeaturesListModule
-          ),
-      },
+    RouterModule.forRoot(
+      [
+        {
+          path: 'shell',
+          loadChildren: () =>
+            import('@jafar-tech/table-qr/shell').then(
+              (m) => m.TableQrShellModule
+            ),
+        },
 
+        {
+          path: '',
+          redirectTo: 'shell',
+
+          pathMatch: 'full',
+        },
+      ],
       {
-        path: '',
-        redirectTo: 'shell',
-        pathMatch: 'full',
-      },
-    ]),
+        scrollPositionRestoration: 'enabled',
+      }
+    ),
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
     HttpClientModule,

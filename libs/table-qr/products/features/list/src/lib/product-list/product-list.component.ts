@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
+import { selectProductByCategories } from '@jafar-tech/table-qr-products-data-access';
 import {
-  loadProducts,
-  loadProductsCategoryVice,
-  selectAllProducts,
-  selectProductByCategories,
-} from '@jafar-tech/table-qr-products-data-access';
-import { addToCart, selectCart } from '@jafar-tech/table-qr-cart-data-access';
-import { CartItem } from '@jafar-tech/shared/data-access';
+  addToCart,
+  removeFromCart,
+  selectCartTotal,
+  selectInCartProductCount,
+  selectNumberOfItemsInCart,
+} from '@jafar-tech/table-qr-cart-data-access';
+import { CartItem, Product } from '@jafar-tech/shared/data-access';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'jafar-tech-product-list',
@@ -16,25 +18,38 @@ import { CartItem } from '@jafar-tech/shared/data-access';
   styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent implements OnInit {
-  allProducts$ = this.store.select(selectAllProducts);
   prodcutByCategory$ = this.store.select(selectProductByCategories);
-  cart$ = this.store.select(selectCart);
+  cartCount$ = this.store.select(selectNumberOfItemsInCart);
+  cartTotal$ = this.store.select(selectCartTotal);
 
   constructor(private store: Store) {}
 
   ngOnInit(): void {
-    this.store.dispatch(loadProducts());
-    // this.prodcutByCategory$.subscribe((data) => console.log(data));
+    // this.store.dispatch(loadProducts());
+    // this.store.dispatch(loadProductsCategoryVice());
+
+    this.prodcutByCategory$.subscribe((data) => console.log(data));
   }
-  addToCart(product: any) {
-    console.log(product);
-    const count = 5;
-    var cartItem: CartItem = {
-      product,
-      count,
+
+  getInCartProductCount(product: Product): Observable<any> {
+    return this.store.select(selectInCartProductCount, { id: product._id });
+  }
+  openProductViewDialog() {}
+
+  addToCart(product: Product) {
+    const cartItem = {
+      product: product,
+      count: 1,
     };
     this.store.dispatch(addToCart({ item: cartItem }));
   }
 
-  openProductViewDialog() {}
+  removeFromCart(product: Product) {
+    const cartItem = {
+      product: product,
+      count: 1,
+    };
+
+    this.store.dispatch(removeFromCart({ itemId: product._id }));
+  }
 }

@@ -11,7 +11,7 @@ import { TableQrUiModule } from '@jafar-tech/table-qr-ui';
 @NgModule({
   imports: [
     CommonModule,
-    // RouterModule.forChild([{ path: '', component: ProductListComponent }]),
+    RouterModule.forChild([{ path: '', component: ProductListComponent }]),
     ProductsDataAccessModule,
     CartDataAccessModule,
     MatTabsModule,

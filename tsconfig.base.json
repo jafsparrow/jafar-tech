@@ -35,6 +35,12 @@
         "libs/table-qr/products/features/list/src/index.ts"
       ],
       "@jafar-tech/table-qr-ui": ["libs/table-qr-ui/src/index.ts"],
+      "@jafar-tech/table-qr/products/features/detail": [
+        "libs/table-qr/products/features/detail/src/index.ts"
+      ],
+      "@jafar-tech/table-qr/products/features/shell": [
+        "libs/table-qr/products/features/shell/src/index.ts"
+      ],
       "@jafar-tech/table-qr/shell": ["libs/table-qr/shell/src/index.ts"]
     }
   },

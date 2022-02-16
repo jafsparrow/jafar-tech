@@ -25,6 +25,7 @@ export const productsReducer = createReducer(
   on(loadProductsSuccess, (state, { products }) => ({ ...state, products })),
   on(loadProductsCategoryViceSuccess, (state, { productsByCat }) => {
     console.log('reducer is firing up');
+
     return {
       ...state,
       productsByCat,
