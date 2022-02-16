@@ -404,6 +404,32 @@
       },
       "tags": []
     },
+    "table-qr-cart-features-order": {
+      "projectType": "library",
+      "root": "libs/table-qr/cart/features/order",
+      "sourceRoot": "libs/table-qr/cart/features/order/src",
+      "prefix": "jafar-tech",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/table-qr/cart/features/order"],
+          "options": {
+            "jestConfig": "libs/table-qr/cart/features/order/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/table-qr/cart/features/order/src/**/*.ts",
+              "libs/table-qr/cart/features/order/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "table-qr-e2e": {
       "root": "apps/table-qr-e2e",
       "sourceRoot": "apps/table-qr-e2e/src",

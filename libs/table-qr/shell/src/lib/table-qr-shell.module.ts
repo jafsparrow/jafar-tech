@@ -26,6 +26,14 @@ import { ProductsDataAccessModule } from '@jafar-tech/table-qr-products-data-acc
             (m) => m.CartFeaturesListModule
           ),
       },
+      {
+        path: 'order',
+        component: ContainerComponent,
+        loadChildren: () =>
+          import('@jafar-tech/table-qr/cart/features/order').then(
+            (m) => m.TableQrCartFeaturesOrderModule
+          ),
+      },
       { path: '', pathMatch: 'full', redirectTo: 'products' },
     ]),
     TableQrUiModule,
