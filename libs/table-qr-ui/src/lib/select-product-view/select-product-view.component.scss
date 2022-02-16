@@ -14,11 +14,6 @@
   justify-content: center;
   width: 100%;
 }
-.example-radio-group {
-  display: flex;
-  flex-direction: column;
-  margin: 15px 0;
-}
 
 .example-radio-button {
   margin: 5px;
@@ -59,4 +54,18 @@ p {
 .error-message {
   color: red;
   text-align: center;
+}
+
+.product-modifier-container {
+  padding: 15px;
+}
+
+.modifier-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.modifier-price {
+  font-weight: bold;
 }

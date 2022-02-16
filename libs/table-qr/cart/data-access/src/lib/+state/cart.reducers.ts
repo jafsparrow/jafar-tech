@@ -12,26 +12,21 @@ export const CART_FEATURE_KEY = 'cart';
 const initialState: Cart = {
   createdAt: new Date(),
   cartItems: {},
-  total: 0,
 };
 
 export const cartReducer = createReducer(
   initialState,
   on(loadCartSuccess, (state, { cart }) => ({ ...state, cart })),
   on(addToCart, (state, { item }) => {
-    var productId = item.product._id.toString();
     var newCartItem = { ...item };
-    // check if the item is already existing
-    if (state.cartItems[productId]) {
-      // newCartItem.count = newCartItem.count + state.cartItems[productId].count;
-    }
-
-    // var { total } = state;
-    // var newTotal = total + item.count * item.product.price;
-    // console.log(newTotal, item);
+    var key = '';
+    newCartItem.modifiers?.forEach(
+      (modifier) => (key = key + modifier.description?.toString())
+    );
+    var generatedId = `${item.product._id}${key}`;
     var cartItems = { ...state.cartItems };
-    cartItems[item.product._id] = {
-      ...(cartItems[item.product._id] || []),
+    cartItems[generatedId] = {
+      ...(cartItems[generatedId] || []),
       ...newCartItem,
     };
 
@@ -42,10 +37,7 @@ export const cartReducer = createReducer(
     };
   }),
   on(updateCart, (state, { item }) => {
-    // var newCartItem = { ...item };
     var totalcartItems = JSON.parse(JSON.stringify(state.cartItems));
-
-    console.log(totalcartItems);
 
     if (state.cartItems[item.product._id]) {
       if (state.cartItems[item.product._id].count == 1) {

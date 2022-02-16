@@ -8,7 +8,7 @@ import {
 } from '@jafar-tech/table-qr-cart-data-access';
 import { Store } from '@ngrx/store';
 
-import { Product } from '@jafar-tech/shared/data-access';
+import { CartItem, Product } from '@jafar-tech/shared/data-access';
 import { Observable } from 'rxjs';
 
 export interface DialogData {
@@ -48,9 +48,16 @@ export class ProductDetailComponent implements OnInit {
 
   addToCart(count: number) {
     if (count) {
-      const cartItem = {
+      const cartItem: CartItem = {
         product: this.selectedProduct,
         count: count,
+        modifiers: [
+          {
+            description: 'sumo stuff',
+            price: 30,
+            id: 1,
+          },
+        ],
       };
       this.store.dispatch(addToCart({ item: cartItem }));
     } else {

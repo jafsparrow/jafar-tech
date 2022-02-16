@@ -17,15 +17,20 @@ import { SelectProductViewComponent } from './select-product-view/select-product
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { BottomCartSummaryComponent } from './bottom-cart-summary/bottom-cart-summary.component';
 
+import { MatRadioModule } from '@angular/material/radio';
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     MatIconModule,
     MatButtonModule,
     MatCardModule,
     MatDividerModule,
     MatToolbarModule,
     MatTabsModule,
+    MatRadioModule,
   ],
   declarations: [
     CountControlComponent,
@@ -44,6 +49,7 @@ import { BottomCartSummaryComponent } from './bottom-cart-summary/bottom-cart-su
     MenuProductCardComponent,
     SelectProductViewComponent,
     ToolbarComponent,
+    MatRadioModule,
 
     BottomCartSummaryComponent,
   ],

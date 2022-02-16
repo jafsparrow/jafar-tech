@@ -7,13 +7,37 @@
     />
   </div>
 
-  <h3>{{ product.name | titlecase }}</h3>
+  <h3>{{ product?.name | titlecase }}</h3>
   <p>
-    {{ product.description }}
+    {{ product?.description }}
   </p>
 
   <mat-divider></mat-divider>
-  <p>Chooose from following</p>
+
+  <div
+    class="product-modifier-container"
+    *ngIf="product?.modifierGroups as modifierGroups"
+  >
+    <!-- <h4>choose from the following</h4> -->
+
+    <label id="example-radio-group-label">Choose from following</label>
+
+    <ng-container *ngFor="let modifierGroup of modifierGroups">
+      <p id="example-radio-group-label">{{ modifierGroup.description }}</p>
+      <mat-radio-group
+        [(ngModel)]="favoriteSeason"
+        *ngFor="let modifier of modifierGroup.modifiers"
+      >
+        <mat-radio-button
+          class="modifier-radio-group"
+          [value]="modifier.description"
+        >
+          <span>{{ modifier.description }}</span>
+          <span class="modifier-price"> - {{ modifier.price }}</span>
+        </mat-radio-button>
+      </mat-radio-group>
+    </ng-container>
+  </div>
 
   <mat-divider></mat-divider>
   <div class="count-control-container">

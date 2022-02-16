@@ -41,16 +41,21 @@ export interface Product {
   modifierGroups?: ModifierGroupsEntity[] | null;
 }
 export interface ModifierGroupsEntity {
-  id: string;
-  name: string;
-  description: string;
+  id?: string;
+  description?: string;
   price?: number;
-  image: string;
-  created_at: string;
-  updated_at: string;
+  image?: string;
+  created_at?: string;
+  updated_at?: string;
   printName?: string;
-  printModifiersAsItems: boolean;
-  products?: ModifierProductEntity[] | null;
+  printModifiersAsItems?: boolean;
+  modifiers?: Modifier[];
+}
+
+export interface Modifier {
+  description: string;
+  price: number;
+  id?: number;
 }
 
 type ModifierProductEntity = Omit<Product, 'modifierGroups'>;

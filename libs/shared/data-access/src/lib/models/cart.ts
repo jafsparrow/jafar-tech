@@ -1,17 +1,18 @@
-import { Product } from '.';
+import { Modifier, Product } from '.';
 import { User } from './user';
 
 export interface CartItem {
   product: Product;
   count: number;
+  modifiers?: Modifier[];
 }
 
 export interface Cart {
   createdAt?: Date;
   user?: User;
   cartItems: { [key: string]: CartItem };
+
   pendingOders?: OrderSummary[];
-  total: number;
 }
 
 export interface OrderSummary {
