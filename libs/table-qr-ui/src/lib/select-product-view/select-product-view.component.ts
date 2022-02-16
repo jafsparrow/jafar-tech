@@ -56,5 +56,7 @@ export class SelectProductViewComponent implements OnInit {
 
   getEstimatedTotal(product: Product) {}
 
-  incrementSelection($event: any) {}
+  onChangeSelectedCount($event: any) {
+    console.log($event);
+  }
 }

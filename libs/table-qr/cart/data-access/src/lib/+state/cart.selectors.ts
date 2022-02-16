@@ -35,9 +35,13 @@ export const selectInCartProductCount = createSelector(
   (state: Cart, props: any) => {
     const idOfProduct = props.id;
 
-    return state.cartItems[idOfProduct]
-      ? state.cartItems[idOfProduct].count
-      : 0;
+    var count = 0;
+    Object.keys(state.cartItems).forEach((key) => {
+      if (key.toString().includes(idOfProduct)) {
+        count = count + state.cartItems[key].count;
+      }
+    });
+    return count;
   }
 );
 
