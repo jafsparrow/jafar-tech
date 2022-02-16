@@ -1,4 +1,7 @@
-<qr-ui-toolbar [cartItemCount]="cartCount$ | async"></qr-ui-toolbar>
+<qr-ui-toolbar
+  [cartItemCount]="cartCount$ | async"
+  navigateUrl="cart"
+></qr-ui-toolbar>
 <!-- <jafar-tech-product-list></jafar-tech-product-list> -->
 
 <router-outlet></router-outlet>

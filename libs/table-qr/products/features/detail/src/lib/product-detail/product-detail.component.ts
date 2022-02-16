@@ -3,6 +3,7 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import {
   addToCart,
+  removeFromCart,
   selectInCartProductCount,
 } from '@jafar-tech/table-qr-cart-data-access';
 import { Store } from '@ngrx/store';
@@ -46,11 +47,15 @@ export class ProductDetailComponent implements OnInit {
   }
 
   addToCart(count: number) {
-    const cartItem = {
-      product: this.selectedProduct,
-      count: count,
-    };
-    this.store.dispatch(addToCart({ item: cartItem }));
+    if (count) {
+      const cartItem = {
+        product: this.selectedProduct,
+        count: count,
+      };
+      this.store.dispatch(addToCart({ item: cartItem }));
+    } else {
+      this.store.dispatch(removeFromCart({ itemId: this.selectedProduct._id }));
+    }
     this.dialog.closeAll();
   }
 }

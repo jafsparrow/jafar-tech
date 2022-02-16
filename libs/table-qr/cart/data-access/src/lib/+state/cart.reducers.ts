@@ -23,12 +23,12 @@ export const cartReducer = createReducer(
     var newCartItem = { ...item };
     // check if the item is already existing
     if (state.cartItems[productId]) {
-      newCartItem.count = newCartItem.count + state.cartItems[productId].count;
+      // newCartItem.count = newCartItem.count + state.cartItems[productId].count;
     }
 
-    var { total } = state;
-    var newTotal = total + item.count * item.product.price;
-    console.log(newTotal, item);
+    // var { total } = state;
+    // var newTotal = total + item.count * item.product.price;
+    // console.log(newTotal, item);
     var cartItems = { ...state.cartItems };
     cartItems[item.product._id] = {
       ...(cartItems[item.product._id] || []),
@@ -39,7 +39,6 @@ export const cartReducer = createReducer(
       ...state,
 
       cartItems,
-      total: newTotal,
     };
   }),
   on(updateCart, (state, { item }) => {

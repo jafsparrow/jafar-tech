@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { selectProductByCategories } from '@jafar-tech/table-qr-products-data-access';
@@ -18,6 +18,7 @@ import { ProductDetailComponent } from '@jafar-tech/table-qr/products/features/d
   selector: 'jafar-tech-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductListComponent implements OnInit {
   prodcutByCategory$ = this.store.select(selectProductByCategories);
@@ -26,7 +27,9 @@ export class ProductListComponent implements OnInit {
 
   constructor(private store: Store, private dialog: MatDialog) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('on init fired');
+  }
 
   getInCartProductCount(product: Product): Observable<any> {
     return this.store.select(selectInCartProductCount, { id: product._id });
@@ -47,12 +50,12 @@ export class ProductListComponent implements OnInit {
     this.store.dispatch(addToCart({ item: cartItem }));
   }
 
-  removeFromCart(product: Product) {
-    const cartItem = {
-      product: product,
-      count: 1,
-    };
+  // removeFromCart(product: Product) {
+  //   const cartItem = {
+  //     product: product,
+  //     count: 1,
+  //   };
 
-    this.store.dispatch(removeFromCart({ itemId: product._id }));
-  }
+  //   this.store.dispatch(removeFromCart({ itemId: product._id }));
+  // }
 }

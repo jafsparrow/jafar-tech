@@ -5,11 +5,10 @@
       [label]="section.key | titlecase"
     >
       <div *ngFor="let product of section.value">
-        <button (click)="removeFromCart(product)">clickme</button>
-        <button (click)="openProductViewDialog(product)">add me</button>
         <qr-ui-menu-product-card
           [product]="product"
           [selectedCount]="getInCartProductCount(product) | async"
+          (click)="openProductViewDialog(product)"
         ></qr-ui-menu-product-card>
       </div>
     </mat-tab>

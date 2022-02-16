@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { selectCart } from '@jafar-tech/table-qr-cart-data-access';
+import { Cart, CartItem } from '@jafar-tech/shared/data-access';
+import {
+  addToCart,
+  removeFromCart,
+  selectCart,
+} from '@jafar-tech/table-qr-cart-data-access';
 import { Store } from '@ngrx/store';
 
 @Component({
@@ -12,4 +17,23 @@ export class CartComponent implements OnInit {
   constructor(private store: Store) {}
 
   ngOnInit(): void {}
+
+  getCartItems(cart: Cart) {
+    return Object.values(cart.cartItems);
+  }
+
+  productCountChange($event: any, cartItem: CartItem) {
+    var newCount = $event;
+    // console.log('newcount', newCount);
+    if (newCount) {
+      this.store.dispatch(
+        addToCart({ item: { ...cartItem, count: newCount } })
+      );
+    } else {
+      alert(
+        `Are you sure, don't want ${cartItem.product.name} in the cart..? `
+      );
+      this.store.dispatch(removeFromCart({ itemId: cartItem.product._id }));
+    }
+  }
 }

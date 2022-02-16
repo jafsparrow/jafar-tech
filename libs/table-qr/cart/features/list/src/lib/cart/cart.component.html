@@ -1,1 +1,65 @@
-{{ (cart$ | async)?.total }}
+<mat-card class="cart-container" *ngIf="cart$ | async as cart">
+  <div class="basket-title-container">
+    <span class="basket-title-text">My Basket</span>
+    <!-- <span class="basket-title-close-button">x</span> -->
+  </div>
+  <div
+    *ngIf="getCartItems(cart).length == 0; else cartViewTemplate"
+    class="no-item-message-div"
+  >
+    <h3>No items in the cart, Please select from the Menu..</h3>
+  </div>
+
+  <ng-template #cartViewTemplate>
+    <div class="cart-items-container">
+      <div class="cart-item" *ngFor="let cartItem of getCartItems(cart)">
+        <div class="cart-count-control">
+          <qr-ui-count-control
+            [count]="cartItem.count"
+            (countChange)="productCountChange($event, cartItem)"
+          ></qr-ui-count-control>
+        </div>
+        <div class="cart-item-detail">
+          <h3>{{ cartItem.product.name }}</h3>
+          <h4>mix of amazing creepss</h4>
+        </div>
+        <div class="cart-item-price">
+          {{ cartItem.product.price * cartItem.count }} ₹
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <mat-divider></mat-divider>
+    </div>
+
+    <div class="cart-total">
+      <span class="total-text">Total</span>
+      <span class="total-amount">{{ cart.total }} ₹</span>
+    </div>
+
+    <mat-divider></mat-divider>
+    <div class="note-button-container">
+      <div class="note-container">
+        <mat-form-field class="note-input" appearance="fill">
+          <mat-label>Leave a note</mat-label>
+          <textarea matInput placeholder="Ex. Sugar free"></textarea>
+        </mat-form-field>
+      </div>
+
+      <button mat-raised-button color="primary" class="place-order-button">
+        <div class="place-order-button-text-container">
+          <span class="total-count-text"
+            >{{ getCartItems(cart).length }} Items</span
+          >
+          <span class="place-order-text">Place Order</span>
+          <span class="total-amount-text">{{ cart.total }} ₹</span>
+        </div>
+      </button>
+    </div>
+  </ng-template>
+
+  <div class="close-button">
+    <button mat-button routerLink="../products">Back to Menu</button>
+  </div>
+</mat-card>

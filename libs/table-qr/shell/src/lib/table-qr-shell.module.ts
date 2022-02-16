@@ -18,6 +18,14 @@ import { ProductsDataAccessModule } from '@jafar-tech/table-qr-products-data-acc
             (m) => m.TableQrProductsFeaturesShellModule
           ),
       },
+      {
+        path: 'cart',
+        component: ContainerComponent,
+        loadChildren: () =>
+          import('@jafar-tech/table-qr-cart-features-list').then(
+            (m) => m.CartFeaturesListModule
+          ),
+      },
       { path: '', pathMatch: 'full', redirectTo: 'products' },
     ]),
     TableQrUiModule,
