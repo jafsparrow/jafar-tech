@@ -1,10 +1,6 @@
 <div class="select-product-view-container">
   <div class="product-image-container">
-    <img
-      src="https://image.shutterstock.com/image-photo/glass-100-orange-juice-sacs-600w-1489857866.jpg"
-      alt=""
-      class="product-image"
-    />
+    <img [src]="product!.image" alt="" class="product-image" />
   </div>
 
   <h3>{{ product?.name | titlecase }}</h3>
