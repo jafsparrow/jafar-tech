@@ -15,4 +15,9 @@ export class CartService {
   loadCart(): Observable<Cart> {
     return of(this.CART);
   }
+
+  placeOrder() {
+    console.log('place order fucntion fired');
+    return of('sucess');
+  }
 }

@@ -27,3 +27,11 @@ export const removeFromCart = createAction(
   '[Cart] remove item to cart',
   props<{ itemId: string }>()
 );
+
+export const placeOrder = createAction(
+  '[Cart] place a new order',
+  props<{ cart: Cart }>()
+);
+
+export const orderPlaceSuccess = createAction('[Cart] Order place success');
+export const orderPlaceFail = createAction('[Cart] order Place failed');

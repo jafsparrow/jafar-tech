@@ -3,6 +3,7 @@ import { createReducer, on } from '@ngrx/store';
 import {
   addToCart,
   loadCartSuccess,
+  orderPlaceSuccess,
   removeFromCart,
   updateCart,
 } from './cart.actions';
@@ -34,7 +35,6 @@ export const cartReducer = createReducer(
 
     return {
       ...state,
-
       cartItems,
     };
   }),
@@ -63,6 +63,9 @@ export const cartReducer = createReducer(
       ...state,
       cartItems: totalcartItems,
     };
+  }),
+  on(orderPlaceSuccess, (state) => {
+    return { ...state, cartItems: {} };
   })
 );
 // state.cartItems[productId] = {

@@ -1,8 +1,16 @@
 import { Injectable } from '@angular/core';
+import { Cart } from '@jafar-tech/shared/data-access';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, switchMap } from 'rxjs';
 import { CartService } from '../cart.service';
-import { loadCart, loadCartFail, loadCartSuccess } from './cart.actions';
+import {
+  loadCart,
+  loadCartFail,
+  loadCartSuccess,
+  orderPlaceFail,
+  orderPlaceSuccess,
+  placeOrder,
+} from './cart.actions';
 
 @Injectable()
 export class CartEffects {
@@ -17,6 +25,18 @@ export class CartEffects {
           catchError((error) => of(loadCartFail({ error })))
         )
       )
+    );
+  });
+
+  placeOrder$ = createEffect(() => {
+    return this.action$.pipe(
+      ofType(placeOrder),
+      switchMap((order) => {
+        return this.cartService.placeOrder().pipe(
+          map((order) => orderPlaceSuccess()),
+          catchError((error) => of(orderPlaceFail()))
+        );
+      })
     );
   });
 }

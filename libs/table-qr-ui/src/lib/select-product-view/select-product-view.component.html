@@ -38,7 +38,10 @@
 
   <mat-divider></mat-divider>
   <div class="count-control-container">
-    <qr-ui-count-control [(count)]="selectedCount"></qr-ui-count-control>
+    <qr-ui-count-control
+      [count]="selectedCount"
+      (countChange)="incrementSelection($event)"
+    ></qr-ui-count-control>
   </div>
 
   <div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Cart, CartItem } from '@jafar-tech/shared/data-access';
 import {
   addToCart,
+  placeOrder,
   removeFromCart,
   selectCart,
 } from '@jafar-tech/table-qr-cart-data-access';
@@ -54,5 +55,9 @@ export class CartComponent implements OnInit {
       console.log('geenrated key i ncomponent', cartItem.product._id + key);
       this.store.dispatch(removeFromCart({ itemId: generatedId }));
     }
+  }
+
+  placeOrder(cart: Cart) {
+    this.store.dispatch(placeOrder({ cart }));
   }
 }
