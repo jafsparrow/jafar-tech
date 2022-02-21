@@ -222,7 +222,8 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "apps/table-admin/src/styles.scss"],
+              "apps/table-admin/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -628,6 +629,32 @@
             "lintFilePatterns": [
               "libs/table-qr/products/data-access/src/**/*.ts",
               "libs/table-qr/products/data-access/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "table-qr-products-features-add": {
+      "projectType": "library",
+      "root": "libs/table-qr/products/features/add",
+      "sourceRoot": "libs/table-qr/products/features/add/src",
+      "prefix": "jafar-tech",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/table-qr/products/features/add"],
+          "options": {
+            "jestConfig": "libs/table-qr/products/features/add/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/table-qr/products/features/add/src/**/*.ts",
+              "libs/table-qr/products/features/add/src/**/*.html"
             ]
           }
         }

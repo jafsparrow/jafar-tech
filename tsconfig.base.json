@@ -39,6 +39,9 @@
       "@jafar-tech/table-qr/cart/features/order": [
         "libs/table-qr/cart/features/order/src/index.ts"
       ],
+      "@jafar-tech/table-qr/products/features/add": [
+        "libs/table-qr/products/features/add/src/index.ts"
+      ],
       "@jafar-tech/table-qr/products/features/detail": [
         "libs/table-qr/products/features/detail/src/index.ts"
       ],
