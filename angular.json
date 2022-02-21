@@ -200,6 +200,128 @@
       },
       "tags": []
     },
+    "table-admin": {
+      "projectType": "application",
+      "root": "apps/table-admin",
+      "sourceRoot": "apps/table-admin/src",
+      "prefix": "jafar-tech",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/table-admin",
+            "index": "apps/table-admin/src/index.html",
+            "main": "apps/table-admin/src/main.ts",
+            "polyfills": "apps/table-admin/src/polyfills.ts",
+            "tsConfig": "apps/table-admin/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/table-admin/src/favicon.ico",
+              "apps/table-admin/src/assets"
+            ],
+            "styles": ["apps/table-admin/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/table-admin/src/environments/environment.ts",
+                  "with": "apps/table-admin/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "table-admin:build:production"
+            },
+            "development": {
+              "browserTarget": "table-admin:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "table-admin:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/table-admin/src/**/*.ts",
+              "apps/table-admin/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/table-admin"],
+          "options": {
+            "jestConfig": "apps/table-admin/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "table-admin-e2e": {
+      "root": "apps/table-admin-e2e",
+      "sourceRoot": "apps/table-admin-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/table-admin-e2e/cypress.json",
+            "devServerTarget": "table-admin:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "table-admin:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/table-admin-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["table-admin"]
+    },
     "table-qr": {
       "projectType": "application",
       "root": "apps/table-qr",
