@@ -1,4 +1,4 @@
-import { Cart, Product } from '@jafar-tech/shared/data-access';
+import { Cart, Product, Status } from '@jafar-tech/shared/data-access';
 import { createReducer, on } from '@ngrx/store';
 import {
   addToCart,
@@ -13,6 +13,11 @@ export const CART_FEATURE_KEY = 'cart';
 const initialState: Cart = {
   createdAt: new Date(),
   cartItems: {},
+  pendingOders: [
+    { _id: 'idofdfd', status: Status.INPROGRESS, date: new Date() },
+
+    { _id: 'ddfdf', status: Status.SERVED, date: new Date() },
+  ],
 };
 
 export const cartReducer = createReducer(

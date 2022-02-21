@@ -28,6 +28,7 @@ export class ProductListComponent implements OnInit {
   constructor(private store: Store, private dialog: MatDialog) {}
 
   ngOnInit(): void {
+    this.prodcutByCategory$.subscribe((data) => console.log(data));
     console.log('on init fired');
   }
 

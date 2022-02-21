@@ -18,5 +18,10 @@ export class ToolbarComponent implements OnInit {
     this.router.navigate([`./shell/${this.navigateUrl}`]);
   }
 
+  viewOrders() {
+    console.log('view orders button');
+    this.router.navigate(['./shell/order']);
+  }
+
   openBasketDialog() {}
 }

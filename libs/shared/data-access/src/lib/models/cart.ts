@@ -18,4 +18,12 @@ export interface Cart {
 export interface OrderSummary {
   _id: string;
   date?: Date;
+  status: Status;
+}
+
+export enum Status {
+  PENDING = 'pending',
+  INPROGRESS = 'inprogress',
+  SERVED = 'served',
+  PAID = 'paid',
 }
