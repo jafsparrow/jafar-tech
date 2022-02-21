@@ -21,6 +21,14 @@ export class ProductsService {
       'http://localhost:3335/api/products/list'
     );
   }
+
+  addProduct(product: Product) {
+    console.log('adding a product');
+    return this.httpClient.post(
+      'http://localhost:3335/api/products/list',
+      product
+    );
+  }
 }
 
 // PRODUCTS: Product[] = [

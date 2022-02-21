@@ -26,3 +26,26 @@ export const loadProductsCategoryViceFail = createAction(
   '[] Load categoryvise Failed',
   props<{ error: any }>()
 );
+
+export const addProduct = createAction(
+  '[Product] add a product',
+  props<{ product: Product }>()
+);
+
+export const addProductSuccess = createAction(
+  '[Product] add product success',
+  props<{ product: Product }>()
+);
+export const addProductFailure = createAction(
+  '[Product] add product failed',
+  props<{ error: any }>()
+);
+export const editProduct = createAction(
+  '[Product] edit a product',
+  props<{ product: Product }>()
+);
+
+export const deleteProduct = createAction(
+  '[Product] delete product',
+  props<{ productId: string }>()
+);

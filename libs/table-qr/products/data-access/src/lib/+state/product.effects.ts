@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
+import { Product } from '@jafar-tech/shared/data-access';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, switchMap } from 'rxjs';
 import { ProductsService } from '../products.service';
 import {
+  addProduct,
+  addProductFailure,
+  addProductSuccess,
   loadProducts,
   loadProductsCategoryVice,
   loadProductsCategoryViceFail,
@@ -44,6 +48,18 @@ export class ProductsEffects {
             return loadProductsCategoryViceSuccess({ productsByCat: data });
           }),
           catchError((error) => of(loadProductsCategoryViceFail({ error })))
+        )
+      )
+    );
+  });
+
+  addProduct$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(addProduct),
+      switchMap((data) =>
+        this.productService.addProduct(data.product).pipe(
+          map((res) => addProductSuccess({ product: res as Product })),
+          catchError((error) => of(addProductFailure({ error: error })))
         )
       )
     );
