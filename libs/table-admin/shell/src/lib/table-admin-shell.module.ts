@@ -14,6 +14,14 @@ import { MatListModule } from '@angular/material/list';
         path: '',
         component: AdminContainerComponent,
       },
+      {
+        path: 'add',
+        component: AdminContainerComponent,
+        loadChildren: () =>
+          import('@jafar-tech/table-qr/products/features/add').then(
+            (m) => m.TableQrProductsFeaturesAddModule
+          ),
+      },
     ]),
     MatSidenavModule,
     MatListModule,
