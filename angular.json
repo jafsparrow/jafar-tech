@@ -220,7 +220,9 @@
               "apps/table-admin/src/favicon.ico",
               "apps/table-admin/src/assets"
             ],
-            "styles": ["apps/table-admin/src/styles.scss"],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "apps/table-admin/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -321,6 +323,32 @@
       },
       "tags": [],
       "implicitDependencies": ["table-admin"]
+    },
+    "table-admin-shell": {
+      "projectType": "library",
+      "root": "libs/table-admin/shell",
+      "sourceRoot": "libs/table-admin/shell/src",
+      "prefix": "jafar-tech",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/table-admin/shell"],
+          "options": {
+            "jestConfig": "libs/table-admin/shell/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/table-admin/shell/src/**/*.ts",
+              "libs/table-admin/shell/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
     },
     "table-qr": {
       "projectType": "application",

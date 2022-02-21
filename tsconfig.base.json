@@ -22,6 +22,7 @@
       "@jafar-tech/shared/data-access": [
         "libs/shared/data-access/src/index.ts"
       ],
+      "@jafar-tech/table-admin/shell": ["libs/table-admin/shell/src/index.ts"],
       "@jafar-tech/table-qr-cart-data-access": [
         "libs/table-qr/cart/data-access/src/index.ts"
       ],
