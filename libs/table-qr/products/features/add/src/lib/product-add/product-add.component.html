@@ -87,11 +87,11 @@
       </div>
     </form>
   </mat-step>
-  <mat-step [stepControl]="modifierGroups">
-    <form [formGroup]="modifierGroups">
+  <mat-step [stepControl]="modifierGroupsForm">
+    <form [formGroup]="modifierGroupsForm">
       <ng-template matStepLabel>Add Modifiers</ng-template>
       <p>Add product Modifiers</p>
-      <ng-container formArrayName="modifiers">
+      <ng-container formArrayName="modifierGroups">
         <ng-container
           *ngFor="let modifier of modifiers.controls; let i = index"
         >
@@ -121,7 +121,7 @@
               </button>
             </div>
             <div>
-              <ng-container formArrayName="modifierItems">
+              <ng-container formArrayName="modifiers">
                 <ng-container
                   *ngFor="
                     let modifierItem of getModifierItems(modifier).controls;

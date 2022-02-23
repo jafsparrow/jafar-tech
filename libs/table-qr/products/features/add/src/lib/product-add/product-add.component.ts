@@ -17,7 +17,7 @@ import { Store } from '@ngrx/store';
 })
 export class ProductAddComponent implements OnInit {
   productBasicInfo: FormGroup = new FormGroup({});
-  modifierGroups: FormGroup = new FormGroup({});
+  modifierGroupsForm: FormGroup = new FormGroup({});
   productAddForm?: FormGroup;
   isEditable = false;
 
@@ -38,17 +38,17 @@ export class ProductAddComponent implements OnInit {
       printName: [''],
     });
 
-    this.modifierGroups = this._formBuilder.group({
-      modifiers: this._formBuilder.array([]),
+    this.modifierGroupsForm = this._formBuilder.group({
+      modifierGroups: this._formBuilder.array([]),
     });
     this.productAddForm = new FormGroup({
       productBasicForm: this.productBasicInfo,
-      modifierForm: this.modifierGroups,
+      modifierForm: this.modifierGroupsForm,
     });
   }
 
   get modifiers(): FormArray {
-    return this.modifierGroups.controls['modifiers'] as FormArray;
+    return this.modifierGroupsForm.controls['modifierGroups'] as FormArray;
   }
 
   disableForm() {
@@ -58,20 +58,20 @@ export class ProductAddComponent implements OnInit {
     let modifier: FormGroup = this._formBuilder.group({
       description: ['', Validators.required],
       printName: [''],
-      modifierItems: this._formBuilder.array([this.emptyModifierItem()]),
+      modifiers: this._formBuilder.array([this.emptyModifierItem()]),
     });
 
     this.modifiers.push(modifier);
   }
 
   getModifierItems(modifier: any): FormArray {
-    return modifier.controls['modifierItems'] as FormArray;
+    return modifier.controls['modifiers'] as FormArray;
   }
 
   addModifierItem(i: number) {
     const control = (
-      this.modifierGroups.get('modifiers') as FormArray
-    ).controls[i].get('modifierItems') as FormArray;
+      this.modifierGroupsForm.get('modifierGroups') as FormArray
+    ).controls[i].get('modifiers') as FormArray;
 
     control.push(this.emptyModifierItem());
   }
@@ -89,15 +89,15 @@ export class ProductAddComponent implements OnInit {
 
   deleteModifierItem(i: number, j: number) {
     const controls = (
-      this.modifierGroups.get('modifiers') as FormArray
-    ).controls[i].get('modifierItems') as FormArray;
+      this.modifierGroupsForm.get('modifierGroups') as FormArray
+    ).controls[i].get('modifiers') as FormArray;
     controls.removeAt(j);
   }
 
   addNewProduct() {
     let product: Product = {
       ...this.productBasicInfo?.value,
-      ...this.modifierGroups.value,
+      ...this.modifierGroupsForm.value,
     };
     this.store.dispatch(addProduct({ product }));
     console.log(this.productAddForm?.value);
