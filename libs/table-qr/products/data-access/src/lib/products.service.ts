@@ -25,10 +25,7 @@ export class ProductsService {
   addProduct(product: Product) {
     console.log('adding a product');
     console.log(product);
-    return this.httpClient.post(
-      'http://localhost:3335/api/products/list',
-      product
-    );
+    return this.httpClient.post('http://localhost:3335/api/products', product);
   }
 }
 
