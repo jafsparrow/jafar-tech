@@ -1,0 +1,22 @@
+.form-elements-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+}
+
+.flex-spacing {
+  gap: 15px;
+}
+
+.grow-full {
+  width: 100%;
+}
+
+.border-grey {
+  margin: 5px;
+  padding: 10px;
+  background-color: rgb(247, 247, 247);
+}

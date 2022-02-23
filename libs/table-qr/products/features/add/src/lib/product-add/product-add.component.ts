@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'jafar-tech-product-add',
@@ -7,18 +13,89 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./product-add.component.css'],
 })
 export class ProductAddComponent implements OnInit {
-  firstFormGroup: FormGroup = new FormGroup({});
-  secondFormGroup: FormGroup = new FormGroup({});
+  productBasicInfo: FormGroup = new FormGroup({});
+  modifierGroups: FormGroup = new FormGroup({});
+  productAddForm?: FormGroup;
   isEditable = false;
+
+  categories = ['Fresh Juice', 'Mojito', 'Broasted', 'Shawarma'];
 
   constructor(private _formBuilder: FormBuilder) {}
 
   ngOnInit() {
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required],
+    this.productBasicInfo = this._formBuilder.group({
+      description: ['', Validators.required],
+      isAvailable: [true, Validators.required],
+      onSale: [true, Validators.required],
+      price: ['', Validators.required],
+      cost: [''],
+      name: ['', Validators.required],
+      category: ['', Validators.required],
+      video: [''],
+      printName: [''],
     });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required],
+
+    this.modifierGroups = this._formBuilder.group({
+      modifiers: this._formBuilder.array([]),
     });
+    this.productAddForm = new FormGroup({
+      productBasicForm: this.productBasicInfo,
+      modifierForm: this.modifierGroups,
+    });
+  }
+
+  get modifiers(): FormArray {
+    return this.modifierGroups.controls['modifiers'] as FormArray;
+  }
+
+  disableForm() {
+    // this.firstFormGroup.disable({ emitEvent: false });
+  }
+  addAModifier() {
+    let modifier: FormGroup = this._formBuilder.group({
+      description: ['', Validators.required],
+      printName: [''],
+      modifierItems: this._formBuilder.array([this.emptyModifierItem()]),
+    });
+
+    this.modifiers.push(modifier);
+  }
+
+  getModifierItems(modifier: any): FormArray {
+    return modifier.controls['modifierItems'] as FormArray;
+  }
+
+  addModifierItem(i: number) {
+    const control = (
+      this.modifierGroups.get('modifiers') as FormArray
+    ).controls[i].get('modifierItems') as FormArray;
+
+    control.push(this.emptyModifierItem());
+  }
+
+  emptyModifierItem() {
+    return this._formBuilder.group({
+      description: ['', Validators.required],
+      price: ['', Validators.required],
+    });
+  }
+
+  deleteModifier(i: number) {
+    this.modifiers.removeAt(i);
+  }
+
+  deleteModifierItem(i: number, j: number) {
+    const controls = (
+      this.modifierGroups.get('modifiers') as FormArray
+    ).controls[i].get('modifierItems') as FormArray;
+    controls.removeAt(j);
+  }
+
+  addNewProduct() {
+    console.log({
+      ...this.productBasicInfo?.value,
+      ...this.modifierGroups.value,
+    });
+    console.log(this.productAddForm?.value);
   }
 }

@@ -1,35 +1,175 @@
 <p>product-add works! hello jafar</p>
 
-<mat-stepper linear #stepper>
-  <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
-    <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Fill out your name</ng-template>
-      <mat-form-field appearance="fill">
-        <mat-label>Name</mat-label>
-        <input
-          matInput
-          formControlName="firstCtrl"
-          placeholder="Eg: Caffe Latte"
-          required
-        />
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperNext>Next</button>
+<mat-stepper #stepper>
+  <mat-step [stepControl]="productBasicInfo">
+    <form [formGroup]="productBasicInfo">
+      <ng-template matStepLabel>Fill out product info</ng-template>
+      <div class="form-elements-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Name</mat-label>
+          <input
+            matInput
+            formControlName="name"
+            placeholder="Eg: Caffe Latte"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Description</mat-label>
+
+          <textarea
+            matInput
+            formControlName="description"
+            required
+            placeholder="Add description about the product with ingredients details"
+          ></textarea>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Price</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="price"
+            placeholder="Selling rate"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Cost</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="cost"
+            placeholder="Cost of Materials"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Select Item Category</mat-label>
+          <mat-select formControlName="category">
+            <mat-option *ngFor="let category of categories" [value]="category">
+              {{ category }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Print Name</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="printName"
+            placeholder="Name to be printed on the reciept, if not- name will be printed"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Video Url</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="video"
+            placeholder="Video URL if any.."
+          />
+        </mat-form-field>
+
+        <div>
+          <mat-checkbox labelPosition="after" formControlName="isAvailable"
+            >Is Product Available for sale
+          </mat-checkbox>
+          <mat-checkbox labelPosition="after" formControlName="onSale"
+            >Is Product Available On Sale
+          </mat-checkbox>
+        </div>
+
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
       </div>
     </form>
   </mat-step>
-  <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
-    <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Fill out your address</ng-template>
-      <mat-form-field appearance="fill">
-        <mat-label>Address</mat-label>
-        <input
-          matInput
-          formControlName="secondCtrl"
-          placeholder="Ex. 1 Main St, New York, NY"
-          required
-        />
-      </mat-form-field>
+  <mat-step [stepControl]="modifierGroups">
+    <form [formGroup]="modifierGroups">
+      <ng-template matStepLabel>Add Modifiers</ng-template>
+      <p>Add product Modifiers</p>
+      <ng-container formArrayName="modifiers">
+        <ng-container
+          *ngFor="let modifier of modifiers.controls; let i = index"
+        >
+          <div [formGroupName]="i" class="border-grey">
+            <div class="flex-row flex-spacing">
+              <mat-form-field appearance="fill" class="grow-full">
+                <mat-label>Modifier description</mat-label>
+                <input
+                  matInput
+                  formControlName="description"
+                  placeholder="Select the Milk Type"
+                  required
+                />
+              </mat-form-field>
+
+              <mat-form-field appearance="fill" class="grow-full">
+                <mat-label>Name to be printed</mat-label>
+                <input
+                  matInput
+                  formControlName="printName"
+                  placeholder="Item Print name on the bill"
+                />
+              </mat-form-field>
+
+              <button mat-icon-button (click)="deleteModifier(i)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+            <div>
+              <ng-container formArrayName="modifierItems">
+                <ng-container
+                  *ngFor="
+                    let modifierItem of getModifierItems(modifier).controls;
+                    let j = index
+                  "
+                >
+                  <div [formGroupName]="j" class="flex-row flex-spacing">
+                    <button
+                      mat-icon-button
+                      (click)="addModifierItem(i)"
+                      [disabled]="
+                        j != getModifierItems(modifier).controls.length - 1
+                      "
+                    >
+                      <mat-icon>add</mat-icon>
+                    </button>
+                    <mat-form-field class="grow-full">
+                      <mat-label>Enter the modifier item name</mat-label>
+                      <input
+                        type="text"
+                        matInput
+                        placeholder="Enter the modifier item name"
+                        formControlName="description"
+                      />
+                    </mat-form-field>
+
+                    <mat-form-field class="grow-full">
+                      <mat-label>Price</mat-label>
+                      <input
+                        type="text"
+                        matInput
+                        placeholder="Enter the modifier item name"
+                        formControlName="price"
+                      />
+                    </mat-form-field>
+
+                    <button mat-icon-button (click)="deleteModifierItem(i, j)">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </div>
+                </ng-container>
+              </ng-container>
+            </div>
+          </div>
+        </ng-container>
+        <button mat-raised-button (click)="addAModifier()">Add modifier</button>
+      </ng-container>
+
       <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button matStepperNext>Next</button>
@@ -38,10 +178,29 @@
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Done</ng-template>
-    <p>You are now done.</p>
+    <p>You are done. Here the summary of the new Product about to be added.</p>
+
+    <div class="product-info">
+      <div class="product-basin-info">
+        {{ productAddForm?.get('productBasicForm')?.value | json }}
+      </div>
+    </div>
     <div>
       <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
+      <button
+        mat-button
+        (click)="addNewProduct()"
+        [disabled]="!productAddForm!.valid"
+      >
+        Submit
+      </button>
     </div>
   </mat-step>
 </mat-stepper>
+{{ productAddForm!.valid }}
+<p>
+  {{ !productAddForm!.valid }}
+</p>
+{{ productAddForm!.value | json }}
+
+<!-- {{ productBasicInfo.value | json }} -->
