@@ -36,6 +36,9 @@ export class Product extends Document {
   printName?: string;
   // modifierGroups?: ModifierGroupsEntity[] | null;
 
+  @Prop({ default: {} })
+  modifierGroups?: [ModifierGroupsEntity];
+
   // @Prop({ type: SchemaTypes.ObjectId, ref: Category.name })
   // category: Category;
 

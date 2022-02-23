@@ -35,5 +35,18 @@ export class CreateProductDto {
   @IsOptional()
   printName?: string;
 
-  //   modifierGroups?: ModifierGroupsEntity[] | null;
+  modifierGroups: Modifiers[];
+}
+
+export class Modifiers {
+  description?: string;
+  printName?: string;
+  printModifiersAsItems?: boolean;
+  modifiers?: Modifier[];
+}
+
+export interface Modifier {
+  description: string;
+  price: number;
+  id?: number;
 }
