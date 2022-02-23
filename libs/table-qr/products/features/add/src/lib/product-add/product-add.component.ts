@@ -6,6 +6,9 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Product } from '@jafar-tech/shared/data-access';
+import { addProduct } from '@jafar-tech/table-qr-products-data-access';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'jafar-tech-product-add',
@@ -20,7 +23,7 @@ export class ProductAddComponent implements OnInit {
 
   categories = ['Fresh Juice', 'Mojito', 'Broasted', 'Shawarma'];
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private _formBuilder: FormBuilder, private store: Store) {}
 
   ngOnInit() {
     this.productBasicInfo = this._formBuilder.group({
@@ -92,10 +95,11 @@ export class ProductAddComponent implements OnInit {
   }
 
   addNewProduct() {
-    console.log({
+    let product: Product = {
       ...this.productBasicInfo?.value,
       ...this.modifierGroups.value,
-    });
+    };
+    this.store.dispatch(addProduct({ product }));
     console.log(this.productAddForm?.value);
   }
 }
