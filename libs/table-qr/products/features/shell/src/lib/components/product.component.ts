@@ -14,7 +14,7 @@ export class ProductComponent implements OnInit {
   constructor(private store: Store) {}
 
   ngOnInit() {
-    this.store.dispatch(loadProducts());
-    this.store.dispatch(loadProductsCategoryVice());
+    // this.store.dispatch(loadProducts());
+    // this.store.dispatch(loadProductsCategoryVice());
   }
 }

@@ -18,8 +18,6 @@ import { MatInputModule } from '@angular/material/input';
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
-
-    CartDataAccessModule,
   ],
   declarations: [CartComponent],
   exports: [CartComponent],
