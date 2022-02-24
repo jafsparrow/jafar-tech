@@ -13,32 +13,34 @@ import { ProductsDataAccessModule } from '@jafar-tech/table-qr-products-data-acc
       {
         path: '',
         component: ContainerComponent,
-        pathMatch: 'full',
-        redirectTo: 'products',
-      },
-      {
-        path: 'products',
-        component: ContainerComponent,
-        loadChildren: () =>
-          import('@jafar-tech/table-qr/products/features/shell').then(
-            (m) => m.TableQrProductsFeaturesShellModule
-          ),
-      },
-      {
-        path: 'cart',
-        component: ContainerComponent,
-        loadChildren: () =>
-          import('@jafar-tech/table-qr-cart-features-list').then(
-            (m) => m.CartFeaturesListModule
-          ),
-      },
-      {
-        path: 'order',
-        component: ContainerComponent,
-        loadChildren: () =>
-          import('@jafar-tech/table-qr/cart/features/order').then(
-            (m) => m.TableQrCartFeaturesOrderModule
-          ),
+        children: [
+          {
+            path: '',
+            redirectTo: 'products',
+            pathMatch: 'full',
+          },
+          {
+            path: 'products',
+            loadChildren: () =>
+              import('@jafar-tech/table-qr/products/features/shell').then(
+                (m) => m.TableQrProductsFeaturesShellModule
+              ),
+          },
+          {
+            path: 'cart',
+            loadChildren: () =>
+              import('@jafar-tech/table-qr-cart-features-list').then(
+                (m) => m.CartFeaturesListModule
+              ),
+          },
+          {
+            path: 'order',
+            loadChildren: () =>
+              import('@jafar-tech/table-qr/cart/features/order').then(
+                (m) => m.TableQrCartFeaturesOrderModule
+              ),
+          },
+        ],
       },
     ]),
     TableQrUiModule,
