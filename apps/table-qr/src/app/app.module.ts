@@ -27,18 +27,17 @@ import { StoreDevtools, StoreDevtoolsModule } from '@ngrx/store-devtools';
     RouterModule.forRoot(
       [
         {
+          path: '',
+          redirectTo: 'shell',
+
+          pathMatch: 'full',
+        },
+        {
           path: 'shell',
           loadChildren: () =>
             import('@jafar-tech/table-qr/shell').then(
               (m) => m.TableQrShellModule
             ),
-        },
-
-        {
-          path: '',
-          redirectTo: 'shell',
-
-          pathMatch: 'full',
         },
       ],
       {

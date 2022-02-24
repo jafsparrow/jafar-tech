@@ -11,6 +11,12 @@ import { ProductsDataAccessModule } from '@jafar-tech/table-qr-products-data-acc
     CommonModule,
     RouterModule.forChild([
       {
+        path: '',
+        component: ContainerComponent,
+        pathMatch: 'full',
+        redirectTo: 'products',
+      },
+      {
         path: 'products',
         component: ContainerComponent,
         loadChildren: () =>
@@ -34,7 +40,6 @@ import { ProductsDataAccessModule } from '@jafar-tech/table-qr-products-data-acc
             (m) => m.TableQrCartFeaturesOrderModule
           ),
       },
-      { path: '', pathMatch: 'full', redirectTo: 'products' },
     ]),
     TableQrUiModule,
     ProductsDataAccessModule,
