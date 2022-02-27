@@ -40,7 +40,9 @@ export class CartComponent implements OnInit {
 
     if (newCount) {
       this.store.dispatch(
-        addToCart({ item: { ...cartItem, count: newCount } })
+        addToCart({
+          item: { ...cartItem, count: newCount > cartItem.count ? 1 : -1 },
+        })
       );
     } else {
       var key = '';
