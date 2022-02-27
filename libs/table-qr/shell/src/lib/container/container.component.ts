@@ -33,8 +33,8 @@ export class ContainerComponent implements OnInit {
   }
 
   menuClicked(menu: string) {
-    this.scrollTo(menu);
     this.drawer.toggle();
+    this.scrollTo(menu);
   }
 
   scrollTo(id: string) {
