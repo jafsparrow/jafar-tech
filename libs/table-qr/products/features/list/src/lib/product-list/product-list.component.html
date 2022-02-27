@@ -18,6 +18,7 @@
 
 <ng-container *ngIf="{ count: cartCount$ | async } as objCount">
   <qr-ui-bottom-cart-summary
+    class="stick-bottom"
     *ngIf="objCount.count && objCount.count > 0"
     [cartProductsCount]="objCount.count"
     [cartTotal]="cartTotal$ | async"
