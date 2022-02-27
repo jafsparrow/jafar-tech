@@ -37,6 +37,10 @@ export class ProductListComponent implements OnInit {
   }
   openProductViewDialog(product: Product) {
     this.dialog.open(ProductDetailComponent, {
+      maxWidth: '95vw',
+      maxHeight: '95vh',
+      height: '100%',
+      width: '100%',
       data: {
         product,
       },
