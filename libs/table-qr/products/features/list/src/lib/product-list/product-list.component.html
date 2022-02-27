@@ -1,26 +1,10 @@
 <ng-container *ngIf="prodcutByCategory$ | async as categoryWiseProductObject">
   <div class="tabs-container">
     <div *ngFor="let section of categoryWiseProductObject | keyvalue">
-      <div [id]="section.key" style="height: 800px; border: 5px solid red">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores
-          quisquam incidunt, dolore illo, suscipit culpa laborum omnis cumque
-          aliquam corporis error quaerat dicta. Odio molestias qui ipsum. Omnis,
-          facilis adipisci?
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum
-          consectetur cumque esse quas ipsa itaque dolorum? Numquam, architecto?
-          Accusantium possimus praesentium deserunt explicabo? Totam sunt
-          pariatur amet eligendi, perspiciatis tempora?
-        </p>
-      </div>
-    </div>
-    <mat-tab-group>
-      <mat-tab
-        *ngFor="let section of categoryWiseProductObject | keyvalue"
-        [label]="section.key | titlecase"
-      >
+      <div [id]="section.key">
+        <div class="menu-sub-title">
+          <span> {{ section.key | uppercase }}</span>
+        </div>
         <div *ngFor="let product of section.value">
           <qr-ui-menu-product-card
             [product]="product"
@@ -28,9 +12,10 @@
             (click)="openProductViewDialog(product)"
           ></qr-ui-menu-product-card>
         </div>
-      </mat-tab>
-    </mat-tab-group></div
-></ng-container>
+      </div>
+    </div>
+  </div>
+</ng-container>
 
 <ng-container *ngIf="{ count: cartCount$ | async } as objCount">
   <qr-ui-bottom-cart-summary
