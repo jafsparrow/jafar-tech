@@ -1,3 +1,9 @@
 .count-control-wrapper {
   font-weight: 200;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+.control-icon:hover {
+  cursor: pointer;
 }

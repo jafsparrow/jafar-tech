@@ -1,10 +1,9 @@
 <div class="count-control-wrapper">
-  <button mat-icon-button (click)="dec()">
-    <mat-icon style="font-size: 20px">remove_circle_outline</mat-icon>
-  </button>
+  <mat-icon class="control-icon" (click)="dec()"
+    >remove_circle_outline</mat-icon
+  >
+
   <span>{{ count }} </span>
 
-  <button mat-icon-button (click)="inc()">
-    <mat-icon style="font-size: 20px">control_point</mat-icon>
-  </button>
+  <mat-icon class="control-icon" (click)="inc()">control_point</mat-icon>
 </div>

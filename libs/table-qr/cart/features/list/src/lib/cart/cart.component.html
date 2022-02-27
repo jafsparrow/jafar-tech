@@ -1,4 +1,4 @@
-<mat-card class="cart-container" *ngIf="cart$ | async as cart">
+<div class="cart-container" *ngIf="cart$ | async as cart">
   <div class="basket-title-container">
     <span class="basket-title-text">My Basket</span>
     <!-- <span class="basket-title-close-button">x</span> -->
@@ -20,14 +20,14 @@
           ></qr-ui-count-control>
         </div>
         <div class="cart-item-detail">
-          <h3>{{ cartItem.product.name }}</h3>
+          <p>{{ cartItem.product.name }}</p>
           <div *ngIf="cartItem.modifiers as modifiers">
             <span *ngFor="let modifier of modifiers"
               >{{ modifier.description }} ,</span
             >
           </div>
         </div>
-        <div class="cart-item-price">{{ getCartItemTotal(cartItem) }} ₹</div>
+        <div class="cart-item-price">{{ getCartItemTotal(cartItem) }}₹</div>
       </div>
     </div>
 
@@ -37,7 +37,7 @@
 
     <div class="cart-total">
       <span class="total-text">Total</span>
-      <span class="total-amount">{{ cart.total }} ₹</span>
+      <span class="total-amount">{{ cart.total }}₹</span>
     </div>
 
     <mat-divider></mat-divider>
@@ -69,4 +69,4 @@
   <div class="close-button">
     <button mat-button routerLink="../products">Back to Menu</button>
   </div>
-</mat-card>
+</div>
