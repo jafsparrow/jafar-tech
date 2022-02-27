@@ -1,1 +1,15 @@
+mat-drawer {
+  width: 20%;
+}
+.drawer-container {
+  height: 100%;
+  width: 100%;
+}
 
+.user-profile {
+  height: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,7 +1,27 @@
-<qr-ui-toolbar
-  [cartItemCount]="cartCount$ | async"
-  navigateUrl="cart"
-  class="toolbar"
-></qr-ui-toolbar>
+<mat-drawer-container class="drawer-container" hasBackdrop="true">
+  <mat-drawer #drawer mode="over">
+    <div class="user-profile">hello bro</div>
+    <div
+      *ngFor="let product of prodcutByCategory$ | async | keyvalue"
+      (click)="menuClicked(product.key)"
+    >
+      {{ product.key }}
+    </div>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div
+      *ngFor="let product of prodcutByCategory$ | async | keyvalue"
+      (click)="menuClicked(product.key)"
+    >
+      {{ product.key }}
+    </div>
+    <qr-ui-toolbar
+      [cartItemCount]="cartCount$ | async"
+      navigateUrl="cart"
+      class="toolbar"
+      (menuClicked)="drawer.toggle()"
+    ></qr-ui-toolbar>
 
-<router-outlet></router-outlet>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { TableQrUiModule } from '@jafar-tech/table-qr-ui';
 import { CartDataAccessModule } from '@jafar-tech/table-qr-cart-data-access';
 import { ProductsDataAccessModule } from '@jafar-tech/table-qr-products-data-access';
-
+import { MatSidenavModule } from '@angular/material/sidenav';
 @NgModule({
   imports: [
     CommonModule,
@@ -46,6 +46,7 @@ import { ProductsDataAccessModule } from '@jafar-tech/table-qr-products-data-acc
     TableQrUiModule,
     ProductsDataAccessModule,
     CartDataAccessModule,
+    MatSidenavModule,
   ],
   declarations: [ContainerComponent],
   exports: [],

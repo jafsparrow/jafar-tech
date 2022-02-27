@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,6 +10,7 @@ export class ToolbarComponent implements OnInit {
   @Input('cartItemCount') cartCount?: number | null;
   @Input('navigateUrl') navigateUrl?: string | null;
 
+  @Output() menuClicked = new EventEmitter<string>();
   constructor(private router: Router) {}
 
   ngOnInit(): void {}
@@ -22,6 +23,8 @@ export class ToolbarComponent implements OnInit {
     console.log('view orders button');
     this.router.navigate(['./shell/order']);
   }
-
+  menuClickedEvent($event: any) {
+    this.menuClicked.emit($event.value);
+  }
   openBasketDialog() {}
 }

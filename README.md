@@ -23,3 +23,16 @@ position: sticky !important;
 top: 55px;
 z-index: 3;
 }
+
+## Scroll to an id from angular page..
+
+scroll-to-top value set the value of the sticky toolbar , so that the scrolled items will scroll till the tool bar, it won't go below tool bar
+css property
+
+    document.getElementById(id)!.scrollIntoView();
+
+- {
+  scroll-margin-top: 64px;
+
+  scroll-behavior: smooth;
+  }

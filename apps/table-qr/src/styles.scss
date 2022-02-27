@@ -11,5 +11,10 @@ body {
 html,
 body {
   height: 100%;
-  // scroll-behavior: smooth;
+}
+
+* {
+  scroll-margin-top: 64px;
+
+  scroll-behavior: smooth;
 }
