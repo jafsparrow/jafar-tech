@@ -1,4 +1,11 @@
-import { Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { selectNumberOfItemsInCart } from '@jafar-tech/table-qr-cart-data-access';
 import {
@@ -12,24 +19,22 @@ import { Store } from '@ngrx/store';
   templateUrl: './container.component.html',
   styleUrls: ['./container.component.css'],
 })
-export class ContainerComponent implements OnInit, OnDestroy {
+export class ContainerComponent implements OnInit {
   cartCount$ = this.store.select(selectNumberOfItemsInCart);
+  @ViewChild('drawer')
+  drawer!: MatSidenav;
 
   prodcutByCategory$ = this.store.select(selectProductByCategories);
 
   constructor(private store: Store, private router: Router) {}
-  ngOnDestroy(): void {
-    console.log('on destroy fired in shell container component');
-  }
 
   ngOnInit(): void {
-    console.log('shell module on init');
     this.store.dispatch(loadProductsCategoryVice());
   }
 
   menuClicked(menu: string) {
-    console.log('menu clicked', menu);
     this.scrollTo(menu);
+    this.drawer.toggle();
   }
 
   scrollTo(id: string) {

@@ -1,20 +1,16 @@
 <mat-drawer-container class="drawer-container" hasBackdrop="true">
   <mat-drawer #drawer mode="over">
-    <div class="user-profile">hello bro</div>
-    <div
-      *ngFor="let product of prodcutByCategory$ | async | keyvalue"
-      (click)="menuClicked(product.key)"
-    >
-      {{ product.key }}
+    <div class="user-profile">Table - 7</div>
+    <div class="side-nav-container">
+      <li
+        *ngFor="let product of prodcutByCategory$ | async | keyvalue"
+        (click)="menuClicked(product.key)"
+      >
+        {{ product.key }}
+      </li>
     </div>
   </mat-drawer>
   <mat-drawer-content>
-    <div
-      *ngFor="let product of prodcutByCategory$ | async | keyvalue"
-      (click)="menuClicked(product.key)"
-    >
-      {{ product.key }}
-    </div>
     <qr-ui-toolbar
       [cartItemCount]="cartCount$ | async"
       navigateUrl="cart"

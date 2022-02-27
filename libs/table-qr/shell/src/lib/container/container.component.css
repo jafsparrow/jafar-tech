@@ -1,5 +1,7 @@
 mat-drawer {
   width: 20%;
+
+  background-color: rgb(245, 245, 245);
 }
 .drawer-container {
   height: 100%;
@@ -12,4 +14,18 @@ mat-drawer {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.side-nav-container {
+  height: 70%;
+}
+
+.side-nav-container > li {
+  padding: 15px;
+  list-style-type: none;
+  border-bottom: 2px dotted grey;
+}
+
+.side-nav-container > li:hover {
+  cursor: pointer;
 }
