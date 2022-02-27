@@ -32,8 +32,13 @@ export const cartReducer = createReducer(
     var generatedId = `${item.product._id}${key}`;
     var cartItems = { ...state.cartItems };
     cartItems[generatedId] = {
-      ...(cartItems[generatedId] || []),
-      ...newCartItem,
+      ...(cartItems[generatedId] || {}),
+      ...{
+        ...newCartItem,
+        count: cartItems[generatedId]
+          ? cartItems[generatedId].count + newCartItem.count
+          : newCartItem.count,
+      },
     };
 
     console.log(cartItems);
