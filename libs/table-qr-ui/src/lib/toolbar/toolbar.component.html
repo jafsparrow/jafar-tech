@@ -1,34 +1,17 @@
-<div class="container">
-  <div class="top-fixed-container">
-    <mat-toolbar>
-      <!-- <button
-        mat-icon-button
-        class="example-icon"
-        aria-label="Example icon-button with menu icon"
-      >
-        <mat-icon>menu</mat-icon>
-      </button> -->
-      <span>Zaatar Menu</span>
+<mat-toolbar>
+  <span>Zaatar Menu</span>
 
-      <span class="example-spacer"></span>
+  <span class="example-spacer"></span>
 
-      <!-- <button mat-icon-button (click)="viewOrders()">
-        <div>
-          <mat-icon>menu</mat-icon>
-        </div>
-      </button> -->
-
-      <button
-        mat-icon-button
-        (click)="viewCart()"
-        class="example-icon favorite-icon"
-        aria-label="Example icon-button with heart icon"
-      >
-        <div class="cart-icon-container">
-          <span class="cart-icon-top-count">{{ cartCount ?? 0 }}</span>
-          <mat-icon>shopping_cart</mat-icon>
-        </div>
-      </button>
-    </mat-toolbar>
-  </div>
-</div>
+  <button
+    mat-icon-button
+    (click)="viewCart()"
+    class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon"
+  >
+    <div class="cart-icon-container">
+      <span class="cart-icon-top-count">{{ cartCount ?? 0 }}</span>
+      <mat-icon>shopping_cart</mat-icon>
+    </div>
+  </button>
+</mat-toolbar>
