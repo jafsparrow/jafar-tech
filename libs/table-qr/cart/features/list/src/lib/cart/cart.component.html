@@ -67,6 +67,8 @@
   </ng-template>
 
   <div class="close-button">
-    <button mat-button routerLink="../products">Back to Menu</button>
+    <button mat-button routerLink="../products" [skipLocationChange]="true">
+      Back to Menu
+    </button>
   </div>
 </div>
