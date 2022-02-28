@@ -2,7 +2,7 @@
   <div class="item-card-container">
     <mat-card class="item-card" [ngClass]="{ 'left-border': count }">
       <div class="product-desc-area">
-        <h3>{{ product.name | titlecase }}</h3>
+        <span class="product-name">{{ product.name | titlecase }}</span>
         <p>{{ product.description | slice: 0:150 }}...</p>
         <span class="fill-blank"></span>
         <div class="count-price-wrapper">
