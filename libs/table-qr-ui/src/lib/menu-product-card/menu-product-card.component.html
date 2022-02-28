@@ -1,6 +1,6 @@
 <div class="menu-product-card-container" *ngIf="product">
   <div class="item-card-container">
-    <mat-card class="item-card" [ngClass]="{ 'left-border': count }">
+    <div class="item-card" [ngClass]="{ 'left-border': count }">
       <div class="product-desc-area">
         <span class="product-name">{{ product.name | titlecase }}</span>
         <p>{{ product.description | slice: 0:150 }}...</p>
@@ -13,6 +13,6 @@
       <div class="product-image-container" *ngIf="product.image">
         <img [src]="product.image" class="product-image" />
       </div>
-    </mat-card>
+    </div>
   </div>
 </div>

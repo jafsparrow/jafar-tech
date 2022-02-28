@@ -10,6 +10,7 @@ import { TableQrUiModule } from '@jafar-tech/table-qr-ui';
 import { TableQrProductsFeaturesDetailModule } from '@jafar-tech/table-qr/products/features/detail';
 
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     TableQrUiModule,
     TableQrProductsFeaturesDetailModule,
     MatDialogModule,
+    MatCardModule,
   ],
   declarations: [ProductListComponent],
   exports: [ProductListComponent],

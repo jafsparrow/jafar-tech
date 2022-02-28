@@ -5,13 +5,15 @@
         <div class="menu-sub-title">
           <span> {{ section.key | uppercase }}</span>
         </div>
-        <div *ngFor="let product of section.value">
-          <qr-ui-menu-product-card
-            [product]="product"
-            [selectedCount]="getInCartProductCount(product) | async"
-            (click)="openProductViewDialog(product)"
-          ></qr-ui-menu-product-card>
-        </div>
+        <mat-card>
+          <div *ngFor="let product of section.value">
+            <qr-ui-menu-product-card
+              [product]="product"
+              [selectedCount]="getInCartProductCount(product) | async"
+              (click)="openProductViewDialog(product)"
+            ></qr-ui-menu-product-card>
+          </div>
+        </mat-card>
       </div>
     </div>
   </div>

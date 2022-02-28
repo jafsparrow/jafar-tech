@@ -1,6 +1,10 @@
 .menu-product-card-container {
+  background-color: white;
   display: flex;
   flex-wrap: wrap;
+  padding: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .item-card-container {
@@ -12,6 +16,7 @@
   //   align-content: space-between;
   justify-content: space-between;
   margin: 2px;
+  border-bottom: 2px solid rgb(247, 247, 247);
 }
 .product-image-container {
   width: 30%;
