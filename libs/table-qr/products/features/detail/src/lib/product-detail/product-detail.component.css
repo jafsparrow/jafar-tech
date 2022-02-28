@@ -14,6 +14,7 @@ qr-ui-select-product-view {
   position: fixed;
   top: 10px;
   right: 10px;
+  z-index: 1;
 }
 
 .close-button:hover {

@@ -75,3 +75,7 @@ p {
 .modifier-price {
   font-weight: bold;
 }
+
+.add-button-text:before {
+  content: '\20B9';
+}
