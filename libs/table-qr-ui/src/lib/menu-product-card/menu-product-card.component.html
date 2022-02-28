@@ -10,7 +10,7 @@
           ><span class="item-price">{{ product.price }} ₹ </span>
         </div>
       </div>
-      <div class="product-image-container">
+      <div class="product-image-container" *ngIf="product.image">
         <img [src]="product.image" class="product-image" />
       </div>
     </mat-card>

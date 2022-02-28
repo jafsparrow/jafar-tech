@@ -1,12 +1,16 @@
 <div class="select-product-view-container">
-  <div class="product-image-container">
+  <div class="product-image-container" *ngIf="product!.image">
     <img [src]="product!.image" alt="" class="product-image" />
   </div>
 
-  <h3>{{ product?.name | titlecase }}</h3>
-  <p>
-    {{ product?.description }}
-  </p>
+  <div class="product-title-container">
+    <h3>
+      {{ product?.name | titlecase }}
+    </h3>
+    <p>
+      {{ product?.description }}
+    </p>
+  </div>
 
   <mat-divider></mat-divider>
 
@@ -14,8 +18,6 @@
     class="product-modifier-container"
     *ngIf="product?.modifierGroups as modifierGroups"
   >
-    <!-- <h4>choose from the following</h4> -->
-
     <p>Choose from following</p>
 
     <ng-container *ngFor="let modifierGroup of modifierGroups; let i = index">
