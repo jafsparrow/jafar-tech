@@ -1,0 +1,21 @@
+qr-ui-select-product-view {
+  position: relative;
+}
+.close-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 30px;
+  border-radius: 15px;
+  background-color: rgb(151, 150, 150);
+  /* box-shadow: 10px 10px 8px 10px #888888; */
+  color: white;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}
+
+.close-button:hover {
+  cursor: pointer;
+}
