@@ -1,6 +1,6 @@
 mat-drawer {
   width: 20%;
-
+  min-width: 250px;
   background-color: rgb(245, 245, 245);
 }
 .drawer-container {
