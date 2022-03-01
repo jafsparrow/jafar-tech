@@ -70,7 +70,6 @@ export class ProductDetailComponent implements OnInit {
   }
 
   productTotalWhenAddedModifier() {
-    console.log('getter is triggered');
     return (
       (this.selectedProduct.price +
         Object.values(this.selectedModifiers).reduce(
