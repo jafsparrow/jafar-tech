@@ -25,5 +25,6 @@
     *ngIf="objCount.count && objCount.count > 0"
     [cartProductsCount]="objCount.count"
     [cartTotal]="cartTotal$ | async"
+    routerLink="../../cart"
   ></qr-ui-bottom-cart-summary
 ></ng-container>

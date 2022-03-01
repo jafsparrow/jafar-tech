@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'qr-ui-bottom-cart-summary',
@@ -8,7 +8,6 @@ import { Component, Input, OnInit, Output } from '@angular/core';
 export class BottomCartSummaryComponent implements OnInit {
   @Input('cartProductsCount') count?: number | null;
   @Input('cartTotal') total?: number | null;
-
   constructor() {}
 
   ngOnInit(): void {}
