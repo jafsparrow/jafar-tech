@@ -42,16 +42,21 @@
 }
 
 .cart-total {
-  padding: 5px;
+  padding: 10px 5px;
   display: flex;
   font-style: bold;
 }
 .total-text {
+  /* flex: 1 1 auto; */
+  width: 40%;
+}
+
+.extend {
   flex: 1 1 auto;
 }
 
 .total-amount {
-  width: 10%;
+  /* width: 10%; */
 }
 
 .note-button-container {
