@@ -30,7 +30,9 @@
             >
           </div>
         </div>
-        <div class="cart-item-price">{{ getCartItemTotal(cartItem) }}₹</div>
+        <span class="cart-item-price rupee-symbol-left">{{
+          getCartItemTotal(cartItem).toString()
+        }}</span>
       </div>
     </div>
 
@@ -40,7 +42,7 @@
 
     <div class="cart-total">
       <span class="total-text">Total</span>
-      <span class="total-amount">{{ cart.total }}₹</span>
+      <span class="total-amount rupee-symbol-left">{{ cart.total }}</span>
     </div>
 
     <mat-divider></mat-divider>
@@ -63,7 +65,9 @@
             >{{ getCartItems(cart).length }} Items</span
           >
           <span class="place-order-text">Place Order</span>
-          <span class="total-amount-text">{{ cart.total }} ₹</span>
+          <span class="total-amount-text rupee-symbol-left">{{
+            cart.total
+          }}</span>
         </div>
       </button>
     </div>
