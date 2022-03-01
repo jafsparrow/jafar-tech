@@ -1,6 +1,6 @@
 <div *ngIf="product">
-  <div class="item-card-container" [ngClass]="{ 'left-border': count }">
-    <div class="item-card">
+  <div class="item-card-container">
+    <div class="item-card" [ngClass]="{ 'left-border': count }">
       <div class="product-desc-area">
         <span class="product-name">{{ product.name | titlecase }}</span>
         <p>{{ product.description | slice: 0:150 }}...</p>
