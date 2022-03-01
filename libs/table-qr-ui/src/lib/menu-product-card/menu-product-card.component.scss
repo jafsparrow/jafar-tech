@@ -1,17 +1,18 @@
 .item-card-container {
   background-color: white;
   display: flex;
-  padding: 5px;
+  padding: 10px 0px 5px 5px;
   width: 100%;
+
+  border-bottom: 2px solid rgb(247, 247, 247);
 }
 .item-card {
+  padding: 3px;
   width: 100%;
   min-height: 5rem;
   max-height: 7rem;
   display: flex;
   justify-content: space-between;
-  margin: 2px;
-  border-bottom: 2px solid rgb(247, 247, 247);
 }
 .product-image-container {
   width: 30%;
@@ -66,5 +67,5 @@ img {
 }
 
 .left-border {
-  border-left: 5px solid gold;
+  border-left: 2px solid gold;
 }
