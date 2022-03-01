@@ -2,8 +2,9 @@
 
 <qr-ui-select-product-view
   [product]="selectedProduct"
-  [selectedCount]="1"
-  [totatIncludingModifiers]="productTotalWhenAddedModifier"
+  [selectedCount]="count"
+  (countChange)="onCountChange($event)"
+  [totatIncludingModifiers]="productTotalWhenAddedModifier()"
   (addToCart)="addToCart($event)"
   (closeButtonClicked)="closeButtonClicked()"
   (modfierSelectionChange)="modifierSelectionUpdate($event)"

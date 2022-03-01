@@ -23,6 +23,8 @@ export interface DialogData {
 export class ProductDetailComponent implements OnInit {
   productInTheCartAlready$: Observable<number | null>;
 
+  count: number = 1;
+
   selectedModifiers: { [Key: number]: Modifier } = {};
   constructor(
     private router: Router,
@@ -67,13 +69,20 @@ export class ProductDetailComponent implements OnInit {
     console.log(this.selectedModifiers);
   }
 
-  get productTotalWhenAddedModifier() {
+  productTotalWhenAddedModifier() {
+    console.log('getter is triggered');
     return (
-      this.selectedProduct.price +
-      Object.values(this.selectedModifiers).reduce(
-        (prev, curr) => prev + parseInt(curr?.price.toString()),
-        0
-      )
+      (this.selectedProduct.price +
+        Object.values(this.selectedModifiers).reduce(
+          (prev, curr) => prev + parseInt(curr?.price.toString()),
+          0
+        )) *
+      this.count
     );
+  }
+
+  onCountChange($event: number) {
+    this.count = $event;
+    console.log(this.count);
   }
 }
