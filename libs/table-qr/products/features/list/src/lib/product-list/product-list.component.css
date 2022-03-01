@@ -8,6 +8,9 @@
 .tabs-container {
   background-color: rgb(247, 247, 247);
 }
+.menu-sub-container {
+  margin: 0 5px;
+}
 
 .menu-sub-title {
   /* border: 2px solid grey; */

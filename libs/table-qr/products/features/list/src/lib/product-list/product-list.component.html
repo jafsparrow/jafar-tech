@@ -5,7 +5,7 @@
         <div class="menu-sub-title">
           <span> {{ section.key | uppercase }}</span>
         </div>
-        <mat-card>
+        <mat-card class="menu-sub-container">
           <div *ngFor="let product of section.value">
             <qr-ui-menu-product-card
               [product]="product"
