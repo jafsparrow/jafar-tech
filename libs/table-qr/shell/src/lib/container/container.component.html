@@ -7,7 +7,7 @@
         (click)="menuClicked(product.key)"
         class="nav-item-container"
       >
-        {{ product.key }} <span>{{ product.value.length }}</span>
+        {{ product.key | titlecase }} <span>{{ product.value.length }}</span>
       </li>
     </div>
   </mat-drawer>
