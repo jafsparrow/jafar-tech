@@ -5,8 +5,9 @@
       <li
         *ngFor="let product of prodcutByCategory$ | async | keyvalue"
         (click)="menuClicked(product.key)"
+        class="nav-item-container"
       >
-        {{ product.key }}
+        {{ product.key }} <span>{{ product.value.length }}</span>
       </li>
     </div>
   </mat-drawer>

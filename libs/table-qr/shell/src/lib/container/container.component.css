@@ -29,3 +29,8 @@ mat-drawer {
 .side-nav-container > li:hover {
   cursor: pointer;
 }
+
+.nav-item-container {
+  display: flex;
+  justify-content: space-between;
+}
