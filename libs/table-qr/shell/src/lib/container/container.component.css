@@ -23,7 +23,7 @@ mat-drawer {
 .side-nav-container > li {
   padding: 15px;
   list-style-type: none;
-  border-bottom: 2px dotted grey;
+  /* border-bottom: 2px dotted grey; */
 }
 
 .side-nav-container > li:hover {
@@ -31,6 +31,9 @@ mat-drawer {
 }
 
 .nav-item-container {
+  margin: 5px;
+  background-color: white;
+  border-radius: 5px;
   display: flex;
   justify-content: space-between;
 }
