@@ -12,8 +12,8 @@ qr-ui-select-product-view {
   /* box-shadow: 10px 10px 8px 10px #888888; */
   color: white;
   position: fixed;
-  top: 10px;
-  right: 10px;
+  top: 20px;
+  right: 15px;
   z-index: 1;
 }
 

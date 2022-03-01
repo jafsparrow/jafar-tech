@@ -30,6 +30,7 @@
 }
 
 .cart-item-detail {
+  padding-left: 10px;
   flex-grow: 1;
 }
 
@@ -60,9 +61,10 @@
 }
 
 .note-button-container {
-  width: 100%;
+  /* width: 100%; */
   display: flex;
   flex-direction: column;
+  padding: 15px 10px;
 }
 
 .note-container {
@@ -74,7 +76,7 @@
 
 .place-order-button {
   width: 100%;
-  padding: 10px;
+  padding: 5px 10px;
 }
 
 .place-order-button-text-container {
