@@ -32,8 +32,11 @@
           [value]="modifier.description"
         >
           <span>{{ modifier.description }}</span>
-          <span class="modifier-price rupee-symbol-left">
-            - {{ modifier.price }}</span
+          <span>
+            -
+            <span class="modifier-price rupee-symbol-left">{{
+              modifier.price
+            }}</span></span
           >
         </mat-radio-button>
       </mat-radio-group>
