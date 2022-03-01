@@ -36,3 +36,7 @@ css property
 
   scroll-behavior: smooth;
   }
+
+## implent ruppes sysmbol using ::before for a clas with content of rupess symbol asci.
+
+## &nbsp; for space for a text
