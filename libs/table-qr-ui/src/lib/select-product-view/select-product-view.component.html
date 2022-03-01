@@ -32,7 +32,9 @@
           [value]="modifier.description"
         >
           <span>{{ modifier.description }}</span>
-          <span class="modifier-price"> - {{ modifier.price }}</span>
+          <span class="modifier-price rupee-symbol-left">
+            - {{ modifier.price }}</span
+          >
         </mat-radio-button>
       </mat-radio-group>
     </ng-container>
@@ -56,7 +58,10 @@
       class="add-button"
       (click)="clickToCart()"
     >
-      Add for <span class="add-button-text"> {{ modifierAppliedTotal }}</span>
+      Add for
+      <span class="add-button-text rupee-symbol-left">
+        {{ modifierAppliedTotal }}</span
+      >
     </button>
   </div>
 
