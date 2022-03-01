@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   padding: 5px;
+
+  background-color: rgb(247, 247, 247);
 }
 
 .basket-title-container {
@@ -14,9 +16,14 @@
 .basket-title-text {
   flex: 1 1 auto;
 }
+.cart-items-container {
+  margin-left: 5px;
+  margin-right: 5px;
+  background-color: white;
+  padding: 10px 5px;
+}
 
 .cart-item {
-  /* margin: 15px; */
   display: flex;
 
   align-items: center;
@@ -26,11 +33,17 @@
   flex-grow: 1;
 }
 
+.cart-product-name {
+  text-overflow: ellipsis;
+}
+
+.product-modifiers {
+  color: grey;
+}
+
 .cart-total {
-  /* margin: 20px; */
   padding: 5px;
   display: flex;
-  /* font-size: 22px; */
   font-style: bold;
 }
 .total-text {

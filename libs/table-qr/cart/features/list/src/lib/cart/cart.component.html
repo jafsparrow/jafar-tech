@@ -20,8 +20,11 @@
           ></qr-ui-count-control>
         </div>
         <div class="cart-item-detail">
-          <p>{{ cartItem.product.name }}</p>
-          <div *ngIf="cartItem.modifiers as modifiers">
+          <div class="cart-product-name">{{ cartItem.product.name }}</div>
+          <div
+            *ngIf="cartItem.modifiers as modifiers"
+            class="product-modifiers"
+          >
             <span *ngFor="let modifier of modifiers"
               >{{ modifier.description }} ,</span
             >
