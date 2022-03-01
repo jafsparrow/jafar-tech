@@ -7,7 +7,9 @@
         <span class="fill-blank"></span>
         <div class="count-price-wrapper">
           <span class="count-in-cart" *ngIf="count">{{ count }} x</span
-          ><span class="item-price">{{ product.price }} ₹ </span>
+          ><span class="item-price rupee-symbol-left"
+            >{{ product.price }}
+          </span>
         </div>
       </div>
       <div class="product-image-container" *ngIf="product.image">
