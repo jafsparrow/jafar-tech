@@ -125,6 +125,29 @@
       },
       "tags": []
     },
+    "backend-orders": {
+      "root": "libs/backend/orders",
+      "sourceRoot": "libs/backend/orders/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/backend/orders/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/backend/orders"],
+          "options": {
+            "jestConfig": "libs/backend/orders/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
     "backend-products": {
       "root": "libs/backend/products",
       "sourceRoot": "libs/backend/products/src",

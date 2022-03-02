@@ -1,5 +1,6 @@
 import { BackendAuthModule } from '@jafar-tech/backend/auth';
 import { BackendCoreModule } from '@jafar-tech/backend/core';
+import { BackendOrdersModule } from '@jafar-tech/backend/orders';
 import { BackendProductsModule } from '@jafar-tech/backend/products';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
@@ -25,6 +26,7 @@ import { AppService } from './app.service';
     BackendCoreModule,
     BackendAuthModule,
     BackendProductsModule,
+    BackendOrdersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
