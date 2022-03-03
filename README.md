@@ -40,3 +40,8 @@ css property
 ## implent ruppes sysmbol using ::before for a clas with content of rupess symbol asci.
 
 ## &nbsp; for space for a text
+
+## nest js dto validation with calss validation- if item has nested items.
+
+@ValidateNested()
+@Type(() => Prodto)

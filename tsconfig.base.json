@@ -19,6 +19,9 @@
       "@jafar-tech/backend/auth": ["libs/backend/auth/src/index.ts"],
       "@jafar-tech/backend/core": ["libs/backend/core/src/index.ts"],
       "@jafar-tech/backend/orders": ["libs/backend/orders/src/index.ts"],
+      "@jafar-tech/backend/organisation": [
+        "libs/backend/organisation/src/index.ts"
+      ],
       "@jafar-tech/backend/products": ["libs/backend/products/src/index.ts"],
       "@jafar-tech/shared/data-access": [
         "libs/shared/data-access/src/index.ts"
