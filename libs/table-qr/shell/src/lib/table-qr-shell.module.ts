@@ -6,6 +6,7 @@ import { TableQrUiModule } from '@jafar-tech/table-qr-ui';
 import { CartDataAccessModule } from '@jafar-tech/table-qr-cart-data-access';
 import { ProductsDataAccessModule } from '@jafar-tech/table-qr-products-data-access';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TableQrOrganisationDetailsModule } from '@jafar-tech/table-qr/organisation/details';
 import { TableQrOrganisationDataAccessModule } from '@jafar-tech/table-qr/organisation/data-access';
 @NgModule({
@@ -50,6 +51,7 @@ import { TableQrOrganisationDataAccessModule } from '@jafar-tech/table-qr/organi
     ProductsDataAccessModule,
     CartDataAccessModule,
     MatSidenavModule,
+    MatSnackBarModule,
   ],
   declarations: [ContainerComponent],
   exports: [],

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Cart } from '@jafar-tech/shared/data-access';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
@@ -18,7 +19,8 @@ export class CartEffects {
   constructor(
     private cartService: CartService,
     private action$: Actions,
-    private router: Router
+    private router: Router,
+    private _snackBar: MatSnackBar
   ) {}
 
   loadCart$ = createEffect(() => {
@@ -49,6 +51,9 @@ export class CartEffects {
     () => {
       return this.action$.pipe(
         ofType(orderPlaceSuccess),
+        tap((data: any) =>
+          this._snackBar.open('Your order is placed successfully', 'close')
+        ),
         tap((data: any) => this.router.navigate(['shell/products']))
       );
     },
