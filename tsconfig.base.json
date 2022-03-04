@@ -43,6 +43,7 @@
       "@jafar-tech/table-qr/cart/features/order": [
         "libs/table-qr/cart/features/order/src/index.ts"
       ],
+      "@jafar-tech/table-qr/core": ["libs/table-qr/core/src/index.ts"],
       "@jafar-tech/table-qr/products/features/add": [
         "libs/table-qr/products/features/add/src/index.ts"
       ],

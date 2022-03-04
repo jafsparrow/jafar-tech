@@ -627,6 +627,32 @@
       },
       "tags": []
     },
+    "table-qr-core": {
+      "projectType": "library",
+      "root": "libs/table-qr/core",
+      "sourceRoot": "libs/table-qr/core/src",
+      "prefix": "jafar-tech",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/table-qr/core"],
+          "options": {
+            "jestConfig": "libs/table-qr/core/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/table-qr/core/src/**/*.ts",
+              "libs/table-qr/core/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "table-qr-e2e": {
       "root": "apps/table-qr-e2e",
       "sourceRoot": "apps/table-qr-e2e/src",
