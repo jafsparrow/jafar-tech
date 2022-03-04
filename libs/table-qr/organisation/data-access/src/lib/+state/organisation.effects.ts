@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, switchMap } from 'rxjs';
 import { OrganisationService } from '../organisation.service';
@@ -23,7 +23,7 @@ export class OrganisationEffects {
           map((data: Organisation) =>
             loadOrgInfoSuccess({ organisation: data })
           ),
-          catchError((error) => of(loadOrgInfoFail({ error })))
+          catchError((error) => of(loadOrgInfoFail({ errorMessage: error })))
         );
       })
     );

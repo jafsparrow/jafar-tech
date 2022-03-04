@@ -12,6 +12,10 @@ import {
   loadProductsCategoryVice,
   selectProductByCategories,
 } from '@jafar-tech/table-qr-products-data-access';
+import {
+  loadOrgInfo,
+  selectOrganisationInfo,
+} from '@jafar-tech/table-qr/organisation/data-access';
 import { Store } from '@ngrx/store';
 
 @Component({
@@ -20,7 +24,9 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./container.component.css'],
 })
 export class ContainerComponent implements OnInit {
+  orgInfo$ = this.store.select(selectOrganisationInfo);
   cartCount$ = this.store.select(selectNumberOfItemsInCart);
+
   @ViewChild('drawer')
   drawer!: MatSidenav;
 
@@ -29,6 +35,7 @@ export class ContainerComponent implements OnInit {
   constructor(private store: Store, private router: Router) {}
 
   ngOnInit(): void {
+    this.store.dispatch(loadOrgInfo({ organisationID: '2222' }));
     this.store.dispatch(loadProductsCategoryVice());
   }
 

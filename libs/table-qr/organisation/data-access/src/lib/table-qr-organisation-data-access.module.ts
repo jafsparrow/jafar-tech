@@ -8,6 +8,7 @@ import {
 } from './+state/organisation.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { OrganisationEffects } from './+state/organisation.effects';
+import { OrganisationService } from './organisation.service';
 
 @NgModule({
   imports: [
@@ -16,5 +17,6 @@ import { OrganisationEffects } from './+state/organisation.effects';
     StoreModule.forFeature(ORGANISATION_FEATURE_KEY, orgReducer),
     EffectsModule.forFeature([OrganisationEffects]),
   ],
+  providers: [OrganisationService],
 })
 export class TableQrOrganisationDataAccessModule {}

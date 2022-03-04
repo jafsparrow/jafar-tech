@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Organisation } from './+state/organisation.reducer';
 
@@ -15,6 +15,7 @@ export class OrganisationService {
       openAllWeek: true,
       type: ['arabian'],
     };
+    console.log('org service get org details');
     return of(org);
   }
 }

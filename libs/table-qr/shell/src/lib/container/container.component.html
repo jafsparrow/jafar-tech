@@ -19,6 +19,8 @@
       (menuClicked)="drawer.toggle()"
     ></qr-ui-toolbar>
 
+    {{ orgInfo$ | async | json }}
+
     <router-outlet></router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>

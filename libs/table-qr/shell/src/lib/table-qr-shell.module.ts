@@ -46,6 +46,7 @@ import { TableQrOrganisationDataAccessModule } from '@jafar-tech/table-qr/organi
       },
     ]),
     TableQrUiModule,
+    TableQrOrganisationDataAccessModule,
     ProductsDataAccessModule,
     CartDataAccessModule,
     MatSidenavModule,
