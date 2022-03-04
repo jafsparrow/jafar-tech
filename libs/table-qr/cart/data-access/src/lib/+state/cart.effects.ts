@@ -32,7 +32,7 @@ export class CartEffects {
     return this.action$.pipe(
       ofType(placeOrder),
       switchMap((order) => {
-        return this.cartService.placeOrder().pipe(
+        return this.cartService.placeOrder(order.cart).pipe(
           map((order) => orderPlaceSuccess()),
           catchError((error) => of(orderPlaceFail()))
         );
