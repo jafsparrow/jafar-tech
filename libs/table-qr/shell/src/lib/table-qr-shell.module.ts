@@ -6,6 +6,8 @@ import { TableQrUiModule } from '@jafar-tech/table-qr-ui';
 import { CartDataAccessModule } from '@jafar-tech/table-qr-cart-data-access';
 import { ProductsDataAccessModule } from '@jafar-tech/table-qr-products-data-access';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { TableQrOrganisationDetailsModule } from '@jafar-tech/table-qr/organisation/details';
+import { TableQrOrganisationDataAccessModule } from '@jafar-tech/table-qr/organisation/data-access';
 @NgModule({
   imports: [
     CommonModule,

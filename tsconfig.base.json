@@ -44,6 +44,12 @@
         "libs/table-qr/cart/features/order/src/index.ts"
       ],
       "@jafar-tech/table-qr/core": ["libs/table-qr/core/src/index.ts"],
+      "@jafar-tech/table-qr/organisation/data-access": [
+        "libs/table-qr/organisation/data-access/src/index.ts"
+      ],
+      "@jafar-tech/table-qr/organisation/details": [
+        "libs/table-qr/organisation/details/src/index.ts"
+      ],
       "@jafar-tech/table-qr/products/features/add": [
         "libs/table-qr/products/features/add/src/index.ts"
       ],

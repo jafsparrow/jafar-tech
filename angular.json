@@ -681,6 +681,58 @@
       "tags": [],
       "implicitDependencies": ["table-qr"]
     },
+    "table-qr-organisation-data-access": {
+      "projectType": "library",
+      "root": "libs/table-qr/organisation/data-access",
+      "sourceRoot": "libs/table-qr/organisation/data-access/src",
+      "prefix": "jafar-tech",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/table-qr/organisation/data-access"],
+          "options": {
+            "jestConfig": "libs/table-qr/organisation/data-access/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/table-qr/organisation/data-access/src/**/*.ts",
+              "libs/table-qr/organisation/data-access/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "table-qr-organisation-details": {
+      "projectType": "library",
+      "root": "libs/table-qr/organisation/details",
+      "sourceRoot": "libs/table-qr/organisation/details/src",
+      "prefix": "jafar-tech",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/table-qr/organisation/details"],
+          "options": {
+            "jestConfig": "libs/table-qr/organisation/details/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/table-qr/organisation/details/src/**/*.ts",
+              "libs/table-qr/organisation/details/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "table-qr-products-data-access": {
       "projectType": "library",
       "root": "libs/table-qr/products/data-access",
