@@ -54,22 +54,27 @@
         </mat-form-field>
       </div>
 
-      <button
-        mat-raised-button
-        color="primary"
-        class="place-order-button"
-        (click)="placeOrder(cart)"
-      >
-        <div class="place-order-button-text-container">
-          <span class="total-count-text"
-            >{{ getCartItems(cart).length }} Items</span
+      <div *ngIf="placeOrderSpinner$ | async; else submitButton">
+        <button mat-raised-button color="primary" class="place-order-spinner">
+          <mat-spinner color="accent" diameter="35"></mat-spinner>
+        </button>
+      </div>
+      <ng-template #submitButton>
+        <button mat-raised-button color="primary" class="place-order-button">
+          <div
+            class="place-order-button-text-container"
+            (click)="placeOrder(cart)"
           >
-          <span class="place-order-text">Place Order</span>
-          <span class="total-amount-text rupee-symbol-left">{{
-            cart.total
-          }}</span>
-        </div>
-      </button>
+            <span class="total-count-text"
+              >{{ getCartItems(cart).length }} Items</span
+            >
+            <span class="place-order-text">Place Order</span>
+            <span class="total-amount-text rupee-symbol-left">{{
+              cart.total
+            }}</span>
+          </div>
+        </button>
+      </ng-template>
     </div>
   </ng-template>
 

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Cart } from '@jafar-tech/shared/data-access';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, of, switchMap } from 'rxjs';
+import { catchError, map, of, switchMap, tap } from 'rxjs';
 import { CartService } from '../cart.service';
 import {
   loadCart,
@@ -14,7 +15,11 @@ import {
 
 @Injectable()
 export class CartEffects {
-  constructor(private cartService: CartService, private action$: Actions) {}
+  constructor(
+    private cartService: CartService,
+    private action$: Actions,
+    private router: Router
+  ) {}
 
   loadCart$ = createEffect(() => {
     return this.action$.pipe(
@@ -39,4 +44,14 @@ export class CartEffects {
       })
     );
   });
+
+  placeOrderSuccess$ = createEffect(
+    () => {
+      return this.action$.pipe(
+        ofType(orderPlaceSuccess),
+        tap((data: any) => this.router.navigate(['shell/products']))
+      );
+    },
+    { dispatch: false }
+  );
 }

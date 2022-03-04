@@ -55,3 +55,8 @@ export const selectPendingOrder = createSelector(
   selectCart,
   (state: Cart) => state.pendingOders
 );
+
+export const selectPlaceOrderSpinner = createSelector(
+  selectCart,
+  (state: Cart) => state.placeOrderSpinner
+);

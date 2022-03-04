@@ -3,8 +3,10 @@ import { Cart, CartItem } from '@jafar-tech/shared/data-access';
 import {
   addToCart,
   placeOrder,
+  placeOrderTurnSpinnerOn,
   removeFromCart,
   selectCart,
+  selectPlaceOrderSpinner,
 } from '@jafar-tech/table-qr-cart-data-access';
 import { Store } from '@ngrx/store';
 
@@ -15,6 +17,7 @@ import { Store } from '@ngrx/store';
 })
 export class CartComponent implements OnInit {
   cart$ = this.store.select(selectCart);
+  placeOrderSpinner$ = this.store.select(selectPlaceOrderSpinner);
   constructor(private store: Store) {}
 
   ngOnInit(): void {}
@@ -60,6 +63,7 @@ export class CartComponent implements OnInit {
   }
 
   placeOrder(cart: Cart) {
+    this.store.dispatch(placeOrderTurnSpinnerOn());
     this.store.dispatch(placeOrder({ cart }));
   }
 }

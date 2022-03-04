@@ -11,7 +11,7 @@ export interface Cart {
   createdAt?: Date;
   user?: User;
   cartItems: { [key: string]: CartItem };
-
+  placeOrderSpinner: boolean;
   pendingOders?: OrderSummary[];
 }
 

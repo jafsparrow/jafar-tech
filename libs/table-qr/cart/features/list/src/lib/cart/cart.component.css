@@ -79,6 +79,12 @@
   padding: 5px 10px;
 }
 
+.place-order-spinner {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 5px 10px;
+}
 .place-order-button-text-container {
   display: flex;
 }

@@ -3,7 +3,9 @@ import { createReducer, on } from '@ngrx/store';
 import {
   addToCart,
   loadCartSuccess,
+  orderPlaceFail,
   orderPlaceSuccess,
+  placeOrderTurnSpinnerOn,
   removeFromCart,
   updateCart,
 } from './cart.actions';
@@ -18,6 +20,7 @@ const initialState: Cart = {
 
     { _id: 'ddfdf', status: Status.SERVED, date: new Date() },
   ],
+  placeOrderSpinner: false,
 };
 
 export const cartReducer = createReducer(
@@ -75,8 +78,13 @@ export const cartReducer = createReducer(
     };
   }),
   on(orderPlaceSuccess, (state) => {
-    return { ...state, cartItems: {} };
-  })
+    return { ...state, cartItems: {}, placeOrderSpinner: false };
+  }),
+  on(orderPlaceFail, (state) => ({ ...state, placeOrderSpinner: false })),
+  on(placeOrderTurnSpinnerOn, (state) => ({
+    ...state,
+    placeOrderSpinner: true,
+  }))
 );
 // state.cartItems[productId] = {
 //   ...(state.cartItems[productId] || []),
