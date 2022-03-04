@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
+import { Organisation } from '@jafar-tech/shared/data-access';
 import { Observable, of } from 'rxjs';
-import { Organisation } from './+state/organisation.reducer';
 
 @Injectable()
 export class OrganisationService {
   getOrgDetails(orgId: any): Observable<Organisation> {
     let org: Organisation = {
-      address: '',
-      caption: '',
+      address: 'Near Theatre, Ponnani',
+      caption: 'Name is the Secret',
       coord: ['21', '2'],
       license: '',
       name: 'Zaatar RestoCafe',

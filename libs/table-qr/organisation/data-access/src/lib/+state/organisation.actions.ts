@@ -1,5 +1,5 @@
+import { Organisation } from '@jafar-tech/shared/data-access';
 import { createAction, props } from '@ngrx/store';
-import { Organisation } from './organisation.reducer';
 
 export const loadOrgInfo = createAction(
   '[Organisation] load org information',

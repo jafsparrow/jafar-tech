@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Organisation } from '@jafar-tech/shared/data-access';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, switchMap } from 'rxjs';
 import { OrganisationService } from '../organisation.service';
@@ -7,7 +8,6 @@ import {
   loadOrgInfoFail,
   loadOrgInfoSuccess,
 } from './organisation.actions';
-import { Organisation } from './organisation.reducer';
 
 @Injectable()
 export class OrganisationEffects {

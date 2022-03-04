@@ -1,3 +1,4 @@
+import { Organisation } from '@jafar-tech/shared/data-access';
 import { createReducer, on } from '@ngrx/store';
 import { loadOrgInfoFail, loadOrgInfoSuccess } from './organisation.actions';
 
@@ -7,18 +8,6 @@ export interface OrganisationState {
   organisation: Organisation | null;
   errorMEssage: string;
 }
-
-export interface Organisation {
-  name: string;
-  caption: string;
-  type: string[];
-  address: string;
-  coord: string[];
-  license: string;
-  openAllWeek: boolean;
-  offDays: string[];
-}
-
 const initialState: OrganisationState = {
   organisation: null,
   errorMEssage: '',
