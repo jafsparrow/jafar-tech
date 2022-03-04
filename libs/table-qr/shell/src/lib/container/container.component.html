@@ -19,7 +19,10 @@
       (menuClicked)="drawer.toggle()"
     ></qr-ui-toolbar>
 
-    {{ orgInfo$ | async | json }}
+    <!-- {{ orgInfo$ | async | json }} -->
+    <qr-ui-organisation-summary
+      [organisation]="orgInfo$ | async"
+    ></qr-ui-organisation-summary>
 
     <router-outlet></router-outlet>
   </mat-drawer-content>

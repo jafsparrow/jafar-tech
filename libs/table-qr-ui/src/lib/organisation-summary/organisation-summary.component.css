@@ -1,0 +1,22 @@
+.org-info-container {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+
+  font-weight: 300;
+}
+
+.org-name {
+  font-size: 25px;
+}
+
+.org-caption {
+  font-size: 18px;
+  color: slategray;
+}
+
+.org-address {
+  font-size: 14px;
+}

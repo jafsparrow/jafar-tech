@@ -19,6 +19,7 @@ import { BottomCartSummaryComponent } from './bottom-cart-summary/bottom-cart-su
 
 import { MatRadioModule } from '@angular/material/radio';
 import { FormsModule } from '@angular/forms';
+import { OrganisationSummaryComponent } from './organisation-summary/organisation-summary.component';
 
 @NgModule({
   imports: [
@@ -39,6 +40,7 @@ import { FormsModule } from '@angular/forms';
     ToolbarComponent,
     BottomCartSummaryComponent,
     SelectProductViewComponent,
+    OrganisationSummaryComponent,
   ],
   exports: [
     MatTabsModule,
@@ -50,7 +52,7 @@ import { FormsModule } from '@angular/forms';
     SelectProductViewComponent,
     ToolbarComponent,
     MatRadioModule,
-
+    OrganisationSummaryComponent,
     BottomCartSummaryComponent,
   ],
 })
