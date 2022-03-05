@@ -22,14 +22,14 @@ import { AppService } from './app.service';
     //   },
     //   inject: [ConfigService],
     // }),
+    MongooseModule.forRoot(
+      'mongodb+srv://tableqr:Temp1234@cluster0.y7xyc.mongodb.net/tableqr?retryWrites=true&w=majority',
+      { appName: 'appnameprintedonlog', dbName: 'tableqr' }
+    ),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'table-qr'),
       exclude: ['/api*'],
     }),
-
-    MongooseModule.forRoot(
-      'mongodb+srv://tableqr:Temp1234@cluster0.y7xyc.mongodb.net/tableqr?retryWrites=true&w=majority'
-    ),
     BackendCoreModule,
     BackendAuthModule,
     BackendProductsModule,
