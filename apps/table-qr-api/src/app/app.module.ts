@@ -6,6 +6,8 @@ import { BackendProductsModule } from '@jafar-tech/backend/products';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -20,6 +22,10 @@ import { AppService } from './app.service';
     //   },
     //   inject: [ConfigService],
     // }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'table-qr'),
+      exclude: ['/api*'],
+    }),
 
     MongooseModule.forRoot(
       'mongodb+srv://tableqr:Temp1234@cluster0.y7xyc.mongodb.net/tableqr?retryWrites=true&w=majority'
