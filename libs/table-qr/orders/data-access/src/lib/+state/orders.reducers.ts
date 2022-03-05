@@ -5,7 +5,7 @@ import {
   placeOrderTurnSpinnerOn,
 } from './orders.actions';
 
-export const ORDER_FEATURE_KEY = 'cart';
+export const ORDER_FEATURE_KEY = 'order';
 
 export interface Order {
   errorMessage: string;

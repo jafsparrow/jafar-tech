@@ -23,7 +23,7 @@ export const selectCart = createSelector(selectCartState, (state) => {
 
 export const selectNumberOfItemsInCart = createSelector(
   selectCartState,
-  (state) => Object.keys(state.cartItems).length
+  (state) => Object.keys(state.cartItems)?.length
 );
 
 export const selectCartTotal = createSelector(selectCartState, (state) =>

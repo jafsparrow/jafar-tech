@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OrderContainerComponent } from './order-container/order-container.component';
 import { RouterModule } from '@angular/router';
-import { CartDataAccessModule } from '@jafar-tech/table-qr-cart-data-access';
+import { TableQrOrdersDataAccessModule } from '@jafar-tech/table-qr-orders-data-access';
 
 @NgModule({
   imports: [
@@ -13,7 +13,7 @@ import { CartDataAccessModule } from '@jafar-tech/table-qr-cart-data-access';
         component: OrderContainerComponent,
       },
     ]),
-    CartDataAccessModule,
+    TableQrOrdersDataAccessModule,
   ],
   declarations: [OrderContainerComponent],
 })

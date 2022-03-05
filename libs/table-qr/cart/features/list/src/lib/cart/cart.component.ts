@@ -2,12 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Cart, CartItem } from '@jafar-tech/shared/data-access';
 import {
   addToCart,
-  placeOrder,
-  placeOrderTurnSpinnerOn,
   removeFromCart,
   selectCart,
-  selectPlaceOrderSpinner,
 } from '@jafar-tech/table-qr-cart-data-access';
+import {
+  placeOrder,
+  placeOrderTurnSpinnerOn,
+  selectPlaceOrderSpinner,
+} from '@jafar-tech/table-qr-orders-data-access';
 import { Store } from '@ngrx/store';
 
 @Component({
