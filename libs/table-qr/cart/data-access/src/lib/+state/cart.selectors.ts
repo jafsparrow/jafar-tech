@@ -50,13 +50,3 @@ export const getTotalCartAmout = (state: Cart): number | null =>
     (tot, cartItem) => tot + cartItem.product.price * cartItem.count,
     0
   );
-
-export const selectPendingOrder = createSelector(
-  selectCart,
-  (state: Cart) => state.pendingOders
-);
-
-export const selectPlaceOrderSpinner = createSelector(
-  selectCart,
-  (state: Cart) => state.placeOrderSpinner
-);

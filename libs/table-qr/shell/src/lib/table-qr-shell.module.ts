@@ -50,6 +50,7 @@ import { TableQrOrganisationDataAccessModule } from '@jafar-tech/table-qr/organi
     TableQrOrganisationDataAccessModule,
     ProductsDataAccessModule,
     CartDataAccessModule,
+
     MatSidenavModule,
     MatSnackBarModule,
   ],

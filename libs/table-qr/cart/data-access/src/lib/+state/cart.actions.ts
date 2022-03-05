@@ -28,14 +28,4 @@ export const removeFromCart = createAction(
   props<{ itemId: string }>()
 );
 
-export const placeOrder = createAction(
-  '[Cart] place a new order',
-  props<{ cart: Cart }>()
-);
-
-export const placeOrderTurnSpinnerOn = createAction(
-  '[Cart] place order spinner is On'
-);
-
-export const orderPlaceSuccess = createAction('[Cart] Order place success');
-export const orderPlaceFail = createAction('[Cart] order Place failed');
+export const clearCart = createAction('[Cart] clear the cart');

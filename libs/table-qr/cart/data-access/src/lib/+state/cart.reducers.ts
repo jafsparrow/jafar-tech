@@ -2,10 +2,8 @@ import { Cart, Product, Status } from '@jafar-tech/shared/data-access';
 import { createReducer, on } from '@ngrx/store';
 import {
   addToCart,
+  clearCart,
   loadCartSuccess,
-  orderPlaceFail,
-  orderPlaceSuccess,
-  placeOrderTurnSpinnerOn,
   removeFromCart,
   updateCart,
 } from './cart.actions';
@@ -77,14 +75,7 @@ export const cartReducer = createReducer(
       cartItems: totalcartItems,
     };
   }),
-  on(orderPlaceSuccess, (state) => {
-    return { ...state, cartItems: {}, placeOrderSpinner: false };
-  }),
-  on(orderPlaceFail, (state) => ({ ...state, placeOrderSpinner: false })),
-  on(placeOrderTurnSpinnerOn, (state) => ({
-    ...state,
-    placeOrderSpinner: true,
-  }))
+  on(clearCart, (state) => ({ ...state, cartItems: {} }))
 );
 // state.cartItems[productId] = {
 //   ...(state.cartItems[productId] || []),
