@@ -12,3 +12,8 @@ export const selectPlaceOrderSpinner = createSelector(
   selectOrderState,
   (state: Order) => state.placeOrderSpinner
 );
+
+export const selectOrderErrorMessage = createSelector(
+  selectOrderState,
+  (state: Order) => state.errorMessage
+);

@@ -54,6 +54,13 @@
         </mat-form-field>
       </div>
 
+      <div
+        *ngIf="orderPlaceSateMessage$ | async as errorMessage"
+        class="error-message-container"
+      >
+        {{ errorMessage }}
+      </div>
+
       <div *ngIf="placeOrderSpinner$ | async; else submitButton">
         <button mat-raised-button color="primary" class="place-order-spinner">
           <mat-spinner color="accent" diameter="35"></mat-spinner>

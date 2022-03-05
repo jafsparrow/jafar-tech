@@ -28,7 +28,13 @@ export class OrderEffects {
       switchMap((order) => {
         return this.orderService.placeOrder(order.cart).pipe(
           map((order) => orderPlaceSuccess()),
-          catchError((error) => of(orderPlaceFail()))
+          catchError((error) =>
+            of(
+              orderPlaceFail({
+                errorMessage: 'Somethig went wrong, Please try again',
+              })
+            )
+          )
         );
       })
     );

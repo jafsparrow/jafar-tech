@@ -23,9 +23,13 @@ export const orderReducer = createReducer(
   initialState,
 
   on(orderPlaceSuccess, (state) => {
-    return { ...state, placeOrderSpinner: false };
+    return { ...state, errorMessage: '', placeOrderSpinner: false };
   }),
-  on(orderPlaceFail, (state) => ({ ...state, placeOrderSpinner: false })),
+  on(orderPlaceFail, (state, { errorMessage }) => ({
+    ...state,
+    errorMessage,
+    placeOrderSpinner: false,
+  })),
   on(placeOrderTurnSpinnerOn, (state) => ({
     ...state,
     placeOrderSpinner: true,

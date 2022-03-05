@@ -8,6 +8,7 @@ import {
 import {
   placeOrder,
   placeOrderTurnSpinnerOn,
+  selectOrderErrorMessage,
   selectPlaceOrderSpinner,
 } from '@jafar-tech/table-qr-orders-data-access';
 import { Store } from '@ngrx/store';
@@ -20,6 +21,7 @@ import { Store } from '@ngrx/store';
 export class CartComponent implements OnInit {
   cart$ = this.store.select(selectCart);
   placeOrderSpinner$ = this.store.select(selectPlaceOrderSpinner);
+  orderPlaceSateMessage$ = this.store.select(selectOrderErrorMessage);
   constructor(private store: Store) {}
 
   ngOnInit(): void {}
