@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'table-qr-cart-features-order',
+  displayName: 'table-qr-orders-features-order-list',
   preset: '../../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -9,7 +9,7 @@ module.exports = {
     },
   },
   coverageDirectory:
-    '../../../../../coverage/libs/table-qr/cart/features/order',
+    '../../../../../coverage/libs/table-qr/orders/features/order-list',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

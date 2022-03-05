@@ -39,8 +39,8 @@ import { TableQrOrganisationDataAccessModule } from '@jafar-tech/table-qr/organi
           {
             path: 'order',
             loadChildren: () =>
-              import('@jafar-tech/table-qr/cart/features/order').then(
-                (m) => m.TableQrCartFeaturesOrderModule
+              import('@jafar-tech/table-qr-orders-features-order-list').then(
+                (m) => m.TableQrOrdersFeaturesOrderListModule
               ),
           },
         ],

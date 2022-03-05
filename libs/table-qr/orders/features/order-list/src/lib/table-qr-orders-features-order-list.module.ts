@@ -17,4 +17,4 @@ import { CartDataAccessModule } from '@jafar-tech/table-qr-cart-data-access';
   ],
   declarations: [OrderContainerComponent],
 })
-export class TableQrCartFeaturesOrderModule {}
+export class TableQrOrdersFeaturesOrderListModule {}

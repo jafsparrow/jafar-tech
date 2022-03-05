@@ -601,32 +601,6 @@
       },
       "tags": []
     },
-    "table-qr-cart-features-order": {
-      "projectType": "library",
-      "root": "libs/table-qr/cart/features/order",
-      "sourceRoot": "libs/table-qr/cart/features/order/src",
-      "prefix": "jafar-tech",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/table-qr/cart/features/order"],
-          "options": {
-            "jestConfig": "libs/table-qr/cart/features/order/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/table-qr/cart/features/order/src/**/*.ts",
-              "libs/table-qr/cart/features/order/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "tags": []
-    },
     "table-qr-core": {
       "projectType": "library",
       "root": "libs/table-qr/core",
@@ -701,6 +675,32 @@
             "lintFilePatterns": [
               "libs/table-qr/orders/data-access/src/**/*.ts",
               "libs/table-qr/orders/data-access/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "table-qr-orders-features-order-list": {
+      "projectType": "library",
+      "root": "libs/table-qr/orders/features/order-list",
+      "sourceRoot": "libs/table-qr/orders/features/order-list/src",
+      "prefix": "jafar-tech",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/table-qr/orders/features/order-list"],
+          "options": {
+            "jestConfig": "libs/table-qr/orders/features/order-list/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/table-qr/orders/features/order-list/src/**/*.ts",
+              "libs/table-qr/orders/features/order-list/src/**/*.html"
             ]
           }
         }
