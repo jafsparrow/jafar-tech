@@ -1,6 +1,6 @@
 module.exports = {
-  displayName: 'table-qr-order',
-  preset: '../../../jest.preset.js',
+  displayName: 'table-qr-orders-data-access',
+  preset: '../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -8,7 +8,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../../coverage/libs/table-qr/order',
+  coverageDirectory: '../../../../coverage/libs/table-qr/orders/data-access',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

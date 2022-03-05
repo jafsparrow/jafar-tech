@@ -33,6 +33,9 @@
       "@jafar-tech/table-qr-cart-features-list": [
         "libs/table-qr/cart/features/list/src/index.ts"
       ],
+      "@jafar-tech/table-qr-orders-data-access": [
+        "libs/table-qr/orders/data-access/src/index.ts"
+      ],
       "@jafar-tech/table-qr-products-data-access": [
         "libs/table-qr/products/data-access/src/index.ts"
       ],
@@ -44,7 +47,6 @@
         "libs/table-qr/cart/features/order/src/index.ts"
       ],
       "@jafar-tech/table-qr/core": ["libs/table-qr/core/src/index.ts"],
-      "@jafar-tech/table-qr/order": ["libs/table-qr/order/src/index.ts"],
       "@jafar-tech/table-qr/organisation/data-access": [
         "libs/table-qr/organisation/data-access/src/index.ts"
       ],

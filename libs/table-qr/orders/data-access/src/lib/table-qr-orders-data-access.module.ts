@@ -14,4 +14,4 @@ import { OrderEffects } from './+state/orders.effects';
     EffectsModule.forFeature([OrderEffects]),
   ],
 })
-export class TableQrOrderModule {}
+export class TableQrOrdersDataAccessModule {}

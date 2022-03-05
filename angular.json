@@ -681,17 +681,17 @@
       "tags": [],
       "implicitDependencies": ["table-qr"]
     },
-    "table-qr-order": {
+    "table-qr-orders-data-access": {
       "projectType": "library",
-      "root": "libs/table-qr/order",
-      "sourceRoot": "libs/table-qr/order/src",
+      "root": "libs/table-qr/orders/data-access",
+      "sourceRoot": "libs/table-qr/orders/data-access/src",
       "prefix": "jafar-tech",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/table-qr/order"],
+          "outputs": ["coverage/libs/table-qr/orders/data-access"],
           "options": {
-            "jestConfig": "libs/table-qr/order/jest.config.js",
+            "jestConfig": "libs/table-qr/orders/data-access/jest.config.js",
             "passWithNoTests": true
           }
         },
@@ -699,8 +699,8 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/table-qr/order/src/**/*.ts",
-              "libs/table-qr/order/src/**/*.html"
+              "libs/table-qr/orders/data-access/src/**/*.ts",
+              "libs/table-qr/orders/data-access/src/**/*.html"
             ]
           }
         }
