@@ -1,7 +1,10 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { selectProductByCategories } from '@jafar-tech/table-qr-products-data-access';
+import {
+  selectProductByCategories,
+  selectProductFetchInProgressFlag,
+} from '@jafar-tech/table-qr-products-data-access';
 import {
   addToCart,
   removeFromCart,
@@ -22,6 +25,7 @@ import { ProductDetailComponent } from '@jafar-tech/table-qr/products/features/d
 })
 export class ProductListComponent implements OnInit {
   prodcutByCategory$ = this.store.select(selectProductByCategories);
+  productFetachInProgess$ = this.store.select(selectProductFetchInProgressFlag);
   cartCount$ = this.store.select(selectNumberOfItemsInCart);
   cartTotal$ = this.store.select(selectCartTotal);
 

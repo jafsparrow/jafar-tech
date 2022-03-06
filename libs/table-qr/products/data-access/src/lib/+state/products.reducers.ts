@@ -6,6 +6,7 @@ import {
   loadProductsCategoryViceSuccess,
   loadProductsFail,
   loadProductsSuccess,
+  productsCategoryViceLoading,
 } from './product.actions';
 
 export const PRODUCTS_FEATURE_KEY = 'products';
@@ -13,11 +14,13 @@ export const PRODUCTS_FEATURE_KEY = 'products';
 export interface ProductState {
   products: Product[];
   productsByCat: CategoryViseProducts;
+  productFetchInprogress: boolean;
 }
 
 const initialState: ProductState = {
   products: [],
   productsByCat: {},
+  productFetchInprogress: false,
 };
 
 export const productsReducer = createReducer(
@@ -29,8 +32,13 @@ export const productsReducer = createReducer(
     return {
       ...state,
       productsByCat,
+      productFetchInprogress: false,
     };
-  })
+  }),
+  on(productsCategoryViceLoading, (state) => ({
+    ...state,
+    productFetchInprogress: true,
+  }))
 );
 
 // export const categoryviseProductsReducer = createReducer(

@@ -34,6 +34,11 @@ export const selectProductByCategories = createSelector(
   (state) => state.productsByCat
 );
 
+export const selectProductFetchInProgressFlag = createSelector(
+  selectProductState,
+  (state) => state.productFetchInprogress
+);
+
 // export const selectProductByCategories = createSelector(
 //   selectAllProducts,
 //   (products) => {

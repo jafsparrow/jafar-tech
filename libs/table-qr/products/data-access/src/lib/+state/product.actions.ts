@@ -4,26 +4,30 @@ import { createAction, props } from '@ngrx/store';
 export const loadProducts = createAction('[Product] Load Products');
 
 export const loadProductsSuccess = createAction(
-  '[] Load Products Success',
+  '[Product] Load Products Success',
   props<{ products: Product[] }>()
 );
 
 export const loadProductsFail = createAction(
-  '[] Load Products Failed',
+  '[Product] Load Products Failed',
   props<{ error: any }>()
 );
 
 export const loadProductsCategoryVice = createAction(
-  '[] Load categoryvise products'
+  '[Product] Load categoryvise products'
+);
+
+export const productsCategoryViceLoading = createAction(
+  '[Product] load categoryvise progress in progress'
 );
 
 export const loadProductsCategoryViceSuccess = createAction(
-  '[] Load categoryvise products success',
+  '[Product] Load categoryvise products success',
   props<{ productsByCat: CategoryViseProducts }>()
 );
 
 export const loadProductsCategoryViceFail = createAction(
-  '[] Load categoryvise Failed',
+  '[Product] Load categoryvise Failed',
   props<{ error: any }>()
 );
 

@@ -1,5 +1,8 @@
-<ng-container *ngIf="prodcutByCategory$ | async as categoryWiseProductObject">
-  <div class="tabs-container">
+<ng-container *ngIf="!(productFetachInProgess$ | async); else loading">
+  <div
+    class="tabs-container"
+    *ngIf="prodcutByCategory$ | async as categoryWiseProductObject"
+  >
     <div *ngFor="let section of categoryWiseProductObject | keyvalue">
       <div [id]="section.key">
         <div class="menu-sub-title">
@@ -18,6 +21,9 @@
     </div>
   </div>
 </ng-container>
+<ng-template #loading>
+  <div class="loading-indicator">Loading...</div>
+</ng-template>
 
 <ng-container *ngIf="{ count: cartCount$ | async } as objCount">
   <qr-ui-bottom-cart-summary
