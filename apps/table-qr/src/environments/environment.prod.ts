@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
 
-  apiUrl: 'https://table-qr-api.herokuapp.com/api',
+  apiUrl: 'https://what42day.herokuapp.com/api',
 };
