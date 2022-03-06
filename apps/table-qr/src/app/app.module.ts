@@ -12,7 +12,7 @@ import { OrderCartComponent } from './order-cart/order-cart.component';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { RouterModule } from '@angular/router';
+import { PreloadAllModules, RouterModule } from '@angular/router';
 import { StoreDevtools, StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 
@@ -42,6 +42,8 @@ import { environment } from '../environments/environment';
         },
       ],
       {
+        preloadingStrategy: PreloadAllModules,
+
         scrollPositionRestoration: 'enabled',
       }
     ),
