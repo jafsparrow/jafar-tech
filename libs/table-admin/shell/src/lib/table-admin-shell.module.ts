@@ -13,14 +13,23 @@ import { MatListModule } from '@angular/material/list';
       {
         path: '',
         component: AdminContainerComponent,
-      },
-      {
-        path: 'add',
-        component: AdminContainerComponent,
-        loadChildren: () =>
-          import('@jafar-tech/table-qr/products/features/add').then(
-            (m) => m.TableQrProductsFeaturesAddModule
-          ),
+        children: [
+          {
+            path: 'liveorder',
+            loadChildren: () =>
+              import('@jafar-tech/table-qr/orders/features/live-orders').then(
+                (m) => m.TableQrOrdersFeaturesLiveOrdersModule
+              ),
+          },
+          {
+            path: 'add',
+            component: AdminContainerComponent,
+            loadChildren: () =>
+              import('@jafar-tech/table-qr/products/features/add').then(
+                (m) => m.TableQrProductsFeaturesAddModule
+              ),
+          },
+        ],
       },
     ]),
     MatSidenavModule,

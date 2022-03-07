@@ -73,7 +73,6 @@
       "sourceRoot": "libs/backend/auth/src",
       "projectType": "library",
       "architect": {
-
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
@@ -665,6 +664,32 @@
             "lintFilePatterns": [
               "libs/table-qr/orders/data-access/src/**/*.ts",
               "libs/table-qr/orders/data-access/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "table-qr-orders-features-live-orders": {
+      "projectType": "library",
+      "root": "libs/table-qr/orders/features/live-orders",
+      "sourceRoot": "libs/table-qr/orders/features/live-orders/src",
+      "prefix": "jafar-tech",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/table-qr/orders/features/live-orders"],
+          "options": {
+            "jestConfig": "libs/table-qr/orders/features/live-orders/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/table-qr/orders/features/live-orders/src/**/*.ts",
+              "libs/table-qr/orders/features/live-orders/src/**/*.html"
             ]
           }
         }

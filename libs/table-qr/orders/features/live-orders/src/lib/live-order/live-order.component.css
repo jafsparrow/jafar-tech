@@ -1,0 +1,36 @@
+.order-status {
+  padding: 5px;
+  /* border-radius: 5px; */
+}
+
+.order-item-container {
+}
+
+.order-item {
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.item-name {
+  flex: 1;
+  max-width: 80%;
+  text-overflow: ellipsis;
+}
+
+.item-modifiers {
+  color: grey;
+}
+
+.item-status {
+}
+
+.text-green {
+  color: olivedrab;
+}
+.text-orange {
+  color: orange;
+}
+.text-red {
+  color: orangered;
+}

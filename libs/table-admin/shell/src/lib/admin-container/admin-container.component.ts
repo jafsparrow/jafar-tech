@@ -6,7 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-container.component.css'],
 })
 export class AdminContainerComponent implements OnInit {
-  sideMenu: string[] = ['Home', 'Orders', 'Products', 'Promotions'];
+  sideMenu: string[] = [
+    'Dashboard',
+    'Live Orders',
+    'Orders',
+    'Menus',
+    'Customers',
+    'Discounts',
+  ];
   constructor() {}
 
   ngOnInit(): void {}

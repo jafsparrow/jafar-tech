@@ -1,8 +1,19 @@
-.drawer-container {
+/* .drawer-container {
   height: 100%;
   width: 100%;
 }
 
 .side-nav {
   width: 15%;
+} */
+
+mat-drawer-container {
+  height: 100vh;
+  width: 100vw;
+}
+
+mat-drawer {
+  width: 20%;
+  min-width: 250px;
+  background-color: rgb(245, 245, 245);
 }

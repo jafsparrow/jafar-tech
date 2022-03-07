@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,7 +30,12 @@ import { HttpClientModule } from '@angular/common/http';
     EffectsModule.forRoot([]),
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: 'endPointURL',
+      useValue: environment.apiUrl,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
