@@ -18,7 +18,7 @@ export class OrderEffects {
   constructor(
     private orderService: OrderService,
     private action$: Actions,
-    private router: Router,
+    // private router: Router,
     private store: Store,
     private _snackBar: MatSnackBar,
     private location: Location
