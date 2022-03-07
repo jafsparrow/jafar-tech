@@ -48,7 +48,7 @@ export class OrderEffects {
           this._snackBar.open('Your order is placed successfully', 'close')
         ),
         tap((data: any) => this.store.dispatch(clearCart())),
-        tap((data: any) => this.router.navigate(['shell/products']))
+        tap((data: any) => this.router.navigate(['']))
       );
     },
     { dispatch: false }
