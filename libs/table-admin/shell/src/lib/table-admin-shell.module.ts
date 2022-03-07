@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   imports: [
@@ -40,6 +41,7 @@ import { MatListModule } from '@angular/material/list';
     ]),
     MatSidenavModule,
     MatListModule,
+    MatSnackBarModule,
   ],
   declarations: [AdminContainerComponent],
 })
