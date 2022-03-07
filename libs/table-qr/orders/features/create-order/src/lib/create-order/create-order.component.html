@@ -28,7 +28,9 @@
 
     <ng-container matColumnDef="price">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
-      <td mat-cell *matCellDef="let row">{{ row.price }}</td>
+      <td mat-cell *matCellDef="let row" class="rupee-symbol-left">
+        {{ row.price }}
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="category">

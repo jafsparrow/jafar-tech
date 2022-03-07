@@ -19,7 +19,11 @@ th {
 }
 
 .mat-column-name {
-  width: 60%;
+  width: 50%;
+}
+
+.mat-column-price {
+  width: 10%;
 }
 
 .mat-column-actions {
