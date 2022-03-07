@@ -12,6 +12,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CartDataAccessModule } from '@jafar-tech/table-qr-cart-data-access';
 import { TableQrUiModule } from '@jafar-tech/table-qr-ui';
+import { TableQrOrdersDataAccessModule } from '@jafar-tech/table-qr-orders-data-access';
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import { TableQrUiModule } from '@jafar-tech/table-qr-ui';
     MatDialogModule,
     ProductsDataAccessModule,
     CartDataAccessModule,
+    TableQrOrdersDataAccessModule,
     TableQrUiModule,
   ],
   declarations: [CreateOrderComponent],

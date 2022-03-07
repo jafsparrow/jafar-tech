@@ -36,6 +36,13 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
                 (m) => m.TableQrOrdersFeaturesCreateOrderModule
               ),
           },
+          {
+            path: 'cart',
+            loadChildren: () =>
+              import('@jafar-tech/table-qr-cart-features-list').then(
+                (m) => m.CartFeaturesListModule
+              ),
+          },
         ],
       },
     ]),
