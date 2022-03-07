@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -19,7 +20,8 @@ export class OrderEffects {
     private action$: Actions,
     private router: Router,
     private store: Store,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private location: Location
   ) {}
 
   placeOrder$ = createEffect(() => {
@@ -48,7 +50,7 @@ export class OrderEffects {
           this._snackBar.open('Your order is placed successfully', 'close')
         ),
         tap((data: any) => this.store.dispatch(clearCart())),
-        tap((data: any) => this.router.navigate(['']))
+        tap((data: any) => this.location.back())
       );
     },
     { dispatch: false }
