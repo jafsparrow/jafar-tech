@@ -46,6 +46,9 @@
         "libs/table-qr/products/features/list/src/index.ts"
       ],
       "@jafar-tech/table-qr-ui": ["libs/table-qr-ui/src/index.ts"],
+      "@jafar-tech/table-qr/authentiication/data-access": [
+        "libs/table-qr/authentiication/data-access/src/index.ts"
+      ],
       "@jafar-tech/table-qr/core": ["libs/table-qr/core/src/index.ts"],
       "@jafar-tech/table-qr/orders/features/create-order": [
         "libs/table-qr/orders/features/create-order/src/index.ts"

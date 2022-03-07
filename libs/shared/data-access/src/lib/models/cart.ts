@@ -12,7 +12,7 @@ export interface Cart {
   user?: User;
   cartItems: { [key: string]: CartItem };
   placeOrderSpinner: boolean;
-  pendingOders?: OrderSummary[];
+  createdBy?: User;
 }
 
 export interface OrderSummary {

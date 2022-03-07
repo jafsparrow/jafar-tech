@@ -538,6 +538,32 @@
       },
       "tags": []
     },
+    "table-qr-authentiication-data-access": {
+      "projectType": "library",
+      "root": "libs/table-qr/authentiication/data-access",
+      "sourceRoot": "libs/table-qr/authentiication/data-access/src",
+      "prefix": "jafar-tech",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/table-qr/authentiication/data-access"],
+          "options": {
+            "jestConfig": "libs/table-qr/authentiication/data-access/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/table-qr/authentiication/data-access/src/**/*.ts",
+              "libs/table-qr/authentiication/data-access/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "table-qr-cart-data-access": {
       "projectType": "library",
       "root": "libs/table-qr/cart/data-access",
