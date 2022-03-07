@@ -23,7 +23,7 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
       <td mat-cell *matCellDef="let row">
-        <a (click)="viewProduct(row)" class="action">+</a>
+        <a (click)="openProductViewDialog(row)" class="action">+</a>
       </td>
     </ng-container>
 
@@ -53,3 +53,12 @@
     aria-label="Select page of users"
   ></mat-paginator>
 </div>
+<ng-container *ngIf="{ count: cartCount$ | async } as objCount">
+  <qr-ui-bottom-cart-summary
+    class="stick-bottom"
+    *ngIf="objCount.count && objCount.count > 0"
+    [cartProductsCount]="objCount.count"
+    [cartTotal]="cartTotal$ | async"
+    routerLink="../../cart"
+  ></qr-ui-bottom-cart-summary
+></ng-container>

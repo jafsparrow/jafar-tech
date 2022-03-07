@@ -9,6 +9,10 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
+import { MatDialogModule } from '@angular/material/dialog';
+import { CartDataAccessModule } from '@jafar-tech/table-qr-cart-data-access';
+import { TableQrUiModule } from '@jafar-tech/table-qr-ui';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -22,7 +26,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatTableModule,
     MatInputModule,
     MatPaginatorModule,
+    MatDialogModule,
     ProductsDataAccessModule,
+    CartDataAccessModule,
+    TableQrUiModule,
   ],
   declarations: [CreateOrderComponent],
 })
