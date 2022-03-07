@@ -23,10 +23,16 @@ import { MatListModule } from '@angular/material/list';
           },
           {
             path: 'add',
-            component: AdminContainerComponent,
             loadChildren: () =>
               import('@jafar-tech/table-qr/products/features/add').then(
                 (m) => m.TableQrProductsFeaturesAddModule
+              ),
+          },
+          {
+            path: 'create-order',
+            loadChildren: () =>
+              import('@jafar-tech/table-qr/orders/features/create-order').then(
+                (m) => m.TableQrOrdersFeaturesCreateOrderModule
               ),
           },
         ],

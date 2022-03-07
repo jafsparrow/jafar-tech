@@ -17,6 +17,18 @@ export const selectProductsCategoryVice = createSelector(
   (state) => state.productsByCat
 );
 
+export const selectProductsArray = createSelector(
+  selectProductsCategoryVice,
+  (categoryViceProduct) => {
+    let productArray: Product[] = [];
+    Object.values(categoryViceProduct).forEach(
+      (subProductArray) =>
+        (productArray = [...productArray, ...subProductArray])
+    );
+    return productArray;
+  }
+);
+
 export interface ProdCue extends Product {
   count?: number;
 }

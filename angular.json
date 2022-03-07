@@ -670,6 +670,32 @@
       },
       "tags": []
     },
+    "table-qr-orders-features-create-order": {
+      "projectType": "library",
+      "root": "libs/table-qr/orders/features/create-order",
+      "sourceRoot": "libs/table-qr/orders/features/create-order/src",
+      "prefix": "jafar-tech",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/table-qr/orders/features/create-order"],
+          "options": {
+            "jestConfig": "libs/table-qr/orders/features/create-order/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/table-qr/orders/features/create-order/src/**/*.ts",
+              "libs/table-qr/orders/features/create-order/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "table-qr-orders-features-live-orders": {
       "projectType": "library",
       "root": "libs/table-qr/orders/features/live-orders",
