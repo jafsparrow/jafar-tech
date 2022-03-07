@@ -13,11 +13,7 @@ export const CART_FEATURE_KEY = 'cart';
 const initialState: Cart = {
   createdAt: new Date(),
   cartItems: {},
-  pendingOders: [
-    { _id: 'idofdfd', status: Status.INPROGRESS, date: new Date() },
 
-    { _id: 'ddfdf', status: Status.SERVED, date: new Date() },
-  ],
   placeOrderSpinner: false,
 };
 

@@ -1,4 +1,4 @@
-import { Cart, CartItem } from '@jafar-tech/shared/data-access';
+import { Cart, CartItem, User } from '@jafar-tech/shared/data-access';
 import { createAction, props } from '@ngrx/store';
 
 export const loadCart = createAction('[Cart] Load Cart Items');
@@ -12,7 +12,10 @@ export const loadCartFail = createAction(
   '[Cart] Load Cart Failed',
   props<{ error: any }>()
 );
-
+export const setCartUser = createAction(
+  '[Cart] set Cart User',
+  props<{ user: User }>()
+);
 export const addToCart = createAction(
   '[Cart] add item to cart',
   props<{ item: CartItem }>()
