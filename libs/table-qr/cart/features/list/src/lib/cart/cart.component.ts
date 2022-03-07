@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Route } from '@angular/router';
 import { Cart, CartItem } from '@jafar-tech/shared/data-access';
 import {
   addToCart,
@@ -19,10 +20,15 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
+  routeLink = '../products';
   cart$ = this.store.select(selectCart);
   placeOrderSpinner$ = this.store.select(selectPlaceOrderSpinner);
   orderPlaceSateMessage$ = this.store.select(selectOrderErrorMessage);
-  constructor(private store: Store) {}
+  constructor(private store: Store, private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.data.subscribe((data: any) =>
+      data.menuURL ? (this.routeLink = data.menuURL) : ''
+    );
+  }
 
   ngOnInit(): void {}
 
