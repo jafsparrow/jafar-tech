@@ -15,6 +15,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { PreloadAllModules, RouterModule } from '@angular/router';
 import { StoreDevtools, StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { TableQrCoreModule } from '@jafar-tech/table-qr/core';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { environment } from '../environments/environment';
     HttpClientModule,
     BrowserAnimationsModule,
     StoreDevtoolsModule.instrument({ maxAge: 25 }),
+    TableQrCoreModule,
   ],
   providers: [
     {
