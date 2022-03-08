@@ -3,7 +3,7 @@ import { Document } from 'mongoose';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { UserType } from '@jafar-tech/shared/data-access';
 
-@Schema()
+@Schema({ autoCreate: false })
 export class User extends Document {
   @Prop({ required: true })
   firstName: string;
@@ -12,7 +12,7 @@ export class User extends Document {
   lastName: string;
 
   @Prop()
-  userName: string;
+  username: string;
 
   @Prop({ enum: UserType })
   type: string;

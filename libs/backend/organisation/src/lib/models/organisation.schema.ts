@@ -1,3 +1,4 @@
+import { User, UserSchema } from '@jafar-tech/backend/auth';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 import { Document } from 'mongoose';
@@ -23,6 +24,9 @@ export class Organisation extends Document {
 
   @Prop()
   offDays: string[];
+
+  @Prop({ type: [UserSchema], default: [] })
+  users: User[];
 }
 
 export const OrganisationSchema = SchemaFactory.createForClass(Organisation);
