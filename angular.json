@@ -209,6 +209,32 @@
       },
       "tags": []
     },
+    "shared-core": {
+      "projectType": "library",
+      "root": "libs/shared/core",
+      "sourceRoot": "libs/shared/core/src",
+      "prefix": "jafar-tech",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/core"],
+          "options": {
+            "jestConfig": "libs/shared/core/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/core/src/**/*.ts",
+              "libs/shared/core/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "shared-data-access": {
       "projectType": "library",
       "root": "libs/shared/data-access",
