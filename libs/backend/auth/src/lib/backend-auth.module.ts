@@ -1,7 +1,10 @@
 import { BackendCoreModule } from '@jafar-tech/backend/core';
+import { BackendOrganisationModule } from '@jafar-tech/backend/organisation';
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AuthController } from './auth.controller';
+import { AuthenticationRepository } from './auth.repository';
+import { AuthenticationService } from './auth.service';
 import { User, UserSchema } from './models/user.schema';
 
 @Module({
@@ -13,9 +16,10 @@ import { User, UserSchema } from './models/user.schema';
         schema: UserSchema,
       },
     ]),
+    BackendOrganisationModule,
   ],
   controllers: [AuthController],
-  providers: [],
+  providers: [AuthenticationRepository, AuthenticationService],
   exports: [MongooseModule],
 })
 export class BackendAuthModule {}
