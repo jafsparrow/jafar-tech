@@ -9,4 +9,10 @@ export interface User {
   lastName: string;
   username: string;
   type: UserType;
+  token?: string;
+}
+
+export interface LoginData {
+  username: string;
+  password: string;
 }
