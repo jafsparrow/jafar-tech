@@ -16,6 +16,6 @@ import { OrganisationService } from './organisation.service';
   ],
   controllers: [OrganisationController],
   providers: [OrganisationService, OrganisationRepository],
-  exports: [],
+  exports: [MongooseModule],
 })
 export class BackendOrganisationModule {}
