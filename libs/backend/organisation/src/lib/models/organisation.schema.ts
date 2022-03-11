@@ -1,5 +1,9 @@
 import { User, UserSchema } from '@jafar-tech/backend/auth';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import {
+  Product,
+  ProductSchema,
+} from 'libs/backend/products/src/lib/models/product.schema';
 
 import { Document } from 'mongoose';
 
@@ -27,6 +31,9 @@ export class Organisation extends Document {
 
   @Prop({ type: [UserSchema], default: [] })
   users: User[];
+
+  @Prop({ type: [ProductSchema], default: [] })
+  produccts: Product[];
 }
 
 export const OrganisationSchema = SchemaFactory.createForClass(Organisation);

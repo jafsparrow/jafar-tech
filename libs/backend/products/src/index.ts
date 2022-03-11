@@ -1,2 +1,2 @@
-// export * from './lib/backend-products.controller';
+export * from './lib/models/product.schema';
 export * from './lib/backend-products.module';
