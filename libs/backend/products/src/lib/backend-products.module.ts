@@ -7,6 +7,7 @@ import { Category, CategorySchema } from './models/category.schema';
 import { ProductSchema, Product } from './models/product.schema';
 import { ProductsRepository } from './products.repository';
 import { ProductService } from './products.service';
+import { BackendOrganisationModule } from '@jafar-tech/backend/organisation';
 
 @Module({
   imports: [
@@ -20,6 +21,8 @@ import { ProductService } from './products.service';
         schema: CategorySchema,
       },
     ]),
+
+    BackendOrganisationModule,
   ],
   controllers: [BackendProductsController],
   providers: [

@@ -31,8 +31,10 @@ import { AppService } from './app.service';
       exclude: ['/api*'],
     }),
     BackendCoreModule,
+
     BackendAuthModule,
     BackendProductsModule,
+
     BackendOrdersModule,
     BackendOrganisationModule,
   ],
