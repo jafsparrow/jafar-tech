@@ -1,3 +1,4 @@
+import { BackendProductsModule } from '@jafar-tech/backend/products';
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Organisation, OrganisationSchema } from './models/organisation.schema';

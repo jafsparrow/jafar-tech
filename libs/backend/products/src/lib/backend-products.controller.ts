@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { CategoryService } from './category.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { CreateProductDto } from './dto/create-product-dto';
@@ -15,10 +15,13 @@ export class BackendProductsController {
     return this.productService.getProduct();
   }
 
-  @Post()
-  createProduct(@Body() product: CreateProductDto) {
+  @Post(':id')
+  createProduct(
+    @Param('id') companyId: string,
+    @Body() product: CreateProductDto
+  ) {
     console.log('create product called');
-    return this.productService.createProduct(product);
+    return this.productService.createProduct(companyId, product);
   }
 
   @Post('category')

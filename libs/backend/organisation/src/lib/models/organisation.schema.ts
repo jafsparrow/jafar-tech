@@ -30,7 +30,7 @@ export class Organisation extends Document {
   offDays: string[];
 
   @Prop({ type: [ProductSchema], default: [] })
-  produccc: Product[];
+  products: Product[];
   @Prop({ type: [UserSchema], default: [] })
   users: User[];
 }

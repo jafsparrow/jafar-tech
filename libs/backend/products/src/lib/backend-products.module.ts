@@ -21,7 +21,6 @@ import { BackendOrganisationModule } from '@jafar-tech/backend/organisation';
         schema: CategorySchema,
       },
     ]),
-
     BackendOrganisationModule,
   ],
   controllers: [BackendProductsController],

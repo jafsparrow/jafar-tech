@@ -29,8 +29,8 @@ export class ProductService {
     return categoryVice;
   }
 
-  createProduct(product: CreateProductDto) {
-    return this.productRepository.createAProduct(product);
+  createProduct(companyId: string, product: CreateProductDto) {
+    return this.productRepository.createAProduct(companyId, product);
   }
 }
 33;
