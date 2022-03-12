@@ -33,9 +33,8 @@ import { AppService } from './app.service';
     BackendCoreModule,
 
     BackendOrganisationModule,
-    BackendProductsModule,
-
     BackendAuthModule,
+    BackendProductsModule,
 
     BackendOrdersModule,
   ],

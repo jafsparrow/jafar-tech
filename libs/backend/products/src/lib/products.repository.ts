@@ -7,7 +7,8 @@ import { Product } from './models/product.schema';
 @Injectable()
 export class ProductsRepository {
   constructor(
-    @InjectModel(Organisation.name) private orgModel: Model<Organisation>,
+    @InjectModel(Organisation.name)
+    private readonly orgModel: Model<Organisation>,
     @InjectModel(Product.name)
     private readonly product: Model<Product>
   ) {
@@ -17,7 +18,7 @@ export class ProductsRepository {
   getProducts() {
     // return this.product.create({ name: 'hello' });
     // this.product.aggregate().project({array: [{
-    //   k:"category",
+    //   k:"category",s
     //   v
     // }]})
     return this.product.find().sort('category').exec();
@@ -26,6 +27,7 @@ export class ProductsRepository {
   async createAProduct(companyId: string, product: CreateProductDto) {
     const newProduct = new this.product(product);
     let organisation = await this.orgModel.findById(companyId);
+
     organisation.products.push(newProduct);
     return organisation.save();
   }

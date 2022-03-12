@@ -43,6 +43,9 @@ export class Product extends Document {
 
   @Prop()
   category: string;
+
+  @Prop({ default: 99 })
+  indexInCategory: number;
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product);
