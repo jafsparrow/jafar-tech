@@ -32,11 +32,12 @@ import { AppService } from './app.service';
     }),
     BackendCoreModule,
 
-    BackendAuthModule,
+    BackendOrganisationModule,
     BackendProductsModule,
 
+    BackendAuthModule,
+
     BackendOrdersModule,
-    BackendOrganisationModule,
   ],
   controllers: [AppController],
   providers: [AppService],

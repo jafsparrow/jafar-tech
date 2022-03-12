@@ -29,11 +29,10 @@ export class Organisation extends Document {
   @Prop()
   offDays: string[];
 
+  @Prop({ type: [ProductSchema], default: [] })
+  produccc: Product[];
   @Prop({ type: [UserSchema], default: [] })
   users: User[];
-
-  @Prop({ type: [ProductSchema], default: [] })
-  produccts: Product[];
 }
 
 export const OrganisationSchema = SchemaFactory.createForClass(Organisation);

@@ -11,7 +11,7 @@ export class ProductsRepository {
     @InjectModel(Product.name)
     private readonly product: Model<Product>
   ) {
-    console.log(Organisation.name);
+    console.log('Products repository', Organisation.name);
   }
 
   getProducts() {

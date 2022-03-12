@@ -9,7 +9,9 @@ export class AuthenticationRepository {
   constructor(
     @InjectModel(Organisation.name)
     private readonly organsationModel: Model<Organisation>
-  ) {}
+  ) {
+    console.log('authrepositoyr', Organisation.name);
+  }
 
   async getUsers(companyId: string) {
     let users: User[] = [];

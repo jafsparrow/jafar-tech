@@ -1,7 +1,6 @@
 import { ModifierGroupsEntity } from '@jafar-tech/shared/data-access';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, SchemaTypes } from 'mongoose';
-import { Category } from './category.schema';
 
 @Schema()
 export class Product extends Document {
