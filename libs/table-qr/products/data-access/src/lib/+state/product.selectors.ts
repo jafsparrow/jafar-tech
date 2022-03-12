@@ -43,7 +43,18 @@ export const selectProductConsideringcart = createSelector(
 
 export const selectProductByCategories = createSelector(
   selectProductState,
-  (state) => state.productsByCat
+  (state) => {
+    let categoryVice: any = {};
+
+    state.products.map((item) => {
+      categoryVice[item.category] = [
+        ...(categoryVice[item.category] || []),
+        item,
+      ];
+    });
+
+    return categoryVice;
+  }
 );
 
 export const selectProductFetchInProgressFlag = createSelector(
