@@ -35,7 +35,9 @@ export class ContainerComponent implements OnInit {
   constructor(private store: Store, private router: Router) {}
 
   ngOnInit(): void {
-    this.store.dispatch(loadOrgInfo({ organisationID: '2222' }));
+    this.store.dispatch(
+      loadOrgInfo({ organisationID: '6226fba3209ec7f5ebd956e7' })
+    );
     this.store.dispatch(loadProductsCategoryVice());
   }
 

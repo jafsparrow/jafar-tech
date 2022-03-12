@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Organisation } from '@jafar-tech/shared/data-access';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, of, switchMap } from 'rxjs';
+import { catchError, map, of, switchMap, tap } from 'rxjs';
 import { OrganisationService } from '../organisation.service';
 import {
   loadOrgInfo,
@@ -18,8 +18,9 @@ export class OrganisationEffects {
   loadOrgEffect$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(loadOrgInfo),
-      switchMap((data) => {
-        return this.orgService.getOrgDetails({ dd: '1' }).pipe(
+      switchMap((payload) => {
+        return this.orgService.getOrgDetails(payload.organisationID).pipe(
+          tap((data) => console.log(data)),
           map((data: Organisation) =>
             loadOrgInfoSuccess({ organisation: data })
           ),
