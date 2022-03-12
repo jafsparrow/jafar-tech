@@ -19,11 +19,10 @@
       "@jafar-tech/backend/auth": ["libs/backend/auth/src/index.ts"],
       "@jafar-tech/backend/core": ["libs/backend/core/src/index.ts"],
       "@jafar-tech/backend/orders": ["libs/backend/orders/src/index.ts"],
-
-      "@jafar-tech/backend/products": ["libs/backend/products/src/index.ts"],
       "@jafar-tech/backend/organisation": [
         "libs/backend/organisation/src/index.ts"
       ],
+      "@jafar-tech/backend/products": ["libs/backend/products/src/index.ts"],
       "@jafar-tech/shared/core": ["libs/shared/core/src/index.ts"],
       "@jafar-tech/shared/data-access": [
         "libs/shared/data-access/src/index.ts"
@@ -50,6 +49,9 @@
       "@jafar-tech/table-qr-ui": ["libs/table-qr-ui/src/index.ts"],
       "@jafar-tech/table-qr/authentiication/data-access": [
         "libs/table-qr/authentiication/data-access/src/index.ts"
+      ],
+      "@jafar-tech/table-qr/category/data-access/category": [
+        "libs/table-qr/category/data-access/category/src/index.ts"
       ],
       "@jafar-tech/table-qr/core": ["libs/table-qr/core/src/index.ts"],
       "@jafar-tech/table-qr/orders/features/create-order": [

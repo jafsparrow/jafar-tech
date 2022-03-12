@@ -642,6 +642,32 @@
       },
       "tags": []
     },
+    "table-qr-category-data-access-category": {
+      "projectType": "library",
+      "root": "libs/table-qr/category/data-access/category",
+      "sourceRoot": "libs/table-qr/category/data-access/category/src",
+      "prefix": "jafar-tech",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/table-qr/category/data-access/category"],
+          "options": {
+            "jestConfig": "libs/table-qr/category/data-access/category/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/table-qr/category/data-access/category/src/**/*.ts",
+              "libs/table-qr/category/data-access/category/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "table-qr-core": {
       "projectType": "library",
       "root": "libs/table-qr/core",
