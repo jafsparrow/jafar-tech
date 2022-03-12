@@ -8,4 +8,8 @@ export class OrganisationService {
   createOrganisation(orgDto: CreateOrganisationDto) {
     return this.orgRepository.createOrganisation(orgDto);
   }
+
+  getOrganisationDetails(companyId: string) {
+    return this.orgRepository.getOrgnisationById(companyId);
+  }
 }

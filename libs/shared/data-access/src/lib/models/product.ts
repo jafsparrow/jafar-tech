@@ -12,6 +12,7 @@ export interface Category {
   closeTime?: null;
   openAllDay?: null;
   hours?: null[] | null;
+  adminIndex?: number;
 }
 export interface Product {
   _id: string;
@@ -27,6 +28,7 @@ export interface Product {
   popular: boolean;
   printName?: string;
   modifierGroups?: ModifierGroupsEntity[] | null;
+  indexInCategory?: number;
 }
 export interface ModifierGroupsEntity {
   id?: string;

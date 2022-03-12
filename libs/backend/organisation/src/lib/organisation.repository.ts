@@ -13,4 +13,11 @@ export class OrganisationRepository {
     let org = this.organsationModel.create(data);
     return org;
   }
+
+  async getOrgnisationById(companyId: string) {
+    let org: Organisation = await this.organsationModel
+      .findById(companyId)
+      .select('-users');
+    return org;
+  }
 }
