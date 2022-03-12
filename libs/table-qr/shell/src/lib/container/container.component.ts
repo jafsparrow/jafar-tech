@@ -38,7 +38,7 @@ export class ContainerComponent implements OnInit {
     this.store.dispatch(
       loadOrgInfo({ organisationID: '6226fba3209ec7f5ebd956e7' })
     );
-    this.store.dispatch(loadProductsCategoryVice());
+    // this.store.dispatch(loadProductsCategoryVice());
   }
 
   menuClicked(menu: string) {

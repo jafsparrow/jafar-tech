@@ -1,3 +1,5 @@
+import { Product } from '@jafar-tech/shared/data-access';
+
 export interface Organisation {
   name: string;
   caption: string;
@@ -7,4 +9,5 @@ export interface Organisation {
   license: string;
   openAllWeek: boolean;
   offDays: string[];
+  products?: Product[];
 }
