@@ -722,6 +722,32 @@
       "tags": [],
       "implicitDependencies": ["table-qr"]
     },
+    "table-qr-menu-features-add-menu": {
+      "projectType": "library",
+      "root": "libs/table-qr/menu/features/add-menu",
+      "sourceRoot": "libs/table-qr/menu/features/add-menu/src",
+      "prefix": "jafar-tech",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/table-qr/menu/features/add-menu"],
+          "options": {
+            "jestConfig": "libs/table-qr/menu/features/add-menu/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/table-qr/menu/features/add-menu/src/**/*.ts",
+              "libs/table-qr/menu/features/add-menu/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "table-qr-orders-data-access": {
       "projectType": "library",
       "root": "libs/table-qr/orders/data-access",
