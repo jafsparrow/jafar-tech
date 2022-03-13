@@ -1,1 +1,21 @@
 <p>menu-edit works!</p>
+<mat-accordion *ngIf="categories$ | async as categories">
+  <mat-expansion-panel hideToggle *ngFor="let category of categories">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ category.name }} <mat-icon>account_circle</mat-icon>
+      </mat-panel-title>
+      <mat-panel-description> Type your name and age </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <div
+      cdkDropList
+      (cdkDropListDropped)="drop($event, products)"
+      *ngIf="getProductsOfCategory(category.name) | async as products"
+    >
+      <div *ngFor="let product of movies" cdkDrag>
+        <div class="example-list">tesmp {{ product }}</div>
+      </div>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>

@@ -1,4 +1,4 @@
-import { Product } from '@jafar-tech/shared/data-access';
+import { Category, Product } from '@jafar-tech/shared/data-access';
 
 export interface Organisation {
   name: string;
@@ -10,4 +10,5 @@ export interface Organisation {
   openAllWeek: boolean;
   offDays: string[];
   products?: Product[];
+  categories?: Category[];
 }

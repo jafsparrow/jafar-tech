@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ProductsDataAccessModule } from '@jafar-tech/table-qr-products-data-access';
 
 @NgModule({
   imports: [
@@ -44,12 +45,20 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
               ),
             data: { menuURL: '../create-order' },
           },
+          {
+            path: 'menu',
+            loadChildren: () =>
+              import('@jafar-tech/table-qr/menu/features/add-menu').then(
+                (m) => m.TableQrMenuFeaturesAddMenuModule
+              ),
+          },
         ],
       },
     ]),
     MatSidenavModule,
     MatListModule,
     MatSnackBarModule,
+    ProductsDataAccessModule,
   ],
   declarations: [AdminContainerComponent],
 })

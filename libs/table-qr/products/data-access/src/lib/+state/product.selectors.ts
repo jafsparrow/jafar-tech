@@ -12,6 +12,10 @@ export const selectAllProducts = createSelector(
   (state) => state.products
 );
 
+export const selectProductsFromCategory = (category: string) =>
+  createSelector(selectAllProducts, (products) =>
+    products.filter((product) => product.category == category)
+  );
 export const selectProductsCategoryVice = createSelector(
   selectProductState,
   (state) => state.productsByCat

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { loadProductsCategoryVice } from '@jafar-tech/table-qr-products-data-access';
+import { loadOrgInfo } from '@jafar-tech/table-qr/organisation/data-access';
 import { Store } from '@ngrx/store';
 
 @Component({
@@ -19,7 +20,9 @@ export class AdminContainerComponent implements OnInit {
   constructor(private store: Store) {}
 
   ngOnInit(): void {
-    this.store.dispatch(loadProductsCategoryVice());
+    this.store.dispatch(
+      loadOrgInfo({ organisationID: '6226fba3209ec7f5ebd956e7' })
+    );
   }
 
   onMenuChange($event: any) {
