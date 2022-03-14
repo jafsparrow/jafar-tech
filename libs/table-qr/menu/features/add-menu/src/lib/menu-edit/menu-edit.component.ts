@@ -4,7 +4,7 @@ import { Category, Product } from '@jafar-tech/shared/data-access';
 import { selectProductsFromCategory } from '@jafar-tech/table-qr-products-data-access';
 import { selectCategories } from '@jafar-tech/table-qr/category/data-access/category';
 import { Store } from '@ngrx/store';
-import { Observable, ObservableLike } from 'rxjs';
+import { Observable, ObservableLike, take } from 'rxjs';
 
 @Component({
   selector: 'jafar-tech-menu-edit',
@@ -35,14 +35,10 @@ export class MenuEditComponent implements OnInit {
     return this.store.select(selectProductsFromCategory(category));
   }
 
-  drop(event: CdkDragDrop<string[]>, products: Product[]) {
-    console.log(event.container);
-    moveItemInArray(this.movies, event.previousIndex, event.currentIndex);
-    console.log(this.movies);
-    // console.log(event);
-    // console.log(products);
-  }
-  getItems(event: any) {
-    console.log('event from getitems', event);
+  productSortChaange(sortedProducts: Product[]) {
+    const productSortArray = sortedProducts.map((product, index) => ({
+      _id: product._id,
+      indexInCategory: index,
+    }));
   }
 }

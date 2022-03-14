@@ -8,6 +8,8 @@ import { CartDataAccessModule } from '@jafar-tech/table-qr-cart-data-access';
 import { TableQrCategoryDataAccessCategoryModule } from '@jafar-tech/table-qr/category/data-access/category';
 import { TableQrOrganisationDataAccessModule } from '@jafar-tech/table-qr/organisation/data-access';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MenuCategoryProductListComponent } from './menu-category-product-list/menu-category-product-list.component';
+import { TableQrUiModule } from '@jafar-tech/table-qr-ui';
 
 @NgModule({
   imports: [
@@ -18,7 +20,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     TableQrOrganisationDataAccessModule,
     TableQrCategoryDataAccessCategoryModule,
     DragDropModule,
+    TableQrUiModule,
   ],
-  declarations: [MenuEditComponent],
+  declarations: [MenuEditComponent, MenuCategoryProductListComponent],
 })
 export class TableQrMenuFeaturesAddMenuModule {}
