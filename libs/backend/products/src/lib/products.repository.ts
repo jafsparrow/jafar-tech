@@ -1,7 +1,7 @@
 import { Organisation } from '@jafar-tech/backend/organisation';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { FilterQuery, Model } from 'mongoose';
+import { FilterQuery, Model, ObjectId } from 'mongoose';
 import { CreateProductDto } from './dto/create-product-dto';
 import { PatchProductIndexDto } from './dto/patch-porduct.dto';
 import { Product } from './models/product.schema';
@@ -35,30 +35,18 @@ export class ProductsRepository {
 
   async bulkUpdate(companyId: string, data: PatchProductIndexDto[]) {
     let organisation = await this.orgModel.findById(companyId);
-
+    // defining sortmap to search for the products.
     let sortMap = {};
     data.forEach((item) => (sortMap[item._id] = item.indexInCategory));
-    console.log(sortMap);
-
-    // let sortedProduct = organisation.products.map((product) => ({
-    //   ...product,
-    //   indexInCategory: sortMap[product._id],
-    // }));
-    console.log(organisation.products.length);
-    organisation.products.forEach((product) => {
-      if (Object.keys(sortMap).includes(product._id)) {
-        console.log(sortMap[product._id]);
+    organisation.products.map((product) => {
+      let productId: ObjectId = product._id;
+      if (Object.keys(sortMap).includes(productId.toString())) {
         product.indexInCategory = sortMap[product._id];
+        return product;
       }
-
       return product;
     });
 
-    console.log(
-      organisation.products.forEach((item) =>
-        console.log(item.name, item.indexInCategory)
-      )
-    );
     return await organisation.save();
     // return await this.orgModel.bulkWrite(
     //   data.map((item) => ({

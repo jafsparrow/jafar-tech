@@ -65,7 +65,7 @@ export class ProductsEffects {
           .updateProductsSort(payload.companyId, payload.productSortData)
           .pipe(
             map((res) => {
-              console.log(res.products);
+              // console.log(res.products);
               return loadOrgInfoSuccess({ organisation: res });
             }),
             catchError((error) => of(updateProductFail(error)))

@@ -23,7 +23,7 @@ export const selectProductsFromCategory = (category: string) =>
     let sorted = currCatPor.sort(
       (a, b) => a.indexInCategory! - b.indexInCategory!
     );
-    console.log(sorted);
+    // console.log(sorted);
     return sorted;
   });
 export const selectProductsCategoryVice = createSelector(

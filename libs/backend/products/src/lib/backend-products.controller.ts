@@ -35,7 +35,7 @@ export class BackendProductsController {
     @Body() data: PatchProductIndexDto[],
     @Param('id') companyId: string
   ) {
-    console.log(data);
+    // console.log(data);
     return this.productService.updateProductsIndex(companyId, data);
   }
 }
