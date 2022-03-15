@@ -18,7 +18,7 @@ import { ProductsDataAccessModule } from '@jafar-tech/table-qr-products-data-acc
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild([{ path: '', component: ProductAddComponent }]),
+    // RouterModule.forChild([{ path: '', component: ProductAddComponent }]),
     ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,
@@ -30,5 +30,6 @@ import { ProductsDataAccessModule } from '@jafar-tech/table-qr-products-data-acc
     ProductsDataAccessModule,
   ],
   declarations: [ProductAddComponent],
+  exports: [ProductAddComponent],
 })
 export class TableQrProductsFeaturesAddModule {}

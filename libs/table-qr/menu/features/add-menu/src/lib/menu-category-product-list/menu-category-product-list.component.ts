@@ -7,7 +7,9 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Product } from '@jafar-tech/shared/data-access';
+import { ProductAddComponent } from '@jafar-tech/table-qr/products/features/add';
 
 @Component({
   selector: 'jafar-tech-menu-category-product-list',
@@ -21,7 +23,21 @@ export class MenuCategoryProductListComponent implements OnInit {
   @Output('sortingChanged') onSorting: EventEmitter<Product[]> =
     new EventEmitter();
 
-  constructor() {}
+  constructor(public dialog: MatDialog) {}
+
+  openDialog(product: Product) {
+    const dialogRef = this.dialog.open(ProductAddComponent, {
+      position: { right: '0' },
+      data: {
+        product,
+        isEdit: true,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 
   ngOnInit(): void {
     this.sortedProducts = this.products;

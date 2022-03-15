@@ -7,6 +7,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ProductsDataAccessModule } from '@jafar-tech/table-qr-products-data-access';
+import { TableQrProductsFeaturesAddModule } from '@jafar-tech/table-qr/products/features/add';
 
 @NgModule({
   imports: [
@@ -23,13 +24,13 @@ import { ProductsDataAccessModule } from '@jafar-tech/table-qr-products-data-acc
                 (m) => m.TableQrOrdersFeaturesLiveOrdersModule
               ),
           },
-          {
-            path: 'add',
-            loadChildren: () =>
-              import('@jafar-tech/table-qr/products/features/add').then(
-                (m) => m.TableQrProductsFeaturesAddModule
-              ),
-          },
+          // {
+          //   path: 'add',
+          //   loadChildren: () =>
+          //     import('@jafar-tech/table-qr/products/features/add').then(
+          //       (m) => m.TableQrProductsFeaturesAddModule
+          //     ),
+          // },
           {
             path: 'create-order',
             loadChildren: () =>
@@ -59,6 +60,7 @@ import { ProductsDataAccessModule } from '@jafar-tech/table-qr-products-data-acc
     MatListModule,
     MatSnackBarModule,
     ProductsDataAccessModule,
+    TableQrProductsFeaturesAddModule,
   ],
   declarations: [AdminContainerComponent],
 })

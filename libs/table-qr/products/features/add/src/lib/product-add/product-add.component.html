@@ -188,11 +188,20 @@
     <div>
       <button mat-button matStepperPrevious>Back</button>
       <button
+        *ngIf="!isEdit"
         mat-button
         (click)="addNewProduct()"
         [disabled]="!productAddForm!.valid"
       >
         Submit
+      </button>
+      <button
+        *ngIf="isEdit"
+        mat-button
+        (click)="updateProduct()"
+        [disabled]="!productAddForm!.valid"
+      >
+        Update
       </button>
     </div>
   </mat-step>

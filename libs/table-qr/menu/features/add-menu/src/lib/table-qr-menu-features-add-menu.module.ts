@@ -11,6 +11,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MenuCategoryProductListComponent } from './menu-category-product-list/menu-category-product-list.component';
 import { TableQrUiModule } from '@jafar-tech/table-qr-ui';
 import { MenuCategoryComponent } from './menu-category/menu-category.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { MenuCategoryComponent } from './menu-category/menu-category.component';
     TableQrCategoryDataAccessCategoryModule,
     DragDropModule,
     TableQrUiModule,
+    MatDialogModule,
   ],
   declarations: [
     MenuEditComponent,

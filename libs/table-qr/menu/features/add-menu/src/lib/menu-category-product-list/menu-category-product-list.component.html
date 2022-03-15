@@ -1,5 +1,6 @@
 <div cdkDropList (cdkDropListDropped)="drop($event)" class="list-container">
   <div *ngFor="let product of sortedProducts" cdkDrag class="list-box">
+    <button (click)="openDialog(product)">Edit</button>
     <qr-ui-menu-product-card [product]="product"></qr-ui-menu-product-card>
   </div>
 </div>

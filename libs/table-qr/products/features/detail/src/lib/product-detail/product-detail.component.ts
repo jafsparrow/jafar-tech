@@ -13,6 +13,7 @@ import { Observable } from 'rxjs';
 
 export interface DialogData {
   product: Product;
+  isEdit?: boolean;
 }
 
 @Component({
