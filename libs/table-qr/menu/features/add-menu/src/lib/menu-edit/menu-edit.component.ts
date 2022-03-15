@@ -1,10 +1,13 @@
 import { CdkDragDrop, DragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { Category, Product } from '@jafar-tech/shared/data-access';
-import { selectProductsFromCategory } from '@jafar-tech/table-qr-products-data-access';
+import {
+  selectProductsFromCategory,
+  updateProductSort,
+} from '@jafar-tech/table-qr-products-data-access';
 import { selectCategories } from '@jafar-tech/table-qr/category/data-access/category';
 import { Store } from '@ngrx/store';
-import { Observable, ObservableLike, take } from 'rxjs';
+import { Observable, ObservableLike, take, tap } from 'rxjs';
 
 @Component({
   selector: 'jafar-tech-menu-edit',
@@ -29,16 +32,14 @@ export class MenuEditComponent implements OnInit {
 
   constructor(private store: Store, private dragDropService: DragDrop) {}
 
-  ngOnInit(): void {}
-
-  getProductsOfCategory(category: string): Observable<Product[]> {
-    return this.store.select(selectProductsFromCategory(category));
+  ngOnInit(): void {
+    console.log('oninit fired');
   }
 
-  productSortChaange(sortedProducts: Product[]) {
-    const productSortArray = sortedProducts.map((product, index) => ({
-      _id: product._id,
-      indexInCategory: index,
-    }));
+  getProductsOfCategory(category: string): Observable<Product[]> {
+    console.log('getting product from template fired');
+    return this.store
+      .select(selectProductsFromCategory(category))
+      .pipe(tap((data) => console.log('in tap', data)));
   }
 }

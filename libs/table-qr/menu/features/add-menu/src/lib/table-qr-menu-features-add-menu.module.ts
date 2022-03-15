@@ -10,6 +10,7 @@ import { TableQrOrganisationDataAccessModule } from '@jafar-tech/table-qr/organi
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MenuCategoryProductListComponent } from './menu-category-product-list/menu-category-product-list.component';
 import { TableQrUiModule } from '@jafar-tech/table-qr-ui';
+import { MenuCategoryComponent } from './menu-category/menu-category.component';
 
 @NgModule({
   imports: [
@@ -22,6 +23,10 @@ import { TableQrUiModule } from '@jafar-tech/table-qr-ui';
     DragDropModule,
     TableQrUiModule,
   ],
-  declarations: [MenuEditComponent, MenuCategoryProductListComponent],
+  declarations: [
+    MenuEditComponent,
+    MenuCategoryProductListComponent,
+    MenuCategoryComponent,
+  ],
 })
 export class TableQrMenuFeaturesAddMenuModule {}

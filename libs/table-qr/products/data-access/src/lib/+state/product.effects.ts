@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Product } from '@jafar-tech/shared/data-access';
+import { loadOrgInfoSuccess } from '@jafar-tech/table-qr/organisation/data-access';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
@@ -16,6 +17,8 @@ import {
   loadProductsFail,
   loadProductsSuccess,
   productsCategoryViceLoading,
+  updateProductFail,
+  updateProductSort,
 } from './product.actions';
 
 @Injectable()
@@ -50,6 +53,23 @@ export class ProductsEffects {
           map((res) => addProductSuccess({ product: res as Product })),
           catchError((error) => of(addProductFailure({ error: error })))
         )
+      )
+    );
+  });
+
+  updateProductSort$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(updateProductSort),
+      switchMap((payload) =>
+        this.productService
+          .updateProductsSort(payload.companyId, payload.productSortData)
+          .pipe(
+            map((res) => {
+              console.log(res.products);
+              return loadOrgInfoSuccess({ organisation: res });
+            }),
+            catchError((error) => of(updateProductFail(error)))
+          )
       )
     );
   });

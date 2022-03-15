@@ -1,7 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 
-import { Product } from '@jafar-tech/shared/data-access';
+import {
+  Organisation,
+  Product,
+  ProductSortData,
+} from '@jafar-tech/shared/data-access';
 import { map, Observable, of } from 'rxjs';
 
 @Injectable({
@@ -30,6 +34,16 @@ export class ProductsService {
     console.log('adding a product');
     console.log(product);
     return this.httpClient.post(`${this.apiUrl}/products`, product);
+  }
+
+  updateProductsSort(
+    companyId: string,
+    productSoftData: ProductSortData[]
+  ): Observable<Organisation> {
+    return this.httpClient.patch<Organisation>(
+      `${this.apiUrl}/products/${companyId}`,
+      productSoftData
+    );
   }
 }
 

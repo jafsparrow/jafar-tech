@@ -1,7 +1,8 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
 import { CategoryService } from './category.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { CreateProductDto } from './dto/create-product-dto';
+import { PatchProductIndexDto } from './dto/patch-porduct.dto';
 import { ProductService } from './products.service';
 
 @Controller('products')
@@ -27,5 +28,14 @@ export class BackendProductsController {
   @Post('category')
   createCategory(@Body() category: CreateCategoryDto) {
     this.categoryService.createCategory(category);
+  }
+
+  @Patch(':id')
+  updateProductOrder(
+    @Body() data: PatchProductIndexDto[],
+    @Param('id') companyId: string
+  ) {
+    console.log(data);
+    return this.productService.updateProductsIndex(companyId, data);
   }
 }

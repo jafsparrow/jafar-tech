@@ -1,5 +1,9 @@
 import { state } from '@angular/animations';
-import { CartItem, Product } from '@jafar-tech/shared/data-access';
+import {
+  CartItem,
+  CategoryViseProducts,
+  Product,
+} from '@jafar-tech/shared/data-access';
 import { selectCart } from '@jafar-tech/table-qr-cart-data-access';
 import { createFeatureSelector, createSelector, select } from '@ngrx/store';
 import { ProductState, PRODUCTS_FEATURE_KEY } from './products.reducers';
@@ -13,9 +17,15 @@ export const selectAllProducts = createSelector(
 );
 
 export const selectProductsFromCategory = (category: string) =>
-  createSelector(selectAllProducts, (products) =>
-    products.filter((product) => product.category == category)
-  );
+  createSelector(selectAllProducts, (products) => {
+    let currCatPor = products.filter((product) => product.category == category);
+
+    let sorted = currCatPor.sort(
+      (a, b) => a.indexInCategory! - b.indexInCategory!
+    );
+    console.log(sorted);
+    return sorted;
+  });
 export const selectProductsCategoryVice = createSelector(
   selectProductState,
   (state) => state.productsByCat
@@ -48,7 +58,7 @@ export const selectProductConsideringcart = createSelector(
 export const selectProductByCategories = createSelector(
   selectProductState,
   (state) => {
-    let categoryVice: any = {};
+    let categoryVice: CategoryViseProducts = {};
 
     state.products.map((item) => {
       categoryVice[item.category] = [

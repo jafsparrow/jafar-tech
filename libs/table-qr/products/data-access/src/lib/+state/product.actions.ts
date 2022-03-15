@@ -1,4 +1,8 @@
-import { CategoryViseProducts, Product } from '@jafar-tech/shared/data-access';
+import {
+  CategoryViseProducts,
+  Product,
+  ProductSortData,
+} from '@jafar-tech/shared/data-access';
 import { createAction, props } from '@ngrx/store';
 
 export const loadProducts = createAction('[Product] Load Products');
@@ -52,4 +56,14 @@ export const editProduct = createAction(
 export const deleteProduct = createAction(
   '[Product] delete product',
   props<{ productId: string }>()
+);
+
+export const updateProductSort = createAction(
+  '[PRODUCT] update products sort',
+  props<{ companyId: string; productSortData: ProductSortData[] }>()
+);
+
+export const updateProductFail = createAction(
+  '[PRODUCT] sort update failed',
+  props<{ errorMessage: string }>()
 );

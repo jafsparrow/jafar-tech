@@ -1,15 +1,17 @@
 <p>menu-edit works!</p>
 <mat-accordion *ngIf="categories$ | async as categories">
-  <mat-expansion-panel hideToggle *ngFor="let category of categories">
+  <mat-expansion-panel
+    hideToggle
+    *ngFor="let category of categories"
+    expanded="true"
+  >
     <mat-expansion-panel-header>
       <mat-panel-title>
         {{ category.name }} <mat-icon>account_circle</mat-icon>
       </mat-panel-title>
       <mat-panel-description> Type your name and age </mat-panel-description>
     </mat-expansion-panel-header>
-    <jafar-tech-menu-category-product-list
-      [products]="(getProductsOfCategory(category.name) | async)!"
-      (sortingChanged)="productSortChaange($event)"
-    ></jafar-tech-menu-category-product-list>
+    <jafar-tech-menu-category [category]="category.name">
+    </jafar-tech-menu-category>
   </mat-expansion-panel>
 </mat-accordion>

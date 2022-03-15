@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product-dto';
+import { PatchProductIndexDto } from './dto/patch-porduct.dto';
 import { Product } from './models/product.schema';
 import { ProductsRepository } from './products.repository';
 
@@ -32,8 +33,12 @@ export class ProductService {
   createProduct(companyId: string, product: CreateProductDto) {
     return this.productRepository.createAProduct(companyId, product);
   }
+
+  updateProductsIndex(companyId: string, data: PatchProductIndexDto[]) {
+    return this.productRepository.bulkUpdate(companyId, data);
+  }
 }
-33;
+
 export const PRODUCTS = [
   {
     id: 11,

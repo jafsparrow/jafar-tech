@@ -23,9 +23,8 @@ export class OrganisationEffects {
     return this.actions$.pipe(
       ofType(loadOrgInfo),
       switchMap((payload) => {
-        console.log('load org effect fired');
+        // console.log('load org effect fired');
         return this.orgService.getOrgDetails(payload.organisationID).pipe(
-          tap((data) => console.log(data)),
           map((data: Organisation) =>
             loadOrgInfoSuccess({ organisation: data })
           ),
@@ -40,10 +39,6 @@ export class OrganisationEffects {
       return this.actions$.pipe(
         ofType(loadOrgInfoSuccess),
         tap((payload) => {
-          console.log(
-            'inside effect ' + JSON.stringify(payload.organisation.products)
-          );
-
           this.store.dispatch(
             loadProductsSuccess({ products: payload.organisation!.products! })
           );

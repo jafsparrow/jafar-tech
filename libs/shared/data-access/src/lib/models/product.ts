@@ -50,3 +50,8 @@ export interface Modifier {
 
 type ModifierProductEntity = Omit<Product, 'modifierGroups'>;
 export type CategoryViseProducts = { [Key: string]: Product[] };
+
+export interface ProductSortData {
+  _id: string;
+  indexInCategory: number;
+}
