@@ -14,6 +14,8 @@ import { MenuCategoryComponent } from './menu-category/menu-category.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -26,6 +28,7 @@ import { MatButtonModule } from '@angular/material/button';
     TableQrUiModule,
     MatDialogModule,
     MatButtonModule,
+    MatSlideToggleModule,
   ],
   declarations: [
     MenuEditComponent,

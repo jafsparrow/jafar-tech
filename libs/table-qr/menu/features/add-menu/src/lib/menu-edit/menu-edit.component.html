@@ -1,14 +1,26 @@
-<mat-accordion *ngIf="categories$ | async as categories">
-  <mat-expansion-panel
-    hideToggle
-    *ngFor="let category of categories"
-    expanded="true"
-  >
+<div class="menu-page-header">
+  <div class="title">
+    <h3>Menu</h3>
+  </div>
+  <div class="collapse-radio">
+    <mat-slide-toggle (change)="toggleChange($event)"
+      >Collapse</mat-slide-toggle
+    >
+  </div>
+  <div class="settings">
+    <button mat-button>Settings</button>
+  </div>
+</div>
+
+<mat-accordion *ngIf="categories$ | async as categories" multi>
+  <mat-expansion-panel *ngFor="let category of categories" expanded="true">
     <mat-expansion-panel-header>
       <mat-panel-title>
         {{ category.name }} <mat-icon>account_circle</mat-icon>
       </mat-panel-title>
-      <mat-panel-description> Type your name and age </mat-panel-description>
+      <mat-panel-description *ngIf="category.description">
+        {{ category.description }}</mat-panel-description
+      >
     </mat-expansion-panel-header>
     <jafar-tech-menu-category
       [category]="category.name"
@@ -17,3 +29,7 @@
     </jafar-tech-menu-category>
   </mat-expansion-panel>
 </mat-accordion>
+
+<div class="button-container">
+  <button mat-raised-button color="primary">Add Category</button>
+</div>

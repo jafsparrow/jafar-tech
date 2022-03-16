@@ -44,7 +44,31 @@
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
-.add-button {
-  padding: 15px;
+.add-product-button {
+  padding-top: 30px;
+  text-align: right;
+}
+
+.product-raw {
+  display: flex;
   width: 100%;
+  justify-content: space-evenly;
+}
+
+.list-header {
+  padding: 20px 10px;
+  border-bottom: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  /* cursor: move; */
+  background: rgb(232, 232, 232);
+  font-size: 14px;
+}
+
+.product-name {
+  width: 25%;
 }

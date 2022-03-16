@@ -31,7 +31,7 @@ export class MenuCategoryComponent implements OnInit {
     );
   }
 
-  productSortChaange(sortedProducts: Product[]) {
+  productSortChange(sortedProducts: Product[]) {
     const productSortArray = sortedProducts.map((product, index) => ({
       _id: product._id,
       indexInCategory: index,

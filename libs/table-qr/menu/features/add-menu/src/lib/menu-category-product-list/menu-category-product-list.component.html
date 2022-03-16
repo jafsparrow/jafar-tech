@@ -1,15 +1,53 @@
 <div cdkDropList (cdkDropListDropped)="drop($event)" class="list-container">
-  <div *ngFor="let product of sortedProducts" cdkDrag class="list-box">
-    <button (click)="openDialog(product)">Edit</button>
-    <qr-ui-menu-product-card [product]="product"></qr-ui-menu-product-card>
-  </div>
+  <div>
+    <!-- <qr-ui-menu-product-card [product]="product"></qr-ui-menu-product-card>
+     -->
 
-  <button
-    mat-raised-button
-    color="primary"
-    class="add-button"
-    (click)="openAddProductDailog()"
-  >
+    <div>
+      <div class="product-raw list-header">
+        <div class="product-name">Name</div>
+        <div class="product-price">Price</div>
+        <div class="product-popular">Popular</div>
+        <div class="in-stock">In Stock</div>
+        <div class="class">Edit</div>
+      </div>
+    </div>
+    <div
+      class="product-raw"
+      *ngFor="let product of sortedProducts"
+      cdkDrag
+      class="list-box"
+    >
+      <div class="product-name">{{ product.name }}</div>
+      <div class="product-price">{{ product.price }}</div>
+      <div class="product-popular">
+        <button mat-icon-button aria-label="Make product popular">
+          <mat-icon [ngStyle]="{ color: product.popular ? 'gold' : '' }"
+            >star</mat-icon
+          >
+        </button>
+      </div>
+      <div class="in-stock">
+        <mat-slide-toggle
+          (change)="toggleChange($event)"
+          [checked]="product.isAvailable"
+        ></mat-slide-toggle>
+      </div>
+      <div class="class">
+        <button mat-flat-button>Edit</button>
+      </div>
+    </div>
+
+    <!-- <div class="product-extra-controls">
+
+      <button (click)="openDialog(product)">Edit</button>
+      <div>Modifiers</div>
+      <div class="start-rating">Star</div>
+    </div> -->
+  </div>
+</div>
+<div class="add-product-button">
+  <button mat-raised-button color="primary" (click)="openAddProductDailog()">
     Add Product
   </button>
 </div>

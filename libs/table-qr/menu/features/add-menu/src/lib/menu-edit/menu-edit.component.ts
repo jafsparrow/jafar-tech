@@ -1,5 +1,7 @@
 import { CdkDragDrop, DragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatAccordion } from '@angular/material/expansion';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { Category, Product } from '@jafar-tech/shared/data-access';
 import {
   selectProductsFromCategory,
@@ -17,9 +19,15 @@ import { Observable, ObservableLike, take, tap } from 'rxjs';
 export class MenuEditComponent implements OnInit {
   categories$ = this.store.select(selectCategories);
 
+  @ViewChild(MatAccordion) accordion!: MatAccordion;
+
   constructor(private store: Store, private dragDropService: DragDrop) {}
 
   ngOnInit(): void {
     console.log('oninit fired');
+  }
+
+  toggleChange(event: MatSlideToggleChange) {
+    event.checked ? this.accordion.closeAll() : this.accordion.openAll();
   }
 }

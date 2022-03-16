@@ -8,6 +8,7 @@ import {
   Output,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { Category, Product } from '@jafar-tech/shared/data-access';
 import { ProductAddComponent } from '@jafar-tech/table-qr/products/features/add';
 
@@ -70,4 +71,6 @@ export class MenuCategoryProductListComponent implements OnInit {
 
     this.onSorting.emit(this.sortedProducts);
   }
+
+  toggleChange(event: MatSlideToggleChange) {}
 }
