@@ -3,4 +3,13 @@
     <button (click)="openDialog(product)">Edit</button>
     <qr-ui-menu-product-card [product]="product"></qr-ui-menu-product-card>
   </div>
+
+  <button
+    mat-raised-button
+    color="primary"
+    class="add-button"
+    (click)="openAddProductDailog()"
+  >
+    Add Product
+  </button>
 </div>

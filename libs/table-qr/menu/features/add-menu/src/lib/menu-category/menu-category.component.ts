@@ -4,7 +4,7 @@ import {
   ChangeDetectionStrategy,
   Input,
 } from '@angular/core';
-import { Product } from '@jafar-tech/shared/data-access';
+import { Category, Product } from '@jafar-tech/shared/data-access';
 import {
   selectProductsFromCategory,
   updateProductSort,
@@ -20,6 +20,7 @@ import { Observable } from 'rxjs';
 })
 export class MenuCategoryComponent implements OnInit {
   @Input('category') category!: string;
+  @Input('categories') categories!: Category[];
   categoryProducts$!: Observable<Product[]>;
 
   constructor(private store: Store) {}

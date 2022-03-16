@@ -12,6 +12,7 @@ import { MenuCategoryProductListComponent } from './menu-category-product-list/m
 import { TableQrUiModule } from '@jafar-tech/table-qr-ui';
 import { MenuCategoryComponent } from './menu-category/menu-category.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     DragDropModule,
     TableQrUiModule,
     MatDialogModule,
+    MatButtonModule,
   ],
   declarations: [
     MenuEditComponent,

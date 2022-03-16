@@ -23,40 +23,9 @@ export class ProductAddComponent implements OnInit {
   productAddForm?: FormGroup;
   isEditable = false;
 
-  categories = ['Fresh Juice', 'Mojito', 'Broasted', 'Shawarma'];
+  categories = [''];
 
   isEdit: boolean = true;
-
-  sample_product = {
-    category: 'Broasted',
-    video: '',
-    cost: 33,
-    printName: 'hello print',
-    price: 65,
-    onSale: true,
-    isAvailable: true,
-    description: 'Hello world',
-    name: 'Mancs Platter chicken',
-  };
-
-  sample_modifiers: ModifierGroupsEntity[] = [
-    {
-      description: 'hello caetg',
-      printName: 'print me fuck',
-      modifiers: [
-        { description: 'hello shit dude', price: 33 },
-        { description: 'hello setting newl dude', price: 66 },
-      ],
-    },
-    {
-      description: 'super shit',
-      printName: 'cool as super shitttt',
-      modifiers: [
-        { description: 'amazing kachara', price: 33 },
-        { description: 'amazing kachara', price: 33 },
-      ],
-    },
-  ];
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -66,9 +35,11 @@ export class ProductAddComponent implements OnInit {
     this.isEdit = this.data.isEdit ? this.data.isEdit : false;
   }
   ngOnInit() {
+    this.categories = this.data.categories!;
     this.setupProductBasicInfoForm();
     this.setupModifierGroupForm();
     this.setupAddFroms();
+    this.productBasicInfo.patchValue({ category: this.data.category });
     if (this.isEdit) {
       this.productBasicInfo.patchValue(this.data.product);
 

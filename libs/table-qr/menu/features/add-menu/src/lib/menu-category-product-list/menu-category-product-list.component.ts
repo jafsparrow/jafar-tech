@@ -8,7 +8,7 @@ import {
   Output,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Product } from '@jafar-tech/shared/data-access';
+import { Category, Product } from '@jafar-tech/shared/data-access';
 import { ProductAddComponent } from '@jafar-tech/table-qr/products/features/add';
 
 @Component({
@@ -18,6 +18,8 @@ import { ProductAddComponent } from '@jafar-tech/table-qr/products/features/add'
 })
 export class MenuCategoryProductListComponent implements OnInit {
   @Input('products') products!: Product[];
+  @Input('category') category!: string;
+  @Input('categories') categories!: Category[];
   sortedProducts: Product[] = [];
 
   @Output('sortingChanged') onSorting: EventEmitter<Product[]> =
@@ -31,16 +33,31 @@ export class MenuCategoryProductListComponent implements OnInit {
       data: {
         product,
         isEdit: true,
+        category: this.category,
+        categories: this.categories.map((cat) => cat.name),
       },
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
+    // dialogRef.afterClosed().subscribe((result) => {
+    //   console.log(`Dialog result: ${result}`);
+    // });
+  }
+
+  openAddProductDailog() {
+    const dialogRef = this.dialog.open(ProductAddComponent, {
+      data: {
+        isEdit: false,
+        category: this.category,
+
+        categories: this.categories.map((cat) => cat.name),
+      },
     });
   }
 
   ngOnInit(): void {
     this.sortedProducts = this.products;
+
+    console.log(this.categories);
   }
   ngOnChanges(): void {}
 

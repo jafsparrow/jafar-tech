@@ -10,7 +10,10 @@
       </mat-panel-title>
       <mat-panel-description> Type your name and age </mat-panel-description>
     </mat-expansion-panel-header>
-    <jafar-tech-menu-category [category]="category.name">
+    <jafar-tech-menu-category
+      [category]="category.name"
+      [categories]="categories"
+    >
     </jafar-tech-menu-category>
   </mat-expansion-panel>
 </mat-accordion>
