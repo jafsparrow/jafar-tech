@@ -15,3 +15,7 @@
 mat-expansion-panel {
   margin: 20px;
 }
+
+.list-box {
+  cursor: move;
+}

@@ -12,8 +12,18 @@
   </div>
 </div>
 
-<mat-accordion *ngIf="categories$ | async as categories" multi>
-  <mat-expansion-panel *ngFor="let category of categories" expanded="true">
+<mat-accordion
+  multi
+  cdkDropList
+  (cdkDropListDropped)="drop($event)"
+  class="list-container"
+>
+  <mat-expansion-panel
+    *ngFor="let category of categories"
+    expanded="true"
+    cdkDrag
+    class="list-box"
+  >
     <mat-expansion-panel-header>
       <mat-panel-title>
         {{ category.name }} <mat-icon>account_circle</mat-icon>
