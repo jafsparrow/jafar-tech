@@ -12,3 +12,8 @@ export const selectOrganisationInfo = createSelector(
   selectOrganisationState,
   (state) => state.organisation
 );
+
+export const showOnlyAvailableItems = createSelector(
+  selectOrganisationInfo,
+  (state) => false
+);

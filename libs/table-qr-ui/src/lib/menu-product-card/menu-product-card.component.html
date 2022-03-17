@@ -2,7 +2,10 @@
   <div class="item-card-container">
     <div class="item-card" [ngClass]="{ 'left-border': count }">
       <div class="product-desc-area">
-        <span class="product-name">{{ product.name | titlecase }}</span>
+        <span class="product-name">{{ product.name | titlecase }} </span>
+        <span class="out-of-stock" *ngIf="!product.isAvailable">
+          Sorry, We ran out of it, choose others
+        </span>
         <p>{{ product.description | slice: 0:150 }}...</p>
         <span class="fill-blank"></span>
         <div class="count-price-wrapper">

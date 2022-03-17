@@ -16,6 +16,7 @@ import { CartItem, Product } from '@jafar-tech/shared/data-access';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductDetailComponent } from '@jafar-tech/table-qr/products/features/detail';
+import { showOnlyAvailableItems } from '@jafar-tech/table-qr/organisation/data-access';
 
 @Component({
   selector: 'jafar-tech-product-list',
@@ -28,6 +29,7 @@ export class ProductListComponent implements OnInit {
   productFetachInProgess$ = this.store.select(selectProductFetchInProgressFlag);
   cartCount$ = this.store.select(selectNumberOfItemsInCart);
   cartTotal$ = this.store.select(selectCartTotal);
+  showOnlyAvailableItems$ = this.store.select(showOnlyAvailableItems);
 
   constructor(private store: Store, private dialog: MatDialog) {}
 

@@ -11,6 +11,7 @@
         <mat-card class="menu-sub-container">
           <div *ngFor="let product of section.value">
             <qr-ui-menu-product-card
+              *ngIf="!(showOnlyAvailableItems$ | async) || product.isAvailable!"
               [product]="product"
               [selectedCount]="getInCartProductCount(product) | async"
               (click)="openProductViewDialog(product)"

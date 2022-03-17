@@ -59,12 +59,17 @@ export const selectProductByCategories = createSelector(
   selectProductState,
   (state) => {
     let categoryVice: CategoryViseProducts = {};
-
     state.products.map((item) => {
       categoryVice[item.category] = [
         ...(categoryVice[item.category] || []),
         item,
       ];
+    });
+
+    Object.keys(categoryVice).forEach((key) => {
+      categoryVice[key] = categoryVice[key].sort(
+        (prev, curr) => prev.indexInCategory! - curr.indexInCategory!
+      );
     });
 
     return categoryVice;
