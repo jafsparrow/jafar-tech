@@ -1,8 +1,9 @@
-import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post, Put } from '@nestjs/common';
 import { CategoryService } from './category.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { CreateProductDto } from './dto/create-product-dto';
 import { PatchProductIndexDto } from './dto/patch-porduct.dto';
+import { ProductBoolFieldDto } from './dto/product-bool-field-update.dto';
 import { ProductService } from './products.service';
 
 @Controller('products')
@@ -37,5 +38,13 @@ export class BackendProductsController {
   ) {
     // console.log(data);
     return this.productService.updateProductsIndex(companyId, data);
+  }
+
+  @Put(':id')
+  updateProductInfo(
+    @Body() data: ProductBoolFieldDto,
+    @Param('id') companyId: string
+  ) {
+    return this.productService.updateProductInfo(companyId, data);
   }
 }

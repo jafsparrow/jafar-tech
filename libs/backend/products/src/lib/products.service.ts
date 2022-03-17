@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product-dto';
 import { PatchProductIndexDto } from './dto/patch-porduct.dto';
+import { ProductBoolFieldDto } from './dto/product-bool-field-update.dto';
 import { Product } from './models/product.schema';
 import { ProductsRepository } from './products.repository';
 
@@ -36,6 +37,10 @@ export class ProductService {
 
   updateProductsIndex(companyId: string, data: PatchProductIndexDto[]) {
     return this.productRepository.bulkUpdate(companyId, data);
+  }
+
+  updateProductInfo(companyId: string, data: ProductBoolFieldDto) {
+    return this.productRepository.updateProductInfo(companyId, data);
   }
 }
 

@@ -4,6 +4,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { FilterQuery, Model, ObjectId } from 'mongoose';
 import { CreateProductDto } from './dto/create-product-dto';
 import { PatchProductIndexDto } from './dto/patch-porduct.dto';
+import { ProductBoolFieldDto } from './dto/product-bool-field-update.dto';
 import { Product } from './models/product.schema';
 @Injectable()
 export class ProductsRepository {
@@ -61,5 +62,27 @@ export class ProductsRepository {
     //     },
     //   }))
     // );
+  }
+
+  updateProductInfo(companyId: string, data: ProductBoolFieldDto) {
+    //  this.orgModel.updateOne(
+    //   { _id: companyId, 'products._id': data._id },
+    //   {
+    //     $set: {
+    //       'products.$.popular': true,
+    //     },
+    //   },
+    //   { upsert: true }
+    // );
+
+    return this.orgModel.findOneAndUpdate(
+      { _id: companyId },
+      {
+        $set: { [`products.$[outer].${data.fieldName}`]: data.value },
+      },
+      {
+        arrayFilters: [{ 'outer._id': data._id }],
+      }
+    );
   }
 }
