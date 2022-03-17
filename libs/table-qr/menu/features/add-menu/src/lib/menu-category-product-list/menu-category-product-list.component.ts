@@ -9,7 +9,11 @@ import {
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
-import { Category, Product } from '@jafar-tech/shared/data-access';
+import {
+  Category,
+  Product,
+  ProductBoolFieldUpdateData,
+} from '@jafar-tech/shared/data-access';
 import { ProductAddComponent } from '@jafar-tech/table-qr/products/features/add';
 
 @Component({
@@ -25,6 +29,9 @@ export class MenuCategoryProductListComponent implements OnInit {
 
   @Output('sortingChanged') onSorting: EventEmitter<Product[]> =
     new EventEmitter();
+
+  @Output('booleanFieldUpdate')
+  onBooleanUpdate: EventEmitter<ProductBoolFieldUpdateData> = new EventEmitter();
 
   constructor(public dialog: MatDialog) {}
 
@@ -72,5 +79,20 @@ export class MenuCategoryProductListComponent implements OnInit {
     this.onSorting.emit(this.sortedProducts);
   }
 
-  toggleChange(event: MatSlideToggleChange) {}
+  toggleChange(event: MatSlideToggleChange, product: Product) {
+    let data: ProductBoolFieldUpdateData = {
+      _id: product._id,
+      fieldName: 'isAvailable',
+      value: event.checked,
+    };
+    this.onBooleanUpdate.emit(data);
+  }
+  updateProductPopular(product: Product) {
+    let data: ProductBoolFieldUpdateData = {
+      _id: product._id,
+      fieldName: 'popular',
+      value: product.popular ? false : true,
+    };
+    this.onBooleanUpdate.emit(data);
+  }
 }

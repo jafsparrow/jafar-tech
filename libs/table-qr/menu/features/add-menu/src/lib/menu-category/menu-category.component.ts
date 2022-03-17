@@ -4,9 +4,14 @@ import {
   ChangeDetectionStrategy,
   Input,
 } from '@angular/core';
-import { Category, Product } from '@jafar-tech/shared/data-access';
+import {
+  Category,
+  Product,
+  ProductBoolFieldUpdateData,
+} from '@jafar-tech/shared/data-access';
 import {
   selectProductsFromCategory,
+  updateProductBooleans,
   updateProductSort,
 } from '@jafar-tech/table-qr-products-data-access';
 import { Store } from '@ngrx/store';
@@ -43,6 +48,15 @@ export class MenuCategoryComponent implements OnInit {
       updateProductSort({
         companyId: '6226fba3209ec7f5ebd956e7',
         productSortData: productSortArray,
+      })
+    );
+  }
+
+  productBooleanUpdate(event: ProductBoolFieldUpdateData) {
+    this.store.dispatch(
+      updateProductBooleans({
+        companyId: '6226fba3209ec7f5ebd956e7',
+        data: event,
       })
     );
   }

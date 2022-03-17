@@ -1,6 +1,7 @@
 import {
   CategoryViseProducts,
   Product,
+  ProductBoolFieldUpdateData,
   ProductSortData,
 } from '@jafar-tech/shared/data-access';
 import { createAction, props } from '@ngrx/store';
@@ -65,5 +66,15 @@ export const updateProductSort = createAction(
 
 export const updateProductFail = createAction(
   '[PRODUCT] sort update failed',
+  props<{ errorMessage: string }>()
+);
+
+export const updateProductBooleans = createAction(
+  '[PRODUCT] update product boolena,eg popular and in stock',
+  props<{ companyId: string; data: ProductBoolFieldUpdateData }>()
+);
+
+export const updateProductBooleanFail = createAction(
+  '[PRODUCT] update boolen failed.',
   props<{ errorMessage: string }>()
 );

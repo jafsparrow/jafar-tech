@@ -55,3 +55,9 @@ export interface ProductSortData {
   _id: string;
   indexInCategory: number;
 }
+
+export interface ProductBoolFieldUpdateData {
+  _id: string;
+  fieldName: string;
+  value: boolean;
+}

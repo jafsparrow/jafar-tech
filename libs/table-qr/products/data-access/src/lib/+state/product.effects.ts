@@ -17,6 +17,8 @@ import {
   loadProductsFail,
   loadProductsSuccess,
   productsCategoryViceLoading,
+  updateProductBooleanFail,
+  updateProductBooleans,
   updateProductFail,
   updateProductSort,
 } from './product.actions';
@@ -69,6 +71,28 @@ export class ProductsEffects {
               return loadOrgInfoSuccess({ organisation: res });
             }),
             catchError((error) => of(updateProductFail(error)))
+          )
+      )
+    );
+  });
+
+  updateProductBoolean$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(updateProductBooleans),
+      switchMap((payload) =>
+        this.productService
+          .updateProductBoolean(payload.companyId, payload.data)
+          .pipe(
+            map(
+              (res) => loadOrgInfoSuccess({ organisation: res }),
+              catchError((error) =>
+                of(
+                  updateProductBooleanFail({
+                    errorMessage: 'update product boolean failed',
+                  })
+                )
+              )
+            )
           )
       )
     );

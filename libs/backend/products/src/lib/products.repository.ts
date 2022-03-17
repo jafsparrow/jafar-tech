@@ -65,16 +65,6 @@ export class ProductsRepository {
   }
 
   updateProductInfo(companyId: string, data: ProductBoolFieldDto) {
-    //  this.orgModel.updateOne(
-    //   { _id: companyId, 'products._id': data._id },
-    //   {
-    //     $set: {
-    //       'products.$.popular': true,
-    //     },
-    //   },
-    //   { upsert: true }
-    // );
-
     return this.orgModel.findOneAndUpdate(
       { _id: companyId },
       {
@@ -82,6 +72,7 @@ export class ProductsRepository {
       },
       {
         arrayFilters: [{ 'outer._id': data._id }],
+        new: true,
       }
     );
   }

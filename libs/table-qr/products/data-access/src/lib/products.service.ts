@@ -4,6 +4,7 @@ import { Inject, Injectable } from '@angular/core';
 import {
   Organisation,
   Product,
+  ProductBoolFieldUpdateData,
   ProductSortData,
 } from '@jafar-tech/shared/data-access';
 import { map, Observable, of } from 'rxjs';
@@ -43,6 +44,16 @@ export class ProductsService {
     return this.httpClient.patch<Organisation>(
       `${this.apiUrl}/products/${companyId}`,
       productSoftData
+    );
+  }
+
+  updateProductBoolean(
+    companyId: string,
+    data: ProductBoolFieldUpdateData
+  ): Observable<Organisation> {
+    return this.httpClient.put<Organisation>(
+      `${this.apiUrl}/products/${companyId}`,
+      data
     );
   }
 }

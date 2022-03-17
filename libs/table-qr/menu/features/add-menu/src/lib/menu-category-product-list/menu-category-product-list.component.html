@@ -21,7 +21,11 @@
       <div class="product-name">{{ product.name }}</div>
       <div class="product-price">{{ product.price }}</div>
       <div class="product-popular">
-        <button mat-icon-button aria-label="Make product popular">
+        <button
+          mat-icon-button
+          aria-label="Make product popular"
+          (click)="updateProductPopular(product)"
+        >
           <mat-icon [ngStyle]="{ color: product.popular ? 'gold' : '' }"
             >star</mat-icon
           >
@@ -29,7 +33,7 @@
       </div>
       <div class="in-stock">
         <mat-slide-toggle
-          (change)="toggleChange($event)"
+          (change)="toggleChange($event, product)"
           [checked]="product.isAvailable"
         ></mat-slide-toggle>
       </div>

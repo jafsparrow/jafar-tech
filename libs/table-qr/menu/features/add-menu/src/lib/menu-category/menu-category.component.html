@@ -1,6 +1,7 @@
 <jafar-tech-menu-category-product-list
   [products]="(categoryProducts$ | async)!"
   (sortingChanged)="productSortChange($event)"
+  (booleanFieldUpdate)="productBooleanUpdate($event)"
   [category]="category"
   [categories]="categories"
 ></jafar-tech-menu-category-product-list>
