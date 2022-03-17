@@ -75,8 +75,9 @@ export class MenuCategoryProductListComponent implements OnInit {
       event.previousIndex,
       event.currentIndex
     );
-
-    this.onSorting.emit(this.sortedProducts);
+    if (event.previousIndex != event.currentIndex) {
+      this.onSorting.emit(this.sortedProducts);
+    }
   }
 
   toggleChange(event: MatSlideToggleChange, product: Product) {
