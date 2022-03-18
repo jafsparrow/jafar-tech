@@ -148,7 +148,9 @@ export class ProductAddComponent implements OnInit {
       ...this.productBasicInfo?.value,
       ...this.modifierGroupsForm.value,
     };
-    this.store.dispatch(addProduct({ product }));
+    this.store.dispatch(
+      addProduct({ companyId: '6226fbdaec38a5c0bd33ec74', product: product })
+    );
     console.log(this.productAddForm?.value);
   }
 

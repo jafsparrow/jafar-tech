@@ -17,6 +17,7 @@ import {
   loadProductsFail,
   loadProductsSuccess,
   productsCategoryViceLoading,
+  updateProduct,
   updateProductBooleanFail,
   updateProductBooleans,
   updateProductFail,
@@ -51,7 +52,7 @@ export class ProductsEffects {
     return this.actions$.pipe(
       ofType(addProduct),
       switchMap((data) =>
-        this.productService.addProduct(data.product).pipe(
+        this.productService.addProduct(data.companyId, data.product).pipe(
           map((res) => addProductSuccess({ product: res as Product })),
           catchError((error) => of(addProductFailure({ error: error })))
         )
@@ -97,4 +98,26 @@ export class ProductsEffects {
       )
     );
   });
+
+  // updateProduct$ = createEffect(() => {
+  //   return this.actions$.pipe(
+  //     ofType(updateProduct),
+  //     switchMap((payload) =>
+  //       this.productService
+  //         .updateProduct(payload.companyId, payload.productId, payload.product)
+  //         .pipe(
+  //           map(
+  //             (res) => loadOrgInfoSuccess({ organisation: res }),
+  //             catchError((error) =>
+  //               of(
+  //                 updateProductFail({
+  //                   errorMessage: 'update product boolean failed',
+  //                 })
+  //               )
+  //             )
+  //           )
+  //         )
+  //     )
+  //   );
+  // });
 }

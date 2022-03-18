@@ -31,10 +31,13 @@ export class ProductsService {
     );
   }
 
-  addProduct(product: Product) {
+  addProduct(companyId: string, product: Product) {
     console.log('adding a product');
     console.log(product);
-    return this.httpClient.post(`${this.apiUrl}/products`, product);
+    return this.httpClient.post(
+      `${this.apiUrl}/products/${companyId}`,
+      product
+    );
   }
 
   updateProductsSort(
@@ -56,6 +59,10 @@ export class ProductsService {
       data
     );
   }
+
+  // updateProduct(companyId: any, productId: string, product: Product) :Observable<Organisation> {
+  //   return this.httpClient.put
+  // }
 }
 
 // PRODUCTS: Product[] = [

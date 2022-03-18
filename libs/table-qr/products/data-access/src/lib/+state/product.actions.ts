@@ -38,7 +38,7 @@ export const loadProductsCategoryViceFail = createAction(
 
 export const addProduct = createAction(
   '[Product] add a product',
-  props<{ product: Product }>()
+  props<{ companyId: string; product: Product }>()
 );
 
 export const addProductSuccess = createAction(
@@ -77,4 +77,18 @@ export const updateProductBooleans = createAction(
 export const updateProductBooleanFail = createAction(
   '[PRODUCT] update boolen failed.',
   props<{ errorMessage: string }>()
+);
+
+export const updateProduct = createAction(
+  '[Product] update a product',
+  props<{ compnayId: string; productId: string; product: Product }>()
+);
+
+export const updateProductSuccess = createAction(
+  '[Product] udpate product success',
+  props<{ product: Product }>()
+);
+
+export const addupdateProductInprogress = createAction(
+  '[PRODUCT] update product in progress '
 );
