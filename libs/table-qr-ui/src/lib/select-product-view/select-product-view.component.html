@@ -42,31 +42,32 @@
       </mat-radio-group>
     </ng-container>
   </div>
-
-  <mat-divider></mat-divider>
-  <div class="flex-content"></div>
-  <div class="count-control-container">
-    <qr-ui-count-control
-      [count]="1"
-      (countChange)="onChangeSelectedCount($event)"
-    ></qr-ui-count-control>
-  </div>
-
   <div>
-    <p class="error-message" *ngIf="error">
-      {{ error }}
-    </p>
-    <button
-      mat-raised-button
-      color="primary"
-      class="add-button"
-      (click)="clickToCart()"
-    >
-      Add for &nbsp;
-      <span class="add-button-text rupee-symbol-left">{{
-        modifierAppliedTotal
-      }}</span>
-    </button>
+    <div *ngIf="customerOrderEnabled">
+      <mat-divider></mat-divider>
+      <div class="flex-content"></div>
+      <div class="count-control-container">
+        <qr-ui-count-control
+          [count]="1"
+          (countChange)="onChangeSelectedCount($event)"
+        ></qr-ui-count-control>
+      </div>
+
+      <p class="error-message" *ngIf="error">
+        {{ error }}
+      </p>
+      <button
+        mat-raised-button
+        color="primary"
+        class="add-button"
+        (click)="clickToCart()"
+      >
+        Add for &nbsp;
+        <span class="add-button-text rupee-symbol-left">{{
+          modifierAppliedTotal
+        }}</span>
+      </button>
+    </div>
   </div>
 
   <div class="close-button">

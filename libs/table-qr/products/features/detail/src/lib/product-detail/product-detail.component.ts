@@ -10,6 +10,7 @@ import { Store } from '@ngrx/store';
 
 import { CartItem, Modifier, Product } from '@jafar-tech/shared/data-access';
 import { Observable } from 'rxjs';
+import { canCustomerPlaceOrder } from '@jafar-tech/table-qr/organisation/data-access';
 
 export interface DialogData {
   product: Product;
@@ -24,6 +25,8 @@ export interface DialogData {
   styleUrls: ['./product-detail.component.css'],
 })
 export class ProductDetailComponent implements OnInit {
+  canCustomerPlaceOrder$ = this.store.select(canCustomerPlaceOrder);
+
   productInTheCartAlready$: Observable<number | null>;
 
   count: number = 1;

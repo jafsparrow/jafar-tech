@@ -11,6 +11,7 @@ import {
   styleUrls: ['./select-product-view.component.scss'],
 })
 export class SelectProductViewComponent implements OnInit {
+  @Input('customerOrderEnabled') customerOrderEnabled!: boolean;
   @Input('selectedCount') selectedCount!: number | null;
   @Input('product') product?: Product;
   @Input('totatIncludingModifiers') modifierAppliedTotal!: number;

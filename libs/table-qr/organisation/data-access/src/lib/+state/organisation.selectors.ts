@@ -17,3 +17,8 @@ export const showOnlyAvailableItems = createSelector(
   selectOrganisationInfo,
   (state) => false
 );
+
+export const canCustomerPlaceOrder = createSelector(
+  selectOrganisationInfo,
+  (org) => false
+);
