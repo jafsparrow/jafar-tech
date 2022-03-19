@@ -11,11 +11,19 @@ import { TableQrProductsFeaturesAddModule } from '@jafar-tech/table-qr/products/
 
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { mquery } from 'mongoose';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild([
+      {
+        path: 'login',
+        loadChildren: () =>
+          import('@jafar-tech/table-qr/authentication/features/singnin').then(
+            (m) => m.TableQrAuthenticationFeaturesSingninModule
+          ),
+      },
       {
         path: ':id',
         component: AdminContainerComponent,

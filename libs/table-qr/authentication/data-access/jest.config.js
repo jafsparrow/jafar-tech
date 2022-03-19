@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'table-qr-authentiication-data-access',
+  displayName: 'table-qr-authentication-data-access',
   preset: '../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -9,7 +9,7 @@ module.exports = {
     },
   },
   coverageDirectory:
-    '../../../../coverage/libs/table-qr/authentiication/data-access',
+    '../../../../coverage/libs/table-qr/authentication/data-access',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

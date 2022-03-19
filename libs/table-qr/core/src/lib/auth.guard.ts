@@ -6,7 +6,7 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
-import { AuthService } from '@jafar-tech/table-qr/authentiication/data-access';
+import { AuthService } from '@jafar-tech/table-qr-authentication-data-access';
 import { Observable } from 'rxjs';
 
 @Injectable()

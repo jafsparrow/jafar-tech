@@ -17,4 +17,4 @@ import { EffectsModule } from '@ngrx/effects';
     EffectsModule.forFeature([AuthenticationEffects]),
   ],
 })
-export class TableQrAuthentiicationDataAccessModule {}
+export class TableQrAuthenticationDataAccessModule {}

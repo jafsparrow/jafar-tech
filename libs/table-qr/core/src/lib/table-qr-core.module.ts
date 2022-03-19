@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { TableQrAuthentiicationDataAccessModule } from '@jafar-tech/table-qr/authentiication/data-access';
+import { TableQrAuthenticationDataAccessModule } from '@jafar-tech/table-qr-authentication-data-access';
 import { ErrorInterceptor, TokenInterceptor } from './token.intercenptor';
 import { AuthGuard } from './auth.guard';
 
@@ -10,7 +10,7 @@ import { AuthGuard } from './auth.guard';
   imports: [
     CommonModule,
     HttpClientModule,
-    TableQrAuthentiicationDataAccessModule,
+    TableQrAuthenticationDataAccessModule,
   ],
   providers: [
     {

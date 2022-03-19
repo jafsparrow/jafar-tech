@@ -564,17 +564,17 @@
       },
       "tags": []
     },
-    "table-qr-authentiication-data-access": {
+    "table-qr-authentication-data-access": {
       "projectType": "library",
-      "root": "libs/table-qr/authentiication/data-access",
-      "sourceRoot": "libs/table-qr/authentiication/data-access/src",
+      "root": "libs/table-qr/authentication/data-access",
+      "sourceRoot": "libs/table-qr/authentication/data-access/src",
       "prefix": "jafar-tech",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/table-qr/authentiication/data-access"],
+          "outputs": ["coverage/libs/table-qr/authentication/data-access"],
           "options": {
-            "jestConfig": "libs/table-qr/authentiication/data-access/jest.config.js",
+            "jestConfig": "libs/table-qr/authentication/data-access/jest.config.js",
             "passWithNoTests": true
           }
         },
@@ -582,8 +582,34 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/table-qr/authentiication/data-access/src/**/*.ts",
-              "libs/table-qr/authentiication/data-access/src/**/*.html"
+              "libs/table-qr/authentication/data-access/src/**/*.ts",
+              "libs/table-qr/authentication/data-access/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "table-qr-authentication-features-singnin": {
+      "projectType": "library",
+      "root": "libs/table-qr/authentication/features/singnin",
+      "sourceRoot": "libs/table-qr/authentication/features/singnin/src",
+      "prefix": "jafar-tech",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/table-qr/authentication/features/singnin"],
+          "options": {
+            "jestConfig": "libs/table-qr/authentication/features/singnin/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/table-qr/authentication/features/singnin/src/**/*.ts",
+              "libs/table-qr/authentication/features/singnin/src/**/*.html"
             ]
           }
         }
