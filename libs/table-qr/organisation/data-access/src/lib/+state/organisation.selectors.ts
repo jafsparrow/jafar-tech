@@ -13,6 +13,10 @@ export const selectOrganisationInfo = createSelector(
   (state) => state.organisation
 );
 
+export const selectOrganisationId = createSelector(
+  selectOrganisationInfo,
+  (org) => org?._id
+);
 export const showOnlyAvailableItems = createSelector(
   selectOrganisationInfo,
   (state) => false

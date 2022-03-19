@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Product } from '@jafar-tech/shared/data-access';
 import { loadOrgInfoSuccess } from '@jafar-tech/table-qr/organisation/data-access';
 
@@ -10,6 +12,7 @@ import {
   addProduct,
   addProductFailure,
   addProductSuccess,
+  addupdateProductInprogress,
   loadProducts,
   loadProductsCategoryVice,
   loadProductsCategoryViceFail,
@@ -29,7 +32,9 @@ export class ProductsEffects {
   constructor(
     private productService: ProductsService,
     private actions$: Actions,
-    private store: Store
+    private store: Store,
+    private _snackBar: MatSnackBar,
+    public dialog: MatDialog
   ) {}
 
   loadProductCategoryVice$ = createEffect(() => {
@@ -51,6 +56,7 @@ export class ProductsEffects {
   addProduct$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(addProduct),
+      tap((data) => this.store.dispatch(addupdateProductInprogress())),
       switchMap((data) =>
         this.productService.addProduct(data.companyId, data.product).pipe(
           map((res) => addProductSuccess({ product: res as Product })),
@@ -59,6 +65,20 @@ export class ProductsEffects {
       )
     );
   });
+
+  productAddSuccess$ = createEffect(
+    () => {
+      return this.actions$.pipe(
+        ofType(addProductSuccess),
+        tap((data: any) => this.dialog.closeAll()),
+        tap((data) => loadOrgInfoSuccess({ organisation: data })),
+        tap((data: any) =>
+          this._snackBar.open('A new product is added', 'close')
+        )
+      );
+    },
+    { dispatch: false }
+  );
 
   updateProductSort$ = createEffect(() => {
     return this.actions$.pipe(

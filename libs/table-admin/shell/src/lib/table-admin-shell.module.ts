@@ -9,12 +9,15 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ProductsDataAccessModule } from '@jafar-tech/table-qr-products-data-access';
 import { TableQrProductsFeaturesAddModule } from '@jafar-tech/table-qr/products/features/add';
 
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild([
       {
-        path: '',
+        path: ':id',
         component: AdminContainerComponent,
         children: [
           {
@@ -59,8 +62,10 @@ import { TableQrProductsFeaturesAddModule } from '@jafar-tech/table-qr/products/
     MatSidenavModule,
     MatListModule,
     MatSnackBarModule,
+    MatDialogModule,
     ProductsDataAccessModule,
     TableQrProductsFeaturesAddModule,
+    MatProgressSpinnerModule,
   ],
   declarations: [AdminContainerComponent],
 })

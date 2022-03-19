@@ -81,6 +81,11 @@ export const selectProductFetchInProgressFlag = createSelector(
   (state) => state.productFetchInprogress
 );
 
+export const selectAddUpdateProductProgressFlag = createSelector(
+  selectProductState,
+  (state) => state.productAddUpdateInProgress
+);
+
 // export const selectProductByCategories = createSelector(
 //   selectAllProducts,
 //   (products) => {

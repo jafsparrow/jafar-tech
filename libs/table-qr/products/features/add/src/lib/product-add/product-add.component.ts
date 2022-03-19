@@ -8,7 +8,10 @@ import {
 } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ModifierGroupsEntity, Product } from '@jafar-tech/shared/data-access';
-import { addProduct } from '@jafar-tech/table-qr-products-data-access';
+import {
+  addProduct,
+  selectAddUpdateProductProgressFlag,
+} from '@jafar-tech/table-qr-products-data-access';
 import { DialogData } from '@jafar-tech/table-qr/products/features/detail';
 import { Store } from '@ngrx/store';
 
@@ -18,6 +21,9 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./product-add.component.css'],
 })
 export class ProductAddComponent implements OnInit {
+  selectAddUpdateProductProgressFlag$ = this.store.select(
+    selectAddUpdateProductProgressFlag
+  );
   productBasicInfo: FormGroup = new FormGroup({});
   modifierGroupsForm: FormGroup = new FormGroup({});
   productAddForm?: FormGroup;

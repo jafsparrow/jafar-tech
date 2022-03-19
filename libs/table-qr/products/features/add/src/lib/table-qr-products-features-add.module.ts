@@ -14,6 +14,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { ProductsDataAccessModule } from '@jafar-tech/table-qr-products-data-access';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import { ProductsDataAccessModule } from '@jafar-tech/table-qr-products-data-acc
     MatSelectModule,
     MatIconModule,
     ProductsDataAccessModule,
+    MatProgressSpinnerModule,
   ],
   declarations: [ProductAddComponent],
   exports: [ProductAddComponent],

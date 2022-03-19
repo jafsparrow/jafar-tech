@@ -8,6 +8,7 @@ import {
   updateProductSort,
 } from '@jafar-tech/table-qr-products-data-access';
 import { selectCategories } from '@jafar-tech/table-qr/category/data-access/category';
+import { selectOrganisationId } from '@jafar-tech/table-qr/organisation/data-access';
 import { Store } from '@ngrx/store';
 import { Observable, ObservableLike, Subscription, take, tap } from 'rxjs';
 
@@ -18,6 +19,7 @@ import { Observable, ObservableLike, Subscription, take, tap } from 'rxjs';
 })
 export class MenuEditComponent implements OnInit, OnDestroy {
   categories$ = this.store.select(selectCategories);
+  companyId$ = this.store.select(selectOrganisationId);
   categories: Category[] = [];
   categoriesSubscription: Subscription;
   @ViewChild(MatAccordion) accordion!: MatAccordion;

@@ -2,11 +2,13 @@ import { CategoryViseProducts, Product } from '@jafar-tech/shared/data-access';
 
 import { createReducer, on } from '@ngrx/store';
 import {
+  addupdateProductInprogress,
   loadProductsCategoryVice,
   loadProductsCategoryViceSuccess,
   loadProductsFail,
   loadProductsSuccess,
   productsCategoryViceLoading,
+  updateProductBooleans,
 } from './product.actions';
 
 export const PRODUCTS_FEATURE_KEY = 'products';
@@ -15,12 +17,16 @@ export interface ProductState {
   products: Product[];
   productsByCat: CategoryViseProducts;
   productFetchInprogress: boolean;
+  productAddUpdateInProgress: boolean;
+  errorMessage: string;
 }
 
 const initialState: ProductState = {
   products: [],
   productsByCat: {},
   productFetchInprogress: false,
+  productAddUpdateInProgress: false,
+  errorMessage: '',
 };
 
 export const productsReducer = createReducer(
@@ -33,12 +39,20 @@ export const productsReducer = createReducer(
       ...state,
       productsByCat,
       productFetchInprogress: false,
+      productAddUpdateInProgress: false,
     };
   }),
   on(productsCategoryViceLoading, (state) => ({
     ...state,
     productFetchInprogress: true,
-  }))
+  })),
+  on(addupdateProductInprogress, (state) => {
+    console.log('inside addupdateprogress reducer');
+    return {
+      ...state,
+      productAddUpdateInProgress: true,
+    };
+  })
 );
 
 // export const categoryviseProductsReducer = createReducer(

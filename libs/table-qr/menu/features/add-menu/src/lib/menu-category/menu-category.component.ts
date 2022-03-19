@@ -25,6 +25,8 @@ import { Observable } from 'rxjs';
 })
 export class MenuCategoryComponent implements OnInit {
   @Input('category') category!: string;
+
+  @Input('companyId') companyId!: string;
   @Input('categories') categories!: Category[];
   categoryProducts$!: Observable<Product[]>;
 
@@ -46,7 +48,7 @@ export class MenuCategoryComponent implements OnInit {
 
     this.store.dispatch(
       updateProductSort({
-        companyId: '6226fba3209ec7f5ebd956e7',
+        companyId: this.companyId,
         productSortData: productSortArray,
       })
     );
@@ -55,7 +57,7 @@ export class MenuCategoryComponent implements OnInit {
   productBooleanUpdate(event: ProductBoolFieldUpdateData) {
     this.store.dispatch(
       updateProductBooleans({
-        companyId: '6226fba3209ec7f5ebd956e7',
+        companyId: this.companyId,
         data: event,
       })
     );

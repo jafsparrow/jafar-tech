@@ -1,45 +1,48 @@
-<div class="menu-page-header">
-  <div class="title">
-    <h3>Menu</h3>
-  </div>
-  <div class="collapse-radio">
-    <mat-slide-toggle (change)="toggleChange($event)"
-      >Collapse</mat-slide-toggle
-    >
-  </div>
-  <div class="settings">
-    <button mat-button>Settings</button>
-  </div>
-</div>
-
-<mat-accordion
-  multi
-  cdkDropList
-  (cdkDropListDropped)="drop($event)"
-  class="list-container"
->
-  <mat-expansion-panel
-    *ngFor="let category of categories"
-    expanded="true"
-    cdkDrag
-    class="list-box"
-  >
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        {{ category.name }} <mat-icon>account_circle</mat-icon>
-      </mat-panel-title>
-      <mat-panel-description *ngIf="category.description">
-        {{ category.description }}</mat-panel-description
+<div *ngIf="companyId$ | async as companyId">
+  <div class="menu-page-header">
+    <div class="title">
+      <h3>Menu</h3>
+    </div>
+    <div class="collapse-radio">
+      <mat-slide-toggle (change)="toggleChange($event)"
+        >Collapse</mat-slide-toggle
       >
-    </mat-expansion-panel-header>
-    <jafar-tech-menu-category
-      [category]="category.name"
-      [categories]="categories"
-    >
-    </jafar-tech-menu-category>
-  </mat-expansion-panel>
-</mat-accordion>
+    </div>
+    <div class="settings">
+      <button mat-button>Settings</button>
+    </div>
+  </div>
 
-<div class="button-container">
-  <button mat-raised-button color="primary">Add Category</button>
+  <mat-accordion
+    multi
+    cdkDropList
+    (cdkDropListDropped)="drop($event)"
+    class="list-container"
+  >
+    <mat-expansion-panel
+      *ngFor="let category of categories"
+      expanded="true"
+      cdkDrag
+      class="list-box"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ category.name }} <mat-icon>account_circle</mat-icon>
+        </mat-panel-title>
+        <mat-panel-description *ngIf="category.description">
+          {{ category.description }}</mat-panel-description
+        >
+      </mat-expansion-panel-header>
+      <jafar-tech-menu-category
+        [category]="category.name"
+        [categories]="categories"
+        [companyId]="companyId"
+      >
+      </jafar-tech-menu-category>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <div class="button-container">
+    <button mat-raised-button color="primary">Add Category</button>
+  </div>
 </div>
