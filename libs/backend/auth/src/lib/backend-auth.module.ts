@@ -35,6 +35,6 @@ import { User, UserSchema } from './models/user.schema';
     LocalStrategy,
     JwtStrategy,
   ],
-  exports: [MongooseModule],
+  exports: [MongooseModule, JwtStrategy],
 })
 export class BackendAuthModule {}

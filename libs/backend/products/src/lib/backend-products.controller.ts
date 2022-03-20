@@ -1,4 +1,14 @@
-import { Body, Controller, Get, Param, Patch, Post, Put } from '@nestjs/common';
+import { JwtAuthGuard } from '@jafar-tech/backend/auth';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Patch,
+  Post,
+  Put,
+  UseGuards,
+} from '@nestjs/common';
 import { CategoryService } from './category.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { CreateProductDto } from './dto/create-product-dto';
@@ -17,6 +27,7 @@ export class BackendProductsController {
     return this.productService.getProduct();
   }
 
+  @UseGuards(JwtAuthGuard)
   @Post(':id')
   createProduct(
     @Param('id') companyId: string,
