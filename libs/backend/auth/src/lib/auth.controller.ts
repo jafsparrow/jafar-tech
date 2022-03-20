@@ -1,7 +1,17 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  Request,
+  UseGuards,
+} from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { AuthenticationService } from './auth.service';
 import { LoginDto } from './dto/login.dto';
+import { JwtAuthGuard } from './jwt-auth.guard';
+import { LocalAuthGuard } from './local-auth.guard';
 
 @Controller('auth')
 export class AuthController {
@@ -9,9 +19,11 @@ export class AuthController {
     private config: ConfigService,
     private authService: AuthenticationService
   ) {}
-  @Get()
-  getUser() {
-    return `hello fucker ${this.config.get<string>('environment')}`;
+
+  @UseGuards(JwtAuthGuard)
+  @Get('profile')
+  getProfile(@Request() req) {
+    return req.user;
   }
 
   createUser() {}
@@ -21,9 +33,15 @@ export class AuthController {
     @Body() loginInfo: LoginDto,
     @Param('companyId') companyID: string
   ) {
-    return this.authService.validateUser(loginInfo, companyID);
+    // return this.authService.validateUser(loginInfo, companyID);
   }
-  login() {}
+
+  @UseGuards(LocalAuthGuard)
+  @Post('login')
+  async login(@Request() req) {
+    return this.authService.login(req.user);
+  }
+
   updateUser() {}
   deactivateUser() {}
 }

@@ -13,6 +13,13 @@ export class Organisation extends Document {
   name: string;
   @Prop()
   caption: string;
+
+  // @Prop({ unique: true })
+  // email: string;
+
+  // @Prop()
+  // password: string;
+
   @Prop()
   type: string[];
   @Prop()

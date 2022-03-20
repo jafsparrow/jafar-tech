@@ -1,1 +1,4 @@
-// this deals witht he user spcific actions
+import { Injectable } from '@nestjs/common';
+
+@Injectable()
+export class UserService {}

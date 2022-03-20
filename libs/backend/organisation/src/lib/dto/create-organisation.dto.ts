@@ -1,5 +1,7 @@
 export class CreateOrganisationDto {
   name: string;
+  // email: string;
+  // password: string;
   caption: string;
   type: string[];
   address: string;
