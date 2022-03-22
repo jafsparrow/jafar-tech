@@ -1,7 +1,27 @@
-<div class="container">
-  <div class="sign-in-container">
-    <div class="username">username</div>
-    <div class="passowrd">password</div>
-    <div class="submit-button">Submit</div>
+<div class="wrapper">
+  <div class="signup-container">
+    <div class="heading">
+      <h2>Sign In</h2>
+    </div>
+    <form class="signup-form">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Phassword</mat-label>
+        <input matInput type="password" />
+      </mat-form-field>
+
+      <!-- <div class="fill-space"></div> -->
+
+      <button mat-raised-button color="primary" class="grow-100">
+        Sign In
+      </button>
+      <div class="already-have">
+        <a routerLink="/signup">Not have an account</a>
+      </div>
+    </form>
   </div>
 </div>

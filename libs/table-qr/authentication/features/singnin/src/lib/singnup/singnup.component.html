@@ -1,0 +1,55 @@
+<div class="wrapper">
+  <div class="signup-container">
+    <div class="heading">
+      <h2>Lets make your shop next Gen</h2>
+    </div>
+    <form class="signup-form" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" autocomplete="username" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Phone</mat-label>
+        <input matInput formControlName="phone" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          type="password"
+          formControlName="password"
+          autocomplete="current-password"
+        />
+      </mat-form-field>
+
+      <!-- <mat-form-field appearance="outline">
+        <mat-label>Confirm Password</mat-label>
+        <input matInput type="password" />
+      </mat-form-field> -->
+
+      <button
+        mat-raised-button
+        color="primary"
+        class="grow-100"
+        type="submit"
+        [disabled]="!signUpForm.valid"
+      >
+        Sign Up
+      </button>
+      <div class="progress-indicator">
+        <mat-spinner color="accent" diameter="35"></mat-spinner>
+      </div>
+
+      <div class="already-have">
+        <a routerLink="/login">Already have an account</a>
+      </div>
+    </form>
+  </div>
+</div>

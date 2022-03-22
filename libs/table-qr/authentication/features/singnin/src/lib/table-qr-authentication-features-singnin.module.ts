@@ -2,6 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SinginComponent } from './singin/singin.component';
 import { RouterModule } from '@angular/router';
+import { SingnupComponent } from './singnup/singnup.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -16,8 +22,17 @@ import { RouterModule } from '@angular/router';
         path: 'login',
         component: SinginComponent,
       },
+      {
+        path: 'signup',
+        component: SingnupComponent,
+      },
     ]),
+    ReactiveFormsModule,
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule,
+    MatProgressSpinnerModule,
   ],
-  declarations: [SinginComponent],
+  declarations: [SinginComponent, SingnupComponent],
 })
 export class TableQrAuthenticationFeaturesSingninModule {}

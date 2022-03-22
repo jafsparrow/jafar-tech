@@ -18,7 +18,7 @@ import { mquery } from 'mongoose';
     CommonModule,
     RouterModule.forChild([
       {
-        path: 'login',
+        path: '',
         loadChildren: () =>
           import('@jafar-tech/table-qr/authentication/features/singnin').then(
             (m) => m.TableQrAuthenticationFeaturesSingninModule
