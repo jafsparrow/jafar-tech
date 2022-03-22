@@ -1,8 +1,16 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
-
+import { UserType } from '@jafar-tech/shared/data-access';
+import {
+  ConflictException,
+  ImATeapotException,
+  Injectable,
+  UnauthorizedException,
+} from '@nestjs/common';
+import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { AuthenticationRepository } from './auth.repository';
+import { CreateUserDto } from './dto/create-user.dto';
 import { LoginDto } from './dto/login.dto';
+import { Mongoose } from 'mongoose';
 
 @Injectable()
 export class AuthenticationService {
@@ -10,6 +18,19 @@ export class AuthenticationService {
     private authRepository: AuthenticationRepository,
     private jwtService: JwtService
   ) {}
+
+  async createStaffUser(companyId: string, data: CreateUserDto) {
+    let hashedPassword = await bcrypt.hash(data.password, 10);
+
+    return this.authRepository.createUser(companyId, UserType.STAFF, {
+      ...data,
+      password: hashedPassword,
+    });
+  }
+
+  async createAdminUser(companyId: string, data: CreateUserDto) {
+    return this.authRepository.createUser(companyId, UserType.ADMIN, data);
+  }
 
   // async validateUser(loginData: LoginDto, companyId: string) {
   //   let users = await this.authRepository.findCompanyUser(

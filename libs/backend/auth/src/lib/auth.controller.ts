@@ -9,6 +9,7 @@ import {
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { AuthenticationService } from './auth.service';
+import { CreateUserDto } from './dto/create-user.dto';
 import { LoginDto } from './dto/login.dto';
 import { JwtAuthGuard } from './jwt-auth.guard';
 import { LocalAuthGuard } from './local-auth.guard';
@@ -26,7 +27,11 @@ export class AuthController {
     return req.user;
   }
 
-  createUser() {}
+  @Post('create')
+  createUser(@Body() createUserdto: CreateUserDto) {
+    let companyId = '6226fba3209ec7f5ebd956e7';
+    return this.authService.createStaffUser(companyId, createUserdto);
+  }
 
   @Post('tablelogin/:companyId')
   tableUserLogin(
