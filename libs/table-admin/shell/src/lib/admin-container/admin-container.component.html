@@ -1,17 +1,22 @@
 <mat-drawer-container class="drawer-container" hasBackdrop="true">
   <mat-drawer mode="over" #drawer class="side-nav">
+    <div class="user-profile">Table - 7</div>
     <mat-selection-list
-      #shoes
+      #menu
       [multiple]="false"
       (selectionChange)="onMenuChange($event)"
     >
-      <mat-list-option *ngFor="let shoe of sideMenu" [value]="shoe">
-        {{ shoe }}
+      <mat-list-option *ngFor="let menu of sideMenu" [value]="menu.navigate">
+        {{ menu.name }}
       </mat-list-option>
     </mat-selection-list>
   </mat-drawer>
   <mat-drawer-content>
-    <button (click)="drawer.toggle()">menu</button>
+    <qr-ui-toolbar
+      navigateUrl="cart"
+      class="toolbar"
+      (menuClicked)="drawer.toggle()"
+    ></qr-ui-toolbar>
     <router-outlet></router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>

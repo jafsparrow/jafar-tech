@@ -34,3 +34,7 @@
 .text-red {
   color: orangered;
 }
+
+mat-accordion {
+  padding: 10px;
+}

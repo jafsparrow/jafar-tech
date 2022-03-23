@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
+import { ActivatedRoute, Router } from '@angular/router';
 import { loadProductsCategoryVice } from '@jafar-tech/table-qr-products-data-access';
 import { loadOrgInfo } from '@jafar-tech/table-qr/organisation/data-access';
 import { Store } from '@ngrx/store';
@@ -11,15 +12,20 @@ import { switchMap } from 'rxjs';
   styleUrls: ['./admin-container.component.css'],
 })
 export class AdminContainerComponent implements OnInit {
-  sideMenu: string[] = [
-    'Dashboard',
-    'Live Orders',
-    'Orders',
-    'Menus',
-    'Customers',
-    'Discounts',
+  sideMenu = [
+    { name: 'Dashboard', navigate: 'dashboard' },
+    { name: 'Orders', navigate: 'liveorder' },
+    { name: 'menu', navigate: 'menu' },
   ];
-  constructor(private store: Store, private activatedRoute: ActivatedRoute) {}
+
+  @ViewChild('drawer')
+  drawer!: MatSidenav;
+
+  constructor(
+    private store: Store,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) =>
@@ -33,5 +39,8 @@ export class AdminContainerComponent implements OnInit {
 
   onMenuChange($event: any) {
     console.log($event.options[0]._value);
+    let menu: string = $event.options[0].value;
+    this.router.navigate([menu.toLowerCase()]);
+    this.drawer.toggle();
   }
 }

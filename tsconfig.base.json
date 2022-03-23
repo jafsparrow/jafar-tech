@@ -57,6 +57,12 @@
         "libs/table-qr/category/data-access/category/src/index.ts"
       ],
       "@jafar-tech/table-qr/core": ["libs/table-qr/core/src/index.ts"],
+      "@jafar-tech/table-qr/dashboard/data-access": [
+        "libs/table-qr/dashboard/data-access/src/index.ts"
+      ],
+      "@jafar-tech/table-qr/dashboard/features/dashboard": [
+        "libs/table-qr/dashboard/features/dashboard/src/index.ts"
+      ],
       "@jafar-tech/table-qr/menu/features/add-menu": [
         "libs/table-qr/menu/features/add-menu/src/index.ts"
       ],

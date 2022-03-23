@@ -720,6 +720,58 @@
       },
       "tags": []
     },
+    "table-qr-dashboard-data-access": {
+      "projectType": "library",
+      "root": "libs/table-qr/dashboard/data-access",
+      "sourceRoot": "libs/table-qr/dashboard/data-access/src",
+      "prefix": "jafar-tech",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/table-qr/dashboard/data-access"],
+          "options": {
+            "jestConfig": "libs/table-qr/dashboard/data-access/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/table-qr/dashboard/data-access/src/**/*.ts",
+              "libs/table-qr/dashboard/data-access/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "table-qr-dashboard-features-dashboard": {
+      "projectType": "library",
+      "root": "libs/table-qr/dashboard/features/dashboard",
+      "sourceRoot": "libs/table-qr/dashboard/features/dashboard/src",
+      "prefix": "jafar-tech",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/table-qr/dashboard/features/dashboard"],
+          "options": {
+            "jestConfig": "libs/table-qr/dashboard/features/dashboard/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/table-qr/dashboard/features/dashboard/src/**/*.ts",
+              "libs/table-qr/dashboard/features/dashboard/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "table-qr-e2e": {
       "root": "apps/table-qr-e2e",
       "sourceRoot": "apps/table-qr-e2e/src",

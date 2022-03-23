@@ -14,6 +14,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { mquery } from 'mongoose';
 import { TableQrAuthenticationDataAccessModule } from '@jafar-tech/table-qr-authentication-data-access';
 import { AuthGuard } from '@jafar-tech/table-qr/core';
+import { TableQrUiModule } from '@jafar-tech/table-qr-ui';
 
 @NgModule({
   imports: [
@@ -37,6 +38,13 @@ import { AuthGuard } from '@jafar-tech/table-qr/core';
             loadChildren: () =>
               import('@jafar-tech/table-qr/orders/features/live-orders').then(
                 (m) => m.TableQrOrdersFeaturesLiveOrdersModule
+              ),
+          },
+          {
+            path: 'dashboard',
+            loadChildren: () =>
+              import('@jafar-tech/table-qr/dashboard/features/dashboard').then(
+                (m) => m.TableQrDashboardFeaturesDashboardModule
               ),
           },
           // {
@@ -78,6 +86,7 @@ import { AuthGuard } from '@jafar-tech/table-qr/core';
     ProductsDataAccessModule,
     TableQrProductsFeaturesAddModule,
     MatProgressSpinnerModule,
+    TableQrUiModule,
   ],
   declarations: [AdminContainerComponent],
 })
