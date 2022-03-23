@@ -6,14 +6,16 @@ export enum UserType {
 }
 
 export interface User {
+  email?: string;
+  companyId?: string;
   firstName: string;
   lastName: string;
-  username: string;
+  username?: string;
   type: UserType;
   token?: string;
 }
 
 export interface LoginData {
-  username: string;
+  email: string;
   password: string;
 }

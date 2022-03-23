@@ -12,22 +12,26 @@ import { TableQrProductsFeaturesAddModule } from '@jafar-tech/table-qr/products/
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { mquery } from 'mongoose';
+import { TableQrAuthenticationDataAccessModule } from '@jafar-tech/table-qr-authentication-data-access';
+import { AuthGuard } from '@jafar-tech/table-qr/core';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild([
       {
-        path: '',
+        path: 'auth',
         loadChildren: () =>
           import('@jafar-tech/table-qr/authentication/features/singnin').then(
             (m) => m.TableQrAuthenticationFeaturesSingninModule
           ),
       },
       {
-        path: ':id',
+        path: '',
         component: AdminContainerComponent,
+        canActivate: [AuthGuard],
         children: [
+          { path: '', redirectTo: 'menu', pathMatch: 'full' },
           {
             path: 'liveorder',
             loadChildren: () =>

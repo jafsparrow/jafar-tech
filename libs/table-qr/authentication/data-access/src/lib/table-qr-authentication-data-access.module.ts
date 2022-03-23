@@ -4,8 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import {
   AUTHENTICATION_FEATURE_KEY,
   authReducer,
-} from './+sate/authentication.reducers';
-import { AuthenticationEffects } from './+sate/authentication.effects';
+} from './+state/authentication.reducers';
+import { AuthenticationEffects } from './+state/authentication.effects';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 

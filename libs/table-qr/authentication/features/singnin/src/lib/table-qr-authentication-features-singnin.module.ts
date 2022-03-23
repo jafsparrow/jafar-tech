@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TableQrAuthenticationDataAccessModule } from '@jafar-tech/table-qr-authentication-data-access';
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import { ReactiveFormsModule } from '@angular/forms';
       },
     ]),
     ReactiveFormsModule,
+    TableQrAuthenticationDataAccessModule,
     MatCardModule,
     MatInputModule,
     MatButtonModule,

@@ -1,6 +1,11 @@
 import { Organisation } from '@jafar-tech/backend/organisation';
 import { UserType } from '@jafar-tech/shared/data-access';
-import { ConflictException, Injectable } from '@nestjs/common';
+import {
+  ConflictException,
+  Injectable,
+  NotFoundException,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Types } from 'mongoose';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -43,6 +48,18 @@ export class AuthenticationRepository {
     );
     company.users.find;
     return company;
+  }
+
+  async getUserInfo(email: string) {
+    try {
+      let user = await this.userModel.findOne({ email });
+      if (!user) {
+        throw new UnauthorizedException('Oops, not allowed.');
+      }
+      return user;
+    } catch (error) {
+      throw new UnauthorizedException('Oops, not allowed.');
+    }
   }
 
   async findCompanyUser(companyId, username: string) {

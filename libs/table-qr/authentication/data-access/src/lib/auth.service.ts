@@ -12,12 +12,21 @@ export class AuthService {
     @Inject('endPointURL') public apiUrl: string
   ) {}
 
+  checkAuthInLocalStorage() {
+    if (!localStorage.getItem('token')) return false;
+
+    if (!localStorage.getItem('user')) return false;
+
+    return true;
+  }
+
   getToken(): string | null {
     return localStorage.getItem('token');
   }
 
   logIn(email: string, password: string): Observable<any> {
-    const url = `${this.apiUrl}/login`;
+    console.log('login call hapened');
+    const url = `${this.apiUrl}/auth/login`;
     return this.http.post<User>(url, { email, password });
   }
 

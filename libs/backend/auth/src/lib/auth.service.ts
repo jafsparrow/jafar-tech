@@ -9,8 +9,7 @@ import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { AuthenticationRepository } from './auth.repository';
 import { CreateUserDto } from './dto/create-user.dto';
-import { LoginDto } from './dto/login.dto';
-import { Mongoose } from 'mongoose';
+import { User } from './models/user.schema';
 
 @Injectable()
 export class AuthenticationService {
@@ -43,22 +42,37 @@ export class AuthenticationService {
   //   }
   // }
 
-  async validateUser(username: string, password: string) {
-    console.log(username, password);
+  async validateUser(email: string, password: string) {
+    let user = await this.authRepository.getUserInfo(email);
 
-    let user = { username, password, userId: '11111' };
-
-    if (user) {
-      return user;
+    if (!(await this.validatePassword(password, user.password))) {
+      throw new UnauthorizedException();
     }
-
-    new UnauthorizedException('You are not allowed to fuck with me.');
+    return user;
   }
 
-  async login(user: any) {
-    const payload = { username: user.username, sub: user.userId };
+  async validatePassword(
+    givenPassword: string,
+    encPassword: string
+  ): Promise<boolean> {
+    return bcrypt.compare(givenPassword, encPassword);
+  }
+
+  async login(user: User) {
+    const payload = {
+      email: user.email,
+      role: user.type,
+      companyId: user.company,
+    };
     return {
-      access_token: this.jwtService.sign(payload),
+      user: {
+        companyID: user.company,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        userType: user.type,
+      },
+      token: this.jwtService.sign(payload),
     };
   }
 }

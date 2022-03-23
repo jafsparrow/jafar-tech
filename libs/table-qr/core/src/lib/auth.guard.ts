@@ -20,10 +20,13 @@ export class AuthGuard implements CanActivate {
     | UrlTree
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
-    if (!this.auth.getToken()) {
-      this.router.navigateByUrl('login');
+    if (!this.auth.checkAuthInLocalStorage()) {
+      // if (!this.auth.getToken()) {
+
+      this.router.navigateByUrl('/auth/login');
       return false;
+    } else {
+      return true;
     }
-    return true;
   }
 }

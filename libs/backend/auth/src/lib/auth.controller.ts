@@ -21,6 +21,12 @@ export class AuthController {
     private authService: AuthenticationService
   ) {}
 
+  @UseGuards(LocalAuthGuard)
+  @Post('login')
+  async login(@Request() req) {
+    return this.authService.login(req.user);
+  }
+
   @UseGuards(JwtAuthGuard)
   @Get('profile')
   getProfile(@Request() req) {
@@ -39,12 +45,6 @@ export class AuthController {
     @Param('companyId') companyID: string
   ) {
     // return this.authService.validateUser(loginInfo, companyID);
-  }
-
-  @UseGuards(LocalAuthGuard)
-  @Post('login')
-  async login(@Request() req) {
-    return this.authService.login(req.user);
   }
 
   updateUser() {}
