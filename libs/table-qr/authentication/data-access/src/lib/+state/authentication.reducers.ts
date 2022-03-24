@@ -1,6 +1,7 @@
 import { User } from '@jafar-tech/shared/data-access';
 import { createReducer, on } from '@ngrx/store';
 import {
+  hydrateUserFromLocalStorage,
   login,
   loginFail,
   loginSuccess,
@@ -34,5 +35,10 @@ export const authReducer = createReducer(
     ...state,
     errorMessage: 'Incorrect username/passoword',
   })),
-  on(logout, (state) => initialState)
+  on(logout, (state) => initialState),
+  on(hydrateUserFromLocalStorage, (state, { user }) => ({
+    ...state,
+    isAuthenticated: true,
+    user: user,
+  }))
 );

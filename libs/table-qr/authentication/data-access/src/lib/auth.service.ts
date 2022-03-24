@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { User } from '@jafar-tech/shared/data-access';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { hydrateUserFromLocalStorage, selectIsUserAuthenticated } from '..';
 
 @Injectable({
   providedIn: 'root',
@@ -9,13 +11,24 @@ import { Observable } from 'rxjs';
 export class AuthService {
   constructor(
     private http: HttpClient,
-    @Inject('endPointURL') public apiUrl: string
+    @Inject('endPointURL') public apiUrl: string,
+    private store: Store
   ) {}
 
   checkAuthInLocalStorage() {
     if (!localStorage.getItem('token')) return false;
 
     if (!localStorage.getItem('user')) return false;
+
+    // [NOTE - TODO] this is a hack to hydrate user from the localstorage. this can be achived using metareducer in ngrx. Need to lookinto later
+    this.store.select(selectIsUserAuthenticated).subscribe((isLoggedIn) => {
+      if (!isLoggedIn) {
+        let userSavedInLocalStorage = JSON.parse(localStorage.getItem('user')!);
+        this.store.dispatch(
+          hydrateUserFromLocalStorage({ user: userSavedInLocalStorage })
+        );
+      }
+    });
 
     return true;
   }

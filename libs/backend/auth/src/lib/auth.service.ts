@@ -66,7 +66,7 @@ export class AuthenticationService {
     };
     return {
       user: {
-        companyID: user.company,
+        companyId: user.company,
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,

@@ -15,6 +15,11 @@ export const loginFail = createAction(
   '[AUTHENTICATION] Login Fail',
   props<{ message: string }>()
 );
+
+export const hydrateUserFromLocalStorage = createAction(
+  '[AUTHENTICATION] hydrate user from local storage',
+  props<{ user: User }>()
+);
 export const tableLogin = createAction(
   '[AUTHENTICATION] table User Login',
   props<{ loginData: LoginData }>()
