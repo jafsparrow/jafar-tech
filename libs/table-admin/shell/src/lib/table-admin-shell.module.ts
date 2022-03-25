@@ -15,6 +15,8 @@ import { mquery } from 'mongoose';
 import { TableQrAuthenticationDataAccessModule } from '@jafar-tech/table-qr-authentication-data-access';
 import { AuthGuard, RoleGuard } from '@jafar-tech/table-qr/core';
 import { TableQrUiModule } from '@jafar-tech/table-qr-ui';
+import { TableQrCategoryDataAccessCategoryModule } from '@jafar-tech/table-qr/category/data-access/category';
+import { TableQrOrganisationDataAccessModule } from '@jafar-tech/table-qr/organisation/data-access';
 
 @NgModule({
   imports: [
@@ -87,10 +89,11 @@ import { TableQrUiModule } from '@jafar-tech/table-qr-ui';
     MatListModule,
     MatSnackBarModule,
     MatDialogModule,
-    ProductsDataAccessModule,
-    TableQrProductsFeaturesAddModule,
     MatProgressSpinnerModule,
     TableQrUiModule,
+    TableQrOrganisationDataAccessModule,
+    ProductsDataAccessModule,
+    TableQrCategoryDataAccessCategoryModule,
   ],
   declarations: [AdminContainerComponent],
 })

@@ -23,7 +23,7 @@ export class OrganisationEffects {
     return this.actions$.pipe(
       ofType(loadOrgInfo),
       switchMap((payload) => {
-        // console.log('load org effect fired');
+        console.log('load org effect fired');
         return this.orgService.getOrgDetails(payload.organisationID).pipe(
           map((data: Organisation) =>
             loadOrgInfoSuccess({ organisation: data })

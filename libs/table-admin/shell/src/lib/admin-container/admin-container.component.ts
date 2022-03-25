@@ -39,7 +39,7 @@ export class AdminContainerComponent implements OnInit, OnDestroy {
     this.subscription = this.companyId$
       .pipe(
         tap((id) => {
-          console.log(id);
+          console.log('admin container', id);
           this.store.dispatch(loadOrgInfo({ organisationID: id }));
         })
       )

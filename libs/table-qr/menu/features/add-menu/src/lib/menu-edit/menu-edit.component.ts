@@ -25,9 +25,10 @@ export class MenuEditComponent implements OnInit, OnDestroy {
   @ViewChild(MatAccordion) accordion!: MatAccordion;
 
   constructor(private store: Store, private dragDropService: DragDrop) {
-    this.categoriesSubscription = this.categories$.subscribe(
-      (categories) => (this.categories = [...categories])
-    );
+    this.categoriesSubscription = this.categories$.subscribe((categories) => {
+      console.log('menu componet', categories);
+      this.categories = [...categories];
+    });
   }
 
   ngOnInit(): void {}
