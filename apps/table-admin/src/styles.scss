@@ -18,3 +18,12 @@ body {
 .rupee-symbol-left::before {
   content: ' \20B9';
 }
+
+// @media print {
+//   app-root > * {
+//     display: none !important;
+//   }
+//   app-root app-print-layout {
+//     display: block;
+//   }
+// }

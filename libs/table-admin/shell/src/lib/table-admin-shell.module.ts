@@ -13,7 +13,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { mquery } from 'mongoose';
 import { TableQrAuthenticationDataAccessModule } from '@jafar-tech/table-qr-authentication-data-access';
-import { AuthGuard } from '@jafar-tech/table-qr/core';
+import { AuthGuard, RoleGuard } from '@jafar-tech/table-qr/core';
 import { TableQrUiModule } from '@jafar-tech/table-qr-ui';
 
 @NgModule({
@@ -32,7 +32,7 @@ import { TableQrUiModule } from '@jafar-tech/table-qr-ui';
         component: AdminContainerComponent,
         canActivate: [AuthGuard],
         children: [
-          { path: '', redirectTo: 'menu', pathMatch: 'full' },
+          { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
           {
             path: 'liveorder',
             loadChildren: () =>
@@ -67,7 +67,8 @@ import { TableQrUiModule } from '@jafar-tech/table-qr-ui';
               import('@jafar-tech/table-qr-cart-features-list').then(
                 (m) => m.CartFeaturesListModule
               ),
-            data: { menuURL: '../create-order' },
+            data: { menuURL: '../create-order', roles: ['admin', 'staff'] },
+            canActivate: [RoleGuard],
           },
           {
             path: 'menu',
@@ -75,6 +76,9 @@ import { TableQrUiModule } from '@jafar-tech/table-qr-ui';
               import('@jafar-tech/table-qr/menu/features/add-menu').then(
                 (m) => m.TableQrMenuFeaturesAddMenuModule
               ),
+            canActivate: [RoleGuard],
+
+            data: { roles: ['admin'] },
           },
         ],
       },

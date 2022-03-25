@@ -23,7 +23,7 @@ export class AuthService {
     // [NOTE - TODO] this is a hack to hydrate user from the localstorage. this can be achived using metareducer in ngrx. Need to lookinto later
     this.store.select(selectIsUserAuthenticated).subscribe((isLoggedIn) => {
       if (!isLoggedIn) {
-        let userSavedInLocalStorage = JSON.parse(localStorage.getItem('user')!);
+        let userSavedInLocalStorage = this.loadUserFromLocalStorage();
         this.store.dispatch(
           hydrateUserFromLocalStorage({ user: userSavedInLocalStorage })
         );
@@ -31,6 +31,13 @@ export class AuthService {
     });
 
     return true;
+  }
+
+  getLoggedUserRole() {
+    return this.loadUserFromLocalStorage().userType;
+  }
+  private loadUserFromLocalStorage() {
+    return JSON.parse(localStorage.getItem('user')!);
   }
 
   getToken(): string | null {

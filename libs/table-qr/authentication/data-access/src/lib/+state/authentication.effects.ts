@@ -48,10 +48,18 @@ export class AuthenticationEffects {
     { dispatch: false }
   );
 
-  logoutEffect$ = createEffect(() => {
-    return this.actions$.pipe(
-      ofType(logout),
-      tap((_) => localStorage.removeItem('token'))
-    );
-  });
+  logoutEffect$ = createEffect(
+    () => {
+      return this.actions$.pipe(
+        ofType(logout),
+        tap((_) => localStorage.removeItem('token')),
+        tap((_) => {
+          console.log('fuck me');
+          localStorage.removeItem('user');
+          this.router.navigate(['/auth/login']);
+        })
+      );
+    },
+    { dispatch: false }
+  );
 }

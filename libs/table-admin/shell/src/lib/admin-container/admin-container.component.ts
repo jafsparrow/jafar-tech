@@ -1,7 +1,10 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { ActivatedRoute, Router } from '@angular/router';
-import { selectUserCompanyId } from '@jafar-tech/table-qr-authentication-data-access';
+import {
+  logout,
+  selectUserCompanyId,
+} from '@jafar-tech/table-qr-authentication-data-access';
 import { loadProductsCategoryVice } from '@jafar-tech/table-qr-products-data-access';
 import { loadOrgInfo } from '@jafar-tech/table-qr/organisation/data-access';
 import { Store } from '@ngrx/store';
@@ -17,6 +20,7 @@ export class AdminContainerComponent implements OnInit, OnDestroy {
     { name: 'Dashboard', navigate: 'dashboard' },
     { name: 'Orders', navigate: 'liveorder' },
     { name: 'menu', navigate: 'menu' },
+    { name: 'createoder', navigate: 'create-order' },
   ];
 
   @ViewChild('drawer')
@@ -50,5 +54,9 @@ export class AdminContainerComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): void {
     this.subscription?.unsubscribe();
+  }
+
+  logout() {
+    this.store.dispatch(logout());
   }
 }
