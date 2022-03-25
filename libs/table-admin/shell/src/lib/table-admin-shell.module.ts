@@ -78,7 +78,7 @@ import { TableQrUiModule } from '@jafar-tech/table-qr-ui';
               ),
             canActivate: [RoleGuard],
 
-            data: { roles: ['admin'] },
+            data: { roles: ['admin', 'staff'] },
           },
         ],
       },
