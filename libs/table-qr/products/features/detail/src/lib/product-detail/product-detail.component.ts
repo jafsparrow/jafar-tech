@@ -11,6 +11,7 @@ import { Store } from '@ngrx/store';
 import { CartItem, Modifier, Product } from '@jafar-tech/shared/data-access';
 import { Observable } from 'rxjs';
 import { canCustomerPlaceOrder } from '@jafar-tech/table-qr/organisation/data-access';
+import { selectIsOrganisationUserLoggedIn } from '@jafar-tech/table-qr-authentication-data-access';
 
 export interface DialogData {
   product: Product;
@@ -26,6 +27,9 @@ export interface DialogData {
 })
 export class ProductDetailComponent implements OnInit {
   canCustomerPlaceOrder$ = this.store.select(canCustomerPlaceOrder);
+  selectIsOrganisationUserLoggedIn$ = this.store.select(
+    selectIsOrganisationUserLoggedIn
+  );
 
   productInTheCartAlready$: Observable<number | null>;
 

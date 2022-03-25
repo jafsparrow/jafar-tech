@@ -17,3 +17,10 @@ export const selectIsUserAuthenticated = createSelector(
   selectAuthState,
   (state) => state.isAuthenticated
 );
+
+export const selectIsOrganisationUserLoggedIn = createSelector(
+  selectAuthState,
+  (state) => {
+    return ['admin', 'staff'].indexOf(state.user?.userType!) > -1;
+  }
+);

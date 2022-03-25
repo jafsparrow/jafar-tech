@@ -12,6 +12,7 @@ import {
 })
 export class SelectProductViewComponent implements OnInit {
   @Input('customerOrderEnabled') customerOrderEnabled!: boolean;
+  @Input('inHouseUserLogged') inHouseUserLogged!: boolean;
   @Input('selectedCount') selectedCount!: number | null;
   @Input('product') product?: Product;
   @Input('totatIncludingModifiers') modifierAppliedTotal!: number;

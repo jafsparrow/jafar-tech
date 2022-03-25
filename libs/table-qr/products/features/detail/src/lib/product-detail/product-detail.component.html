@@ -2,6 +2,7 @@
 
 <qr-ui-select-product-view
   [customerOrderEnabled]="(canCustomerPlaceOrder$ | async)!"
+  [inHouseUserLogged]="(selectIsOrganisationUserLoggedIn$ | async)!"
   [product]="selectedProduct"
   [selectedCount]="count"
   (countChange)="onCountChange($event)"

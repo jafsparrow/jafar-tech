@@ -11,7 +11,7 @@ export interface User {
   firstName: string;
   lastName: string;
   username?: string;
-  type: UserType;
+  userType: UserType;
   token?: string;
 }
 

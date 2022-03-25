@@ -7,7 +7,7 @@
     <h3>
       {{ product?.name | titlecase }}
     </h3>
-    <p>
+    <p *ngIf="!inHouseUserLogged">
       {{ product?.description }}
     </p>
   </div>
@@ -18,33 +18,35 @@
     class="product-modifier-container"
     *ngIf="product?.modifierGroups as modifierGroups"
   >
-    <p>Choose from following</p>
+    <div *ngIf="modifierGroups.length > 1">
+      <p>Choose from following</p>
 
-    <ng-container *ngFor="let modifierGroup of modifierGroups; let i = index">
-      <p id="example-radio-group-label">{{ modifierGroup.description }}</p>
-      <mat-radio-group
-        name="{{ i.toString() }}"
-        *ngFor="let modifier of modifierGroup.modifiers; let j = index"
-        (change)="radioSelectionChange($event, modifier, j)"
-      >
-        <mat-radio-button
-          class="modifier-radio-group"
-          [value]="modifier.description"
+      <ng-container *ngFor="let modifierGroup of modifierGroups; let i = index">
+        <p id="example-radio-group-label">{{ modifierGroup.description }}</p>
+        <mat-radio-group
+          name="{{ i.toString() }}"
+          *ngFor="let modifier of modifierGroup.modifiers; let j = index"
+          (change)="radioSelectionChange($event, modifier, j)"
         >
-          <span>{{ modifier.description }}</span>
-          <span>
-            -
-            <span class="modifier-price rupee-symbol-left">{{
-              modifier.price
-            }}</span></span
+          <mat-radio-button
+            class="modifier-radio-group"
+            [value]="modifier.description"
           >
-        </mat-radio-button>
-      </mat-radio-group>
-    </ng-container>
+            <span>{{ modifier.description }}</span>
+            <span>
+              -
+              <span class="modifier-price rupee-symbol-left">{{
+                modifier.price
+              }}</span></span
+            >
+          </mat-radio-button>
+        </mat-radio-group>
+      </ng-container>
+      <mat-divider></mat-divider>
+    </div>
   </div>
   <div>
-    <div *ngIf="customerOrderEnabled">
-      <mat-divider></mat-divider>
+    <div *ngIf="customerOrderEnabled || inHouseUserLogged">
       <div class="flex-content"></div>
       <div class="count-control-container">
         <qr-ui-count-control

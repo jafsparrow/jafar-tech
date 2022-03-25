@@ -7,12 +7,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ProductsDataAccessModule } from '@jafar-tech/table-qr-products-data-access';
-import { TableQrProductsFeaturesAddModule } from '@jafar-tech/table-qr/products/features/add';
 
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { mquery } from 'mongoose';
-import { TableQrAuthenticationDataAccessModule } from '@jafar-tech/table-qr-authentication-data-access';
 import { AuthGuard, RoleGuard } from '@jafar-tech/table-qr/core';
 import { TableQrUiModule } from '@jafar-tech/table-qr-ui';
 import { TableQrCategoryDataAccessCategoryModule } from '@jafar-tech/table-qr/category/data-access/category';
@@ -49,13 +46,7 @@ import { TableQrOrganisationDataAccessModule } from '@jafar-tech/table-qr/organi
                 (m) => m.TableQrDashboardFeaturesDashboardModule
               ),
           },
-          // {
-          //   path: 'add',
-          //   loadChildren: () =>
-          //     import('@jafar-tech/table-qr/products/features/add').then(
-          //       (m) => m.TableQrProductsFeaturesAddModule
-          //     ),
-          // },
+
           {
             path: 'create-order',
             loadChildren: () =>

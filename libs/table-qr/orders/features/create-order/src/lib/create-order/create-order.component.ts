@@ -14,7 +14,10 @@ import {
   selectCartTotal,
   selectNumberOfItemsInCart,
 } from '@jafar-tech/table-qr-cart-data-access';
-import { selectProductsArray } from '@jafar-tech/table-qr-products-data-access';
+import {
+  selectAllProducts,
+  selectProductsArray,
+} from '@jafar-tech/table-qr-products-data-access';
 import { ProductDetailComponent } from '@jafar-tech/table-qr/products/features/detail';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
@@ -25,7 +28,7 @@ import { Observable, Subscription } from 'rxjs';
   styleUrls: ['./create-order.component.css'],
 })
 export class CreateOrderComponent implements OnInit, AfterViewInit, OnDestroy {
-  products$: Observable<Product[]> = this.store.select(selectProductsArray);
+  products$: Observable<Product[]> = this.store.select(selectAllProducts);
   cartCount$ = this.store.select(selectNumberOfItemsInCart);
   cartTotal$ = this.store.select(selectCartTotal);
 
