@@ -15,17 +15,21 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild([{ path: '', component: MenuEditComponent }]),
+    ReactiveFormsModule,
     MatExpansionModule,
     MatIconModule,
     TableQrOrganisationDataAccessModule,
     TableQrCategoryDataAccessCategoryModule,
     DragDropModule,
     TableQrUiModule,
+    MatSelectModule,
     MatDialogModule,
     MatButtonModule,
     MatSlideToggleModule,
