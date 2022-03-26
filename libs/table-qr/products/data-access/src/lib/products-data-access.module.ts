@@ -9,12 +9,14 @@ import {
 } from './+state/products.reducers';
 import { ProductsEffects } from './+state/product.effects';
 import { ProductsService } from './products.service';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
     StoreModule.forFeature(PRODUCTS_FEATURE_KEY, productsReducer),
     EffectsModule.forFeature([ProductsEffects]),
+    MatDialogModule,
   ],
   // providers: [ProductsService, ProductsEffects],
 })

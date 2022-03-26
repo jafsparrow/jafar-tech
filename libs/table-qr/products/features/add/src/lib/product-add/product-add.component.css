@@ -1,3 +1,7 @@
+.component-container {
+  /* max-width: 700px; */
+}
+
 .form-elements-container {
   display: flex;
   flex-direction: column;
@@ -23,4 +27,11 @@
 
 .mat-spinner-container {
   text-align: center;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 10px;
 }
