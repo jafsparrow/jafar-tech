@@ -37,6 +37,11 @@ export class MenuCategoryProductListComponent implements OnInit {
 
   openDialog(product: Product) {
     const dialogRef = this.dialog.open(ProductAddComponent, {
+      maxWidth: '100vw',
+      maxHeight: '100vh',
+      height: '90%',
+      // width: '95%',
+      panelClass: 'custom-dialog-container',
       position: { right: '0' },
       data: {
         product,
@@ -53,6 +58,11 @@ export class MenuCategoryProductListComponent implements OnInit {
 
   openAddProductDailog() {
     const dialogRef = this.dialog.open(ProductAddComponent, {
+      maxWidth: '100vw',
+      maxHeight: '100vh',
+      height: '90%',
+      // width: '95%',
+      panelClass: 'custom-dialog-container',
       data: {
         isEdit: false,
         category: this.category,

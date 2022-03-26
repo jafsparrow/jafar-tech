@@ -69,8 +69,8 @@ export class CreateOrderComponent implements OnInit, AfterViewInit, OnDestroy {
     this.dialog.open(ProductDetailComponent, {
       maxWidth: '100vw',
       maxHeight: '100vh',
-      height: '100%',
-      width: '100%',
+      // height: '100%',
+      // width: '100%',
       data: {
         product,
       },

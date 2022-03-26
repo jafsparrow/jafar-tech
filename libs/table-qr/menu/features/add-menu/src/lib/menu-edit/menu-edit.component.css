@@ -19,3 +19,10 @@ mat-expansion-panel {
 .list-box {
   cursor: move;
 }
+
+@media only screen and (max-width: 600px) {
+  mat-expansion-panel {
+    margin: 0px;
+    margin-bottom: 5px;
+  }
+}
