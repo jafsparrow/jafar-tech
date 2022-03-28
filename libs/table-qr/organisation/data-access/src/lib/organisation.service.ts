@@ -27,6 +27,7 @@ export class OrganisationService {
   }
 
   updateOrgDetails(orgData: Organisation): Observable<Organisation> {
+    console.log('org serve update data', orgData);
     return this.httpClient.put<Organisation>(
       `${this.apiUrl}/organisation`,
       orgData

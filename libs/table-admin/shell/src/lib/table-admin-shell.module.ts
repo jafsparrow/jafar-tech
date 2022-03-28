@@ -26,13 +26,6 @@ import { TableQrOrganisationDataAccessModule } from '@jafar-tech/table-qr/organi
             (m) => m.TableQrAuthenticationFeaturesSingninModule
           ),
       },
-      {
-        path: 'org',
-        loadChildren: () =>
-          import('@jafar-tech/table-qr/organisation/details').then(
-            (m) => m.TableQrOrganisationDetailsModule
-          ),
-      },
 
       {
         path: '',
@@ -70,6 +63,13 @@ import { TableQrOrganisationDataAccessModule } from '@jafar-tech/table-qr/organi
               ),
             data: { menuURL: '../create-order', roles: ['admin', 'staff'] },
             canActivate: [RoleGuard],
+          },
+          {
+            path: 'org',
+            loadChildren: () =>
+              import('@jafar-tech/table-qr/organisation/details').then(
+                (m) => m.TableQrOrganisationDetailsModule
+              ),
           },
           {
             path: 'menu',

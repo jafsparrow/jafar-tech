@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import {} from '@ngrx/effects/src/effects_module';
 import { catchError, map, Observable, of, switchMap, tap } from 'rxjs';
 import { AuthService } from '../auth.service';
 import {
@@ -13,6 +12,8 @@ import {
   signUpFail,
   signUpSuccess,
 } from './authentication.actions';
+
+import { loadOrgInfo } from '@jafar-tech/table-qr/organisation/data-access';
 
 @Injectable()
 export class AuthenticationEffects {
@@ -63,20 +64,18 @@ export class AuthenticationEffects {
     );
   });
 
-  signUpSuccessEffect$ = createEffect(
-    () => {
-      return this.actions$.pipe(
-        ofType(signUpSuccess),
-        tap((payload) => {
-          console.log('this happened now');
-          localStorage.setItem('token', payload.token!);
-          localStorage.setItem('user', JSON.stringify(payload.user));
-          this.router.navigateByUrl('org');
-        })
-      );
-    },
-    { dispatch: false }
-  );
+  signUpSuccessEffect$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(signUpSuccess),
+      tap((payload) => {
+        console.log('this happened now');
+        localStorage.setItem('token', payload.token!);
+        localStorage.setItem('user', JSON.stringify(payload.user));
+        this.router.navigateByUrl('org');
+      }),
+      map((payload) => loadOrgInfo({ organisationID: payload.user.companyId }))
+    );
+  });
 
   logoutEffect$ = createEffect(
     () => {

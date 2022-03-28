@@ -14,15 +14,28 @@
         <mat-icon matSuffix (click)="toggle(nameInput)"> mode_edit</mat-icon>
       </mat-form-field>
 
+      <input matInput hidden="true" formControlName="_id" />
+
       <mat-form-field appearance="outline" class="full-width-small">
         <mat-label>Caption </mat-label>
         <input
           matInput
-          value="Zaatar RestoCafe"
+          value="Caption of your dream spot"
           #captionInput
           formControlName="caption"
         />
         <mat-icon matSuffix (click)="toggle(captionInput)">mode_edit</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width-small">
+        <mat-label>Phone: </mat-label>
+        <input
+          matInput
+          value="Caption of your dream spot"
+          #phoneInput
+          formControlName="phone"
+        />
+        <mat-icon matSuffix (click)="toggle(phoneInput)">mode_edit</mat-icon>
       </mat-form-field>
     </div>
     <div class="section">

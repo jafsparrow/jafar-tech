@@ -9,9 +9,12 @@ import {
   COUNTRY_LIST_JSON,
   DAYS,
 } from '@jafar-tech/shared/data-access';
-import { selectOrganisationInfo } from '@jafar-tech/table-qr/organisation/data-access';
+import {
+  selectOrganisationInfo,
+  updateOrganisation,
+} from '@jafar-tech/table-qr/organisation/data-access';
 import { Store } from '@ngrx/store';
-import { map, Observable, startWith } from 'rxjs';
+import { map, Observable, startWith, Subscription } from 'rxjs';
 
 @Component({
   selector: 'jafar-tech-org-detail',
@@ -32,10 +35,14 @@ export class OrgDetailComponent implements OnInit {
 
   @ViewChild('daysInput') daysInput!: ElementRef<HTMLInputElement>;
 
+  subscirption!: Subscription;
+
   constructor(private store: Store, private _fb: FormBuilder) {
     this.orgForm = this._fb.group({
+      _id: [''],
       name: ['', Validators.required],
       caption: ['Secret In the name'],
+      phone: [''],
       addressLine1: [''],
       addressLine2: [''],
       pin: [''],
@@ -43,6 +50,10 @@ export class OrgDetailComponent implements OnInit {
       type: [''],
       openAllWeek: [true],
       offDays: [''],
+    });
+
+    this.slectOrgInfo$.subscribe((org) => {
+      this.orgForm.patchValue(org!);
     });
   }
 
@@ -95,6 +106,7 @@ export class OrgDetailComponent implements OnInit {
 
     if (index >= 0) {
       this.selectedDays.splice(index, 1);
+      (',');
     }
   }
 
@@ -116,8 +128,11 @@ export class OrgDetailComponent implements OnInit {
       ...orgDetails,
       offDays: this.selectedDays,
       currencyCode,
+      isRegistrationComplete: true,
+      phone: orgDetails.phone.toString(),
     };
     console.log(updatedOrg);
+    this.store.dispatch(updateOrganisation({ organisation: updatedOrg }));
   }
   private _filter(value: string): CountryCurrency[] {
     const filterValue = value.toLowerCase();

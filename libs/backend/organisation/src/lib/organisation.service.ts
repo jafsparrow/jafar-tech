@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { CreateOrganisationDto } from './dto/create-organisation.dto';
+import { UpdateOrganisationDto } from './dto/update-organisation.dto';
 import { OrganisationRepository } from './organisation.repository';
 
 @Injectable()
@@ -11,5 +12,9 @@ export class OrganisationService {
 
   getOrganisationDetails(companyId: string) {
     return this.orgRepository.getOrgnisationById(companyId);
+  }
+
+  updateOrganisation(orgData: UpdateOrganisationDto) {
+    return this.orgRepository.updateOrganisation(orgData);
   }
 }

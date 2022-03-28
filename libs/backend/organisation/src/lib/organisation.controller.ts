@@ -1,5 +1,6 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
 import { CreateOrganisationDto } from './dto/create-organisation.dto';
+import { UpdateOrganisationDto } from './dto/update-organisation.dto';
 import { OrganisationService } from './organisation.service';
 
 @Controller('organisation')
@@ -14,5 +15,10 @@ export class OrganisationController {
   @Get(':id')
   findOrganisation(@Param('id') companyId: string) {
     return this.orgService.getOrganisationDetails(companyId);
+  }
+
+  @Put()
+  updateOrganisation(@Body() updateOrgData: UpdateOrganisationDto) {
+    return this.orgService.updateOrganisation(updateOrgData);
   }
 }
