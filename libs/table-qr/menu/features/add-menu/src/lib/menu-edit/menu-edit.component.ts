@@ -1,5 +1,6 @@
 import { CdkDragDrop, DragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatAccordion } from '@angular/material/expansion';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { Category, Product } from '@jafar-tech/shared/data-access';
@@ -10,6 +11,7 @@ import {
 import { selectCategories } from '@jafar-tech/table-qr/category/data-access/category';
 import { selectOrganisationId } from '@jafar-tech/table-qr/organisation/data-access';
 import { Store } from '@ngrx/store';
+import { CategoryAddComponent } from 'libs/table-qr/category/features/add/src/lib/category-add/category-add.component';
 import { Observable, ObservableLike, Subscription, take, tap } from 'rxjs';
 
 @Component({
@@ -24,7 +26,11 @@ export class MenuEditComponent implements OnInit, OnDestroy {
   categoriesSubscription: Subscription;
   @ViewChild(MatAccordion) accordion!: MatAccordion;
 
-  constructor(private store: Store, private dragDropService: DragDrop) {
+  constructor(
+    private store: Store,
+    private dragDropService: DragDrop,
+    private dialog: MatDialog
+  ) {
     this.categoriesSubscription = this.categories$.subscribe((categories) => {
       console.log('menu componet', categories);
       this.categories = [...categories];
@@ -42,6 +48,17 @@ export class MenuEditComponent implements OnInit, OnDestroy {
     if (event.previousIndex != event.currentIndex) {
       console.log('category order chagned.');
     }
+  }
+
+  openCategoryDialog() {
+    this.dialog.open(CategoryAddComponent, {
+      maxWidth: '100vw',
+      maxHeight: '100vh',
+      // height: '90%',
+      data: {},
+
+      panelClass: 'custom-dialog-container',
+    });
   }
 
   ngOnDestroy(): void {

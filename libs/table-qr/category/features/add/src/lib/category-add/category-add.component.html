@@ -1,1 +1,66 @@
-<p>category-add works!</p>
+<div class="category-container">
+  <div class="org-wrapper">
+    <div class="heading">Add a category</div>
+    <form [formGroup]="categoryForm" (ngSubmit)="submitForm()">
+      <div class="section">
+        <mat-form-field appearance="outline" class="full-width-small">
+          <mat-label>Name </mat-label>
+          <input matInput value="Zaatar RestoCafe" formControlName="name" />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width-small">
+          <mat-label>Description </mat-label>
+          <input matInput formControlName="description" />
+        </mat-form-field>
+        <mat-checkbox labelPosition="after" formControlName="alwaysOpen"
+          >Always Open
+        </mat-checkbox>
+
+        <mat-form-field
+          appearance="outline"
+          class="full-width-small"
+          *ngIf="!alwaysOpen"
+        >
+          <mat-label>Days</mat-label>
+          <mat-chip-list #chipList aria-label="Days selection">
+            <mat-chip *ngFor="let day of selectedDays" (removed)="remove(day)">
+              {{ day }}
+              <button matChipRemove>
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip>
+            <input
+              placeholder="Day Name..."
+              #daysInput
+              formControlName="day"
+              [matAutocomplete]="auto4Days"
+              [matChipInputFor]="chipList"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              (matChipInputTokenEnd)="add($event)"
+            />
+          </mat-chip-list>
+          <mat-autocomplete
+            #auto4Days="matAutocomplete"
+            (optionSelected)="selected($event)"
+          >
+            <mat-option *ngFor="let day of filterdDays$ | async" [value]="day">
+              {{ day }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <mat-checkbox labelPosition="after" formControlName="openAllDay"
+          >Available all day
+        </mat-checkbox>
+
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          class="full-width-small"
+          [disabled]="!categoryForm.valid"
+        >
+          submit
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

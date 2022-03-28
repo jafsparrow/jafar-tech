@@ -17,12 +17,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
+import { TableQrCategoryFeaturesAddModule } from '@jafar-tech/table-qr/category/features/add';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild([{ path: '', component: MenuEditComponent }]),
     ReactiveFormsModule,
+    TableQrCategoryFeaturesAddModule,
     MatExpansionModule,
     MatIconModule,
     TableQrOrganisationDataAccessModule,
