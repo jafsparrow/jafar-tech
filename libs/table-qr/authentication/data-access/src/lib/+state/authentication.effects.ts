@@ -9,6 +9,9 @@ import {
   loginFail,
   loginSuccess,
   logout,
+  signUp,
+  signUpFail,
+  signUpSuccess,
 } from './authentication.actions';
 
 @Injectable()
@@ -41,7 +44,34 @@ export class AuthenticationEffects {
           console.log('this happened now');
           localStorage.setItem('token', payload.token!);
           localStorage.setItem('user', JSON.stringify(payload.user));
-          this.router.navigateByUrl('menu');
+          this.router.navigateByUrl('dashboard');
+        })
+      );
+    },
+    { dispatch: false }
+  );
+
+  signUpEffects$: Observable<any> = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(signUp),
+      switchMap((user) =>
+        this.authService.signUp(user).pipe(
+          map((res) => signUpSuccess({ user: res.user, token: res.token })),
+          catchError((error) => of(signUpFail(error)))
+        )
+      )
+    );
+  });
+
+  signUpSuccessEffect$ = createEffect(
+    () => {
+      return this.actions$.pipe(
+        ofType(signUpSuccess),
+        tap((payload) => {
+          console.log('this happened now');
+          localStorage.setItem('token', payload.token!);
+          localStorage.setItem('user', JSON.stringify(payload.user));
+          this.router.navigateByUrl('org');
         })
       );
     },

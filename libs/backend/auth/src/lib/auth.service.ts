@@ -31,6 +31,10 @@ export class AuthenticationService {
     return this.authRepository.createUser(companyId, UserType.ADMIN, data);
   }
 
+  async signup(userInput: CreateUserDto) {
+    let signedUpUser = await this.authRepository.signUpNewUser(userInput);
+    return this.login(signedUpUser);
+  }
   // async validateUser(loginData: LoginDto, companyId: string) {
   //   let users = await this.authRepository.findCompanyUser(
   //     companyId,

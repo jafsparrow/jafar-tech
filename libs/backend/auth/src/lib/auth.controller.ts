@@ -21,6 +21,12 @@ export class AuthController {
     private authService: AuthenticationService
   ) {}
 
+  @Post('signup')
+  async signUp(@Body() createUserInput: CreateUserDto) {
+    console.log('sinup methiod');
+    return this.authService.signup(createUserInput);
+  }
+
   @UseGuards(LocalAuthGuard)
   @Post('login')
   async login(@Request() req) {

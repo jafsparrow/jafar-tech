@@ -12,4 +12,5 @@ export interface Organisation {
   offDays: string[];
   products?: Product[];
   categories?: Category[];
+  isRegistrationComplete?: boolean;
 }

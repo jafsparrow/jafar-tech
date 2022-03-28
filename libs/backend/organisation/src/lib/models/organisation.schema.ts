@@ -11,33 +11,52 @@ import { Document } from 'mongoose';
 export class Organisation extends Document {
   @Prop()
   name: string;
-  @Prop()
+
+  @Prop({ default: '' })
   caption: string;
 
-  // @Prop({ unique: true })
-  // email: string;
+  @Prop({ unique: true })
+  email: string;
 
-  // @Prop()
-  // password: string;
+  @Prop({ default: '' })
+  phone: string;
 
   @Prop()
   type: string[];
-  @Prop()
-  address: string;
-  @Prop()
+
+  @Prop({ default: '' })
+  addressLine1: string;
+
+  @Prop({ default: '' })
+  addressLine2: string;
+
+  @Prop({ default: '' })
+  pin: string;
+
+  @Prop({ default: '' })
+  currencyCode: string;
+
+  @Prop({ default: '' })
+  country: string;
+
+  @Prop({ default: [] })
   coord: string[];
 
-  @Prop()
+  @Prop({ default: 'open' })
   license: string;
 
   @Prop({ default: true })
   openAllWeek: boolean;
 
-  @Prop()
+  @Prop({ default: [] })
   offDays: string[];
+
+  @Prop({ default: false })
+  isRegistrationComplete: boolean;
 
   @Prop({ type: [ProductSchema], default: [] })
   products: Product[];
+
   @Prop({ type: [UserSchema], default: [] })
   users: User[];
 }

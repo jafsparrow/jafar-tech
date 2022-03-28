@@ -27,6 +27,14 @@ import { TableQrOrganisationDataAccessModule } from '@jafar-tech/table-qr/organi
           ),
       },
       {
+        path: 'org',
+        loadChildren: () =>
+          import('@jafar-tech/table-qr/organisation/details').then(
+            (m) => m.TableQrOrganisationDetailsModule
+          ),
+      },
+
+      {
         path: '',
         component: AdminContainerComponent,
         canActivate: [AuthGuard],

@@ -25,4 +25,19 @@ export const tableLogin = createAction(
   props<{ loginData: LoginData }>()
 );
 
+export const signUp = createAction(
+  '[AUTHENTICATION] new organisation signup',
+  props<{ user: User }>()
+);
+
+export const signUpSuccess = createAction(
+  '[AUTHENTICATION] Signup success',
+  props<{ user: User; token: string }>()
+);
+
+export const signUpFail = createAction(
+  '[AUTHENTICATION] Singup fail',
+  props<{ errorMessage: string }>()
+);
+
 export const logout = createAction('[AUTHENTICATION] Logout');
