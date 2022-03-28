@@ -26,3 +26,7 @@ export const canCustomerPlaceOrder = createSelector(
   selectOrganisationInfo,
   (org) => false
 );
+export const selectOrganisationRegistrationStatus = createSelector(
+  selectOrganisationInfo,
+  (org) => (org!.isRegistrationComplete ? org!.isRegistrationComplete : false)
+);

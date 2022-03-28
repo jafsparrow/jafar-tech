@@ -1,0 +1,138 @@
+<div class="org-wrapper">
+  <div class="heading">Organisation details</div>
+  <form [formGroup]="orgForm" (ngSubmit)="submitForm()">
+    <div class="section">
+      <mat-form-field appearance="outline" class="full-width-small">
+        <mat-label>Name </mat-label>
+        <input
+          matInput
+          value="Zaatar RestoCafe"
+          formControlName="name"
+          #nameInput
+        />
+
+        <mat-icon matSuffix (click)="toggle(nameInput)"> mode_edit</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width-small">
+        <mat-label>Caption </mat-label>
+        <input
+          matInput
+          value="Zaatar RestoCafe"
+          #captionInput
+          formControlName="caption"
+        />
+        <mat-icon matSuffix (click)="toggle(captionInput)">mode_edit</mat-icon>
+      </mat-form-field>
+    </div>
+    <div class="section">
+      <div class="section-title">Location details</div>
+
+      <mat-form-field appearance="outline" class="full-width-small">
+        <mat-label>Address Line1 </mat-label>
+        <input
+          matInput
+          value="Zaatar RestoCafe"
+          #addressLine1
+          formControlName="addressLine1"
+        />
+        <mat-icon matSuffix (click)="toggle(addressLine1)">mode_edit</mat-icon>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="full-width-small">
+        <mat-label>Address Line2 </mat-label>
+        <input matInput disabled value="Zaatar RestoCafe" #addressLine2 />
+        <mat-icon matSuffix (click)="toggle(addressLine2)">mode_edit</mat-icon>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="full-width-small">
+        <mat-label>Pin Code</mat-label>
+        <input
+          matInput
+          value="Zaatar RestoCafe"
+          #pinInput
+          formControlName="addressLine2"
+        />
+        <mat-icon matSuffix (click)="toggle(pinInput)">mode_edit</mat-icon>
+      </mat-form-field>
+
+      <!-- <mat-form-field appearance="outline" class="full-width-small">
+        <mat-label>Country </mat-label>
+        <input
+          matInput
+          value="Zaatar RestoCafe"
+          #countryInput
+          formControlName="country"
+        />
+        <mat-icon matSuffix (click)="toggle(countryInput)">mode_edit</mat-icon>
+      </mat-form-field> -->
+
+      <mat-form-field class="full-width-small" appearance="outline">
+        <mat-label>Country</mat-label>
+        <input
+          type="text"
+          placeholder="Pick one"
+          aria-label="Country"
+          matInput
+          formControlName="country"
+          [matAutocomplete]="auto"
+        />
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option
+            *ngFor="let option of filteredOptions$ | async"
+            [value]="option.country"
+          >
+            {{ option.country }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <div class="section">
+      <div class="section-title">More Details</div>
+
+      <mat-checkbox formControlName="openAllWeek" class="full-width-small"
+        >Open All Week</mat-checkbox
+      >
+      <mat-form-field
+        appearance="outline"
+        class="full-width-small"
+        *ngIf="!openAllWeek"
+      >
+        <mat-label>Off Days</mat-label>
+        <mat-chip-list #chipList aria-label="Days selection">
+          <mat-chip *ngFor="let day of selectedDays" (removed)="remove(day)">
+            {{ day }}
+            <button matChipRemove>
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip>
+          <input
+            placeholder="Day Name..."
+            #daysInput
+            formControlName="offDays"
+            [matAutocomplete]="auto4Days"
+            [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            (matChipInputTokenEnd)="add($event)"
+          />
+        </mat-chip-list>
+        <mat-autocomplete
+          #auto4Days="matAutocomplete"
+          (optionSelected)="selected($event)"
+        >
+          <mat-option *ngFor="let day of filterdDays$ | async" [value]="day">
+            {{ day }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        class="full-width-small"
+        [disabled]="!orgForm.valid"
+      >
+        submit
+      </button>
+    </div>
+  </form>
+</div>

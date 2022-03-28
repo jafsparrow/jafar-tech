@@ -25,4 +25,11 @@ export class OrganisationService {
   getOrgDetails(orgId: string): Observable<any> {
     return this.httpClient.get<any>(`${this.apiUrl}/organisation/${orgId}`);
   }
+
+  updateOrgDetails(orgData: Organisation): Observable<Organisation> {
+    return this.httpClient.put<Organisation>(
+      `${this.apiUrl}/organisation`,
+      orgData
+    );
+  }
 }

@@ -1,6 +1,11 @@
 <div class="select-product-view-container">
   <div class="product-image-container" *ngIf="product!.image">
-    <img [src]="product!.image" alt="" class="product-image" />
+    <img
+      [src]="product!.image"
+      alt=""
+      class="product-image"
+      *ngIf="!inHouseUserLogged"
+    />
   </div>
 
   <div class="product-title-container">

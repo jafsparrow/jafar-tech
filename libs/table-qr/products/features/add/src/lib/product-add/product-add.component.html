@@ -195,7 +195,6 @@
           <!-- {{ productAddForm?.get('productBasicForm')?.value | json }} -->
         </div>
       </div>
-      {{ selectAddUpdateProductProgressFlag$ | async }}
       <div
         *ngIf="!(selectAddUpdateProductProgressFlag$ | async); else indicator"
       >
