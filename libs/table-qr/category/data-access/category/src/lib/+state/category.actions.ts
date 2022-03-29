@@ -10,3 +10,18 @@ export const loadCategoryFail = createAction(
   '[CATEGORY] load category failed',
   props<{ errorMessage: string }>()
 );
+
+export const addCategory = createAction(
+  '[CATEGORY] add new category',
+  props<{ companyId: string; category: Category }>()
+);
+
+export const addCategorySuccess = createAction(
+  '[CATEGORY] add category success',
+  props<{ category: Category }>()
+);
+
+export const addCategoryFail = createAction(
+  '[CATEGORY] add category fail',
+  props<{ errorMessage: string }>()
+);
