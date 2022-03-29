@@ -29,6 +29,9 @@ export class Category extends Document {
 
   @Prop({ default: null })
   hours?: string[];
+
+  @Prop({ default: 999 })
+  adminIndex: number;
 }
 
 export const CategorySchema = SchemaFactory.createForClass(Category);
