@@ -8,5 +8,5 @@
     "target": "es6"
   },
   "exclude": ["**/*.spec.ts", "**/*.test.ts"],
-  "include": ["**/*.ts", "../category/src/lib/dto/create-category.dto.ts", "../category/src/lib/models/category.schema.ts"]
+  "include": ["**/*.ts"]
 }

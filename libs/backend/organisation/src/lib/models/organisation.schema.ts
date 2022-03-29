@@ -1,6 +1,10 @@
 import { User, UserSchema } from '@jafar-tech/backend/auth';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import {
+  Category,
+  CategorySchema,
+} from 'libs/backend/category/src/lib/models/category.schema';
+import {
   Product,
   ProductSchema,
 } from 'libs/backend/products/src/lib/models/product.schema';
@@ -56,6 +60,9 @@ export class Organisation extends Document {
 
   @Prop({ type: [ProductSchema], default: [] })
   products: Product[];
+
+  @Prop({ type: [CategorySchema], default: [] })
+  categories: Category[];
 
   @Prop({ type: [UserSchema], default: [] })
   users: User[];

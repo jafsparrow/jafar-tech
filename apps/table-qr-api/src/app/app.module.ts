@@ -1,4 +1,5 @@
 import { BackendAuthModule } from '@jafar-tech/backend/auth';
+import { BackendCategoryModule } from '@jafar-tech/backend/category';
 import { BackendCoreModule } from '@jafar-tech/backend/core';
 import { BackendOrdersModule } from '@jafar-tech/backend/orders';
 import { BackendOrganisationModule } from '@jafar-tech/backend/organisation';
@@ -35,7 +36,7 @@ import { AppService } from './app.service';
     BackendOrganisationModule,
     BackendAuthModule,
     BackendProductsModule,
-
+    BackendCategoryModule,
     BackendOrdersModule,
   ],
   controllers: [AppController],

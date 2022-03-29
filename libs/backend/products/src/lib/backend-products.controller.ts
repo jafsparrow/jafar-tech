@@ -9,8 +9,7 @@ import {
   Put,
   UseGuards,
 } from '@nestjs/common';
-import { CategoryService } from './category.service';
-import { CreateCategoryDto } from './dto/create-category.dto';
+import { CreateCategoryDto } from '../../../category/src/lib/dto/create-category.dto';
 import { CreateProductDto } from './dto/create-product-dto';
 import { PatchProductIndexDto } from './dto/patch-porduct.dto';
 import { ProductBoolFieldDto } from './dto/product-bool-field-update.dto';
@@ -18,10 +17,7 @@ import { ProductService } from './products.service';
 
 @Controller('products')
 export class BackendProductsController {
-  constructor(
-    private productService: ProductService,
-    private categoryService: CategoryService
-  ) {}
+  constructor(private productService: ProductService) {}
   @Get('list')
   getProducts() {
     return this.productService.getProduct();
@@ -35,11 +31,6 @@ export class BackendProductsController {
   ) {
     console.log('create product called');
     return this.productService.createProduct(companyId, product);
-  }
-
-  @Post('category')
-  createCategory(@Body() category: CreateCategoryDto) {
-    this.categoryService.createCategory(category);
   }
 
   @Patch(':id')

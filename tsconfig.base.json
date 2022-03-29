@@ -17,6 +17,7 @@
     "paths": {
       "@jafar-tech/api-interfaces": ["libs/api-interfaces/src/index.ts"],
       "@jafar-tech/backend/auth": ["libs/backend/auth/src/index.ts"],
+      "@jafar-tech/backend/category": ["libs/backend/category/src/index.ts"],
       "@jafar-tech/backend/core": ["libs/backend/core/src/index.ts"],
       "@jafar-tech/backend/orders": ["libs/backend/orders/src/index.ts"],
       "@jafar-tech/backend/organisation": [

@@ -6,7 +6,7 @@ import { CreateCategoryDto } from './dto/create-category.dto';
 export class CategoryService {
   constructor(private categoryRepository: CategoryRepository) {}
 
-  createCategory(category: CreateCategoryDto) {
-    return this.categoryRepository.createCategory(category);
+  addCategory(companyId: string, data: CreateCategoryDto) {
+    return this.categoryRepository.createCategory(companyId, data);
   }
 }
