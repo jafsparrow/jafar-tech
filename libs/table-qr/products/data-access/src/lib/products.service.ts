@@ -34,10 +34,7 @@ export class ProductsService {
   addProduct(companyId: string, product: Product) {
     console.log('adding a product');
     console.log(product);
-    return this.httpClient.post(
-      `${this.apiUrl}/products/${companyId}`,
-      product
-    );
+    return this.httpClient.post(`${this.apiUrl}/products`, product);
   }
 
   updateProductsSort(

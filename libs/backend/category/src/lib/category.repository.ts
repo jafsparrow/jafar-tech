@@ -21,6 +21,7 @@ export class CategoryRepository {
     let savedData = null;
     try {
       savedData = await organisation.save();
+      return savedData;
     } catch (error) {
       throw new NotFoundException();
     }

@@ -1,4 +1,4 @@
-import { Category } from '@jafar-tech/shared/data-access';
+import { Category, Organisation } from '@jafar-tech/shared/data-access';
 import { createAction, props } from '@ngrx/store';
 
 export const loadCategories = createAction('[CATEGORY] loadcategory');
@@ -18,7 +18,7 @@ export const addCategory = createAction(
 
 export const addCategorySuccess = createAction(
   '[CATEGORY] add category success',
-  props<{ category: Category }>()
+  props<{ organisation: Organisation }>()
 );
 
 export const addCategoryFail = createAction(

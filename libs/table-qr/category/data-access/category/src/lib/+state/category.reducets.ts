@@ -38,7 +38,7 @@ export const categoryReducer = createReducer(
     isCategoryLoading: true,
     errorMessage: '',
   })),
-  on(addCategorySuccess, (state, { category }) => ({
+  on(addCategorySuccess, (state, { organisation }) => ({
     ...state,
     isCategoryLoading: false,
     errorMessage: '',

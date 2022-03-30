@@ -2,6 +2,7 @@ import { CategoryViseProducts, Product } from '@jafar-tech/shared/data-access';
 
 import { createReducer, on } from '@ngrx/store';
 import {
+  addProductSuccess,
   addupdateProductInprogress,
   loadProductsCategoryVice,
   loadProductsCategoryViceSuccess,
@@ -52,7 +53,12 @@ export const productsReducer = createReducer(
       ...state,
       productAddUpdateInProgress: true,
     };
-  })
+  }),
+  on(addProductSuccess, (state, { organisation }) => ({
+    ...state,
+    productAddUpdateInProgress: false,
+    errorMessage: '',
+  }))
 );
 
 // export const categoryviseProductsReducer = createReducer(

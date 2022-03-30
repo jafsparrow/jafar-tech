@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Product } from '@jafar-tech/shared/data-access';
+import { Organisation, Product } from '@jafar-tech/shared/data-access';
 import { loadOrgInfoSuccess } from '@jafar-tech/table-qr/organisation/data-access';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
@@ -13,14 +13,10 @@ import {
   addProductFailure,
   addProductSuccess,
   addupdateProductInprogress,
-  loadProducts,
   loadProductsCategoryVice,
   loadProductsCategoryViceFail,
   loadProductsCategoryViceSuccess,
-  loadProductsFail,
-  loadProductsSuccess,
   productsCategoryViceLoading,
-  updateProduct,
   updateProductBooleanFail,
   updateProductBooleans,
   updateProductFail,
@@ -59,26 +55,32 @@ export class ProductsEffects {
       tap((data) => this.store.dispatch(addupdateProductInprogress())),
       switchMap((data) =>
         this.productService.addProduct(data.companyId, data.product).pipe(
-          map((res) => addProductSuccess({ product: res as Product })),
-          catchError((error) => of(addProductFailure({ error: error })))
+          map((res) =>
+            addProductSuccess({ organisation: res as Organisation })
+          ),
+          catchError((error) => {
+            this.dialog.closeAll();
+            return of(addProductFailure({ error: error }));
+          })
         )
       )
     );
   });
 
-  productAddSuccess$ = createEffect(
-    () => {
-      return this.actions$.pipe(
-        ofType(addProductSuccess),
-        tap((data: any) => this.dialog.closeAll()),
-        tap((data) => loadOrgInfoSuccess({ organisation: data })),
-        tap((data: any) =>
-          this._snackBar.open('A new product is added', 'close')
-        )
-      );
-    },
-    { dispatch: false }
-  );
+  productAddSuccess$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(addProductSuccess),
+      tap((data: any) => this.dialog.closeAll()),
+      tap((data) => console.log(data)),
+      tap((data: any) =>
+        this._snackBar.open('A new product is added', 'close')
+      ),
+
+      switchMap((data) =>
+        of(loadOrgInfoSuccess({ organisation: data.organisation }))
+      )
+    );
+  });
 
   updateProductSort$ = createEffect(() => {
     return this.actions$.pipe(

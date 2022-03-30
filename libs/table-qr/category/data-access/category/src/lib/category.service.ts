@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { Category } from '@jafar-tech/shared/data-access';
+import { Category, Organisation } from '@jafar-tech/shared/data-access';
 
 @Injectable({ providedIn: 'root' })
 export class CategoryService {
@@ -15,6 +15,6 @@ export class CategoryService {
 
     const url = `${this.apiUrl}/category`;
 
-    return this.http.post<Category>(url, updateCategory);
+    return this.http.post<Organisation>(url, updateCategory);
   }
 }

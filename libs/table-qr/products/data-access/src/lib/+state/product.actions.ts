@@ -1,5 +1,6 @@
 import {
   CategoryViseProducts,
+  Organisation,
   Product,
   ProductBoolFieldUpdateData,
   ProductSortData,
@@ -43,7 +44,7 @@ export const addProduct = createAction(
 
 export const addProductSuccess = createAction(
   '[Product] add product success',
-  props<{ product: Product }>()
+  props<{ organisation: Organisation }>()
 );
 export const addProductFailure = createAction(
   '[Product] add product failed',
