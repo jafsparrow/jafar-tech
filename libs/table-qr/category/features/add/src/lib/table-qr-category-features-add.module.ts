@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatAutocompleteModule,
     MatChipsModule,
     MatButtonModule,
+    MatProgressSpinnerModule,
   ],
   declarations: [CategoryAddComponent],
   exports: [CategoryAddComponent],

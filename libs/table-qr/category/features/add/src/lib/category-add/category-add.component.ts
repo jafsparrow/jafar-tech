@@ -4,6 +4,11 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { DAYS } from '@jafar-tech/shared/data-access';
+import {
+  addCategory,
+  selectCategoryLoadingIndicator,
+} from '@jafar-tech/table-qr/category/data-access/category';
+import { Store } from '@ngrx/store';
 import { map, Observable, startWith } from 'rxjs';
 
 @Component({
@@ -12,6 +17,9 @@ import { map, Observable, startWith } from 'rxjs';
   styleUrls: ['./category-add.component.css'],
 })
 export class CategoryAddComponent implements OnInit {
+  selectCategoryLoadingIndicator$ = this.store.select(
+    selectCategoryLoadingIndicator
+  );
   separatorKeysCodes: number[] = [ENTER, COMMA];
   selectedDays: string[] = [];
   days = DAYS;
@@ -20,7 +28,7 @@ export class CategoryAddComponent implements OnInit {
   @ViewChild('daysInput') daysInput!: ElementRef<HTMLInputElement>;
 
   categoryForm!: FormGroup;
-  constructor(private _fbuilder: FormBuilder) {
+  constructor(private _fbuilder: FormBuilder, private store: Store) {
     this.categoryForm = this._fbuilder.group({
       name: [''],
 
@@ -69,7 +77,11 @@ export class CategoryAddComponent implements OnInit {
     this.getDaysFormControl()!.setValue(null);
   }
 
-  submitForm() {}
+  submitForm() {
+    let newCategoryData = this.categoryForm.value;
+
+    this.store.dispatch(addCategory({ category: newCategoryData }));
+  }
   ngOnInit(): void {
     this.filterdDays$ = this.getDaysFormControl()!.valueChanges.pipe(
       startWith(null),

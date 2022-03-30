@@ -8,3 +8,8 @@ export const selectCategories = createSelector(
   selectCategoryState,
   (state) => state.categories
 );
+
+export const selectCategoryLoadingIndicator = createSelector(
+  selectCategoryState,
+  (state) => state.isCategoryLoading
+);

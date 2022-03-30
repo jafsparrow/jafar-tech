@@ -9,6 +9,9 @@ import { EffectsFeatureModule, EffectsModule } from '@ngrx/effects';
 import { CategoryEffects } from './+state/category.effects';
 import { HttpClientModule } from '@angular/common/http';
 
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -16,6 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
 
     StoreModule.forFeature(CATEGORY_FEATURE_KEY, categoryReducer),
     EffectsModule.forFeature([CategoryEffects]),
+    MatSnackBarModule,
+    MatDialogModule,
   ],
 })
 export class TableQrCategoryDataAccessCategoryModule {}

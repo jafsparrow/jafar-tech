@@ -1,5 +1,3 @@
-<jafar-tech-category-add></jafar-tech-category-add>
-
 <div *ngIf="companyId$ | async as companyId; else loadDataError">
   <div class="menu-page-header">
     <div class="title">
@@ -56,7 +54,3 @@
     Oops, Somethign wrong happend. Can't fetch your details
   </div>
 </ng-template>
-
-<button mat-raised-button color="primary" (click)="openCategoryDialog()">
-  Add Category
-</button>

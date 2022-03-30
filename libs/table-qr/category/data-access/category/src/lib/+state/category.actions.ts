@@ -13,7 +13,7 @@ export const loadCategoryFail = createAction(
 
 export const addCategory = createAction(
   '[CATEGORY] add new category',
-  props<{ companyId: string; category: Category }>()
+  props<{ category: Category }>()
 );
 
 export const addCategorySuccess = createAction(

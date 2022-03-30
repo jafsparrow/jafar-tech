@@ -10,8 +10,8 @@ export class CategoryService {
     @Inject('endPointURL') public apiUrl: string
   ) {}
 
-  addCategory(companyId: string, categoryData: Category) {
-    let updateCategory = { ...categoryData, companyId: companyId };
+  addCategory(categoryData: Category) {
+    let updateCategory = { ...categoryData };
 
     const url = `${this.apiUrl}/category`;
 
