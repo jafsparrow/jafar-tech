@@ -1,3 +1,14 @@
+.qr-wrapper {
+  height: 60x;
+  display: flex;
+  justify-content: space-around;
+}
+
+.qr-image {
+  height: 40px;
+  width: 40px;
+}
+
 .print-section {
   display: none;
 
