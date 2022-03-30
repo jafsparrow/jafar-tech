@@ -7,6 +7,7 @@ import {
   Patch,
   Post,
   Put,
+  Req,
   UseGuards,
 } from '@nestjs/common';
 import { CreateCategoryDto } from '../../../category/src/lib/dto/create-category.dto';
@@ -24,12 +25,10 @@ export class BackendProductsController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Post(':id')
-  createProduct(
-    @Param('id') companyId: string,
-    @Body() product: CreateProductDto
-  ) {
+  @Post()
+  createProduct(@Body() product: CreateProductDto, @Req() req) {
     console.log('create product called');
+    let companyId = req.user.companyId;
     return this.productService.createProduct(companyId, product);
   }
 
