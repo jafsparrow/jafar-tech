@@ -9,4 +9,9 @@ export class CreateOrderDto {
   @IsDefined()
   @IsNotEmpty()
   cartItems: { [key: string]: CartItem };
+  total: number;
+
+  taxesApplied: [];
+
+  taxedTotal: number;
 }

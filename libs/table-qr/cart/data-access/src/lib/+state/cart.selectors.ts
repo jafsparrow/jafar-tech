@@ -1,4 +1,4 @@
-import { Cart } from '@jafar-tech/shared/data-access';
+import { Cart, Tax } from '@jafar-tech/shared/data-access';
 import { createFeatureSelector, createSelector, State } from '@ngrx/store';
 import { CART_FEATURE_KEY } from './cart.reducers';
 
@@ -18,6 +18,22 @@ export const selectCart = createSelector(selectCartState, (state) => {
           cartItem.count
       );
     }, 0),
+  };
+});
+
+export const selectCartTaxed = createSelector(selectCart, (state) => {
+  return {
+    ...state,
+    taxesApplied: state.taxes?.map((tax) => {
+      return {
+        name: tax.printName,
+        taxValue: getTaxedSubTotal(state.total, tax),
+      };
+    }),
+    taxedTotal: state.taxes?.reduce(
+      (a, b) => a + getTaxedSubTotal(state.total, b),
+      state.total
+    ),
   };
 });
 
@@ -50,3 +66,10 @@ export const getTotalCartAmout = (state: Cart): number | null =>
     (tot, cartItem) => tot + cartItem.product.price * cartItem.count,
     0
   );
+
+export const getTaxedSubTotal = (total: number, tax: Tax): number => {
+  let multiplyValue = 1;
+  if (tax.isPercentage) multiplyValue = 0.01;
+
+  return total * multiplyValue * tax.value;
+};

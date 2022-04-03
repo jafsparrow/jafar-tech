@@ -1,4 +1,9 @@
-import { CartItem } from '@jafar-tech/shared/data-access';
+import {
+  AppliedTax,
+  CartItem,
+  OrderItem,
+  OrderStatus,
+} from '@jafar-tech/shared/data-access';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { UserSchema, User } from '@jafar-tech/backend/auth';
 
@@ -10,13 +15,19 @@ export class Order extends Document {
   user: User;
 
   @Prop({ required: true })
-  cartItems: CartItem[];
+  orderItems: OrderItem[];
 
   @Prop({ required: true })
   total: number;
 
+  @Prop({ required: true })
+  taxedTotal: number;
+
+  @Prop({ default: [] })
+  taxesApplied: AppliedTax[];
+
   @Prop({
-    enum: ['PLACED', 'INPROGRESS', 'SERVED', 'BILLED', 'PAID'],
+    enum: OrderStatus,
     required: true,
   })
   status: string;

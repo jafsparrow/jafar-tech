@@ -1,9 +1,10 @@
-import { Cart, Product, Status } from '@jafar-tech/shared/data-access';
+import { Cart, Product } from '@jafar-tech/shared/data-access';
 import { createReducer, on } from '@ngrx/store';
 import {
   addToCart,
   clearCart,
   loadCartSuccess,
+  loadTaxes,
   removeFromCart,
   updateCart,
 } from './cart.actions';
@@ -13,7 +14,7 @@ export const CART_FEATURE_KEY = 'cart';
 const initialState: Cart = {
   createdAt: new Date(),
   cartItems: {},
-
+  taxes: [],
   placeOrderSpinner: false,
 };
 
@@ -71,7 +72,8 @@ export const cartReducer = createReducer(
       cartItems: totalcartItems,
     };
   }),
-  on(clearCart, (state) => ({ ...state, cartItems: {} }))
+  on(clearCart, (state) => ({ ...state, cartItems: {} })),
+  on(loadTaxes, (state, { taxes }) => ({ ...state, taxes }))
 );
 // state.cartItems[productId] = {
 //   ...(state.cartItems[productId] || []),

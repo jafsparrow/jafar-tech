@@ -5,6 +5,7 @@ import {
   addToCart,
   removeFromCart,
   selectCart,
+  selectCartTaxed,
 } from '@jafar-tech/table-qr-cart-data-access';
 import {
   placeOrder,
@@ -21,7 +22,7 @@ import { Store } from '@ngrx/store';
 })
 export class CartComponent implements OnInit {
   routeLink = '../products';
-  cart$ = this.store.select(selectCart);
+  cart$ = this.store.select(selectCartTaxed);
   placeOrderSpinner$ = this.store.select(selectPlaceOrderSpinner);
   orderPlaceSateMessage$ = this.store.select(selectOrderErrorMessage);
   constructor(private store: Store, private activatedRoute: ActivatedRoute) {

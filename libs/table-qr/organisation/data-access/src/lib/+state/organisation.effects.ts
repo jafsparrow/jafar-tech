@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Organisation } from '@jafar-tech/shared/data-access';
+import { loadTaxes } from '@jafar-tech/table-qr-cart-data-access';
 import { loadProductsSuccess } from '@jafar-tech/table-qr-products-data-access';
 import { loadCategoriesSuccess } from '@jafar-tech/table-qr/category/data-access/category';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
@@ -55,6 +56,10 @@ export class OrganisationEffects {
             loadCategoriesSuccess({
               categories: payload.organisation!.categories!,
             })
+          );
+
+          this.store.dispatch(
+            loadTaxes({ taxes: payload.organisation!.taxes! })
           );
         })
       );

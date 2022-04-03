@@ -1,4 +1,5 @@
-import { Modifier, Product } from '.';
+import { Modifier, Product } from './product';
+import { Tax } from './taxes';
 import { User } from './user';
 
 export interface CartItem {
@@ -13,17 +14,5 @@ export interface Cart {
   cartItems: { [key: string]: CartItem };
   placeOrderSpinner: boolean;
   createdBy?: User;
-}
-
-export interface OrderSummary {
-  _id: string;
-  date?: Date;
-  status: Status;
-}
-
-export enum Status {
-  PENDING = 'pending',
-  INPROGRESS = 'inprogress',
-  SERVED = 'served',
-  PAID = 'paid',
+  taxes?: Tax[];
 }

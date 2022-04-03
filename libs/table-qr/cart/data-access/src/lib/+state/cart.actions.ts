@@ -1,4 +1,4 @@
-import { Cart, CartItem, User } from '@jafar-tech/shared/data-access';
+import { Cart, CartItem, Tax, User } from '@jafar-tech/shared/data-access';
 import { createAction, props } from '@ngrx/store';
 
 export const loadCart = createAction('[Cart] Load Cart Items');
@@ -32,3 +32,8 @@ export const removeFromCart = createAction(
 );
 
 export const clearCart = createAction('[Cart] clear the cart');
+
+export const loadTaxes = createAction(
+  '[Cart] load organisation Taxes',
+  props<{ taxes: Tax[] }>()
+);

@@ -1,3 +1,8 @@
+import {
+  OrderItem,
+  OrderItemStatus,
+  OrderStatus,
+} from '@jafar-tech/shared/data-access';
 import { Injectable } from '@nestjs/common';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { OrderRepository } from './orders.repository';
@@ -7,24 +12,15 @@ export class OrderService {
   constructor(private orderRepository: OrderRepository) {}
 
   createOrder(orderDto: CreateOrderDto) {
-    let { user, cartItems } = orderDto;
-    let total = Object.values(cartItems).reduce((tot, cartItem) => {
-      return (
-        tot +
-        (cartItem.product.price +
-          cartItem.modifiers!.reduce(
-            (prev, curr) => prev + parseInt(curr?.price.toString()),
-            0
-          )) *
-          cartItem.count
-      );
-    }, 0);
-
+    let orderItems: OrderItem[] = Object.values(orderDto.cartItems).map(
+      (item) => ({ ...item, status: OrderItemStatus.WAITING })
+    );
     let newOrder = {
-      user,
-      cartItems: Object.values(cartItems),
-      status: 'PLACED',
-      total,
+      user: orderDto.user,
+      total: orderDto.total,
+      taxedTotal: orderDto.taxedTotal,
+      orderItems: orderItems,
+      status: OrderStatus.PLACED,
     };
 
     this.orderRepository.createOrder(newOrder);
