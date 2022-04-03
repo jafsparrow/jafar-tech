@@ -1,4 +1,5 @@
 import { User, UserSchema } from '@jafar-tech/backend/auth';
+import { Tax } from '@jafar-tech/shared/data-access';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import {
   Category,
@@ -54,6 +55,9 @@ export class Organisation extends Document {
 
   @Prop({ default: [] })
   offDays: string[];
+
+  @Prop({ default: [] })
+  taxes: Tax[];
 
   @Prop({ default: false })
   isRegistrationComplete: boolean;

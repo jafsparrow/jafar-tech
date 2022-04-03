@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
@@ -15,11 +15,30 @@ import {
 } from '@jafar-tech/table-qr/organisation/data-access';
 import { Store } from '@ngrx/store';
 import { map, Observable, startWith, Subscription } from 'rxjs';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
 @Component({
   selector: 'jafar-tech-org-detail',
   templateUrl: './org-detail.component.html',
   styleUrls: ['./org-detail.component.css'],
+  animations: [
+    trigger('flyInOut', [
+      state('in', style({ transform: 'translateX(0)' })),
+      transition('void => *', [
+        style({ transform: 'translateX(-100%)' }),
+        animate(100),
+      ]),
+      transition('* => void', [
+        animate(100, style({ transform: 'translateX(100%)' })),
+      ]),
+    ]),
+  ],
 })
 export class OrgDetailComponent implements OnInit {
   separatorKeysCodes: number[] = [ENTER, COMMA];
@@ -50,6 +69,10 @@ export class OrgDetailComponent implements OnInit {
       type: [''],
       openAllWeek: [true],
       offDays: [''],
+      taxes: this._fb.array([
+        this._createTaxFormGroup(),
+        this._createTaxFormGroup(),
+      ]),
     });
 
     this.slectOrgInfo$.subscribe((org) => {
@@ -80,6 +103,10 @@ export class OrgDetailComponent implements OnInit {
 
   get openAllWeek() {
     return this.orgForm.get('openAllWeek')?.value;
+  }
+
+  get taxFormArray(): FormArray {
+    return this.orgForm.controls['taxes'] as FormArray;
   }
 
   toggle($event: HTMLInputElement) {
@@ -146,5 +173,21 @@ export class OrgDetailComponent implements OnInit {
     const filterValue = value.toLowerCase();
 
     return this.days.filter((day) => day.toLowerCase().includes(filterValue));
+  }
+
+  private _createTaxFormGroup() {
+    return this._fb.group({
+      name: [''],
+      isPercentage: [true],
+      value: [''],
+      printName: [''],
+    });
+  }
+
+  addTax() {
+    this.taxFormArray.push(this._createTaxFormGroup());
+  }
+  deleteTax(index: number) {
+    this.taxFormArray.removeAt(index);
   }
 }

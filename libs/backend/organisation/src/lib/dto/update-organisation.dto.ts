@@ -64,4 +64,6 @@ export class UpdateOrganisationDto {
 
   @IsBoolean()
   isRegistrationComplete: boolean;
+  @IsOptional()
+  taxes: [];
 }

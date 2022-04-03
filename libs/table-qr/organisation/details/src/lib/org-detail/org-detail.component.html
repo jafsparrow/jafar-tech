@@ -98,6 +98,44 @@
         </mat-autocomplete>
       </mat-form-field>
     </div>
+
+    <div class="section">
+      <div class="section-title">
+        Tax Details. <a (click)="addTax()"> + </a>
+      </div>
+      <ng-container formArrayName="taxes">
+        <ng-container *ngFor="let tax of taxFormArray.controls; let i = index">
+          <div [formGroupName]="i" class="tax-item-container" @flyInOut>
+            <div class="full-width-small tax-name-group">
+              <mat-form-field appearance="outline" class="flex-grow">
+                <input matInput placeholder="Tax Name" formControlName="name" />
+              </mat-form-field>
+
+              <button mat-icon-button (click)="deleteTax(i)" tabindex="-1">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+
+            <mat-checkbox
+              formControlName="isPercentage"
+              class="full-width-small"
+              >Percentage of total
+            </mat-checkbox>
+            <mat-form-field appearance="outline" class="full-width-small">
+              <input matInput placeholder="Value" formControlName="value" />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width-small">
+              <input
+                matInput
+                placeholder="Print Name"
+                formControlName="printName"
+              />
+            </mat-form-field>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
     <div class="section">
       <div class="section-title">More Details</div>
 

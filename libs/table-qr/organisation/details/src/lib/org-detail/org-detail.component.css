@@ -25,6 +25,22 @@
   font-weight: 400;
 }
 
+.tax-item-container {
+  padding: 5px;
+  border-bottom: 2px solid grey;
+}
+
+.tax-name-group {
+  display: felx;
+}
+.flex-grow {
+  width: 85%;
+}
+
+.tax-item-container:last-child {
+  border-bottom: none;
+}
+
 @media only screen and (max-width: 600px) {
   .full-width-small {
     width: 100%;

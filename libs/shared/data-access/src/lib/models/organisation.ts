@@ -1,4 +1,4 @@
-import { Category, Product } from '@jafar-tech/shared/data-access';
+import { Category, Product, Tax } from '@jafar-tech/shared/data-access';
 
 export interface Organisation {
   _id: string;
@@ -13,4 +13,5 @@ export interface Organisation {
   products?: Product[];
   categories?: Category[];
   isRegistrationComplete?: boolean;
+  taxes?: Tax[];
 }
