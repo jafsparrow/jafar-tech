@@ -15,4 +15,5 @@ export interface Cart {
   placeOrderSpinner: boolean;
   createdBy?: User;
   taxes?: Tax[];
+  note?: string;
 }

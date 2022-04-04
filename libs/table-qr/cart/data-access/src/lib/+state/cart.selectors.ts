@@ -30,10 +30,9 @@ export const selectCartTaxed = createSelector(selectCart, (state) => {
         taxValue: getTaxedSubTotal(state.total, tax),
       };
     }),
-    taxedTotal: state.taxes?.reduce(
-      (a, b) => a + getTaxedSubTotal(state.total, b),
-      state.total
-    ),
+    taxedTotal: state.taxes
+      ?.reduce((a, b) => a + getTaxedSubTotal(state.total, b), state.total)
+      .toFixed(2),
   };
 });
 
@@ -71,5 +70,5 @@ export const getTaxedSubTotal = (total: number, tax: Tax): number => {
   let multiplyValue = 1;
   if (tax.isPercentage) multiplyValue = 0.01;
 
-  return total * multiplyValue * tax.value;
+  return parseFloat((total * multiplyValue * tax.value).toFixed(2));
 };

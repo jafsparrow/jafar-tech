@@ -29,6 +29,7 @@ export class TokenInterceptor implements HttpInterceptor {
         'Content-Type': 'application/json',
       },
     });
+    console.log('seett header at the intercepor');
     return next.handle(req);
   }
 }

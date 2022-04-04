@@ -21,6 +21,7 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
+  note: string = '';
   routeLink = '../products';
   cart$ = this.store.select(selectCartTaxed);
   placeOrderSpinner$ = this.store.select(selectPlaceOrderSpinner);
@@ -74,7 +75,9 @@ export class CartComponent implements OnInit {
   }
 
   placeOrder(cart: Cart) {
+    console.log(this.note);
+    let cartwithNode = { ...cart, note: this.note };
     this.store.dispatch(placeOrderTurnSpinnerOn());
-    this.store.dispatch(placeOrder({ cart }));
+    this.store.dispatch(placeOrder({ cart: cartwithNode }));
   }
 }

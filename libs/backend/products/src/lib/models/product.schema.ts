@@ -33,7 +33,9 @@ export class Product extends Document {
 
   @Prop()
   printName?: string;
-  // modifierGroups?: ModifierGroupsEntity[] | null;
+
+  @Prop({ default: 999 })
+  code: number;
 
   @Prop({ default: {} })
   modifierGroups?: [ModifierGroupsEntity];

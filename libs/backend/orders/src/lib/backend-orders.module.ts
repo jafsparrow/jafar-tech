@@ -1,3 +1,4 @@
+import { BackendAuthModule } from '@jafar-tech/backend/auth';
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Order, OrderSchema } from './models/order.schema';
@@ -15,6 +16,7 @@ import { OrderService } from './orders.service';
         schema: OrderSchema,
       },
     ]),
+    BackendAuthModule,
   ],
   providers: [OrderService, OrderRepository],
 })

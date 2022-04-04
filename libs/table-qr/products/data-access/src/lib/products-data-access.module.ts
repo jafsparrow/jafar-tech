@@ -13,7 +13,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   imports: [
     CommonModule,
-    HttpClientModule,
     StoreModule.forFeature(PRODUCTS_FEATURE_KEY, productsReducer),
     EffectsModule.forFeature([ProductsEffects]),
     MatDialogModule,

@@ -1,4 +1,5 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { JwtAuthGuard } from '@jafar-tech/backend/auth';
+import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { OrderService } from './orders.service';
 
@@ -10,9 +11,11 @@ export class OrderController {
     return 'hello world';
   }
 
+  @UseGuards(JwtAuthGuard)
   @Post()
-  createOrder(@Body() order: CreateOrderDto) {
-    this.orderService.createOrder(order);
+  createOrder(@Body() order: CreateOrderDto, @Req() req) {
+    let user = req.user;
+    this.orderService.createOrder(order, user);
     console.log(order);
   }
 }

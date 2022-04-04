@@ -13,6 +13,7 @@ export interface Category {
   openAllDay?: null;
   hours?: null[] | null;
   adminIndex?: number;
+  code?: number;
 }
 export interface Product {
   _id: string;

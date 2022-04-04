@@ -14,6 +14,7 @@ import { AuthGuard, RoleGuard } from '@jafar-tech/table-qr/core';
 import { TableQrUiModule } from '@jafar-tech/table-qr-ui';
 import { TableQrCategoryDataAccessCategoryModule } from '@jafar-tech/table-qr/category/data-access/category';
 import { TableQrOrganisationDataAccessModule } from '@jafar-tech/table-qr/organisation/data-access';
+import { TableQrOrdersDataAccessModule } from '@jafar-tech/table-qr-orders-data-access';
 
 @NgModule({
   imports: [
@@ -93,6 +94,7 @@ import { TableQrOrganisationDataAccessModule } from '@jafar-tech/table-qr/organi
     TableQrOrganisationDataAccessModule,
     ProductsDataAccessModule,
     TableQrCategoryDataAccessCategoryModule,
+    TableQrOrdersDataAccessModule,
   ],
   declarations: [AdminContainerComponent],
 })

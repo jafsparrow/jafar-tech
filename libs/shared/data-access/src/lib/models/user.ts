@@ -9,7 +9,7 @@ export interface User {
   email?: string;
   companyId?: string;
   firstName: string;
-  lastName: string;
+  lastName?: string;
   username?: string;
   userType: UserType;
   token?: string;

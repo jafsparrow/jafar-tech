@@ -65,7 +65,11 @@
       <div class="note-container">
         <mat-form-field class="note-input" appearance="fill">
           <mat-label>Leave a note</mat-label>
-          <textarea matInput placeholder="Ex. Sugar free"></textarea>
+          <textarea
+            matInput
+            placeholder="Ex. Sugar free"
+            [(ngModel)]="note"
+          ></textarea>
         </mat-form-field>
       </div>
 

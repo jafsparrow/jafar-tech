@@ -73,7 +73,10 @@ export const cartReducer = createReducer(
     };
   }),
   on(clearCart, (state) => ({ ...state, cartItems: {} })),
-  on(loadTaxes, (state, { taxes }) => ({ ...state, taxes }))
+  on(loadTaxes, (state, { taxes }) => {
+    console.log('inside reducer tax is ', taxes);
+    return { ...state, taxes };
+  })
 );
 // state.cartItems[productId] = {
 //   ...(state.cartItems[productId] || []),

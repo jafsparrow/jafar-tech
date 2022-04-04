@@ -45,6 +45,16 @@
           </mat-form-field>
 
           <mat-form-field appearance="outline">
+            <mat-label>Product Code</mat-label>
+            <input
+              type="text"
+              matInput
+              formControlName="code"
+              placeholder="enter a unique product code"
+            />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
             <mat-label>Select Item Category</mat-label>
             <mat-select formControlName="category">
               <mat-option

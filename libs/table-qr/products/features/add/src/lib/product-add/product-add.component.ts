@@ -89,6 +89,7 @@ export class ProductAddComponent implements OnInit {
       description: ['', Validators.required],
       isAvailable: [true, Validators.required],
       onSale: [true, Validators.required],
+      code: [''],
       price: ['', Validators.required],
       cost: [''],
       name: ['', Validators.required],

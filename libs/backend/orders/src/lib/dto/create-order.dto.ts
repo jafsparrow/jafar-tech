@@ -1,15 +1,15 @@
 import { CartItem, User } from '@jafar-tech/shared/data-access';
-import { IsDefined, IsNotEmpty } from 'class-validator';
+import { IsDefined, IsNotEmpty, IsOptional } from 'class-validator';
 
 export class CreateOrderDto {
-  @IsNotEmpty()
-  @IsDefined()
-  user: User;
-
   @IsDefined()
   @IsNotEmpty()
   cartItems: { [key: string]: CartItem };
+
   total: number;
+
+  @IsOptional()
+  note: string;
 
   taxesApplied: [];
 
