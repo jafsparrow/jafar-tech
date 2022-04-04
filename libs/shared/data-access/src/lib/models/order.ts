@@ -1,6 +1,5 @@
-import { User } from '@jafar-tech/backend/auth';
-import { CartItem } from '.';
-
+import { CartItem } from './cart';
+import { User } from './user';
 export interface OrderItem extends CartItem {
   status: OrderItemStatus;
   kitchenUser?: User;
