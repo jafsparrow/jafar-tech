@@ -1,5 +1,9 @@
+import { OrderSummary } from '@jafar-tech/shared/data-access';
 import { createReducer, on } from '@ngrx/store';
 import {
+  loadRecentOrders,
+  loadRecentOrdersFail,
+  loadRecentOrdersSuccess,
   orderPlaceFail,
   orderPlaceSuccess,
   placeOrderTurnSpinnerOn,
@@ -9,12 +13,12 @@ export const ORDER_FEATURE_KEY = 'order';
 
 export interface Order {
   errorMessage: string;
-  openOrders: string[];
+  recentOrders: OrderSummary[];
   placeOrderSpinner: boolean;
 }
 
 const initialState: Order = {
-  openOrders: [],
+  recentOrders: [],
   errorMessage: '',
   placeOrderSpinner: false,
 };
@@ -33,5 +37,20 @@ export const orderReducer = createReducer(
   on(placeOrderTurnSpinnerOn, (state) => ({
     ...state,
     placeOrderSpinner: true,
+  })),
+  on(loadRecentOrders, (state) => ({
+    ...state,
+    placeOrderSpinner: true,
+    errorMessage: '',
+  })),
+  on(loadRecentOrdersSuccess, (state, { recentOrders }) => ({
+    ...state,
+    placeOrderSpinner: false,
+    recentOrders,
+  })),
+  on(loadRecentOrdersFail, (state, { errorMessage }) => ({
+    ...state,
+    errorMessage,
+    placeOrderSpinner: false,
   }))
 );

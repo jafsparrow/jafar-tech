@@ -10,6 +10,7 @@ export interface OrderSummary {
   date?: Date;
   status: OrderStatus;
   orderItems: OrderItem[];
+  user?: User;
 }
 
 export interface AppliedTax {

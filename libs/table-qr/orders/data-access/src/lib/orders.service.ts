@@ -12,4 +12,8 @@ export class OrderService {
     console.log('place order fucntion fired', cart);
     return this.httpClient.post(`${this.apiUrl}/orders`, cart);
   }
+
+  getRecentOrders() {
+    return this.httpClient.get(`${this.apiUrl}/orders`);
+  }
 }

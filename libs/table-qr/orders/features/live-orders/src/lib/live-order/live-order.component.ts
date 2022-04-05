@@ -1,5 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatAccordion } from '@angular/material/expansion';
+import {
+  loadRecentOrders,
+  selectRecentOrders,
+} from '@jafar-tech/table-qr-orders-data-access';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'jafar-tech-live-order',
@@ -8,7 +13,7 @@ import { MatAccordion } from '@angular/material/expansion';
 })
 export class LiveOrderComponent implements OnInit {
   @ViewChild(MatAccordion) accordion!: MatAccordion;
-
+  recentOrders$ = this.store.select(selectRecentOrders);
   sampleOrder = {
     id: 23343,
     status: 'preparing',
@@ -21,9 +26,11 @@ export class LiveOrderComponent implements OnInit {
     ],
   };
 
-  constructor() {}
+  constructor(private store: Store) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.store.dispatch(loadRecentOrders());
+  }
 
   getClass(status: string) {
     switch (status.toLowerCase()) {

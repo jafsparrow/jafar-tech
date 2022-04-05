@@ -3,9 +3,9 @@ import { Order, ORDER_FEATURE_KEY } from './orders.reducers';
 
 export const selectOrderState = createFeatureSelector<Order>(ORDER_FEATURE_KEY);
 
-export const selectPendingOrder = createSelector(
+export const selectRecentOrders = createSelector(
   selectOrderState,
-  (state: Order) => state.openOrders
+  (state: Order) => state.recentOrders
 );
 
 export const selectPlaceOrderSpinner = createSelector(
