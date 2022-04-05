@@ -62,7 +62,7 @@ import { TableQrOrdersDataAccessModule } from '@jafar-tech/table-qr-orders-data-
               import('@jafar-tech/table-qr-cart-features-list').then(
                 (m) => m.CartFeaturesListModule
               ),
-            data: { menuURL: '../create-order', roles: ['admin', 'staff'] },
+            data: { menuURL: '/create-order', roles: ['admin', 'staff'] },
             canActivate: [RoleGuard],
           },
           {

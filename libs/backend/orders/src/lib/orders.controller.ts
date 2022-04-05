@@ -8,7 +8,7 @@ export class OrderController {
   constructor(private orderService: OrderService) {}
   @Get()
   getOrdersForTheUser() {
-    return 'hello world';
+    return this.orderService.findOrdersOfTheday();
   }
 
   @UseGuards(JwtAuthGuard)

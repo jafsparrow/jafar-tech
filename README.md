@@ -47,3 +47,5 @@ css property
 @Type(() => Prodto)
 
 ## in nest throw custom error rather than returning it.
+
+## skiplocationChange in angular routing..?

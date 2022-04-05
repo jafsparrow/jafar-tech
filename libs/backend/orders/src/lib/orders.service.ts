@@ -16,8 +16,13 @@ export class OrderService {
     let orderItems: OrderItem[] = Object.values(orderDto.cartItems).map(
       (item) => ({ ...item, status: OrderItemStatus.WAITING })
     );
+
+    // TODO - cloned user is to get company Id as company as in the order schema company is mentioned.
+    let cloneUser = { ...appUser, company: appUser.companyId };
+
+    console.log('appUser', cloneUser);
     let newOrder = {
-      user: appUser,
+      user: cloneUser,
       total: orderDto.total,
       taxedTotal: orderDto.taxedTotal,
       orderItems: orderItems,
@@ -26,6 +31,9 @@ export class OrderService {
     };
 
     this.orderRepository.createOrder(newOrder);
-    // console.log(newOrder);
+  }
+
+  async findOrdersOfTheday() {
+    return await this.orderRepository.findOrderOfTheDay();
   }
 }

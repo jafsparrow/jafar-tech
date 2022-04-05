@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateOrderDto } from './dto/create-order.dto';
@@ -23,5 +23,24 @@ export class OrderRepository {
   createOrder(order: any) {
     const newProduct = new this.order(order);
     return newProduct.save();
+  }
+
+  async findOrderOfTheDay() {
+    // return await this.order.find();
+    let date = new Date(new Date().setUTCHours(0, 0, 0, 0));
+
+    try {
+      return await this.order.aggregate([
+        {
+          $match: {
+            createdAt: {
+              $gt: date,
+            },
+          },
+        },
+      ]);
+    } catch (error) {
+      throw new NotFoundException();
+    }
   }
 }

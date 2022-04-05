@@ -32,7 +32,9 @@ export class CartComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.routeLink);
+  }
 
   getCartItems(cart: Cart) {
     return Object.values(cart.cartItems);
