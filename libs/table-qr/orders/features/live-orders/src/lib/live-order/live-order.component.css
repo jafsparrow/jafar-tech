@@ -38,3 +38,8 @@
 mat-accordion {
   padding: 10px;
 }
+
+.order-action-container {
+  display: flex;
+  justify-content: space-evenly;
+}

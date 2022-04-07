@@ -16,4 +16,8 @@ export class OrderService {
   getRecentOrders() {
     return this.httpClient.get(`${this.apiUrl}/orders`);
   }
+
+  updateOrderStatus() {}
+
+  updateOrderItemStatus() {}
 }

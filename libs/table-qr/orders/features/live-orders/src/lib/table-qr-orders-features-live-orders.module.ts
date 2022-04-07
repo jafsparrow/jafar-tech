@@ -4,6 +4,7 @@ import { LiveOrderComponent } from './live-order/live-order.component';
 import { RouterModule } from '@angular/router';
 
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatButtonModule } from '@angular/material/button';
 import { TableQrOrdersDataAccessModule } from '@jafar-tech/table-qr-orders-data-access';
 
 @NgModule({
@@ -16,6 +17,7 @@ import { TableQrOrdersDataAccessModule } from '@jafar-tech/table-qr-orders-data-
       },
     ]),
     MatExpansionModule,
+    MatButtonModule,
     TableQrOrdersDataAccessModule,
   ],
 

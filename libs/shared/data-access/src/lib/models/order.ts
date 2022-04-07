@@ -3,6 +3,7 @@ import { User } from './user';
 export interface OrderItem extends CartItem {
   status: OrderItemStatus;
   kitchenUser?: User;
+  key?: string;
 }
 
 export interface OrderSummary {
@@ -27,6 +28,7 @@ export enum OrderItemStatus {
 export enum OrderStatus {
   PLACED = 'placed',
   INPROGRESS = 'inprogress',
+  READY = 'ready',
   SERVED = 'served',
   PAID = 'paid',
 }

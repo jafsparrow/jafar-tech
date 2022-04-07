@@ -1,4 +1,8 @@
-import { Cart, OrderSummary } from '@jafar-tech/shared/data-access';
+import {
+  Cart,
+  OrderStatus,
+  OrderSummary,
+} from '@jafar-tech/shared/data-access';
 import { createAction, props } from '@ngrx/store';
 
 export const placeOrder = createAction(
@@ -23,5 +27,35 @@ export const loadRecentOrdersSuccess = createAction(
 );
 export const loadRecentOrdersFail = createAction(
   '[Order] Load recent orders failed',
+  props<{ errorMessage: string }>()
+);
+
+export const updateOrderStatus = createAction(
+  '[Order] update order status',
+  props<{ orderId: string; status: OrderStatus }>()
+);
+
+export const updateOrderStatusSuccess = createAction(
+  '[Order] update order status success',
+  props<{ recentOrders: OrderSummary[] }>()
+);
+
+export const updateOrderStatusFail = createAction(
+  '[Order] update order status failed',
+  props<{ errorMessage: string }>()
+);
+
+export const updateOrderItemStatus = createAction(
+  '[Order] update orderItem status',
+  props<{ orderId: string; orderItemKey: string }>()
+);
+
+export const updateOrderItemStatusSuccess = createAction(
+  '[Order] update orderItem status success',
+  props<{ recentOrders: OrderSummary[] }>()
+);
+
+export const updateOrderItemStatusFail = createAction(
+  '[Order] update orderItem status faile',
   props<{ errorMessage: string }>()
 );

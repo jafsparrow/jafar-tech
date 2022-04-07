@@ -1,3 +1,4 @@
+import { OrderItemStatus, OrderStatus } from '@jafar-tech/shared/data-access';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
@@ -39,6 +40,38 @@ export class OrderRepository {
           },
         },
       ]);
+    } catch (error) {
+      throw new NotFoundException();
+    }
+  }
+
+  async updateOrderStatus(orderId: string, status: OrderStatus) {
+    try {
+      let order = await this.order.findById(orderId);
+      order.status = status;
+      // if the order status is ready, make all the order item status to ready.
+
+      order.save();
+    } catch (error) {
+      throw new NotFoundException();
+    }
+  }
+
+  async updateOrderItemStatus(
+    orderId: string,
+    orderItemKey: string,
+    status: OrderItemStatus
+  ) {
+    try {
+      let order = await this.order.findById(orderId);
+      let currentOrderItems = order.orderItems;
+      let mapedOrderItems = currentOrderItems.map((item) => {
+        if (item.key == orderItemKey) return { ...item, status: status };
+        return item;
+      });
+
+      order.orderItems = mapedOrderItems;
+      order.save();
     } catch (error) {
       throw new NotFoundException();
     }

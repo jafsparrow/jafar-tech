@@ -2,33 +2,50 @@
   <button mat-button (click)="accordion.openAll()">Expand All</button>
   <button mat-button (click)="accordion.closeAll()">Collapse All</button>
 </div>
-<mat-accordion class="example-headers-align" multi>
-  <mat-expansion-panel *ngFor="let order of recentOrders$ | async">
-    <mat-expansion-panel-header>
-      <mat-panel-title> Order NO: {{ sampleOrder.id }} </mat-panel-title>
-      <mat-panel-description>
-        <div class="order-status" [ngClass]="getClass(sampleOrder.status)">
-          {{ order.status }}
-        </div>
-      </mat-panel-description>
-    </mat-expansion-panel-header>
 
-    <div class="order-items-container">
-      <div class="order-item" *ngFor="let orderItem of order.orderItems">
-        <div class="item-name">
-          {{ orderItem.product.name }}
-          <div
-            class="item-modifiers"
-            *ngFor="let modifier of orderItem.modifiers"
-          >
-            {{ modifier }}
+<ng-container *ngIf="recentOrders$ | async as recentOrders">
+  <mat-accordion
+    class="example-headers-align"
+    multi
+    *ngIf="recentOrders.length; else noOrders"
+  >
+    <mat-expansion-panel *ngFor="let order of recentOrders">
+      <mat-expansion-panel-header>
+        <mat-panel-title> Order NO: {{ sampleOrder.id }} </mat-panel-title>
+        <mat-panel-description>
+          <div class="order-status" [ngClass]="getClass(sampleOrder.status)">
+            {{ order.status }}
+          </div>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div class="order-items-container">
+        <div class="order-item" *ngFor="let orderItem of order.orderItems">
+          <div class="item-name">
+            {{ orderItem.product.name }}
+            <div
+              class="item-modifiers"
+              *ngFor="let modifier of orderItem.modifiers"
+            >
+              {{ modifier }}
+            </div>
+          </div>
+          <span class="item-quantity">x {{ orderItem.count }}</span>
+          <div class="item-status" [ngClass]="getClass('ready')">
+            {{ orderItem.status }}
           </div>
         </div>
-        <span class="item-quantity">x {{ orderItem.count }}</span>
-        <div class="item-status" [ngClass]="getClass('ready')">
-          {{ orderItem.status }}
-        </div>
       </div>
-    </div>
-  </mat-expansion-panel>
-</mat-accordion>
+
+      <div class="order-action-container">
+        <button mat-raised-button color="primary">Served</button>
+        <button mat-raised-button color="accent">Pay</button>
+        <!-- <button mat-raised-button color="warn">Reject</button> -->
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</ng-container>
+
+<ng-template #noOrders
+  >No Orders have been added in the last 24 hours</ng-template
+>
