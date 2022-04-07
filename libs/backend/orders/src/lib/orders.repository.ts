@@ -1,8 +1,14 @@
-import { OrderItemStatus, OrderStatus } from '@jafar-tech/shared/data-access';
+import {
+  OrderItemStatus,
+  OrderStatus,
+  User,
+} from '@jafar-tech/shared/data-access';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateOrderDto } from './dto/create-order.dto';
+import { UpdateOrderItemStatusDto } from './dto/update-order-item-status.dto';
+import { UpdateOrderStatusDto } from './dto/update-order-status.dto';
 import { Order } from './models/order.schema';
 
 @Injectable()
@@ -45,33 +51,46 @@ export class OrderRepository {
     }
   }
 
-  async updateOrderStatus(orderId: string, status: OrderStatus) {
+  async updateOrderStatus(updatingUser: User, data: UpdateOrderStatusDto) {
     try {
-      let order = await this.order.findById(orderId);
-      order.status = status;
+      let order = await this.order.findById(data.orderId);
+      order.status = data.status;
+      order.lastUpdatedBy = updatingUser.firstName;
       // if the order status is ready, make all the order item status to ready.
 
-      order.save();
+      return await order.save();
     } catch (error) {
       throw new NotFoundException();
     }
   }
 
   async updateOrderItemStatus(
-    orderId: string,
-    orderItemKey: string,
-    status: OrderItemStatus
+    updatingUser: User,
+    data: UpdateOrderItemStatusDto
   ) {
     try {
-      let order = await this.order.findById(orderId);
+      let order = await this.order.findById(data.orderId);
       let currentOrderItems = order.orderItems;
+      let isAllOrderItemInReadyStatus = false;
       let mapedOrderItems = currentOrderItems.map((item) => {
-        if (item.key == orderItemKey) return { ...item, status: status };
+        if (item.key == data.key) {
+          item = {
+            ...item,
+            status: data.orderItemStatus,
+            kitchenUser: updatingUser,
+          };
+        }
+        item.status == OrderItemStatus.READY
+          ? (isAllOrderItemInReadyStatus = true)
+          : (isAllOrderItemInReadyStatus = false);
         return item;
       });
 
+      if (isAllOrderItemInReadyStatus) order.status = OrderStatus.READY;
+
       order.orderItems = mapedOrderItems;
-      order.save();
+
+      return await order.save();
     } catch (error) {
       throw new NotFoundException();
     }

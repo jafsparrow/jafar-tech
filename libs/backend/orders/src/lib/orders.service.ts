@@ -6,6 +6,8 @@ import {
 } from '@jafar-tech/shared/data-access';
 import { Injectable } from '@nestjs/common';
 import { CreateOrderDto } from './dto/create-order.dto';
+import { UpdateOrderItemStatusDto } from './dto/update-order-item-status.dto';
+import { UpdateOrderStatusDto } from './dto/update-order-status.dto';
 import { OrderRepository } from './orders.repository';
 
 @Injectable()
@@ -40,16 +42,11 @@ export class OrderService {
     return await this.orderRepository.findOrderOfTheDay();
   }
 
-  updateOrderStatus(orderId: string, status: OrderStatus) {
-    return this.orderRepository.updateOrderStatus(orderId, status);
+  updateOrderStatus(updatingUser: User, data: UpdateOrderStatusDto) {
+    return this.orderRepository.updateOrderStatus(updatingUser, data);
   }
 
-  updateOrderItemStatus(
-    orderId: string,
-    orderItemKey: string,
-    status: OrderItemStatus
-  ) {
-    // if all the orderItem ready, make the order ready.
-    // if any of the ordertiem updated to in progress, make the whole order inprogress.
+  updateOrderItemStatus(updatingUser: User, data: UpdateOrderItemStatusDto) {
+    return this.orderRepository.updateOrderItemStatus(updatingUser, data);
   }
 }

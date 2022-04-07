@@ -14,6 +14,9 @@ export class Order extends Document {
   @Prop({ type: UserSchema })
   user: User;
 
+  @Prop({ default: null })
+  lastUpdatedBy: string;
+
   @Prop({ required: true })
   orderItems: OrderItem[];
 
