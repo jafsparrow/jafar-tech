@@ -82,6 +82,16 @@ import { TableQrOrdersDataAccessModule } from '@jafar-tech/table-qr-orders-data-
 
             data: { roles: ['admin', 'staff'] },
           },
+
+          {
+            path: 'kitchen',
+            loadChildren: () =>
+              import(
+                '@jafar-tech/table-qr/orders/features/kitchen-order-management'
+              ).then(
+                (m) => m.TableQrOrdersFeaturesKitchenOrderManagementModule
+              ),
+          },
         ],
       },
     ]),

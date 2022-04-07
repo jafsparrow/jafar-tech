@@ -21,6 +21,7 @@ export class AdminContainerComponent implements OnInit, OnDestroy {
     { name: 'Orders', navigate: 'liveorder' },
     { name: 'menu', navigate: 'menu' },
     { name: 'createoder', navigate: 'create-order' },
+    { name: 'kitchen', navigate: 'kitchen' },
   ];
 
   @ViewChild('drawer')

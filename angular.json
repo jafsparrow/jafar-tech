@@ -938,6 +938,34 @@
       },
       "tags": []
     },
+    "table-qr-orders-features-kitchen-order-management": {
+      "projectType": "library",
+      "root": "libs/table-qr/orders/features/kitchen-order-management",
+      "sourceRoot": "libs/table-qr/orders/features/kitchen-order-management/src",
+      "prefix": "jafar-tech",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/table-qr/orders/features/kitchen-order-management"
+          ],
+          "options": {
+            "jestConfig": "libs/table-qr/orders/features/kitchen-order-management/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/table-qr/orders/features/kitchen-order-management/src/**/*.ts",
+              "libs/table-qr/orders/features/kitchen-order-management/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "table-qr-orders-features-live-orders": {
       "projectType": "library",
       "root": "libs/table-qr/orders/features/live-orders",

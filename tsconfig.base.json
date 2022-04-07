@@ -73,6 +73,9 @@
       "@jafar-tech/table-qr/orders/features/create-order": [
         "libs/table-qr/orders/features/create-order/src/index.ts"
       ],
+      "@jafar-tech/table-qr/orders/features/kitchen-order-management": [
+        "libs/table-qr/orders/features/kitchen-order-management/src/index.ts"
+      ],
       "@jafar-tech/table-qr/orders/features/live-orders": [
         "libs/table-qr/orders/features/live-orders/src/index.ts"
       ],
