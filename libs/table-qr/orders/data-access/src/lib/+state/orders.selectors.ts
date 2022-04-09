@@ -1,3 +1,8 @@
+import {
+  OrderItem,
+  OrderItemStatus,
+  OrderStatus,
+} from '@jafar-tech/shared/data-access';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { Order, ORDER_FEATURE_KEY } from './orders.reducers';
 
@@ -21,29 +26,33 @@ export const selectOrderErrorMessage = createSelector(
 export const selectOrderItemsFromRecentOrders = createSelector(
   selectRecentOrders,
   (orders) => {
-    let orderItemArray = orders
-      .map((order) => order.orderItems)
-      .reduce((prevVal, item) => [...prevVal, ...item], []);
+    let orderItemArray: OrderItem[] = orders
+      .map((order) =>
+        order.orderItems.map((item) => ({
+          ...item,
+          orderId: order._id.toString(),
+        }))
+      )
+      .reduce((prevVal, item) => [...prevVal, ...item], [])
+      .filter((item) => item.status != OrderItemStatus.READY);
 
-    let categoryVice = {};
+    let categoryVice: any = {};
 
-    // orderItemArray.map((item) => {
-    // if (categoryVice[item.category]) {
-    //   categoryVice[item.category] = [...categoryVice[item.category], item];
-    // } else {
-    //   categoryVice[item.category] = [];
-    // }
+    orderItemArray.forEach(
+      (item) =>
+        (categoryVice[item.key!] =
+          categoryVice[item.key!] + item.count || item.count)
+    );
 
-    //   const itemKey = 'test'// item.key!;
+    console.log(categoryVice);
+    let final = orderItemArray.map((item) => {
+      if (categoryVice[item.key!]) {
+        return { ...item, totalCountOfSameItem: categoryVice[item.key!] };
+      }
+      return item;
+    });
 
-    //   categoryVice[item.key] = [
-    //     ...(categoryVice[item.key] || 0),
-    //     count:3,
-    //   ];
-    // });
-
-    // }
-
-    return orderItemArray;
+    console.log('final', final);
+    return final;
   }
 );

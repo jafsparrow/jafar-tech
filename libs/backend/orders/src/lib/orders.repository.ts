@@ -34,7 +34,7 @@ export class OrderRepository {
 
   async findOrderOfTheDay() {
     // return await this.order.find();
-    let date = new Date(new Date().setUTCHours(0, 0, 0, 0));
+    let date = new Date('20 March 2020'); //new Date(new Date().setUTCHours(0, 0, 0, 0));
 
     try {
       return await this.order.aggregate([

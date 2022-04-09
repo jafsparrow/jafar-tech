@@ -4,6 +4,8 @@ export interface OrderItem extends CartItem {
   status: OrderItemStatus;
   kitchenUser?: User;
   key?: string;
+  totalCountOfSameItem?: number;
+  orderId?: string; //just to track what order it belongs.
 }
 
 export interface OrderSummary {

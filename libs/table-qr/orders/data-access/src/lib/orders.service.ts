@@ -1,6 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { Cart } from '@jafar-tech/shared/data-access';
+import {
+  Cart,
+  OrderItemStatus,
+  OrderSummary,
+} from '@jafar-tech/shared/data-access';
+import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class OrderService {
@@ -19,5 +24,15 @@ export class OrderService {
 
   updateOrderStatus() {}
 
-  updateOrderItemStatus() {}
+  updateOrderItemStatus(
+    orderId: string,
+    orderItemKey: string,
+    status: OrderItemStatus
+  ): Observable<OrderSummary[]> {
+    return this.httpClient.patch<OrderSummary[]>(`${this.apiUrl}/orders`, {
+      orderId,
+      status,
+      key: orderItemKey,
+    });
+  }
 }

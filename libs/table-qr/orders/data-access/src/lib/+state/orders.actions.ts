@@ -1,5 +1,6 @@
 import {
   Cart,
+  OrderItemStatus,
   OrderStatus,
   OrderSummary,
 } from '@jafar-tech/shared/data-access';
@@ -47,7 +48,11 @@ export const updateOrderStatusFail = createAction(
 
 export const updateOrderItemStatus = createAction(
   '[Order] update orderItem status',
-  props<{ orderId: string; orderItemKey: string }>()
+  props<{
+    orderId: string;
+    orderItemKey: string;
+    orderItemStatus: OrderItemStatus;
+  }>()
 );
 
 export const updateOrderItemStatusSuccess = createAction(

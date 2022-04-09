@@ -5,11 +5,12 @@ import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { OrderItem } from '@jafar-tech/shared/data-access';
+import { OrderItem, OrderItemStatus } from '@jafar-tech/shared/data-access';
 import {
   loadRecentOrders,
   selectOrderItemsFromRecentOrders,
   selectRecentOrders,
+  updateOrderItemStatus,
 } from '@jafar-tech/table-qr-orders-data-access';
 import { Store } from '@ngrx/store';
 import { map, Observable, startWith, Subscription } from 'rxjs';
@@ -33,8 +34,9 @@ export class KitchenOrderViewComponent implements OnInit {
     'code',
     'name',
     'count',
-    'modifier',
     'category',
+    'total',
+    'action',
   ];
   dataSource!: MatTableDataSource<OrderItem>;
   subscription: Subscription;
@@ -60,9 +62,9 @@ export class KitchenOrderViewComponent implements OnInit {
   }
   ngOnInit(): void {
     this.store.dispatch(loadRecentOrders());
-    this.store
-      .select(selectRecentOrders)
-      .subscribe((data) => console.log(data));
+    // this.store
+    //   .select(selectRecentOrders)
+    //   .subscribe((data) => console.log(data));
   }
 
   add(event: MatChipInputEvent): void {
@@ -115,4 +117,14 @@ export class KitchenOrderViewComponent implements OnInit {
   }
 
   changeStatus(item: any) {}
+
+  updateOrderItemStatus(item: OrderItem, status: string) {
+    this.store.dispatch(
+      updateOrderItemStatus({
+        orderId: item.orderId!,
+        orderItemKey: item.key!,
+        orderItemStatus: status as OrderItemStatus,
+      })
+    );
+  }
 }

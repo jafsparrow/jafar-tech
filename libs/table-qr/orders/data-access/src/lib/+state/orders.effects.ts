@@ -15,6 +15,8 @@ import {
   orderPlaceFail,
   orderPlaceSuccess,
   placeOrder,
+  updateOrderItemStatus,
+  updateOrderItemStatusFail,
 } from './orders.actions';
 
 @Injectable()
@@ -76,6 +78,32 @@ export class OrderEffects {
             )
           )
         )
+      )
+    );
+  });
+
+  updateOrderItemStatusEffect$ = createEffect(() => {
+    return this.action$.pipe(
+      ofType(updateOrderItemStatus),
+      switchMap((data) =>
+        this.orderService
+          .updateOrderItemStatus(
+            data.orderId,
+            data.orderItemKey,
+            data.orderItemStatus
+          )
+          .pipe(
+            map((data) =>
+              loadRecentOrdersSuccess({ recentOrders: data as OrderSummary[] })
+            ),
+            catchError((error) =>
+              of(
+                updateOrderItemStatusFail({
+                  errorMessage: 'somethign wrong happened while updating',
+                })
+              )
+            )
+          )
       )
     );
   });
