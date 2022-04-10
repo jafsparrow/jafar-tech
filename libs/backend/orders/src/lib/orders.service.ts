@@ -22,6 +22,7 @@ export class OrderService {
         status: OrderItemStatus.WAITING,
       })
     );
+    console.log(orderItems);
 
     // TODO - cloned user is to get company Id as company as in the order schema company is mentioned.
     let cloneUser = { ...appUser, company: appUser.companyId };

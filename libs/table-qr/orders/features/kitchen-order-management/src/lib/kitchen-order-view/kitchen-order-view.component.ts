@@ -119,6 +119,7 @@ export class KitchenOrderViewComponent implements OnInit {
   changeStatus(item: any) {}
 
   updateOrderItemStatus(item: OrderItem, status: string) {
+    console.log('current item ', item);
     this.store.dispatch(
       updateOrderItemStatus({
         orderId: item.orderId!,
@@ -126,5 +127,18 @@ export class KitchenOrderViewComponent implements OnInit {
         orderItemStatus: status as OrderItemStatus,
       })
     );
+  }
+
+  getClass(status: string) {
+    switch (status.toLowerCase()) {
+      case 'ready':
+        return 'text-green';
+
+      case 'inprogress':
+        return 'text-orange';
+
+      default:
+        return 'text-red';
+    }
   }
 }

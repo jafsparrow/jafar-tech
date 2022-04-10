@@ -58,7 +58,8 @@ export class OrderRepository {
       order.lastUpdatedBy = updatingUser.firstName;
       // if the order status is ready, make all the order item status to ready.
 
-      return await order.save();
+      await order.save();
+      return await this.findOrderOfTheDay();
     } catch (error) {
       throw new NotFoundException();
     }
@@ -90,7 +91,8 @@ export class OrderRepository {
 
       order.orderItems = mapedOrderItems;
 
-      return await order.save();
+      await order.save();
+      return await this.findOrderOfTheDay();
     } catch (error) {
       throw new NotFoundException();
     }

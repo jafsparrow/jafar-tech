@@ -26,6 +26,7 @@ export const selectOrderErrorMessage = createSelector(
 export const selectOrderItemsFromRecentOrders = createSelector(
   selectRecentOrders,
   (orders) => {
+    console.log('orders', orders);
     let orderItemArray: OrderItem[] = orders
       .map((order) =>
         order.orderItems.map((item) => ({
@@ -44,7 +45,7 @@ export const selectOrderItemsFromRecentOrders = createSelector(
           categoryVice[item.key!] + item.count || item.count)
     );
 
-    console.log(categoryVice);
+    console.log(orderItemArray);
     let final = orderItemArray.map((item) => {
       if (categoryVice[item.key!]) {
         return { ...item, totalCountOfSameItem: categoryVice[item.key!] };

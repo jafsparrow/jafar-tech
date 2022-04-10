@@ -29,10 +29,15 @@ export class OrderService {
     orderItemKey: string,
     status: OrderItemStatus
   ): Observable<OrderSummary[]> {
-    return this.httpClient.patch<OrderSummary[]>(`${this.apiUrl}/orders`, {
+    let updateData = {
       orderId,
-      status,
+      orderItemStatus: status,
       key: orderItemKey,
-    });
+    };
+    console.log('update data at service', updateData);
+    return this.httpClient.patch<OrderSummary[]>(
+      `${this.apiUrl}/orders`,
+      updateData
+    );
   }
 }
