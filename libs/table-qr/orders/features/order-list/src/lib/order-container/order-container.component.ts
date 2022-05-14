@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { selectPendingOrder } from '@jafar-tech/table-qr-orders-data-access';
+import { selectRecentOrders } from '@jafar-tech/table-qr-orders-data-access';
 import { Store } from '@ngrx/store';
 
 @Component({
@@ -8,7 +8,7 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./order-container.component.css'],
 })
 export class OrderContainerComponent implements OnInit {
-  orderSummary$ = this.store.select(selectPendingOrder);
+  orderSummary$ = this.store.select(selectRecentOrders);
   constructor(private store: Store) {}
 
   ngOnInit(): void {}
