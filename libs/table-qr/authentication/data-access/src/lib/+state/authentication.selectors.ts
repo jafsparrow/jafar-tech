@@ -13,6 +13,15 @@ export const selectUserCompanyId = createSelector(
   (state) => state.user?.companyId
 );
 
+export const selectLoginProgressState = createSelector(
+  selectAuthState,
+  (state) => state.loginInProgress
+)
+
+export const selectLoginErrorMessage = createSelector(
+  selectAuthState,
+  (state) => state.errorMessage
+)
 export const selectIsUserAuthenticated = createSelector(
   selectAuthState,
   (state) => state.isAuthenticated

@@ -10,7 +10,7 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Phassword</mat-label>
+        <mat-label>Password</mat-label>
         <input
           matInput
           type="password"
@@ -21,11 +21,19 @@
 
       <!-- <div class="fill-space"></div> -->
 
-      <button mat-raised-button color="primary" class="grow-100" type="submit">
-        Sign In
+      <button mat-raised-button color="primary" [disabled]=" !signInForm.valid || (loginInProgressFlag$ | async)" class="grow-100 load-indicator" type="submit">
+        <span *ngIf="(loginInProgressFlag$ | async) ===false">Sign In</span>
+        <mat-spinner color="accent" class="margin-5px" diameter="25" *ngIf="loginInProgressFlag$ | async"></mat-spinner>
+        
+       
       </button>
+
+      <div class="error-message">
+        {{ loginErrorMessage$ | async}}
+      </div>
+
       <div class="already-have">
-        <a routerLink="/signup">Not have an account</a>
+        <a routerLink="/auth/signup">Dont have an account</a>
       </div>
     </form>
   </div>
