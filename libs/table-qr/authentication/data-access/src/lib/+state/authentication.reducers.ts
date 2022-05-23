@@ -6,6 +6,8 @@ import {
   loginFail,
   loginSuccess,
   logout,
+  signUp,
+  signUpFail,
 } from './authentication.actions';
 
 export const AUTHENTICATION_FEATURE_KEY = 'authentication';
@@ -26,7 +28,17 @@ export const initialState: AuthenticationState = {
 
 export const authReducer = createReducer(
   initialState,
-  on(login, (state) => ({...state, loginInProgress: true})),
+  on(signUp, (state) => ({
+    ...state,
+    loginInProgress: true,
+    errorMessage: null,
+  })),
+  on(signUpFail, (state, { errorMessage }) => ({
+    ...state,
+    errorMessage: 'something went wrong, please try again',
+    loginInProgress: false,
+  })),
+  on(login, (state) => ({ ...state, loginInProgress: true })),
   on(loginSuccess, (state, { user }) => ({
     ...state,
     user,
@@ -45,6 +57,6 @@ export const authReducer = createReducer(
     isAuthenticated: true,
     loginInProgress: false,
     user: user,
-    errorMessage: null
+    errorMessage: null,
   }))
 );

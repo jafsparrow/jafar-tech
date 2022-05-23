@@ -36,11 +36,25 @@ mat-form-field {
 }
 .already-have {
   text-align: right;
+  margin-top: 20px;
 }
 .grow-100 {
   width: 100%;
 }
 
-.progress-indicator {
-  text-align: center;
+
+.load-indicator {
+  /* padding: 7px; */
+  display: flex;
+  justify-content: center;
+}
+
+
+.margin-5px {
+  margin: 7px
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
 }

@@ -3,12 +3,20 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { signUp } from '@jafar-tech/table-qr-authentication-data-access';
 import { Store } from '@ngrx/store';
 
+import {
+  login,
+  selectLoginErrorMessage,
+  selectLoginProgressState,
+} from '@jafar-tech/table-qr-authentication-data-access';
+
 @Component({
   selector: 'jafar-tech-singnup',
   templateUrl: './singnup.component.html',
   styleUrls: ['./singnup.component.css'],
 })
 export class SingnupComponent implements OnInit {
+  loginInProgressFlag$ = this.store.select(selectLoginProgressState);
+  loginErrorMessage$ = this.store.select(selectLoginErrorMessage);
   signUpForm: FormGroup;
 
   constructor(private store: Store) {

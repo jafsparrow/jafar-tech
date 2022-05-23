@@ -37,15 +37,21 @@
       <button
         mat-raised-button
         color="primary"
-        class="grow-100"
+        class="grow-100 load-indicator"
         type="submit"
-        [disabled]="!signUpForm.valid"
+        [disabled]="!signUpForm.valid ||  (loginInProgressFlag$ | async)"
       >
-        Sign Up
+        
+        <span *ngIf="(loginInProgressFlag$ | async) ===false">Sign Up</span>
+        <mat-spinner color="accent" class="margin-5px" diameter="25" *ngIf="loginInProgressFlag$ | async"></mat-spinner>
+        
       </button>
-      <div class="progress-indicator">
-        <mat-spinner color="accent" diameter="35"></mat-spinner>
+
+      <div class="error-message">
+        {{ loginErrorMessage$ | async}}
       </div>
+
+
 
       <div class="already-have">
         <a routerLink="/login">Already have an account</a>
