@@ -37,6 +37,7 @@
         [category]="category.name"
         [categories]="categories"
         [companyId]="companyId"
+        [currencyCode]="(selectCurrencyCode$ | async)!"
       >
       </jafar-tech-menu-category>
     </mat-expansion-panel>

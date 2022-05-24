@@ -9,7 +9,10 @@ import {
   updateProductSort,
 } from '@jafar-tech/table-qr-products-data-access';
 import { selectCategories } from '@jafar-tech/table-qr/category/data-access/category';
-import { selectOrganisationId } from '@jafar-tech/table-qr/organisation/data-access';
+import {
+  selectCurrencyCode,
+  selectOrganisationId,
+} from '@jafar-tech/table-qr/organisation/data-access';
 import { Store } from '@ngrx/store';
 import { CategoryAddComponent } from 'libs/table-qr/category/features/add/src/lib/category-add/category-add.component';
 import { Observable, ObservableLike, Subscription, take, tap } from 'rxjs';
@@ -22,6 +25,8 @@ import { Observable, ObservableLike, Subscription, take, tap } from 'rxjs';
 export class MenuEditComponent implements OnInit, OnDestroy {
   categories$ = this.store.select(selectCategories);
   companyId$ = this.store.select(selectOrganisationId);
+  selectCurrencyCode$ = this.store.select(selectCurrencyCode);
+
   categories: Category[] = [];
   categoriesSubscription: Subscription;
   @ViewChild(MatAccordion) accordion!: MatAccordion;

@@ -25,6 +25,7 @@ import { Observable } from 'rxjs';
 })
 export class MenuCategoryComponent implements OnInit {
   @Input('category') category!: string;
+  @Input('currencyCode') currencyCode!: string;
 
   @Input('companyId') companyId!: string;
   @Input('categories') categories!: Category[];

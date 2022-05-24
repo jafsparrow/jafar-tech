@@ -17,6 +17,11 @@ export const selectOrganisationId = createSelector(
   selectOrganisationInfo,
   (org) => org?._id
 );
+
+export const selectCurrencyCode = createSelector(
+  selectOrganisationState,
+  (state) => state.organisation?.currencyCode
+)
 export const showOnlyAvailableItems = createSelector(
   selectOrganisationInfo,
   (state) => false

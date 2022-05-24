@@ -73,3 +73,10 @@
 .product-name {
   width: 25%;
 }
+
+
+.currency-code {
+  font-size: 11px;
+  padding-left: 5px;
+  color: gray;
+}

@@ -25,6 +25,7 @@ export class MenuCategoryProductListComponent implements OnInit {
   @Input('products') products!: Product[];
   @Input('category') category!: string;
   @Input('categories') categories!: Category[];
+  @Input('currencyCode') currencyCode!: string;
   sortedProducts: Product[] = [];
 
   @Output('sortingChanged') onSorting: EventEmitter<Product[]> =

@@ -14,4 +14,6 @@ export interface Organisation {
   categories?: Category[];
   isRegistrationComplete?: boolean;
   taxes?: Tax[];
+  currencyCode?: string;
+  country?: string;
 }
