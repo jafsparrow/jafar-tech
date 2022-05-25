@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatAccordion } from '@angular/material/expansion';
+import { OrderStatus } from '@jafar-tech/shared/data-access';
 import {
   loadRecentOrders,
   selectRecentOrders,
+  updateOrderStatus,
 } from '@jafar-tech/table-qr-orders-data-access';
 import { Store } from '@ngrx/store';
 
@@ -30,6 +32,18 @@ export class LiveOrderComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(loadRecentOrders());
+  }
+
+  updateStatus(orderId: string, status: string) {
+    let newStatus: OrderStatus = OrderStatus.READY;
+    if (status == 'ready') {
+      newStatus = OrderStatus.READY;
+    } else if (status == 'pay') {
+      newStatus = OrderStatus.PAID;
+    }
+    if (confirm('Are you Sure.?')) {
+      this.store.dispatch(updateOrderStatus({ orderId, status: newStatus }));
+    }
   }
 
   getClass(status: string) {

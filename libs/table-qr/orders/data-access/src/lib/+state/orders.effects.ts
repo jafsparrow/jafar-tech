@@ -17,6 +17,8 @@ import {
   placeOrder,
   updateOrderItemStatus,
   updateOrderItemStatusFail,
+  updateOrderStatus,
+  updateOrderStatusFail,
 } from './orders.actions';
 
 @Injectable()
@@ -74,6 +76,26 @@ export class OrderEffects {
             of(
               loadRecentOrdersFail({
                 errorMessage: 'Something happened while loading orders',
+              })
+            )
+          )
+        )
+      )
+    );
+  });
+
+  updateOrderStatusEffect$ = createEffect(() => {
+    return this.action$.pipe(
+      ofType(updateOrderStatus),
+      switchMap((data) =>
+        this.orderService.updateOrderStatus(data.orderId, data.status).pipe(
+          map((data) =>
+            loadRecentOrdersSuccess({ recentOrders: data as OrderSummary[] })
+          ),
+          catchError((error) =>
+            of(
+              updateOrderStatusFail({
+                errorMessage: 'somethign wrong happened while updating',
               })
             )
           )

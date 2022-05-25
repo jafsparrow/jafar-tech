@@ -38,8 +38,8 @@
       </div>
 
       <div class="order-action-container">
-        <button mat-raised-button color="primary">Served</button>
-        <button mat-raised-button color="accent">Pay</button>
+        <button mat-raised-button color="primary" (click)="updateStatus(order._id, 'served')">Served</button>
+        <button mat-raised-button color="accent" (click)="updateStatus(order._id, 'pay')">Pay</button>
         <!-- <button mat-raised-button color="warn">Reject</button> -->
       </div>
     </mat-expansion-panel>

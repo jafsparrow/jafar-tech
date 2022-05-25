@@ -3,6 +3,7 @@ import { Inject, Injectable } from '@angular/core';
 import {
   Cart,
   OrderItemStatus,
+  OrderStatus,
   OrderSummary,
 } from '@jafar-tech/shared/data-access';
 import { Observable } from 'rxjs';
@@ -22,7 +23,9 @@ export class OrderService {
     return this.httpClient.get(`${this.apiUrl}/orders`);
   }
 
-  updateOrderStatus() {}
+  updateOrderStatus(orderId: string, status: OrderStatus) {
+    return this.httpClient.put(`${this.apiUrl}/orders`, { orderId, status });
+  }
 
   updateOrderItemStatus(
     orderId: string,
