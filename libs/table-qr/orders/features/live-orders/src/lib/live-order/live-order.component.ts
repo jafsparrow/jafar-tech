@@ -36,8 +36,8 @@ export class LiveOrderComponent implements OnInit {
 
   updateStatus(orderId: string, status: string) {
     let newStatus: OrderStatus = OrderStatus.READY;
-    if (status == 'ready') {
-      newStatus = OrderStatus.READY;
+    if (status == 'served') {
+      newStatus = OrderStatus.SERVED;
     } else if (status == 'pay') {
       newStatus = OrderStatus.PAID;
     }
