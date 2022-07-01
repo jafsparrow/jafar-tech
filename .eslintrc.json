@@ -14,6 +14,9 @@
         "*.js",
         "*.jsx"
       ],
+     "parserOptions": {
+      "project": ["**/tsconfig.json"],
+     },
       "rules": {
         "@nrwl/nx/enforce-module-boundaries": [
           "error",
