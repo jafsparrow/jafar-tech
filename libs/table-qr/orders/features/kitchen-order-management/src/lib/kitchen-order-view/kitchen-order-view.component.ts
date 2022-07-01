@@ -27,7 +27,7 @@ export class KitchenOrderViewComponent implements OnInit {
   separatorKeysCodes: number[] = [ENTER, COMMA];
   categoryControl = new FormControl();
   filterdCategories$: Observable<string[]>;
-  categories: string[] = [];
+  categories: string[] = ['one','two'];
   allCategories: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
 
   displayedColumns: string[] = [
@@ -109,7 +109,7 @@ export class KitchenOrderViewComponent implements OnInit {
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.dataSource.filter = 'hello';//filterValue.trim().toLowerCase();
 
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();

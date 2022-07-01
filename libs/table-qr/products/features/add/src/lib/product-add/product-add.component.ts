@@ -54,13 +54,16 @@ export class ProductAddComponent implements OnInit {
       if (this.data.product.modifierGroups?.length) {
         this.data.product.modifierGroups!.forEach((modifiers) => {
           let modfierGroupFrom = this.emptyModifierFrom();
-          modfierGroupFrom.patchValue(modifiers);
+          modfierGroupFrom.patchValue({
+            description: modifiers.description,
+            printName: modifiers.printName,
+          });
           // formarray needs to be clear, otherwise patch value taking the first item by default
           (modfierGroupFrom.get('modifiers') as FormArray).clear();
 
           modifiers.modifiers?.forEach((modifier) => {
             let modifierItemForm = this.emptyModifierItem();
-            modifierItemForm.patchValue(modifier);
+            modifierItemForm.patchValue({description: modifier.description, price: modifier.price.toString()});
             (modfierGroupFrom.get('modifiers') as FormArray).push(
               modifierItemForm
             );
