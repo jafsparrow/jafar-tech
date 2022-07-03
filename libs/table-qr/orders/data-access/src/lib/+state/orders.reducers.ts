@@ -16,7 +16,7 @@ export interface Order {
   errorMessage: string;
   recentOrders: OrderSummary[];
   placeOrderSpinner: boolean;
-  userSelectedFilterCategories: String[]
+  userSelectedFilterCategories: string[]
 }
 
 const initialState: Order = {
