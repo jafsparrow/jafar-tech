@@ -8,9 +8,11 @@ import { MatTableDataSource } from '@angular/material/table';
 import { OrderItem, OrderItemStatus } from '@jafar-tech/shared/data-access';
 import {
   loadRecentOrders,
+  selectFilteredOrderItemsFromRecentOrders,
   selectOrderItemsFromRecentOrders,
   selectRecentOrders,
   updateOrderItemStatus,
+  updateSelectedFilteredCategories,
 } from '@jafar-tech/table-qr-orders-data-access';
 import { selectCategories } from '@jafar-tech/table-qr/category/data-access/category';
 import { Store } from '@ngrx/store';
@@ -22,10 +24,12 @@ import { map, Observable, startWith, Subscription } from 'rxjs';
   styleUrls: ['./kitchen-order-view.component.css'],
 })
 export class KitchenOrderViewComponent implements OnInit {
+  selectedCategories: string[] =[];
   selectOrderItemsFromRecentOrders$ = this.store.select(
-    selectOrderItemsFromRecentOrders(['juice', 'Chines', 'Broasted'])
+    selectFilteredOrderItemsFromRecentOrders
   );
   categories$ = this.store.select(selectCategories);
+
 
   separatorKeysCodes: number[] = [ENTER, COMMA];
   categoryControl = new FormControl();
@@ -143,5 +147,12 @@ export class KitchenOrderViewComponent implements OnInit {
       default:
         return 'text-red';
     }
+  }
+
+
+  onChangeCategorySelection(event:any) {
+
+    console.log(event.value)
+    this.store.dispatch(updateSelectedFilteredCategories({filteredCategories: event.value}))
   }
 }

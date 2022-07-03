@@ -64,3 +64,8 @@ export const updateOrderItemStatusFail = createAction(
   '[Order] update orderItem status faile',
   props<{ errorMessage: string }>()
 );
+
+export const updateSelectedFilteredCategories = createAction(
+  '[Order] update the categries filter',
+  props<{ filteredCategories: string[]}>()
+)

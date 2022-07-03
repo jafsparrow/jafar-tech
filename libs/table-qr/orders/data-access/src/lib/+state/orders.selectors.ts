@@ -23,7 +23,7 @@ export const selectOrderErrorMessage = createSelector(
   (state: Order) => state.errorMessage
 );
 
-export const selectOrderItemsFromRecentOrders = (selectedCategories: String[])=> createSelector(
+export const selectOrderItemsFromRecentOrders = createSelector(
   selectRecentOrders,
   (orders) => {
     console.log('orders', orders);
@@ -35,7 +35,6 @@ export const selectOrderItemsFromRecentOrders = (selectedCategories: String[])=>
         }))
       )
       .reduce((prevVal, item) => [...prevVal, ...item], [])
-      .filter((item) => selectedCategories.indexOf(item.product.category) !== -1)
       .filter((item) => item.status != OrderItemStatus.READY);
 
     let categoryVice: any = {};
@@ -58,3 +57,14 @@ export const selectOrderItemsFromRecentOrders = (selectedCategories: String[])=>
     return final;
   }
 );
+
+
+export const selectFilteredOrderItemsFromRecentOrders = createSelector(
+  selectOrderState,
+  selectOrderItemsFromRecentOrders, (state, orderLineItems) =>{
+    const filteredCategories = state.userSelectedFilterCategories;
+     
+    return orderLineItems.filter((item) => filteredCategories.length ?  filteredCategories.indexOf(item.product.category) !== -1 : true)
+  }
+
+)

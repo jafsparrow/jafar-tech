@@ -7,6 +7,7 @@ import {
   orderPlaceFail,
   orderPlaceSuccess,
   placeOrderTurnSpinnerOn,
+  updateSelectedFilteredCategories
 } from './orders.actions';
 
 export const ORDER_FEATURE_KEY = 'order';
@@ -15,12 +16,14 @@ export interface Order {
   errorMessage: string;
   recentOrders: OrderSummary[];
   placeOrderSpinner: boolean;
+  userSelectedFilterCategories: String[]
 }
 
 const initialState: Order = {
   recentOrders: [],
   errorMessage: '',
   placeOrderSpinner: false,
+  userSelectedFilterCategories: []
 };
 
 export const orderReducer = createReducer(
@@ -52,5 +55,9 @@ export const orderReducer = createReducer(
     ...state,
     errorMessage,
     placeOrderSpinner: false,
+  })),
+  on(updateSelectedFilteredCategories, (state, {filteredCategories}) => ({
+    ...state, 
+    userSelectedFilterCategories: filteredCategories
   }))
 );
