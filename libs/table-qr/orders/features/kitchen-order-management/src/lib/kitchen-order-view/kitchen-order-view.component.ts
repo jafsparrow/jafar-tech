@@ -12,6 +12,7 @@ import {
   selectRecentOrders,
   updateOrderItemStatus,
 } from '@jafar-tech/table-qr-orders-data-access';
+import { selectCategories } from '@jafar-tech/table-qr/category/data-access/category';
 import { Store } from '@ngrx/store';
 import { map, Observable, startWith, Subscription } from 'rxjs';
 
@@ -22,8 +23,10 @@ import { map, Observable, startWith, Subscription } from 'rxjs';
 })
 export class KitchenOrderViewComponent implements OnInit {
   selectOrderItemsFromRecentOrders$ = this.store.select(
-    selectOrderItemsFromRecentOrders
+    selectOrderItemsFromRecentOrders(['juice', 'Chines', 'Broasted'])
   );
+  categories$ = this.store.select(selectCategories);
+
   separatorKeysCodes: number[] = [ENTER, COMMA];
   categoryControl = new FormControl();
   filterdCategories$: Observable<string[]>;
@@ -62,9 +65,9 @@ export class KitchenOrderViewComponent implements OnInit {
   }
   ngOnInit(): void {
     this.store.dispatch(loadRecentOrders());
-    // this.store
-    //   .select(selectRecentOrders)
-    //   .subscribe((data) => console.log(data));
+
+    this.categories$.subscribe(data => console.log('categorydd',data))
+ 
   }
 
   add(event: MatChipInputEvent): void {
@@ -109,7 +112,7 @@ export class KitchenOrderViewComponent implements OnInit {
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = 'hello';//filterValue.trim().toLowerCase();
+    this.dataSource.filter = filterValue.trim().toLowerCase();
 
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
