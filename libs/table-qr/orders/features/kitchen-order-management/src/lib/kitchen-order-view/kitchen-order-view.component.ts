@@ -25,13 +25,14 @@ export class KitchenOrderViewComponent implements OnInit {
     selectFilteredOrderItemsFromRecentOrders
   );
 
-  selectUserFilteredCategories$ = this.store.select(selectUserFilteredCategories);
+  selectUserFilteredCategories$ = this.store.select(
+    selectUserFilteredCategories
+  );
   categories$ = this.store.select(selectCategories);
-
 
   separatorKeysCodes: number[] = [ENTER, COMMA];
   categoryControl = new FormControl();
-  categorySelectControl= new FormControl();
+  categorySelectControl = new FormControl();
 
   displayedColumns: string[] = [
     'code',
@@ -49,8 +50,6 @@ export class KitchenOrderViewComponent implements OnInit {
   @ViewChild('categoryInput') categoryInput!: ElementRef<HTMLInputElement>;
 
   constructor(private store: Store) {
-
-
     this.subscription = this.selectOrderItemsFromRecentOrders$.subscribe(
       (orders) => {
         this.dataSource = new MatTableDataSource(orders);
@@ -59,24 +58,23 @@ export class KitchenOrderViewComponent implements OnInit {
   }
   ngOnInit(): void {
     this.store.dispatch(loadRecentOrders());
-    this.selectUserFilteredCategories$.pipe(
-      tap((data) => {
-        this.categorySelectControl.setValue(data)
-      }), take(1)
-      
-      
-    ).subscribe()
- 
+    this.selectUserFilteredCategories$
+      .pipe(
+        tap((data) => {
+          this.categorySelectControl.setValue(data);
+        }),
+        take(1)
+      )
+      .subscribe();
   }
-
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
+    // if (this.dataSource.paginator) {
+    //   this.dataSource.paginator.firstPage();
+    // }
   }
 
   changeStatus(item: any) {}
@@ -104,8 +102,9 @@ export class KitchenOrderViewComponent implements OnInit {
     }
   }
 
-
-  onChangeCategorySelection(event:any) {
-    this.store.dispatch(updateSelectedFilteredCategories({filteredCategories: event.value}))
+  onChangeCategorySelection(event: any) {
+    this.store.dispatch(
+      updateSelectedFilteredCategories({ filteredCategories: event.value })
+    );
   }
 }
