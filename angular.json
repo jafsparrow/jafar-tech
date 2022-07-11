@@ -1,13 +1,13 @@
 {
-  "version": 1,
+  "version": 2,
   "projects": {
     "api": {
       "root": "apps/api",
       "sourceRoot": "apps/api/src",
       "projectType": "application",
-      "architect": {
+      "targets": {
         "build": {
-          "builder": "@nrwl/node:webpack",
+          "executor": "@nrwl/node:webpack",
           "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/api",
@@ -30,20 +30,20 @@
           }
         },
         "serve": {
-          "builder": "@nrwl/node:node",
+          "executor": "@nrwl/node:node",
           "options": {
             "buildTarget": "api:build"
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
           "options": {
             "lintFilePatterns": ["apps/api/**/*.ts"]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/apps/api"],
           "options": {
             "jestConfig": "apps/api/jest.config.js",
@@ -57,9 +57,9 @@
       "root": "libs/api-interfaces",
       "sourceRoot": "libs/api-interfaces/src",
       "projectType": "library",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
           "options": {
             "lintFilePatterns": ["libs/api-interfaces/**/*.ts"]
@@ -72,16 +72,16 @@
       "root": "libs/backend/auth",
       "sourceRoot": "libs/backend/auth/src",
       "projectType": "library",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
           "options": {
             "lintFilePatterns": ["libs/backend/auth/**/*.ts"]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/backend/auth"],
           "options": {
             "jestConfig": "libs/backend/auth/jest.config.js",
@@ -95,9 +95,9 @@
       "root": "libs/backend/category",
       "sourceRoot": "libs/backend/category/src",
       "projectType": "library",
-      "architect": {
+      "targets": {
         "build": {
-          "builder": "@nrwl/js:tsc",
+          "executor": "@nrwl/js:tsc",
           "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/libs/backend/category",
@@ -108,14 +108,14 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
           "options": {
             "lintFilePatterns": ["libs/backend/category/**/*.ts"]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/backend/category"],
           "options": {
             "jestConfig": "libs/backend/category/jest.config.js",
@@ -129,16 +129,16 @@
       "root": "libs/backend/core",
       "sourceRoot": "libs/backend/core/src",
       "projectType": "library",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
           "options": {
             "lintFilePatterns": ["libs/backend/core/**/*.ts"]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/backend/core"],
           "options": {
             "jestConfig": "libs/backend/core/jest.config.js",
@@ -152,16 +152,16 @@
       "root": "libs/backend/orders",
       "sourceRoot": "libs/backend/orders/src",
       "projectType": "library",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
           "options": {
             "lintFilePatterns": ["libs/backend/orders/**/*.ts"]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/backend/orders"],
           "options": {
             "jestConfig": "libs/backend/orders/jest.config.js",
@@ -175,16 +175,16 @@
       "root": "libs/backend/organisation",
       "sourceRoot": "libs/backend/organisation/src",
       "projectType": "library",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
           "options": {
             "lintFilePatterns": ["libs/backend/organisation/**/*.ts"]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/backend/organisation"],
           "options": {
             "jestConfig": "libs/backend/organisation/jest.config.js",
@@ -198,16 +198,16 @@
       "root": "libs/backend/products",
       "sourceRoot": "libs/backend/products/src",
       "projectType": "library",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
           "options": {
             "lintFilePatterns": ["libs/backend/products/**/*.ts"]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/backend/products"],
           "options": {
             "jestConfig": "libs/backend/products/jest.config.js",
@@ -217,14 +217,15 @@
       },
       "tags": []
     },
+    "backend-table-manangement": "libs/backend/table-manangement",
     "cart": {
       "projectType": "library",
       "root": "libs/cart",
       "sourceRoot": "libs/cart/src",
       "prefix": "jafar-tech",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/cart"],
           "options": {
             "jestConfig": "libs/cart/jest.config.js",
@@ -232,7 +233,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/cart/src/**/*.ts",
@@ -248,9 +249,9 @@
       "root": "libs/shared/core",
       "sourceRoot": "libs/shared/core/src",
       "prefix": "jafar-tech",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/shared/core"],
           "options": {
             "jestConfig": "libs/shared/core/jest.config.js",
@@ -258,7 +259,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/shared/core/src/**/*.ts",
@@ -274,9 +275,9 @@
       "root": "libs/shared/data-access",
       "sourceRoot": "libs/shared/data-access/src",
       "prefix": "jafar-tech",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/shared/data-access"],
           "options": {
             "jestConfig": "libs/shared/data-access/jest.config.js",
@@ -284,7 +285,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/shared/data-access/src/**/*.ts",
@@ -300,9 +301,9 @@
       "root": "apps/table-admin",
       "sourceRoot": "apps/table-admin/src",
       "prefix": "jafar-tech",
-      "architect": {
+      "targets": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "executor": "@angular-devkit/build-angular:browser",
           "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/table-admin",
@@ -355,7 +356,7 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "executor": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
               "browserTarget": "table-admin:build:production"
@@ -367,13 +368,13 @@
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "executor": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "browserTarget": "table-admin:build"
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "apps/table-admin/src/**/*.ts",
@@ -382,7 +383,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/apps/table-admin"],
           "options": {
             "jestConfig": "apps/table-admin/jest.config.js",
@@ -396,9 +397,9 @@
       "root": "apps/table-admin-e2e",
       "sourceRoot": "apps/table-admin-e2e/src",
       "projectType": "application",
-      "architect": {
+      "targets": {
         "e2e": {
-          "builder": "@nrwl/cypress:cypress",
+          "executor": "@nrwl/cypress:cypress",
           "options": {
             "cypressConfig": "apps/table-admin-e2e/cypress.json",
             "devServerTarget": "table-admin:serve:development"
@@ -410,7 +411,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
           "options": {
             "lintFilePatterns": ["apps/table-admin-e2e/**/*.{js,ts}"]
@@ -425,9 +426,9 @@
       "root": "libs/table-admin/shell",
       "sourceRoot": "libs/table-admin/shell/src",
       "prefix": "jafar-tech",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/table-admin/shell"],
           "options": {
             "jestConfig": "libs/table-admin/shell/jest.config.js",
@@ -435,7 +436,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/table-admin/shell/src/**/*.ts",
@@ -451,9 +452,9 @@
       "root": "apps/table-qr",
       "sourceRoot": "apps/table-qr/src",
       "prefix": "jafar-tech",
-      "architect": {
+      "targets": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "executor": "@angular-devkit/build-angular:browser",
           "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/table-qr",
@@ -506,7 +507,7 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "executor": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
               "browserTarget": "table-qr:build:production"
@@ -521,13 +522,13 @@
           }
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "executor": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "browserTarget": "table-qr:build"
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "apps/table-qr/src/**/*.ts",
@@ -536,7 +537,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/apps/table-qr"],
           "options": {
             "jestConfig": "apps/table-qr/jest.config.js",
@@ -550,9 +551,9 @@
       "root": "apps/table-qr-api",
       "sourceRoot": "apps/table-qr-api/src",
       "projectType": "application",
-      "architect": {
+      "targets": {
         "build": {
-          "builder": "@nrwl/node:webpack",
+          "executor": "@nrwl/node:webpack",
           "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/table-qr-api",
@@ -575,20 +576,20 @@
           }
         },
         "serve": {
-          "builder": "@nrwl/node:node",
+          "executor": "@nrwl/node:node",
           "options": {
             "buildTarget": "table-qr-api:build"
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
           "options": {
             "lintFilePatterns": ["apps/table-qr-api/**/*.ts"]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/apps/table-qr-api"],
           "options": {
             "jestConfig": "apps/table-qr-api/jest.config.js",
@@ -603,9 +604,9 @@
       "root": "libs/table-qr/authentication/data-access",
       "sourceRoot": "libs/table-qr/authentication/data-access/src",
       "prefix": "jafar-tech",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/table-qr/authentication/data-access"],
           "options": {
             "jestConfig": "libs/table-qr/authentication/data-access/jest.config.js",
@@ -613,7 +614,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/table-qr/authentication/data-access/src/**/*.ts",
@@ -629,9 +630,9 @@
       "root": "libs/table-qr/authentication/features/singnin",
       "sourceRoot": "libs/table-qr/authentication/features/singnin/src",
       "prefix": "jafar-tech",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/table-qr/authentication/features/singnin"],
           "options": {
             "jestConfig": "libs/table-qr/authentication/features/singnin/jest.config.js",
@@ -639,7 +640,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/table-qr/authentication/features/singnin/src/**/*.ts",
@@ -655,9 +656,9 @@
       "root": "libs/table-qr/cart/data-access",
       "sourceRoot": "libs/table-qr/cart/data-access/src",
       "prefix": "jafar-tech",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/table-qr/cart/data-access"],
           "options": {
             "jestConfig": "libs/table-qr/cart/data-access/jest.config.js",
@@ -665,7 +666,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/table-qr/cart/data-access/src/**/*.ts",
@@ -681,9 +682,9 @@
       "root": "libs/table-qr/cart/features/list",
       "sourceRoot": "libs/table-qr/cart/features/list/src",
       "prefix": "jafar-tech",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/table-qr/cart/features/list"],
           "options": {
             "jestConfig": "libs/table-qr/cart/features/list/jest.config.js",
@@ -691,7 +692,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/table-qr/cart/features/list/src/**/*.ts",
@@ -707,9 +708,9 @@
       "root": "libs/table-qr/category/data-access/category",
       "sourceRoot": "libs/table-qr/category/data-access/category/src",
       "prefix": "jafar-tech",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/table-qr/category/data-access/category"],
           "options": {
             "jestConfig": "libs/table-qr/category/data-access/category/jest.config.js",
@@ -717,7 +718,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/table-qr/category/data-access/category/src/**/*.ts",
@@ -733,9 +734,9 @@
       "root": "libs/table-qr/category/features/add",
       "sourceRoot": "libs/table-qr/category/features/add/src",
       "prefix": "jafar-tech",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/table-qr/category/features/add"],
           "options": {
             "jestConfig": "libs/table-qr/category/features/add/jest.config.js",
@@ -743,7 +744,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/table-qr/category/features/add/src/**/*.ts",
@@ -759,9 +760,9 @@
       "root": "libs/table-qr/core",
       "sourceRoot": "libs/table-qr/core/src",
       "prefix": "jafar-tech",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/table-qr/core"],
           "options": {
             "jestConfig": "libs/table-qr/core/jest.config.js",
@@ -769,7 +770,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/table-qr/core/src/**/*.ts",
@@ -785,9 +786,9 @@
       "root": "libs/table-qr/dashboard/data-access",
       "sourceRoot": "libs/table-qr/dashboard/data-access/src",
       "prefix": "jafar-tech",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/table-qr/dashboard/data-access"],
           "options": {
             "jestConfig": "libs/table-qr/dashboard/data-access/jest.config.js",
@@ -795,7 +796,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/table-qr/dashboard/data-access/src/**/*.ts",
@@ -811,9 +812,9 @@
       "root": "libs/table-qr/dashboard/features/dashboard",
       "sourceRoot": "libs/table-qr/dashboard/features/dashboard/src",
       "prefix": "jafar-tech",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/table-qr/dashboard/features/dashboard"],
           "options": {
             "jestConfig": "libs/table-qr/dashboard/features/dashboard/jest.config.js",
@@ -821,7 +822,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/table-qr/dashboard/features/dashboard/src/**/*.ts",
@@ -836,9 +837,9 @@
       "root": "apps/table-qr-e2e",
       "sourceRoot": "apps/table-qr-e2e/src",
       "projectType": "application",
-      "architect": {
+      "targets": {
         "e2e": {
-          "builder": "@nrwl/cypress:cypress",
+          "executor": "@nrwl/cypress:cypress",
           "options": {
             "cypressConfig": "apps/table-qr-e2e/cypress.json",
             "devServerTarget": "table-qr:serve:development"
@@ -850,7 +851,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
           "options": {
             "lintFilePatterns": ["apps/table-qr-e2e/**/*.{js,ts}"]
@@ -865,9 +866,9 @@
       "root": "libs/table-qr/menu/features/add-menu",
       "sourceRoot": "libs/table-qr/menu/features/add-menu/src",
       "prefix": "jafar-tech",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/table-qr/menu/features/add-menu"],
           "options": {
             "jestConfig": "libs/table-qr/menu/features/add-menu/jest.config.js",
@@ -875,7 +876,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/table-qr/menu/features/add-menu/src/**/*.ts",
@@ -891,9 +892,9 @@
       "root": "libs/table-qr/orders/data-access",
       "sourceRoot": "libs/table-qr/orders/data-access/src",
       "prefix": "jafar-tech",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/table-qr/orders/data-access"],
           "options": {
             "jestConfig": "libs/table-qr/orders/data-access/jest.config.js",
@@ -901,7 +902,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/table-qr/orders/data-access/src/**/*.ts",
@@ -917,9 +918,9 @@
       "root": "libs/table-qr/orders/features/create-order",
       "sourceRoot": "libs/table-qr/orders/features/create-order/src",
       "prefix": "jafar-tech",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/table-qr/orders/features/create-order"],
           "options": {
             "jestConfig": "libs/table-qr/orders/features/create-order/jest.config.js",
@@ -927,7 +928,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/table-qr/orders/features/create-order/src/**/*.ts",
@@ -943,9 +944,9 @@
       "root": "libs/table-qr/orders/features/kitchen-order-management",
       "sourceRoot": "libs/table-qr/orders/features/kitchen-order-management/src",
       "prefix": "jafar-tech",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": [
             "coverage/libs/table-qr/orders/features/kitchen-order-management"
           ],
@@ -955,7 +956,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/table-qr/orders/features/kitchen-order-management/src/**/*.ts",
@@ -971,9 +972,9 @@
       "root": "libs/table-qr/orders/features/live-orders",
       "sourceRoot": "libs/table-qr/orders/features/live-orders/src",
       "prefix": "jafar-tech",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/table-qr/orders/features/live-orders"],
           "options": {
             "jestConfig": "libs/table-qr/orders/features/live-orders/jest.config.js",
@@ -981,7 +982,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/table-qr/orders/features/live-orders/src/**/*.ts",
@@ -997,9 +998,9 @@
       "root": "libs/table-qr/orders/features/order-list",
       "sourceRoot": "libs/table-qr/orders/features/order-list/src",
       "prefix": "jafar-tech",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/table-qr/orders/features/order-list"],
           "options": {
             "jestConfig": "libs/table-qr/orders/features/order-list/jest.config.js",
@@ -1007,7 +1008,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/table-qr/orders/features/order-list/src/**/*.ts",
@@ -1023,9 +1024,9 @@
       "root": "libs/table-qr/organisation/data-access",
       "sourceRoot": "libs/table-qr/organisation/data-access/src",
       "prefix": "jafar-tech",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/table-qr/organisation/data-access"],
           "options": {
             "jestConfig": "libs/table-qr/organisation/data-access/jest.config.js",
@@ -1033,7 +1034,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/table-qr/organisation/data-access/src/**/*.ts",
@@ -1049,9 +1050,9 @@
       "root": "libs/table-qr/organisation/details",
       "sourceRoot": "libs/table-qr/organisation/details/src",
       "prefix": "jafar-tech",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/table-qr/organisation/details"],
           "options": {
             "jestConfig": "libs/table-qr/organisation/details/jest.config.js",
@@ -1059,7 +1060,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/table-qr/organisation/details/src/**/*.ts",
@@ -1075,9 +1076,9 @@
       "root": "libs/table-qr/products/data-access",
       "sourceRoot": "libs/table-qr/products/data-access/src",
       "prefix": "jafar-tech",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/table-qr/products/data-access"],
           "options": {
             "jestConfig": "libs/table-qr/products/data-access/jest.config.js",
@@ -1085,7 +1086,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/table-qr/products/data-access/src/**/*.ts",
@@ -1101,9 +1102,9 @@
       "root": "libs/table-qr/products/features/add",
       "sourceRoot": "libs/table-qr/products/features/add/src",
       "prefix": "jafar-tech",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/table-qr/products/features/add"],
           "options": {
             "jestConfig": "libs/table-qr/products/features/add/jest.config.js",
@@ -1111,7 +1112,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/table-qr/products/features/add/src/**/*.ts",
@@ -1127,9 +1128,9 @@
       "root": "libs/table-qr/products/features/detail",
       "sourceRoot": "libs/table-qr/products/features/detail/src",
       "prefix": "jafar-tech",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/table-qr/products/features/detail"],
           "options": {
             "jestConfig": "libs/table-qr/products/features/detail/jest.config.js",
@@ -1137,7 +1138,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/table-qr/products/features/detail/src/**/*.ts",
@@ -1153,9 +1154,9 @@
       "root": "libs/table-qr/products/features/list",
       "sourceRoot": "libs/table-qr/products/features/list/src",
       "prefix": "jafar-tech",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/table-qr/products/features/list"],
           "options": {
             "jestConfig": "libs/table-qr/products/features/list/jest.config.js",
@@ -1163,7 +1164,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/table-qr/products/features/list/src/**/*.ts",
@@ -1179,9 +1180,9 @@
       "root": "libs/table-qr/products/features/shell",
       "sourceRoot": "libs/table-qr/products/features/shell/src",
       "prefix": "jafar-tech",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/table-qr/products/features/shell"],
           "options": {
             "jestConfig": "libs/table-qr/products/features/shell/jest.config.js",
@@ -1189,7 +1190,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/table-qr/products/features/shell/src/**/*.ts",
@@ -1205,9 +1206,9 @@
       "root": "libs/table-qr/shell",
       "sourceRoot": "libs/table-qr/shell/src",
       "prefix": "jafar-tech",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/table-qr/shell"],
           "options": {
             "jestConfig": "libs/table-qr/shell/jest.config.js",
@@ -1215,7 +1216,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/table-qr/shell/src/**/*.ts",
@@ -1231,9 +1232,9 @@
       "root": "libs/table-qr-ui",
       "sourceRoot": "libs/table-qr-ui/src",
       "prefix": "qr-ui",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/table-qr-ui"],
           "options": {
             "jestConfig": "libs/table-qr-ui/jest.config.js",
@@ -1241,7 +1242,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/table-qr-ui/src/**/*.ts",

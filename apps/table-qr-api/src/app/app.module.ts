@@ -8,6 +8,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ServeStaticModule } from '@nestjs/serve-static';
+import { BackendTableManangementModule } from 'libs/backend/table-manangement/src';
 import { join } from 'path';
 
 import { AppController } from './app.controller';
@@ -38,6 +39,7 @@ import { AppService } from './app.service';
     BackendProductsModule,
     BackendCategoryModule,
     BackendOrdersModule,
+    BackendTableManangementModule,
   ],
   controllers: [AppController],
   providers: [AppService],
