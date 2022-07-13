@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'backend-table-manangement',
+  displayName: 'backend-table-management',
   preset: '../../../jest.preset.js',
   globals: {
     'ts-jest': {
@@ -12,5 +12,5 @@ export default {
     '^.+\\.[tj]s$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../../coverage/libs/backend/table-manangement',
+  coverageDirectory: '../../../coverage/libs/backend/table-management',
 };

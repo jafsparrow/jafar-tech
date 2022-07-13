@@ -24,8 +24,8 @@
         "libs/backend/organisation/src/index.ts"
       ],
       "@jafar-tech/backend/products": ["libs/backend/products/src/index.ts"],
-      "@jafar-tech/backend/table-manangement": [
-        "libs/backend/table-manangement/src/index.ts"
+      "@jafar-tech/backend/table-management": [
+        "libs/backend/table-management/src/index.ts"
       ],
       "@jafar-tech/shared/core": ["libs/shared/core/src/index.ts"],
       "@jafar-tech/shared/data-access": [

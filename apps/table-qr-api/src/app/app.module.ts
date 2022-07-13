@@ -4,11 +4,12 @@ import { BackendCoreModule } from '@jafar-tech/backend/core';
 import { BackendOrdersModule } from '@jafar-tech/backend/orders';
 import { BackendOrganisationModule } from '@jafar-tech/backend/organisation';
 import { BackendProductsModule } from '@jafar-tech/backend/products';
+import { BackendTableManagementModule } from '@jafar-tech/backend/table-management';
+
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ServeStaticModule } from '@nestjs/serve-static';
-import { BackendTableManangementModule } from 'libs/backend/table-manangement/src';
 import { join } from 'path';
 
 import { AppController } from './app.controller';
@@ -39,7 +40,7 @@ import { AppService } from './app.service';
     BackendProductsModule,
     BackendCategoryModule,
     BackendOrdersModule,
-    BackendTableManangementModule,
+    BackendTableManagementModule,
   ],
   controllers: [AppController],
   providers: [AppService],

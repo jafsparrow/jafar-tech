@@ -1,20 +1,20 @@
 {
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/backend/table-manangement/src",
+  "sourceRoot": "libs/backend/table-management/src",
   "projectType": "library",
   "targets": {
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/backend/table-manangement/**/*.ts"]
+        "lintFilePatterns": ["libs/backend/table-management/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/backend/table-manangement"],
+      "outputs": ["coverage/libs/backend/table-management"],
       "options": {
-        "jestConfig": "libs/backend/table-manangement/jest.config.ts",
+        "jestConfig": "libs/backend/table-management/jest.config.ts",
         "passWithNoTests": true
       }
     }

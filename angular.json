@@ -217,7 +217,7 @@
       },
       "tags": []
     },
-    "backend-table-manangement": "libs/backend/table-manangement",
+    "backend-table-management": "libs/backend/table-management",
     "cart": {
       "projectType": "library",
       "root": "libs/cart",
