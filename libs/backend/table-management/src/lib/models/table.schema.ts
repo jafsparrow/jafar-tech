@@ -7,6 +7,9 @@ export class Table extends Document {
   @Prop()
   id: number;
 
+  @Prop({ unique: true, minlength: 4 })
+  password: number;
+
   @Prop()
   isOccupied: boolean;
 
