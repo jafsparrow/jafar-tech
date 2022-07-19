@@ -1,3 +1,5 @@
+import { JwtAuthGuard } from '@jafar-tech/backend/auth';
+import { User } from '@jafar-tech/shared/data-access';
 import {
   Body,
   Controller,
@@ -7,21 +9,26 @@ import {
   Post,
   Put,
   Req,
+  UseGuards,
 } from '@nestjs/common';
 import { TableCreateDto } from './dto/table-create.dto';
+import { TableManagementService } from './table.service';
 
 @Controller('tablemanagement')
 export class TableManagementController {
+  constructor(private tableManagementService: TableManagementService) {}
   @Get()
   getTableDetails() {
     return 'table works';
   }
 
+  @UseGuards(JwtAuthGuard)
   @Post()
   createTable(@Body() tableInfo: TableCreateDto, @Req() req) {
     //  companyId should be taken from the loggedUser auth information
 
-    return tableInfo;
+    let user: User = req.user;
+    return this.tableManagementService.createTable(user.companyId, tableInfo);
   }
 
   @Put()

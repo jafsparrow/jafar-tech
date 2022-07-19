@@ -5,4 +5,6 @@ export class TableUpdateDto {
   id: number;
 
   capacity: number;
+
+  password: number;
 }
