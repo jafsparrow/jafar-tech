@@ -4,3 +4,4 @@ export * from './user';
 export * from './organisation';
 export * from './taxes';
 export * from './order';
+export * from './table';
