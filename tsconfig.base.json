@@ -97,7 +97,10 @@
       "@jafar-tech/table-qr/products/features/shell": [
         "libs/table-qr/products/features/shell/src/index.ts"
       ],
-      "@jafar-tech/table-qr/shell": ["libs/table-qr/shell/src/index.ts"]
+      "@jafar-tech/table-qr/shell": ["libs/table-qr/shell/src/index.ts"],
+      "@jafar-tech/table-qr/table-management/data-access": [
+        "libs/table-qr/table-management/data-access/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
