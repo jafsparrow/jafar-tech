@@ -10,7 +10,7 @@ export class Table extends Document {
   @Prop({ unique: true, minlength: 4 })
   password: number;
 
-  @Prop()
+  @Prop({ default: false })
   isOccupied: boolean;
 
   @Prop()

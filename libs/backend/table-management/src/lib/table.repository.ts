@@ -16,6 +16,10 @@ export class TableManagementRepository {
     private readonly tableModel: Model<Table>
   ) {}
 
+  async getTables(organisation: string) {
+    return await this.tableModel.find({ organisation: organisation });
+  }
+
   async createTable(organisation: string, tableInfo: TableCreateDto) {
     const data = { ...tableInfo, organisation };
     try {
@@ -51,5 +55,10 @@ export class TableManagementRepository {
     } catch (err) {
       throw new NotFoundException(err);
     }
+  }
+
+  async tableLogin(password: number) {
+    // check if the table has a status of occupied, if occupied fail login.
+    // check given password against the table.
   }
 }

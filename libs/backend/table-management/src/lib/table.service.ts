@@ -7,6 +7,10 @@ import { TableManagementRepository } from './table.repository';
 export class TableManagementService {
   constructor(private tableRepository: TableManagementRepository) {}
 
+  getTables(organisation: string) {
+    return this.tableRepository.getTables(organisation);
+  }
+
   createTable(organisation: string, tableInfo: TableCreateDto) {
     return this.tableRepository.createTable(organisation, tableInfo);
   }

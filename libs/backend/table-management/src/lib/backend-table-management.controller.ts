@@ -17,8 +17,11 @@ import { TableManagementService } from './table.service';
 @Controller('tablemanagement')
 export class TableManagementController {
   constructor(private tableManagementService: TableManagementService) {}
+  @UseGuards(JwtAuthGuard)
   @Get()
-  getTableDetails() {
+  getTableDetails(@Req() req) {
+    const companyId = (req.user as User).companyId;
+    return this.tableManagementService.getTables(companyId);
     return 'table works';
   }
 
