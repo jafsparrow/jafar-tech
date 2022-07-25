@@ -92,6 +92,13 @@ import { TableQrOrdersDataAccessModule } from '@jafar-tech/table-qr-orders-data-
                 (m) => m.TableQrOrdersFeaturesKitchenOrderManagementModule
               ),
           },
+          {
+            path: 'table',
+            loadChildren: () =>
+              import(
+                '@jafar-tech/table-qr/table-management/features/table-list'
+              ).then((m) => m.TableQrTableManagementFeaturesTableListModule),
+          },
         ],
       },
     ]),
