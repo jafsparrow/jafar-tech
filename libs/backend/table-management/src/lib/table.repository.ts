@@ -56,9 +56,4 @@ export class TableManagementRepository {
       throw new NotFoundException(err);
     }
   }
-
-  async tableLogin(password: number) {
-    // check if the table has a status of occupied, if occupied fail login.
-    // check given password against the table.
-  }
 }

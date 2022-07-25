@@ -11,9 +11,6 @@ export class TableCreateDto {
   @IsNotEmpty()
   password: number;
 
-  @IsBoolean()
-  isOccupied: boolean;
-
   @IsNotEmpty()
   capacity: number;
 }

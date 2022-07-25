@@ -5,6 +5,7 @@ import {
   Controller,
   Delete,
   Get,
+  Param,
   Patch,
   Post,
   Put,
@@ -44,8 +45,11 @@ export class TableManagementController {
     //  companyId should be taken from the loggedUser auth information
   }
 
-  @Delete()
-  DeleteTable() {
+  @UseGuards(JwtAuthGuard)
+  @Delete(':/id')
+  DeleteTable(@Param('id') id: number, @Req() req) {
+    let orgId: string = (req.user as User).companyId;
+    return this.tableManagementService.deleteTable(orgId, id);
     //  companyId should be taken from the loggedUser auth information
   }
 }

@@ -30,6 +30,15 @@ export class OrderController {
     console.log(order);
   }
 
+  @Post('table-order')
+  createOrderByTableUser(@Body('password') password: string) {
+    // user password to identify the table.
+    // make the user as corresponding table-user, and make order pending..
+    // admin or staff should have an option to accept this order.
+    console.log(password);
+    return password;
+  }
+
   @UseGuards(JwtAuthGuard)
   @Put()
   updateOrderStatus(
