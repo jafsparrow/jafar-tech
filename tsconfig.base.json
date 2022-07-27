@@ -103,6 +103,9 @@
       ],
       "@jafar-tech/table-qr/table-management/features/table-list": [
         "libs/table-qr/table-management/features/table-list/src/index.ts"
+      ],
+      "@jafar-tech/table-qr/table-management/features/table-search": [
+        "libs/table-qr/table-management/features/table-search/src/index.ts"
       ]
     }
   },

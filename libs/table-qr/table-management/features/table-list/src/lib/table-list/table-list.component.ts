@@ -12,9 +12,7 @@ import { Store } from '@ngrx/store';
 })
 export class TableListComponent implements OnInit {
   tables$ = this.store.select(selectAllTables);
-  constructor(private store: Store) {
-    this.store.dispatch(loadTables());
-  }
+  constructor(private store: Store) {}
 
   ngOnInit(): void {
     this.tables$.subscribe((tables) => console.log(tables));

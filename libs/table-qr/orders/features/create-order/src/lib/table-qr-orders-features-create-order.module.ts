@@ -13,7 +13,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CartDataAccessModule } from '@jafar-tech/table-qr-cart-data-access';
 import { TableQrUiModule } from '@jafar-tech/table-qr-ui';
 import { TableQrOrdersDataAccessModule } from '@jafar-tech/table-qr-orders-data-access';
-import { TableQrTableManagementFeaturesTableListModule } from '@jafar-tech/table-qr/table-management/features/table-list';
 
 @NgModule({
   imports: [
@@ -28,8 +27,8 @@ import { TableQrTableManagementFeaturesTableListModule } from '@jafar-tech/table
             path: '',
             loadChildren: () =>
               import(
-                '@jafar-tech/table-qr/table-management/features/table-list'
-              ).then((m) => m.TableQrTableManagementFeaturesTableListModule),
+                '@jafar-tech/table-qr/table-management/features/table-search'
+              ).then((m) => m.TableQrTableManagementFeaturesTableSearchModule),
           },
         ],
       },

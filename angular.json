@@ -1281,6 +1281,34 @@
       },
       "tags": []
     },
+    "table-qr-table-management-features-table-search": {
+      "projectType": "library",
+      "root": "libs/table-qr/table-management/features/table-search",
+      "sourceRoot": "libs/table-qr/table-management/features/table-search/src",
+      "prefix": "jafar-tech",
+      "targets": {
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/table-qr/table-management/features/table-search"
+          ],
+          "options": {
+            "jestConfig": "libs/table-qr/table-management/features/table-search/jest.config.ts",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/table-qr/table-management/features/table-search/**/*.ts",
+              "libs/table-qr/table-management/features/table-search/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "table-qr-ui": {
       "projectType": "library",
       "root": "libs/table-qr-ui",

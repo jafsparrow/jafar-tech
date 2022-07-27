@@ -7,6 +7,7 @@ import {
 } from '@jafar-tech/table-qr-authentication-data-access';
 import { loadProductsCategoryVice } from '@jafar-tech/table-qr-products-data-access';
 import { loadOrgInfo } from '@jafar-tech/table-qr/organisation/data-access';
+import { loadTables } from '@jafar-tech/table-qr/table-management/data-access';
 import { Store } from '@ngrx/store';
 import { Subscription, switchMap, tap } from 'rxjs';
 
@@ -43,6 +44,8 @@ export class AdminContainerComponent implements OnInit, OnDestroy {
         tap((id) => {
           console.log('admin container', id);
           this.store.dispatch(loadOrgInfo({ organisationID: id }));
+
+          this.store.dispatch(loadTables());
         })
       )
       .subscribe();
