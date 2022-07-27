@@ -8,3 +8,17 @@ export const selectAllTables = createSelector(
   selectTableState,
   (state) => state.tables
 );
+
+export const selectSearchTerm = createSelector(
+  selectTableState,
+  (state) => state.searchTerm
+);
+
+export const filteredTables = createSelector(
+  selectAllTables,
+  selectSearchTerm,
+  (tables, searchTerm) =>
+    tables.filter((table) =>
+      searchTerm ? table.id.toString().includes(searchTerm.toString()) : true
+    )
+);

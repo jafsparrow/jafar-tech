@@ -29,3 +29,8 @@ export const createUpdateTableFail = createAction(
   '[Table Management] Create or Update Organisation Table Failed',
   props<{ error: string }>()
 );
+
+export const filterTable = createAction(
+  '[Table Manangement] Filter Table',
+  props<{ searchTerm: number }>()
+);

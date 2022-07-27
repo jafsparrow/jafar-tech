@@ -1,0 +1,17 @@
+<p>table-search works!</p>
+<mat-form-field class="example-full-width" appearance="fill">
+  <mat-label>Search Table</mat-label>
+  <input
+    type="text"
+    placeholder="Pick one"
+    aria-label="Number"
+    matInput
+    [formControl]="searchControl"
+    [matAutocomplete]="auto"
+  />
+  <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+    <mat-option *ngFor="let table of filterdTables$ | async" [value]="table.id">
+      {{ table.id }}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
