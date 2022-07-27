@@ -13,6 +13,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CartDataAccessModule } from '@jafar-tech/table-qr-cart-data-access';
 import { TableQrUiModule } from '@jafar-tech/table-qr-ui';
 import { TableQrOrdersDataAccessModule } from '@jafar-tech/table-qr-orders-data-access';
+import { TableQrTableManagementFeaturesTableListModule } from '@jafar-tech/table-qr/table-management/features/table-list';
 
 @NgModule({
   imports: [
@@ -22,6 +23,15 @@ import { TableQrOrdersDataAccessModule } from '@jafar-tech/table-qr-orders-data-
       {
         path: '',
         component: CreateOrderComponent,
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import(
+                '@jafar-tech/table-qr/table-management/features/table-list'
+              ).then((m) => m.TableQrTableManagementFeaturesTableListModule),
+          },
+        ],
       },
     ]),
     MatTableModule,

@@ -1,8 +1,10 @@
 <div class="cart-container" *ngIf="cart$ | async as cart">
   <div class="basket-title-container">
     <span class="basket-title-text">My Basket</span>
+
     <!-- <span class="basket-title-close-button">x</span> -->
   </div>
+
   <div
     *ngIf="getCartItems(cart).length == 0; else cartViewTemplate"
     class="no-item-message-div"
@@ -11,6 +13,11 @@
   </div>
 
   <ng-template #cartViewTemplate>
+    <div class="cart-created-for-user-info">
+      User Name:
+      {{ cart.cartCreatedFor ? cart.cartCreatedFor.firstName : 'User Not Set' }}
+    </div>
+
     <div class="cart-items-container">
       <div class="cart-item" *ngFor="let cartItem of getCartItems(cart)">
         <div class="cart-count-control">

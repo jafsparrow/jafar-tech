@@ -40,7 +40,7 @@ export class TableSearchComponent implements OnInit, OnDestroy {
     // creat a table user out of this data and use cart data access module to set the createdFor user
 
     const cartCreatedForUser: User = {
-      firstName: `Table User ${table.id}`,
+      firstName: `Table ${table.id}`,
       userType: UserType.TABLE,
     };
 

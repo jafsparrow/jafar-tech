@@ -22,5 +22,6 @@ import { MatButtonModule } from '@angular/material/button';
     MatButtonModule,
   ],
   declarations: [TableListComponent, TableSearchComponent],
+  exports: [TableSearchComponent],
 })
 export class TableQrTableManagementFeaturesTableListModule {}
