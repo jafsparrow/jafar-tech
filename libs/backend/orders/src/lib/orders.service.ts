@@ -24,6 +24,10 @@ export class OrderService {
     );
     console.log(orderItems);
 
+    // TODO - check if the given table has any order which is not in PAID status.
+    // if so update the order with new order items with status as RUNNING.
+    // else create a new Order with orderItem status as NEW.
+
     // TODO - cloned user is to get company Id as company as in the order schema company is mentioned.
     let cloneUser = { ...appUser, company: appUser.companyId };
 

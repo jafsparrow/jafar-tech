@@ -6,6 +6,7 @@ export interface OrderItem extends CartItem {
   key?: string;
   totalCountOfSameItem?: number;
   orderId?: string; //just to track what order it belongs.
+  orderItemType?: OrderItemType;
 }
 
 export interface OrderSummary {
@@ -34,4 +35,9 @@ export enum OrderStatus {
   READY = 'ready',
   SERVED = 'served',
   PAID = 'paid',
+}
+
+export enum OrderItemType {
+  NEW = 'new',
+  RUNNING = 'running',
 }
