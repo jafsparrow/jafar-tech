@@ -6,6 +6,8 @@ export class CreateOrderDto {
   @IsNotEmpty()
   cartItems: { [key: string]: CartItem };
 
+  cartCreatedFor: User;
+
   total: number;
 
   @IsOptional()

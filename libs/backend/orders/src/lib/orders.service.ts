@@ -28,7 +28,8 @@ export class OrderService {
     let cloneUser = { ...appUser, company: appUser.companyId };
 
     let newOrder = {
-      user: cloneUser,
+      createdBy: cloneUser,
+      createdFor: orderDto.cartCreatedFor,
       total: orderDto.total,
       taxedTotal: orderDto.taxedTotal,
       orderItems: orderItems,

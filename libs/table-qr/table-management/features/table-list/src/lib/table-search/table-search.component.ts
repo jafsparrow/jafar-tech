@@ -41,6 +41,7 @@ export class TableSearchComponent implements OnInit, OnDestroy {
 
     const cartCreatedForUser: User = {
       firstName: `Table ${table.id}`,
+      username: table.id.toString(),
       userType: UserType.TABLE,
     };
 

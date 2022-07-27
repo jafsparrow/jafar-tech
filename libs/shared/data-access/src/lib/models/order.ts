@@ -13,7 +13,8 @@ export interface OrderSummary {
   date?: Date;
   status: OrderStatus;
   orderItems: OrderItem[];
-  user?: User;
+  createdBy?: User;
+  createdFor?: User;
 }
 
 export interface AppliedTax {

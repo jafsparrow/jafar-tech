@@ -12,7 +12,10 @@ import { Document, ObjectId } from 'mongoose';
 @Schema({ timestamps: true })
 export class Order extends Document {
   @Prop({ type: UserSchema })
-  user: User;
+  createdBy: User;
+
+  @Prop({ type: UserSchema })
+  createdFor: User;
 
   @Prop({ default: null })
   lastUpdatedBy: string;

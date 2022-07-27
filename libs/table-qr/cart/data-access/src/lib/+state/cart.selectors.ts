@@ -72,3 +72,8 @@ export const getTaxedSubTotal = (total: number, tax: Tax): number => {
 
   return parseFloat((total * multiplyValue * tax.value).toFixed(2));
 };
+
+export const selectCartCreatedForUser = createSelector(
+  selectCartState,
+  (state) => state.cartCreatedFor
+);

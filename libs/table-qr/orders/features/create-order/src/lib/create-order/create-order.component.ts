@@ -9,8 +9,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Product } from '@jafar-tech/shared/data-access';
+import { Route, Router } from '@angular/router';
+import { Product, User } from '@jafar-tech/shared/data-access';
 import {
+  selectCartCreatedForUser,
   selectCartTotal,
   selectNumberOfItemsInCart,
 } from '@jafar-tech/table-qr-cart-data-access';
@@ -31,6 +33,7 @@ export class CreateOrderComponent implements OnInit, AfterViewInit, OnDestroy {
   products$: Observable<Product[]> = this.store.select(selectAllProducts);
   cartCount$ = this.store.select(selectNumberOfItemsInCart);
   cartTotal$ = this.store.select(selectCartTotal);
+  cartCreatedForUser$ = this.store.select(selectCartCreatedForUser);
 
   displayedColumns: string[] = ['code', 'name', 'price', 'actions', 'category'];
   dataSource!: MatTableDataSource<Product>;
@@ -40,7 +43,11 @@ export class CreateOrderComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private store: Store, private dialog: MatDialog) {
+  constructor(
+    private store: Store,
+    private dialog: MatDialog,
+    private router: Router
+  ) {
     this.subscription = this.products$.subscribe((products) => {
       console.log('prodcut', products);
       this.dataSource = new MatTableDataSource(products);
@@ -75,5 +82,15 @@ export class CreateOrderComponent implements OnInit, AfterViewInit, OnDestroy {
         product,
       },
     });
+  }
+
+  openCart(cartUserFor: any) {
+    console.log(cartUserFor);
+    if (cartUserFor.userSelected) {
+      this.router.navigate(['../cart']);
+
+      return;
+    }
+    alert('Please Select a Table to create the Order');
   }
 }
