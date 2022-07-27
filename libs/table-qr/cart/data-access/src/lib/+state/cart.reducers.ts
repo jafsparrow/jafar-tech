@@ -6,12 +6,14 @@ import {
   loadCartSuccess,
   loadTaxes,
   removeFromCart,
+  setCartCreatedForUser,
   updateCart,
 } from './cart.actions';
 
 export const CART_FEATURE_KEY = 'cart';
 
 const initialState: Cart = {
+  cartCreatedFor: null,
   createdAt: new Date(),
   cartItems: {},
   taxes: [],
@@ -76,7 +78,11 @@ export const cartReducer = createReducer(
   on(loadTaxes, (state, { taxes }) => {
     console.log('inside reducer tax is ', taxes);
     return { ...state, taxes };
-  })
+  }),
+  on(setCartCreatedForUser, (state, { user }) => ({
+    ...state,
+    cartCreatedFor: user,
+  }))
 );
 // state.cartItems[productId] = {
 //   ...(state.cartItems[productId] || []),

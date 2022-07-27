@@ -12,10 +12,16 @@ export const loadCartFail = createAction(
   '[Cart] Load Cart Failed',
   props<{ error: any }>()
 );
-export const setCartUser = createAction(
-  '[Cart] set Cart User',
+export const setCartCreatedForUser = createAction(
+  '[Cart] set Cart Created For User',
   props<{ user: User }>()
 );
+
+export const setCartCreatedByUser = createAction(
+  '[Cart] set Cart Created By User',
+  props<{ user: User }>()
+);
+
 export const addToCart = createAction(
   '[Cart] add item to cart',
   props<{ item: CartItem }>()

@@ -10,7 +10,7 @@ export interface CartItem {
 
 export interface Cart {
   createdAt?: Date;
-  user?: User;
+  cartCreatedFor?: User | null;
   cartItems: { [key: string]: CartItem };
   placeOrderSpinner: boolean;
   createdBy?: User;

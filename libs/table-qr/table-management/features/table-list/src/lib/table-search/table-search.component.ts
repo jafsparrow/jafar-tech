@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Table } from '@jafar-tech/shared/data-access';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { Table, User, UserType } from '@jafar-tech/shared/data-access';
+import { setCartCreatedForUser } from '@jafar-tech/table-qr-cart-data-access';
 import {
   filteredTables,
   filterTable,
@@ -31,5 +33,17 @@ export class TableSearchComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.formValueSubscription.unsubscribe();
+  }
+
+  onSelectionChange(event: any, table: Table) {
+    console.log(table);
+    // creat a table user out of this data and use cart data access module to set the createdFor user
+
+    const cartCreatedForUser: User = {
+      firstName: `Table User ${table.id}`,
+      userType: UserType.TABLE,
+    };
+
+    this.store.dispatch(setCartCreatedForUser({ user: cartCreatedForUser }));
   }
 }
