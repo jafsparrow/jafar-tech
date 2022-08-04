@@ -3,18 +3,19 @@ import {
   CartItem,
   OrderItem,
   OrderStatus,
+  User,
+  UserType,
 } from '@jafar-tech/shared/data-access';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { UserSchema, User } from '@jafar-tech/backend/auth';
 
 import { Document, ObjectId } from 'mongoose';
 
 @Schema({ timestamps: true })
 export class Order extends Document {
-  @Prop({ type: UserSchema })
+  @Prop({type: Map<string, User>})
   createdBy: User;
 
-  @Prop({ type: UserSchema })
+  @Prop({type: Map<string, User>})
   createdFor: User;
 
   @Prop({ default: null })
