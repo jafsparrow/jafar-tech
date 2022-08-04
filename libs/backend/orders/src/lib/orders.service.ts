@@ -24,6 +24,7 @@ export class OrderService {
         ...orderDto.cartItems[key],
         key,
         status: OrderItemStatus.WAITING,
+        orderItemType: OrderItemType.NEW,
       })
     );
     // console.log(orderItems);
