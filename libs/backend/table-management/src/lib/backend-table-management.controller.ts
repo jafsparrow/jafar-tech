@@ -32,6 +32,7 @@ export class TableManagementController {
     //  companyId should be taken from the loggedUser auth information
 
     let user: User = req.user;
+    console.log('tabel information', tableInfo);
     return this.tableManagementService.createTable(user.companyId, tableInfo);
   }
 

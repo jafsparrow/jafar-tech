@@ -1,20 +1,24 @@
 import {
   OrderItem,
   OrderItemStatus,
+  OrderItemType,
   OrderStatus,
+  OrderSummary,
   User,
 } from '@jafar-tech/shared/data-access';
-import { Injectable } from '@nestjs/common';
+import { ConflictException, Injectable } from '@nestjs/common';
+import { ObjectId } from 'mongoose';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { UpdateOrderItemStatusDto } from './dto/update-order-item-status.dto';
 import { UpdateOrderStatusDto } from './dto/update-order-status.dto';
+import { Order } from './models/order.schema';
 import { OrderRepository } from './orders.repository';
 
 @Injectable()
 export class OrderService {
   constructor(private orderRepository: OrderRepository) {}
 
-  createOrder(orderDto: CreateOrderDto, appUser: User) {
+  async createOrder(orderDto: CreateOrderDto, appUser: User) {
     let orderItems: OrderItem[] = Object.keys(orderDto.cartItems).map(
       (key) => ({
         ...orderDto.cartItems[key],
@@ -22,13 +26,43 @@ export class OrderService {
         status: OrderItemStatus.WAITING,
       })
     );
-    console.log(orderItems);
+    // console.log(orderItems);
 
-    // TODO - check if the given table has any order which is not in PAID status.
-    // if so update the order with new order items with status as RUNNING.
-    // else create a new Order with orderItem status as NEW.
+    const existingNonPaidOrdersForTheTable =
+      await this.orderRepository.getNotPaidOrdersForTheTable(
+        orderDto.cartCreatedFor.username
+      );
 
-    // TODO - cloned user is to get company Id as company as in the order schema company is mentioned.
+    if (existingNonPaidOrdersForTheTable.length > 1) {
+      throw new ConflictException(
+        'Table cannot have more than one non paid orders'
+      );
+    }
+
+    const existingOrder: Order = existingNonPaidOrdersForTheTable[0];
+
+    if (existingOrder) {
+      //  update the order with order item marked as running.
+      let updatedOrderItems = orderItems.map((item) => ({
+        ...item,
+        orderItemType: OrderItemType.RUNNING,
+      }));
+
+      let orderDataToUpdate = {
+        total: parseInt(orderDto.total.toString()) + existingOrder.total,
+        taxedTotal:
+          parseInt(orderDto.taxedTotal.toString()) + existingOrder.taxedTotal,
+        orderItems: [...existingOrder.orderItems, ...updatedOrderItems],
+        note: orderDto.note + existingOrder.note,
+      };
+
+      return await this.orderRepository.updateOrder(
+        existingOrder._id as unknown as ObjectId,
+        orderDataToUpdate
+      );
+    }
+
+    //  at this point the table does not have any existing non paid orders
     let cloneUser = { ...appUser, company: appUser.companyId };
 
     let newOrder = {
@@ -39,6 +73,7 @@ export class OrderService {
       orderItems: orderItems,
       status: OrderStatus.PLACED,
       note: orderDto.note,
+      taxesApplied: orderDto.taxesApplied,
     };
 
     this.orderRepository.createOrder(newOrder);

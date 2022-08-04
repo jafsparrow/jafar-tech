@@ -5,7 +5,7 @@ import {
 } from '@jafar-tech/shared/data-access';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { Model, ObjectId } from 'mongoose';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { UpdateOrderItemStatusDto } from './dto/update-order-item-status.dto';
 import { UpdateOrderStatusDto } from './dto/update-order-status.dto';
@@ -27,9 +27,32 @@ export class OrderRepository {
     return this.order.find().sort('category').exec();
   }
 
-  createOrder(order: any) {
+  async getNotPaidOrdersForTheTable(tableId: string) {
+    const orderForTable = await this.order
+      .find()
+      .where({
+        'createdFor.username': tableId,
+        status: { $ne: OrderStatus.PAID },
+      })
+      .exec();
+    console.log('existing order', orderForTable);
+    return orderForTable;
+  }
+
+  async createOrder(order: any) {
     const newProduct = new this.order(order);
-    return newProduct.save();
+    try {
+      return await newProduct.save();
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  async updateOrder(existingOrderId: ObjectId, orderUpdateData: any) {
+    console.log('order update data', orderUpdateData);
+    return await this.order
+      .findOneAndUpdate(existingOrderId, orderUpdateData)
+      .exec();
   }
 
   async findOrderOfTheDay() {

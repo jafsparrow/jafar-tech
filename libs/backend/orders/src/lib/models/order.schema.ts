@@ -37,6 +37,9 @@ export class Order extends Document {
     required: true,
   })
   status: string;
+
+  @Prop({ default: '' })
+  note: string;
 }
 
 export const OrderSchema = SchemaFactory.createForClass(Order);

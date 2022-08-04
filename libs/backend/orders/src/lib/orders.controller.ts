@@ -26,8 +26,9 @@ export class OrderController {
   @Post()
   createOrder(@Body() order: CreateOrderDto, @Req() req) {
     let user = req.user;
-    this.orderService.createOrder(order, user);
-    console.log(order);
+    console.log('from the front end', order);
+    return this.orderService.createOrder(order, user);
+    // console.log(order);
   }
 
   @Post('table-order')

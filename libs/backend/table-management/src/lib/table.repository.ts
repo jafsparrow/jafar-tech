@@ -23,7 +23,7 @@ export class TableManagementRepository {
   async createTable(organisation: string, tableInfo: TableCreateDto) {
     const data = { ...tableInfo, organisation };
     try {
-      await this.tableModel.create(data);
+      return await this.tableModel.create(data);
     } catch (err) {
       throw new BadRequestException(err);
     }
