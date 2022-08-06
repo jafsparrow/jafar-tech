@@ -16,6 +16,7 @@ import { TableQrCategoryDataAccessCategoryModule } from '@jafar-tech/table-qr/ca
 import { TableQrOrganisationDataAccessModule } from '@jafar-tech/table-qr/organisation/data-access';
 import { TableQrOrdersDataAccessModule } from '@jafar-tech/table-qr-orders-data-access';
 import { TableQrTableManagementDataAccessModule } from '@jafar-tech/table-qr/table-management/data-access';
+import { CartDataAccessModule } from '@jafar-tech/table-qr-cart-data-access';
 
 @NgModule({
   imports: [
@@ -110,6 +111,7 @@ import { TableQrTableManagementDataAccessModule } from '@jafar-tech/table-qr/tab
     MatProgressSpinnerModule,
     TableQrUiModule,
     TableQrOrganisationDataAccessModule,
+    CartDataAccessModule,
     ProductsDataAccessModule,
     TableQrCategoryDataAccessCategoryModule,
     TableQrTableManagementDataAccessModule,
