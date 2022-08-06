@@ -22,13 +22,22 @@ import { TableQrOrdersDataAccessModule } from '@jafar-tech/table-qr-orders-data-
       {
         path: '',
         component: CreateOrderComponent,
+
         children: [
+          { path: '', redirectTo: 'table', pathMatch: 'full' },
           {
-            path: '',
+            path: 'table',
             loadChildren: () =>
               import(
                 '@jafar-tech/table-qr/table-management/features/table-search'
               ).then((m) => m.TableQrTableManagementFeaturesTableSearchModule),
+          },
+          {
+            path: 'take-away',
+            loadChildren: () =>
+              import(
+                '@jafar-tech/table-qr/take-away/features/add-take-away'
+              ).then((m) => m.TableQrTakeAwayFeaturesAddTakeAwayModule),
           },
         ],
       },
