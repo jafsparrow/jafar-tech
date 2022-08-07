@@ -1,1 +1,14 @@
-<p>add-take-away works!</p>
+<mat-form-field class="example-full-width" appearance="outline">
+  <mat-label>Details</mat-label>
+  <input
+    type="text"
+    matInput
+    [formControl]="takeAwayFormControl"
+    placeholder="KL 10 C 2222"
+  />
+  <mat-hint>Enter verhicle number or mobile number</mat-hint>
+
+  <mat-error *ngIf="takeAwayFormControl.hasError('required')">
+    Take Away Details are <strong>required</strong>
+  </mat-error>
+</mat-form-field>

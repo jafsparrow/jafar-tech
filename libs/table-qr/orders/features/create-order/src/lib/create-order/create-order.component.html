@@ -1,74 +1,97 @@
-<div>
-  <button routerLink="take-away">take-away</button>
-  <button routerLink="table">table order</button>
-</div>
-<router-outlet></router-outlet>
-<mat-form-field appearance="fill">
-  <mat-label>Filter</mat-label>
-  <input
-    matInput
-    (keyup)="applyFilter($event)"
-    placeholder="Ex. Avocado"
-    #input
-  />
-</mat-form-field>
+<div *ngIf="{ userSelected: cartCreatedForUser$ | async } as cartUserFor">
+  <div class="cart-for-user-container">
+    <div class="btn-action-container">
+      <button
+        routerLink="take-away"
+        mat-stroked-button
+        color="primary"
+        routerLinkActive="active"
+      >
+        Takeout
+      </button>
+      <button
+        routerLink="table"
+        mat-stroked-button
+        color="accent"
+        routerLinkActive="active"
+      >
+        Table Order
+      </button>
+    </div>
+    <div
+      *ngIf="cartUserFor.userSelected as selectedUser"
+      class="selected-user-text"
+    >
+      {{ selectedUser.firstName }}
+    </div>
+    <router-outlet></router-outlet>
+  </div>
 
-<div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource" matSort>
-    <ng-container matColumnDef="code">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Code</th>
-      <td mat-cell *matCellDef="let row">{{ row.code }}</td>
+  <mat-form-field appearance="fill">
+    <mat-label>Filter</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="Ex. Avocado"
+      #input
+    />
+  </mat-form-field>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="code">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Code</th>
+        <td mat-cell *matCellDef="let row">{{ row.code }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+        <td mat-cell *matCellDef="let row">{{ row.name }}</td>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+        <td mat-cell *matCellDef="let row">
+          <a (click)="openProductViewDialog(row)" class="action">+</a>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
+        <td mat-cell *matCellDef="let row" class="rupee-symbol-left">
+          {{ row.price }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
+        <td mat-cell *matCellDef="let row">{{ row.category }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">
+          No data matching the filter "{{ input.value }}"
+        </td>
+      </tr>
+    </table>
+
+    <!-- <mat-paginator
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      aria-label="Select page of users"
+    ></mat-paginator> -->
+  </div>
+  <ng-container *ngIf="{ count: cartCount$ | async } as objCount">
+    <ng-container>
+      <qr-ui-bottom-cart-summary
+        (click)="openCart(cartUserFor)"
+        class="stick-bottom"
+        *ngIf="objCount.count && objCount.count > 0"
+        [cartProductsCount]="objCount.count"
+        [cartTotal]="cartTotal$ | async"
+      ></qr-ui-bottom-cart-summary>
     </ng-container>
-
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-      <td mat-cell *matCellDef="let row">{{ row.name }}</td>
-    </ng-container>
-    <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
-      <td mat-cell *matCellDef="let row">
-        <a (click)="openProductViewDialog(row)" class="action">+</a>
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="price">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
-      <td mat-cell *matCellDef="let row" class="rupee-symbol-left">
-        {{ row.price }}
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="category">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
-      <td mat-cell *matCellDef="let row">{{ row.category }}</td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-
-    <!-- Row shown when there is no matching data. -->
-    <tr class="mat-row" *matNoDataRow>
-      <td class="mat-cell" colspan="4">
-        No data matching the filter "{{ input.value }}"
-      </td>
-    </tr>
-  </table>
-
-  <!-- <mat-paginator
-    [pageSizeOptions]="[5, 10, 25, 100]"
-    aria-label="Select page of users"
-  ></mat-paginator> -->
-</div>
-<ng-container *ngIf="{ count: cartCount$ | async } as objCount">
-  <ng-container
-    *ngIf="{ userSelected: cartCreatedForUser$ | async } as cartUserFor"
-  >
-    <qr-ui-bottom-cart-summary
-      (click)="openCart(cartUserFor)"
-      class="stick-bottom"
-      *ngIf="objCount.count && objCount.count > 0"
-      [cartProductsCount]="objCount.count"
-      [cartTotal]="cartTotal$ | async"
-    ></qr-ui-bottom-cart-summary>
   </ng-container>
-</ng-container>
+</div>

@@ -3,6 +3,7 @@ export enum UserType {
   ONLINE = 'online',
   TABLE = 'table',
   STAFF = 'staff',
+  TAKEAWAY = 'takeaway',
 }
 
 export interface User {

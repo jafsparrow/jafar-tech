@@ -1,3 +1,27 @@
+
+.cart-for-user-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px
+}
+
+.active {
+  cursor: not-allowed;
+        background-color: rgb(229, 229, 229)
+}
+.btn-action-container {
+  display: flex;
+  justify-content: center;
+  
+  margin-bottom: 20px;
+}
+
+.selected-user-text {
+  font-size: 25px;
+  font-weight: 300;
+}
+
 table {
   width: 100%;
 }
