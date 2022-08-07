@@ -12,6 +12,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Route, Router } from '@angular/router';
 import { Product, User } from '@jafar-tech/shared/data-access';
 import {
+  deleteCartCreatedForUser,
   selectCartCreatedForUser,
   selectCartTotal,
   selectNumberOfItemsInCart,
@@ -92,5 +93,9 @@ export class CreateOrderComponent implements OnInit, AfterViewInit, OnDestroy {
       return;
     }
     alert('Please Select a Table to create the Order');
+  }
+
+  clearCartForUser() {
+    this.store.dispatch(deleteCartCreatedForUser());
   }
 }

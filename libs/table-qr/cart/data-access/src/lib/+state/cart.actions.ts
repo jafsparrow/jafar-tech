@@ -17,6 +17,9 @@ export const setCartCreatedForUser = createAction(
   props<{ user: User }>()
 );
 
+export const deleteCartCreatedForUser = createAction(
+  '[Cart] delete cart CreatedFor User'
+);
 export const setCartCreatedByUser = createAction(
   '[Cart] set Cart Created By User',
   props<{ user: User }>()

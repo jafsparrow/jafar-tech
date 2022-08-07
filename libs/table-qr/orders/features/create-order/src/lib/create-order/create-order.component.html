@@ -23,6 +23,11 @@
       class="selected-user-text"
     >
       {{ selectedUser.firstName }}
+      <span>
+        <button mat-icon-button color="accent" (click)="clearCartForUser()">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </span>
     </div>
     <router-outlet></router-outlet>
   </div>

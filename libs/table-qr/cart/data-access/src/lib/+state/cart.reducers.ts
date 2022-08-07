@@ -8,6 +8,7 @@ import {
   removeFromCart,
   setCartCreatedForUser,
   updateCart,
+  deleteCartCreatedForUser,
 } from './cart.actions';
 
 export const CART_FEATURE_KEY = 'cart';
@@ -82,7 +83,8 @@ export const cartReducer = createReducer(
   on(setCartCreatedForUser, (state, { user }) => ({
     ...state,
     cartCreatedFor: user,
-  }))
+  })),
+  on(deleteCartCreatedForUser, (state) => ({ ...state, cartCreatedFor: null }))
 );
 // state.cartItems[productId] = {
 //   ...(state.cartItems[productId] || []),

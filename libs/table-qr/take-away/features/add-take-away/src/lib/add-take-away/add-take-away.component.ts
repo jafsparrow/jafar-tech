@@ -22,6 +22,7 @@ export class AddTakeAwayComponent implements OnInit, OnDestroy {
           setCartCreatedForUser({
             user: {
               firstName: `Takeout ${value}`,
+              username: value as unknown as string,
               userType: UserType.TAKEAWAY,
             },
           })
