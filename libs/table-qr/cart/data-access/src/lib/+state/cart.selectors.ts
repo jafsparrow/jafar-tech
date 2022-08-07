@@ -1,4 +1,5 @@
-import { Cart, Tax } from '@jafar-tech/shared/data-access';
+import { Cart, OrderStatus, Tax } from '@jafar-tech/shared/data-access';
+import { selectRecentOrders } from '@jafar-tech/table-qr-orders-data-access';
 import { createFeatureSelector, createSelector, State } from '@ngrx/store';
 import { CART_FEATURE_KEY } from './cart.reducers';
 
@@ -76,4 +77,20 @@ export const getTaxedSubTotal = (total: number, tax: Tax): number => {
 export const selectCartCreatedForUser = createSelector(
   selectCartState,
   (state) => state.cartCreatedFor
+);
+
+//[TODO] - investigate if its okay to user other data access module selectors inside here (ie; selectRecentOrders)
+// checkout anyother way like passing parameters to get order out of order data access module without having to
+// subscripbe to selectors on component .ts file.
+export const selectNotPaidOrderOfCreatedForUser = createSelector(
+  selectRecentOrders,
+  selectCartCreatedForUser,
+  (orders, createForUser) => {
+    console.log('from cart selectors', orders);
+    return orders
+      .filter((order) => order.status !== OrderStatus.PAID)
+      .filter(
+        (order) => order.createdFor?.firstName == createForUser?.firstName
+      );
+  }
 );

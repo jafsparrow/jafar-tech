@@ -60,14 +60,17 @@ export const selectOrderItemsFromRecentOrders = createSelector(
 
 export const selectUserFilteredCategories = createSelector(
   selectOrderState,
-  (state)=> state.userSelectedFilterCategories
-)
+  (state) => state.userSelectedFilterCategories
+);
 
 export const selectFilteredOrderItemsFromRecentOrders = createSelector(
   selectUserFilteredCategories,
-  selectOrderItemsFromRecentOrders, (filteredCategories, orderLineItems) =>{
-     
-    return orderLineItems.filter((item) => filteredCategories.length ?  filteredCategories.indexOf(item.product.category) !== -1 : true)
+  selectOrderItemsFromRecentOrders,
+  (filteredCategories, orderLineItems) => {
+    return orderLineItems.filter((item) =>
+      filteredCategories.length
+        ? filteredCategories.indexOf(item.product.category) !== -1
+        : true
+    );
   }
-
-)
+);

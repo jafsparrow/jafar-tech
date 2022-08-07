@@ -6,6 +6,7 @@ import {
   removeFromCart,
   selectCart,
   selectCartTaxed,
+  selectNotPaidOrderOfCreatedForUser,
 } from '@jafar-tech/table-qr-cart-data-access';
 import {
   placeOrder,
@@ -26,6 +27,9 @@ export class CartComponent implements OnInit {
   cart$ = this.store.select(selectCartTaxed);
   placeOrderSpinner$ = this.store.select(selectPlaceOrderSpinner);
   orderPlaceSateMessage$ = this.store.select(selectOrderErrorMessage);
+  selectNotPaidOrdersForCartForUser$ = this.store.select(
+    selectNotPaidOrderOfCreatedForUser
+  );
   constructor(private store: Store, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.data.subscribe((data: any) =>
       data.menuURL ? (this.routeLink = data.menuURL) : ''
@@ -34,6 +38,10 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.routeLink);
+
+    this.selectNotPaidOrdersForCartForUser$.subscribe((data) =>
+      console.log('notpaid', data)
+    );
   }
 
   getCartItems(cart: Cart) {
