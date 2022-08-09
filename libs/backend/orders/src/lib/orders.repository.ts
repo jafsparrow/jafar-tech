@@ -50,9 +50,11 @@ export class OrderRepository {
 
   async updateOrder(existingOrderId: ObjectId, orderUpdateData: any) {
     console.log('order update data', orderUpdateData);
-    return await this.order
-      .findOneAndUpdate(existingOrderId, orderUpdateData)
-      .exec();
+
+    return this.order.updateOne({ _id: existingOrderId }, orderUpdateData);
+    // return await this.order
+    //   .findOneAndUpdate(existingOrderId, orderUpdateData)
+    //   .exec();
   }
 
   async findOrderOfTheDay() {

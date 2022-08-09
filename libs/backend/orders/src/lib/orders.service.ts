@@ -77,7 +77,7 @@ export class OrderService {
       taxesApplied: orderDto.taxesApplied,
     };
 
-    this.orderRepository.createOrder(newOrder);
+    return this.orderRepository.createOrder(newOrder);
   }
 
   async findOrdersOfTheday() {
