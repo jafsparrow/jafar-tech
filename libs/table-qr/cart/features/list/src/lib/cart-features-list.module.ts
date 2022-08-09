@@ -20,6 +20,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatFormFieldModule,
     MatInputModule,
     MatProgressSpinnerModule,
+    TableQrUiModule,
   ],
   declarations: [CartComponent],
   exports: [CartComponent],

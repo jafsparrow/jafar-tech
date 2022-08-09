@@ -1,4 +1,10 @@
 <div class="cart-container" *ngIf="cart$ | async as cart">
+  <div *ngIf="selectNotPaidOrdersForCartForUser$ | async as notpaidOrders">
+    <qr-ui-order-card-view
+      *ngIf="notpaidOrders[0]"
+      [order]="notpaidOrders[0]"
+    ></qr-ui-order-card-view>
+  </div>
   <div class="basket-title-container">
     <span class="basket-title-text">My Basket</span>
 

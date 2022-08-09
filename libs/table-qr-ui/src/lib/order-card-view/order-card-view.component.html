@@ -1,18 +1,19 @@
-<div class="existing-non-paid-orders-container">
+<div class="existing-non-paid-orders-container" *ngIf="order">
   <div class="order-header">
     <div class="order-number">
       3333 <span class="order-time">7 min ago</span>
     </div>
-    <div class="order-status">Ready</div>
+    <div class="order-status">{{ order.status }}</div>
   </div>
 
   <div class="order-items-container">
-    <div class="order-items" *ngFor="let item of [1, 1, 1, 1, 1, 1]">
+    <div class="order-items" *ngFor="let item of order.orderItems; index as i">
       <div class="order-item-name-container">
         <div class="order-item-name">
-          1. Chicken Alko <span class="order-item-quantity">5</span>
+          {{ i + 1 }}. {{ item.product.name }}
+          <span class="order-item-quantity">{{ item.count }}</span>
         </div>
-        <div class="order-item-status">Ready</div>
+        <div class="order-item-status">{{ item.status }}</div>
       </div>
 
       <div class="modifiers">Sweet corn, cripsy sauce</div>
