@@ -1,0 +1,65 @@
+
+.existing-non-paid-orders-container {
+    margin: 5px;
+    border: 2px solid black;
+  }
+  
+  .order-header {
+    padding:10px;
+    display: flex;
+    justify-content: space-between;
+    max-width: 400px;
+  }
+
+  .order-number{
+    
+    font-weight: bold;
+  }
+  
+  .order-time {
+    font-weight: 100;
+  }
+  .order-items-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    
+  }
+  
+  .order-items {
+    background-color: rgb(237, 237, 237);
+    max-width: 500px;
+    min-width: 300px;
+    padding: 10px;
+    margin: 10px;
+  }
+  /* 
+  div.order-items-container > div {
+    max-width: 300px;
+    background-color: red;
+  } */
+  .order-head-row {
+    font-weight: bold;
+  }
+  
+  .order-item-name-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .order-item-name{
+    font-size: 18px;
+    font-weight: 300;
+  }
+  .modifiers {
+    font-size: 14px;
+    font-weight: 100;
+  }
+  .order-item-unit-price {} 
+  .order-item-quantity {
+    font-weight: 100;
+  } 
+  .order-item-total-price{} 
+  .order-item-status{}

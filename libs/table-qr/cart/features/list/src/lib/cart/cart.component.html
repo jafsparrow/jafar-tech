@@ -1,13 +1,4 @@
 <div class="cart-container" *ngIf="cart$ | async as cart">
-  <div
-    class="existing-non-paid-orders-container"
-    *ngIf="selectNotPaidOrdersForCartForUser$ | async as notPaidOrders"
-  >
-    <div *ngFor="let item of notPaidOrders">
-      not paid user details
-      {{ item.createdBy?.firstName }}
-    </div>
-  </div>
   <div class="basket-title-container">
     <span class="basket-title-text">My Basket</span>
 
