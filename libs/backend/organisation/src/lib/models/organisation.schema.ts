@@ -59,6 +59,10 @@ export class Organisation extends Document {
   @Prop({ default: [] })
   taxes: Tax[];
 
+  // order counter field to keep track of order numbers.
+  @Prop()
+  orderCounter: number;
+
   @Prop({ default: false })
   isRegistrationComplete: boolean;
 

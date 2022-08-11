@@ -12,6 +12,10 @@ import { Document, ObjectId } from 'mongoose';
 
 @Schema({ timestamps: true })
 export class Order extends Document {
+
+  @Prop()
+  orderId: number;
+  
   @Prop({type: Map<string, User>})
   createdBy: User;
 

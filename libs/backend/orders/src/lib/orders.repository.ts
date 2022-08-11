@@ -1,3 +1,4 @@
+import { Organisation } from '@jafar-tech/backend/organisation';
 import {
   OrderItemStatus,
   OrderStatus,
@@ -5,7 +6,7 @@ import {
 } from '@jafar-tech/shared/data-access';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model, ObjectId } from 'mongoose';
+import { Model, Mongoose, ObjectId, Types } from 'mongoose';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { UpdateOrderItemStatusDto } from './dto/update-order-item-status.dto';
 import { UpdateOrderStatusDto } from './dto/update-order-status.dto';
@@ -15,7 +16,9 @@ import { Order } from './models/order.schema';
 export class OrderRepository {
   constructor(
     @InjectModel(Order.name)
-    private readonly order: Model<Order>
+    private readonly order: Model<Order>,
+    @InjectModel(Organisation.name)
+    private readonly organsationModel: Model<Organisation>
   ) {}
 
   getOrders() {
@@ -40,7 +43,12 @@ export class OrderRepository {
   }
 
   async createOrder(order: any) {
-    const newProduct = new this.order(order);
+    const orderId: number = await this._getNextOrderSequence(
+      order.createdBy.companyId
+    );
+    const orderWithId = { ...order, orderId };
+    console.log('orderid', orderWithId.orderId);
+    const newProduct = new this.order(orderWithId);
     try {
       return await newProduct.save();
     } catch (e) {
@@ -121,5 +129,16 @@ export class OrderRepository {
     } catch (error) {
       throw new NotFoundException();
     }
+  }
+
+  // This method return and update the order number
+  async _getNextOrderSequence(orgId: string) {
+    const orgDoc: Organisation = await this.organsationModel.findOneAndUpdate(
+      { _id: orgId },
+      { $inc: { orderCounter: 1 } },
+      { new: true }
+    );
+
+    return orgDoc.orderCounter;
   }
 }
