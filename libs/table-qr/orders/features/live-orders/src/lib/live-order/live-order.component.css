@@ -1,3 +1,16 @@
+
+.live-order-container {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+
+}
+
+.live-order-container > * {
+  /* max-width: 800px; */
+}
+
+
 .order-status {
   padding: 5px;
   /* border-radius: 5px; */
