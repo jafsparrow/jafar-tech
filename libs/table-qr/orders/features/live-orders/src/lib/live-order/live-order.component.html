@@ -11,9 +11,14 @@
   >
     <mat-expansion-panel *ngFor="let order of recentOrders">
       <mat-expansion-panel-header>
-        <mat-panel-title> Order NO: {{ sampleOrder.id }} </mat-panel-title>
+        <mat-panel-title>
+          Order : {{ order.orderId }} -&nbsp;
+          <span class="time-display">{{
+            order.createdAt | timesago
+          }}</span></mat-panel-title
+        >
         <mat-panel-description>
-          <div class="order-status" [ngClass]="getClass(sampleOrder.status)">
+          <div class="order-status" [ngClass]="getClass(order.status)">
             {{ order.status }}
           </div>
         </mat-panel-description>
@@ -36,17 +41,26 @@
           </div>
         </div>
       </div>
-        
+
       <div class="order-action-container" *ngIf="order.status !== 'paid'">
-        <button mat-raised-button color="primary" 
-        *ngIf="order.status === 'ready' "
-        (click)="updateStatus(order._id, 'served')">Served</button>
-        <button mat-raised-button color="accent"
-        *ngIf=" order.status === 'ready' || order.status ==='served'"
-        (click)="updateStatus(order._id, 'pay')">Pay</button>
+        <button
+          mat-raised-button
+          color="primary"
+          *ngIf="order.status === 'ready'"
+          (click)="updateStatus(order._id, 'served')"
+        >
+          Served
+        </button>
+        <button
+          mat-raised-button
+          color="accent"
+          *ngIf="order.status === 'ready' || order.status === 'served'"
+          (click)="updateStatus(order._id, 'pay')"
+        >
+          Pay
+        </button>
         <!-- <button mat-raised-button color="warn">Reject</button> -->
       </div>
-
     </mat-expansion-panel>
   </mat-accordion>
 </ng-container>

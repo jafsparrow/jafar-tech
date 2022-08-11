@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonModule } from '@angular/material/button';
 import { TableQrOrdersDataAccessModule } from '@jafar-tech/table-qr-orders-data-access';
+import { SharedCoreModule } from '@jafar-tech/shared/core';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { TableQrOrdersDataAccessModule } from '@jafar-tech/table-qr-orders-data-
         component: LiveOrderComponent,
       },
     ]),
+    SharedCoreModule,
     MatExpansionModule,
     MatButtonModule,
     TableQrOrdersDataAccessModule,

@@ -12,7 +12,8 @@ export interface OrderItem extends CartItem {
 export interface OrderSummary {
   _id: string;
   orderId?: number;
-  date?: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
   status: OrderStatus;
   orderItems: OrderItem[];
   createdBy?: User;

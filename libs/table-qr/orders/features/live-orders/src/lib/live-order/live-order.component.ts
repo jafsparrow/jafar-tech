@@ -16,17 +16,17 @@ import { Store } from '@ngrx/store';
 export class LiveOrderComponent implements OnInit {
   @ViewChild(MatAccordion) accordion!: MatAccordion;
   recentOrders$ = this.store.select(selectRecentOrders);
-  sampleOrder = {
-    id: 23343,
-    status: 'preparing',
-    items: [
-      {
-        name: 'Juice apricoto',
-        status: 'ready',
-        modifiers: ['Soy milk', 'Gun Powder'],
-      },
-    ],
-  };
+  // sampleOrder = {
+  //   id: 23343,
+  //   status: 'preparing',
+  //   items: [
+  //     {
+  //       name: 'Juice apricoto',
+  //       status: 'ready',
+  //       modifiers: ['Soy milk', 'Gun Powder'],
+  //     },
+  //   ],
+  // };
 
   constructor(private store: Store) {}
 

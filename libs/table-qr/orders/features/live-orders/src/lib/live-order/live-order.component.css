@@ -18,6 +18,10 @@
   text-overflow: ellipsis;
 }
 
+.time-display {
+  font-weight: 100;
+}
+
 .item-modifiers {
   color: grey;
 }
