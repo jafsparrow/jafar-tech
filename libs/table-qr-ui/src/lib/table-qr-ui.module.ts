@@ -21,6 +21,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { FormsModule } from '@angular/forms';
 import { OrganisationSummaryComponent } from './organisation-summary/organisation-summary.component';
 import { OrderCardViewComponent } from './order-card-view/order-card-view.component';
+import { OrderBillPrintComponent } from './order-bill-print/order-bill-print.component';
 
 @NgModule({
   imports: [
@@ -43,6 +44,7 @@ import { OrderCardViewComponent } from './order-card-view/order-card-view.compon
     SelectProductViewComponent,
     OrganisationSummaryComponent,
     OrderCardViewComponent,
+    OrderBillPrintComponent,
   ],
   exports: [
     MatTabsModule,
@@ -57,6 +59,7 @@ import { OrderCardViewComponent } from './order-card-view/order-card-view.compon
     OrganisationSummaryComponent,
     BottomCartSummaryComponent,
     OrderCardViewComponent,
+    OrderBillPrintComponent,
   ],
 })
 export class TableQrUiModule {}

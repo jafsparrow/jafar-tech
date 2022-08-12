@@ -1,5 +1,13 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatAccordion } from '@angular/material/expansion';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  QueryList,
+  ViewChild,
+  ViewChildren,
+  ViewEncapsulation,
+} from '@angular/core';
+import { MatAccordion, MatExpansionPanel } from '@angular/material/expansion';
 import { OrderStatus } from '@jafar-tech/shared/data-access';
 import {
   loadRecentOrders,
@@ -14,6 +22,8 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./live-order.component.css'],
 })
 export class LiveOrderComponent implements OnInit {
+  @ViewChildren('Order') order!: QueryList<ElementRef>;
+
   @ViewChild(MatAccordion) accordion!: MatAccordion;
   recentOrders$ = this.store.select(selectRecentOrders);
   // sampleOrder = {
@@ -57,5 +67,23 @@ export class LiveOrderComponent implements OnInit {
       default:
         return 'text-red';
     }
+  }
+
+  printPage(item: MatExpansionPanel, index: number) {
+    console.log(item);
+
+    const printHtml = window.open('', 'PRINT', 'height=400,width=600');
+
+    printHtml!.document.write('<html><head>');
+    printHtml!.document.write(item._body.nativeElement.innerHTML);
+    printHtml!.document.write('</body></html>');
+
+    printHtml!.document.close();
+    printHtml!.focus();
+
+    printHtml!.print();
+    printHtml!.close();
+
+    return true;
   }
 }

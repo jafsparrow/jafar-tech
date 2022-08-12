@@ -1,5 +1,5 @@
 <div class="live-order-container">
-  <div class="example-action-buttons">
+  <div class="example-action-buttons" #printA>
     <button mat-button (click)="accordion.openAll()">Expand All</button>
     <button mat-button (click)="accordion.closeAll()">Collapse All</button>
   </div>
@@ -10,7 +10,10 @@
       multi
       *ngIf="recentOrders.length; else noOrders"
     >
-      <mat-expansion-panel *ngFor="let order of recentOrders">
+      <mat-expansion-panel
+        *ngFor="let order of recentOrders; let i = index"
+        #Order
+      >
         <mat-expansion-panel-header>
           <mat-panel-title>
             Order : {{ order.orderId }} -&nbsp;
@@ -24,6 +27,7 @@
             </div>
           </mat-panel-description>
         </mat-expansion-panel-header>
+        <button (click)="printPage(Order, i)">print</button>
 
         <div class="order-items-container">
           <div class="order-item" *ngFor="let orderItem of order.orderItems">
