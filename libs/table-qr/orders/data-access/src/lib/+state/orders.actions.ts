@@ -67,5 +67,9 @@ export const updateOrderItemStatusFail = createAction(
 
 export const updateSelectedFilteredCategories = createAction(
   '[Order] update the categries filter',
-  props<{ filteredCategories: string[]}>()
-)
+  props<{ filteredCategories: string[] }>()
+);
+
+export const pollRecentOrders = createAction(
+  '[Order] Polling of orders in every 5 sec'
+);

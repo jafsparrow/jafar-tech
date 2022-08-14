@@ -5,6 +5,7 @@ import {
   logout,
   selectUserCompanyId,
 } from '@jafar-tech/table-qr-authentication-data-access';
+import { pollRecentOrders } from '@jafar-tech/table-qr-orders-data-access';
 import { loadProductsCategoryVice } from '@jafar-tech/table-qr-products-data-access';
 import { loadOrgInfo } from '@jafar-tech/table-qr/organisation/data-access';
 import { loadTables } from '@jafar-tech/table-qr/table-management/data-access';
@@ -46,6 +47,7 @@ export class AdminContainerComponent implements OnInit, OnDestroy {
           this.store.dispatch(loadOrgInfo({ organisationID: id }));
 
           this.store.dispatch(loadTables());
+          this.store.dispatch(pollRecentOrders());
         })
       )
       .subscribe();

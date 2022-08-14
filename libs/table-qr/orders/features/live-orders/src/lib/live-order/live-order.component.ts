@@ -8,7 +8,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { MatAccordion, MatExpansionPanel } from '@angular/material/expansion';
-import { OrderStatus } from '@jafar-tech/shared/data-access';
+import { OrderStatus, OrderSummary } from '@jafar-tech/shared/data-access';
 import {
   loadRecentOrders,
   selectRecentOrders,
@@ -43,6 +43,8 @@ export class LiveOrderComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(loadRecentOrders());
   }
+
+  identifyer = (index: number, order: OrderSummary) => order.orderId;
 
   updateStatus(orderId: string, status: string) {
     let newStatus: OrderStatus = OrderStatus.READY;

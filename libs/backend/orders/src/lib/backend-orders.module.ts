@@ -6,6 +6,7 @@ import { Order, OrderSchema } from './models/order.schema';
 import { OrderController } from './orders.controller';
 import { OrderRepository } from './orders.repository';
 import { OrderService } from './orders.service';
+import { OrderGateway } from './order.gateway';
 
 @Module({
   controllers: [OrderController],
@@ -20,6 +21,6 @@ import { OrderService } from './orders.service';
     BackendAuthModule,
     BackendOrganisationModule,
   ],
-  providers: [OrderService, OrderRepository],
+  providers: [OrderService, OrderRepository, OrderGateway],
 })
 export class BackendOrdersModule {}

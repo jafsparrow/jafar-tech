@@ -4,6 +4,7 @@ import {
   Get,
   Param,
   Post,
+  Req,
   Request,
   UseGuards,
 } from '@nestjs/common';
@@ -39,8 +40,10 @@ export class AuthController {
     return req.user;
   }
 
+  // @UseGuards(JwtAuthGuard)
   @Post('create')
-  createUser(@Body() createUserdto: CreateUserDto) {
+  createUser(@Body() createUserdto: CreateUserDto, @Req() req) {
+    // const companyId = req.user?.companyId;
     let companyId = '6226fba3209ec7f5ebd956e7';
     return this.authService.createStaffUser(companyId, createUserdto);
   }

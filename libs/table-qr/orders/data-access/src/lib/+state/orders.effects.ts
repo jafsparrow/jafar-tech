@@ -6,7 +6,7 @@ import { OrderSummary } from '@jafar-tech/shared/data-access';
 import { clearCart } from '@jafar-tech/table-qr-cart-data-access';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { catchError, map, of, switchMap, tap } from 'rxjs';
+import { catchError, interval, map, of, startWith, switchMap, tap } from 'rxjs';
 import { OrderService } from '../orders.service';
 import {
   loadRecentOrders,
@@ -15,6 +15,7 @@ import {
   orderPlaceFail,
   orderPlaceSuccess,
   placeOrder,
+  pollRecentOrders,
   updateOrderItemStatus,
   updateOrderItemStatusFail,
   updateOrderStatus,
@@ -129,4 +130,19 @@ export class OrderEffects {
       )
     );
   });
+
+  pollRecentOrdersEffect$ = createEffect(
+    () => {
+      return this.action$.pipe(
+        ofType(pollRecentOrders),
+        switchMap((data) =>
+          interval(5000).pipe(
+            tap((data) => console.log('polling now')),
+            tap((data) => this.store.dispatch(loadRecentOrders()))
+          )
+        )
+      );
+    },
+    { dispatch: false }
+  );
 }

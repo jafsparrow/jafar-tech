@@ -11,7 +11,7 @@
       *ngIf="recentOrders.length; else noOrders"
     >
       <mat-expansion-panel
-        *ngFor="let order of recentOrders; let i = index"
+        *ngFor="let order of recentOrders; let i = index; trackBy: identifyer"
         #Order
       >
         <mat-expansion-panel-header>
