@@ -38,6 +38,11 @@
                 *ngIf="orderItem.orderItemType == 'running'"
                 >R</span
               >
+
+              <div class="kitchen-handling-user">
+                {{ orderItem.kitchenUser?.firstName }}
+                {{ orderItem.kitchenUser?.lastName }}
+              </div>
               <div
                 class="item-modifiers"
                 *ngFor="let modifier of orderItem.modifiers"

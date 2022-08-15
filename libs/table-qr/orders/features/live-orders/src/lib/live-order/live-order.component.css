@@ -61,3 +61,8 @@ mat-accordion {
   display: flex;
   justify-content: space-evenly;
 }
+
+.kitchen-handling-user {
+  font-weight: 300;
+  font-size: 0.9rem;
+}

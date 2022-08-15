@@ -35,7 +35,7 @@ export class KitchenOrderViewComponent implements OnInit {
   categorySelectControl = new FormControl();
 
   displayedColumns: string[] = [
-    'code',
+    'orderNo',
     'name',
     'count',
     'category',
