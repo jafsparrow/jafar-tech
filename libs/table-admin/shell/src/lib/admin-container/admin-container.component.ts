@@ -47,7 +47,7 @@ export class AdminContainerComponent implements OnInit, OnDestroy {
           this.store.dispatch(loadOrgInfo({ organisationID: id }));
 
           this.store.dispatch(loadTables());
-          // this.store.dispatch(pollRecentOrders());
+          this.store.dispatch(pollRecentOrders());
         })
       )
       .subscribe();
