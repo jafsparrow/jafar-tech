@@ -45,7 +45,11 @@
         <!-- <span [ngClass]="getClass(row.status)">
           {{ row.status }}
         </span> -->
-
+        <span
+          class="order-item-type-running"
+          *ngIf="row.orderItemType == 'running'"
+          >R</span
+        >
         <div id="circle" [ngClass]="getClass(row.status)"></div>
 
         <div *ngFor="let modifier of row.modifiers">

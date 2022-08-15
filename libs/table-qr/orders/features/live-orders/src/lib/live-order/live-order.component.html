@@ -33,6 +33,11 @@
           <div class="order-item" *ngFor="let orderItem of order.orderItems">
             <div class="item-name">
               {{ orderItem.product.name }}
+              <span
+                class="order-item-type-running"
+                *ngIf="orderItem.orderItemType == 'running'"
+                >R</span
+              >
               <div
                 class="item-modifiers"
                 *ngFor="let modifier of orderItem.modifiers"

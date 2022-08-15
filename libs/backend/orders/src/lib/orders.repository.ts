@@ -70,15 +70,17 @@ export class OrderRepository {
     let date = new Date('20 March 2020'); //new Date(new Date().setUTCHours(0, 0, 0, 0));
 
     try {
-      return await this.order.aggregate([
-        {
-          $match: {
-            createdAt: {
-              $gt: date,
+      return await this.order
+        .aggregate([
+          {
+            $match: {
+              createdAt: {
+                $gt: date,
+              },
             },
           },
-        },
-      ]);
+        ])
+        .sort('-createdAt');
     } catch (error) {
       throw new NotFoundException();
     }
