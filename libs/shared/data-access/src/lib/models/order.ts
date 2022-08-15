@@ -6,12 +6,13 @@ export interface OrderItem extends CartItem {
   key?: string;
   totalCountOfSameItem?: number;
   orderId?: string; //just to track what order it belongs.
+  orderNumber?: number; // to track the order number
   orderItemType?: OrderItemType;
 }
 
 export interface OrderSummary {
   _id: string;
-  orderId?: number;
+  orderNumber?: number;
   createdAt?: Date;
   updatedAt?: Date;
   status: OrderStatus;

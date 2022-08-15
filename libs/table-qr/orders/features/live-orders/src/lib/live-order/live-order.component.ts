@@ -44,7 +44,7 @@ export class LiveOrderComponent implements OnInit {
     this.store.dispatch(loadRecentOrders());
   }
 
-  identifyer = (index: number, order: OrderSummary) => order.orderId;
+  identifyer = (index: number, order: OrderSummary) => order.orderNumber;
 
   updateStatus(orderId: string, status: string) {
     let newStatus: OrderStatus = OrderStatus.READY;

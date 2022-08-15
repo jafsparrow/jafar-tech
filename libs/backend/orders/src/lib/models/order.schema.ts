@@ -14,7 +14,7 @@ import { Document, ObjectId } from 'mongoose';
 export class Order extends Document {
 
   @Prop()
-  orderId: number;
+  orderNumber: number;
   
   @Prop({type: Map<string, User>})
   createdBy: User;

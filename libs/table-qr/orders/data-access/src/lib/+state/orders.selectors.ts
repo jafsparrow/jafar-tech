@@ -31,7 +31,8 @@ export const selectOrderItemsFromRecentOrders = createSelector(
       .map((order) =>
         order.orderItems.map((item) => ({
           ...item,
-          orderId: order.orderId?.toString(),
+          orderId: order._id?.toString(),
+          orderNumber: order.orderNumber,
         }))
       )
       .reduce((prevVal, item) => [...prevVal, ...item], [])

@@ -43,11 +43,11 @@ export class OrderRepository {
   }
 
   async createOrder(order: any) {
-    const orderId: number = await this._getNextOrderSequence(
+    const orderNumber: number = await this._getNextOrderSequence(
       order.createdBy.companyId
     );
-    const orderWithId = { ...order, orderId };
-    console.log('orderid', orderWithId.orderId);
+    const orderWithId = { ...order, orderNumber };
+    console.log('orderid', orderWithId.orderNumber);
     const newProduct = new this.order(orderWithId);
     try {
       return await newProduct.save();
@@ -105,6 +105,7 @@ export class OrderRepository {
     data: UpdateOrderItemStatusDto
   ) {
     try {
+      console.log('orderId', data.orderId);
       let order = await this.order.findById(data.orderId);
       let currentOrderItems = order.orderItems;
       let isAllOrderItemInReadyStatus = false;
@@ -135,6 +136,7 @@ export class OrderRepository {
 
   // This method return and update the order number
   async _getNextOrderSequence(orgId: string) {
+    console.log('getting org info of', orgId);
     const orgDoc: Organisation = await this.organsationModel.findOneAndUpdate(
       { _id: orgId },
       { $inc: { orderCounter: 1 } },
