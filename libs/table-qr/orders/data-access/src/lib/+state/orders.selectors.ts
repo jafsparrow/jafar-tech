@@ -40,14 +40,17 @@ export const selectOrderItemsFromRecentOrders = createSelector(
 
     let categoryVice: any = {};
 
-    orderItemArray.forEach(
-      (item) =>
-        (categoryVice[item.key!] =
-          categoryVice[item.key!] + item.count || item.count)
-    );
+    orderItemArray
+      .filter((item) => item.status == OrderItemStatus.WAITING)
+      .forEach(
+        (item) =>
+          (categoryVice[item.key!] =
+            categoryVice[item.key!] + item.count || item.count)
+      );
 
     console.log(orderItemArray);
     let final = orderItemArray.map((item) => {
+      item['totalCountOfSameItem'] = 0;
       if (categoryVice[item.key!]) {
         return { ...item, totalCountOfSameItem: categoryVice[item.key!] };
       }
