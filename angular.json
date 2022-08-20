@@ -73,6 +73,7 @@
       "sourceRoot": "libs/backend/auth/src",
       "projectType": "library",
       "targets": {
+      
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
@@ -96,17 +97,7 @@
       "sourceRoot": "libs/backend/category/src",
       "projectType": "library",
       "targets": {
-        "build": {
-          "executor": "@nrwl/js:tsc",
-          "outputs": ["{options.outputPath}"],
-          "options": {
-            "outputPath": "dist/libs/backend/category",
-            "tsConfig": "libs/backend/category/tsconfig.lib.json",
-            "packageJson": "libs/backend/category/package.json",
-            "main": "libs/backend/category/src/index.ts",
-            "assets": ["libs/backend/category/*.md"]
-          }
-        },
+       
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
