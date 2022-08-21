@@ -73,7 +73,6 @@
       "sourceRoot": "libs/backend/auth/src",
       "projectType": "library",
       "targets": {
-      
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
@@ -97,7 +96,6 @@
       "sourceRoot": "libs/backend/category/src",
       "projectType": "library",
       "targets": {
-       
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
@@ -139,6 +137,9 @@
       },
       "tags": []
     },
+    "backend-data-access-todo": "libs/backend/data-access-todo",
+    "backend-feature-config": "libs/backend/feature-config",
+    "backend-feature-todo": "libs/backend/feature-todo",
     "backend-orders": {
       "root": "libs/backend/orders",
       "sourceRoot": "libs/backend/orders/src",
@@ -209,6 +210,7 @@
       "tags": []
     },
     "backend-table-management": "libs/backend/table-management",
+    "backend-utils-config": "libs/backend/utils-config",
     "cart": {
       "projectType": "library",
       "root": "libs/cart",

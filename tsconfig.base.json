@@ -19,6 +19,15 @@
       "@jafar-tech/backend/auth": ["libs/backend/auth/src/index.ts"],
       "@jafar-tech/backend/category": ["libs/backend/category/src/index.ts"],
       "@jafar-tech/backend/core": ["libs/backend/core/src/index.ts"],
+      "@jafar-tech/backend/data-access-todo": [
+        "libs/backend/data-access-todo/src/index.ts"
+      ],
+      "@jafar-tech/backend/feature-config": [
+        "libs/backend/feature-config/src/index.ts"
+      ],
+      "@jafar-tech/backend/feature-todo": [
+        "libs/backend/feature-todo/src/index.ts"
+      ],
       "@jafar-tech/backend/orders": ["libs/backend/orders/src/index.ts"],
       "@jafar-tech/backend/organisation": [
         "libs/backend/organisation/src/index.ts"
@@ -26,6 +35,9 @@
       "@jafar-tech/backend/products": ["libs/backend/products/src/index.ts"],
       "@jafar-tech/backend/table-management": [
         "libs/backend/table-management/src/index.ts"
+      ],
+      "@jafar-tech/backend/utils-config": [
+        "libs/backend/utils-config/src/index.ts"
       ],
       "@jafar-tech/shared/core": ["libs/shared/core/src/index.ts"],
       "@jafar-tech/shared/data-access": [
