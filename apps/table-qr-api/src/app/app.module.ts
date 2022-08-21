@@ -24,16 +24,19 @@ import { AppService } from './app.service';
 @Module({
   imports: [
     BackendFeatureConfigModule,
-    BackendFeatureTodoModule,
+    // BackendFeatureTodoModule,
     MongooseModule.forRootAsync({
       inject: [mongoConfiguration.KEY],
       useFactory: (config: MongoConfiguration) => {
+        console.log('configuration is ', config);
         return {
           uri: config.uri,
           dbName: config.dbName,
         };
       },
     }),
+    // [TODO] - the mongo atals url has some extra querystring parameters, which has not been incorporated.
+    // in the above forRootAsync method for mongoosemodule. this is needs further research
     // MongooseModule.forRoot(
     //   'mongodb+srv://tableqr:Temp1234@cluster0.y7xyc.mongodb.net/tableqr?retryWrites=true&w=majority',
     //   { appName: 'appnameprintedonlog', dbName: 'tableqr' }
