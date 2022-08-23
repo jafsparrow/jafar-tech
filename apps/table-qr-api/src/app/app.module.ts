@@ -42,7 +42,7 @@ import { AppService } from './app.service';
     //   { appName: 'appnameprintedonlog', dbName: 'tableqr' }
     // ),
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'table-qr'),
+      rootPath: join(__dirname, '..', 'table-admin'),
       exclude: ['/api*'],
     }),
     BackendCoreModule,
