@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://what42day.herokuapp.com/api',
+  apiUrl: 'https://sparrow-table.herokuapp.com:3333',
 };
