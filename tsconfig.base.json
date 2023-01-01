@@ -113,6 +113,9 @@
       "@jafar-tech/table-qr/table-management/data-access": [
         "libs/table-qr/table-management/data-access/src/index.ts"
       ],
+      "@jafar-tech/table-qr/table-management/features/table-add": [
+        "libs/table-qr/table-management/features/table-add/src/index.ts"
+      ],
       "@jafar-tech/table-qr/table-management/features/table-list": [
         "libs/table-qr/table-management/features/table-list/src/index.ts"
       ],

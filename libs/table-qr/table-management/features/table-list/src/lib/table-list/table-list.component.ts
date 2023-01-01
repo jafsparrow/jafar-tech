@@ -17,4 +17,5 @@ export class TableListComponent implements OnInit {
   ngOnInit(): void {
     this.tables$.subscribe((tables) => console.log(tables));
   }
+  openCreateTable(){}
 }

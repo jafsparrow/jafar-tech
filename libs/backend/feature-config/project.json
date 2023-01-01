@@ -1,4 +1,5 @@
 {
+  "name": "backend-feature-config",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/backend/feature-config/src",
   "projectType": "library",

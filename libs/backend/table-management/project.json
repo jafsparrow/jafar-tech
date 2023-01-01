@@ -1,4 +1,5 @@
 {
+  "name": "backend-table-management",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/backend/table-management/src",
   "projectType": "library",

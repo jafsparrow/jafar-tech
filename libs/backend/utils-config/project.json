@@ -1,4 +1,5 @@
 {
+  "name": "backend-utils-config",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/backend/utils-config/src",
   "projectType": "library",

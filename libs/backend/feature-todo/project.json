@@ -1,4 +1,5 @@
 {
+  "name": "backend-feature-todo",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/backend/feature-todo/src",
   "projectType": "library",
