@@ -1330,6 +1330,32 @@
       },
       "tags": []
     },
+    "table-qr-table-management-shell": {
+      "projectType": "library",
+      "root": "libs/table-qr/table-management/shell",
+      "sourceRoot": "libs/table-qr/table-management/shell/src",
+      "prefix": "jafar-tech",
+      "targets": {
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/table-qr/table-management/shell"],
+          "options": {
+            "jestConfig": "libs/table-qr/table-management/shell/jest.config.ts",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/table-qr/table-management/shell/**/*.ts",
+              "libs/table-qr/table-management/shell/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "table-qr-take-away-features-add-take-away": {
       "projectType": "library",
       "root": "libs/table-qr/take-away/features/add-take-away",

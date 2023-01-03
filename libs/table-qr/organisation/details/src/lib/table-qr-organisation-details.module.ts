@@ -8,10 +8,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatChipsModule } from '@angular/material/chips';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   imports: [
@@ -23,8 +23,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatIconModule,
     MatAutocompleteModule,
     MatSelectModule,
-    MatCheckboxModule,
     MatChipsModule,
+    MatCheckboxModule,
     MatButtonModule,
     TableQrOrganisationDataAccessModule,
   ],

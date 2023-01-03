@@ -98,8 +98,8 @@ import { CartDataAccessModule } from '@jafar-tech/table-qr-cart-data-access';
             path: 'table',
             loadChildren: () =>
               import(
-                '@jafar-tech/table-qr/table-management/features/table-list'
-              ).then((m) => m.TableQrTableManagementFeaturesTableListModule),
+                '@jafar-tech/table-qr/table-management/shell'
+              ).then((m) => m.TableQrTableManagementShellModule),
           },
         ],
       },

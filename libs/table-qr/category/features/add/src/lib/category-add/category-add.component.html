@@ -21,7 +21,7 @@
           *ngIf="!alwaysOpen"
         >
           <mat-label>Days</mat-label>
-          <mat-chip-list #chipList aria-label="Days selection">
+          <!-- <mat-chip-list #chipList aria-label="Days selection">
             <mat-chip *ngFor="let day of selectedDays" (removed)="remove(day)">
               {{ day }}
               <button matChipRemove>
@@ -37,7 +37,7 @@
               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
               (matChipInputTokenEnd)="add($event)"
             />
-          </mat-chip-list>
+          </mat-chip-list> -->
           <mat-autocomplete
             #auto4Days="matAutocomplete"
             (optionSelected)="selected($event)"

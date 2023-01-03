@@ -122,6 +122,9 @@
       "@jafar-tech/table-qr/table-management/features/table-search": [
         "libs/table-qr/table-management/features/table-search/src/index.ts"
       ],
+      "@jafar-tech/table-qr/table-management/shell": [
+        "libs/table-qr/table-management/shell/src/index.ts"
+      ],
       "@jafar-tech/table-qr/take-away/features/add-take-away": [
         "libs/table-qr/take-away/features/add-take-away/src/index.ts"
       ]
