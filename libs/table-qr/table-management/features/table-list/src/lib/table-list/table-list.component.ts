@@ -11,11 +11,16 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./table-list.component.css'],
 })
 export class TableListComponent implements OnInit {
+  sampleTableSections = [
+    'ground floor non ac',
+    'ground floor ac',
+    'first floor garden',
+  ];
   tables$ = this.store.select(selectAllTables);
   constructor(private store: Store) {}
 
   ngOnInit(): void {
     this.tables$.subscribe((tables) => console.log(tables));
   }
-  openCreateTable(){}
+  openCreateTable() {}
 }

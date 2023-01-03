@@ -1,2 +1,30 @@
 table-list-works
-<button (click)="openCreateTable()">Create</button>
+
+<a routerLink="add">add</a>
+
+<section>
+    <p>this displays existing sections of the restaurant with checkbox to filter</p>
+    <div class="table-section-filter-container">
+        <section  >
+            <h4>Select your sections:</h4>
+            <mat-checkbox *ngFor="let section of sampleTableSections">{{section}}</mat-checkbox>
+            <button mat-icon-button  >
+                <mat-icon>add</mat-icon>
+              </button>
+          </section>
+        <p>an extra button to navigate to the section add page.</p>
+    </div>
+</section>
+
+<section class="table-list-wrapper">
+    <p>this is where the exisitng tables are dispalyed, filtered if the above table filter has been chosen.</p>
+    <p>Tables +</p>
+    <div class="table-container" *ngFor="let item of [1,1,1,1,1]">
+        <p>Table: 1222
+        </p>
+        <p>Capacity: 5</p>
+        <p>Password: 231</p>
+
+        <button mat-button routerLink="detail">View</button>
+    </div>
+</section>

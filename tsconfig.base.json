@@ -116,6 +116,9 @@
       "@jafar-tech/table-qr/table-management/features/table-add": [
         "libs/table-qr/table-management/features/table-add/src/index.ts"
       ],
+      "@jafar-tech/table-qr/table-management/features/table-detail": [
+        "libs/table-qr/table-management/features/table-detail/src/index.ts"
+      ],
       "@jafar-tech/table-qr/table-management/features/table-list": [
         "libs/table-qr/table-management/features/table-list/src/index.ts"
       ],

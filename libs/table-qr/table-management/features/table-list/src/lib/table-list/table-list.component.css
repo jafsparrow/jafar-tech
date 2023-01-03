@@ -1,0 +1,22 @@
+.table-section-filter-container {
+    background-color: #eeeeee;
+    margin: 5px;
+    padding: 20px;
+}
+
+.table-list-wrapper {
+    margin: 0 5px;
+    padding: 20px;
+    /* display: flex;
+    flex-wrap: wrap; */
+
+}
+
+.table-container {
+    min-width: 50%;
+    background-color: #eee;
+    margin: 5px;
+    padding: 20px;
+    border: 2px solid slategray;
+    border-radius: 5px;
+}
