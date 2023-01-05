@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TableValidatorService } from '../table-validator.service';
 
 @Component({
   selector: 'jafar-tech-table-add',
@@ -21,13 +22,20 @@ export class TableAddComponent implements OnInit {
       value: 'Lower Floor AC',
     },
   ];
-  constructor(private activatedRoute: ActivatedRoute) {
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private validatorService: TableValidatorService
+  ) {
     this.activatedRoute.paramMap.subscribe((map) => console.log(map));
   }
 
   ngOnInit(): void {
     this.tableAddForm = new FormGroup({
-      number: new FormControl(''),
+      number: new FormControl('', {
+        asyncValidators: [
+          this.validatorService.validate.bind(this.validatorService),
+        ],
+      }),
       capacity: new FormControl(''),
       password: new FormControl(''),
       section: new FormControl(''),

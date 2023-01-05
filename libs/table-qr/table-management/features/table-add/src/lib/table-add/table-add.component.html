@@ -4,6 +4,9 @@
     <mat-form-field >
         <mat-label >Table Number</mat-label>
         <input matInput formControlName="number">
+        <mat-error *ngIf="tableAddForm.get('number')?.errors">
+           {{tableAddForm.get('number')?.errors}}
+          </mat-error>
       </mat-form-field>
 
       
