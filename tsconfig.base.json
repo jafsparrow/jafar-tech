@@ -125,6 +125,9 @@
       "@jafar-tech/table-qr/table-management/features/table-search": [
         "libs/table-qr/table-management/features/table-search/src/index.ts"
       ],
+      "@jafar-tech/table-qr/table-management/features/table-section-management": [
+        "libs/table-qr/table-management/features/table-section-management/src/index.ts"
+      ],
       "@jafar-tech/table-qr/table-management/shell": [
         "libs/table-qr/table-management/shell/src/index.ts"
       ],
