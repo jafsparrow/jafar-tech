@@ -8,11 +8,14 @@ table-list-works
         <section  >
             <h4>Select your sections:</h4>
             <mat-checkbox *ngFor="let section of sampleTableSections">{{section}}</mat-checkbox>
-            <button mat-icon-button  >
-                <mat-icon>add</mat-icon>
-              </button>
+
           </section>
         <p>an extra button to navigate to the section add page.</p>
+        <button mat-icon-button  >
+            <mat-icon>add</mat-icon>
+          </button>
+
+          <button mat-raised-button routerLink="sections">More</button>
     </div>
 </section>
 

@@ -17,12 +17,22 @@ export const tableQrTableManagementShellRoutes: Route[] = [
         (m) => m.TableQrTableManagementFeaturesTableAddModule
       ),
   },
+
   {
     path: 'detail',
     loadChildren: () =>
       import(
         '@jafar-tech/table-qr/table-management/features/table-detail'
       ).then((m) => m.TableQrTableManagementFeaturesTableDetailModule),
+  },
+  {
+    path: 'sections',
+    loadChildren: () =>
+      import(
+        '@jafar-tech/table-qr/table-management/features/table-section-management'
+      ).then(
+        (m) => m.TableQrTableManagementFeaturesTableSectionManagementModule
+      ),
   },
 ];
 

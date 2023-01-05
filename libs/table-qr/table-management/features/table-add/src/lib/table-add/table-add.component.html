@@ -1,1 +1,29 @@
 <p>table-add works!</p>
+<form [formGroup]="tableAddForm" (ngSubmit)="onSubmit()">
+
+    <mat-form-field >
+        <mat-label >Table Number</mat-label>
+        <input matInput formControlName="number">
+      </mat-form-field>
+
+      
+    <mat-form-field >
+      <mat-label>Capacity</mat-label>
+      <input matInput formControlName="capacity">
+    </mat-form-field>
+
+    <mat-form-field >
+        <mat-label>Password</mat-label>
+        <input matInput formArrayName="password">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Choose an option</mat-label>
+        <mat-select formControlName="section">
+          <mat-option *ngFor="let section of sections" [value]="section.id">{{section.value}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+      <button type="submit" [disabled]="!tableAddForm.valid">Submit</button>
+    </form>
