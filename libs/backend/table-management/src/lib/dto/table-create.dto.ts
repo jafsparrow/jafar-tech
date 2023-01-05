@@ -1,4 +1,10 @@
-import { IsBoolean, IsNotEmpty, IsNumber, isNumber } from 'class-validator';
+import {
+  IsBoolean,
+  IsNotEmpty,
+  IsNumber,
+  isNumber,
+  IsOptional,
+} from 'class-validator';
 
 export class TableCreateDto {
   // @IsNotEmpty()
@@ -13,4 +19,7 @@ export class TableCreateDto {
 
   @IsNotEmpty()
   capacity: number;
+
+  @IsOptional()
+  section: string;
 }

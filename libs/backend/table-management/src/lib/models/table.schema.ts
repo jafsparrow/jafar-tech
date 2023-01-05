@@ -16,6 +16,9 @@ export class Table extends Document {
   @Prop()
   capacity: number;
 
+  @Prop()
+  section: string;
+
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Organisation' })
   organisation: Organisation;
 }
