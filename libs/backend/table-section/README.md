@@ -1,0 +1,7 @@
+# backend-table-section
+
+This library was generated with [Nx](https://nx.dev).
+
+## Running unit tests
+
+Run `nx test backend-table-section` to execute the unit tests via [Jest](https://jestjs.io).

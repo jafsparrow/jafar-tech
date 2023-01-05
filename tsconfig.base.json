@@ -36,6 +36,9 @@
       "@jafar-tech/backend/table-management": [
         "libs/backend/table-management/src/index.ts"
       ],
+      "@jafar-tech/backend/table-section": [
+        "libs/backend/table-section/src/index.ts"
+      ],
       "@jafar-tech/backend/utils-config": [
         "libs/backend/utils-config/src/index.ts"
       ],
