@@ -7,4 +7,4 @@ export class TableSection extends Document {
   name: string;
 }
 
-export const TableSectionSchma = SchemaFactory.createForClass(TableSection);
+export const TableSectionSchema = SchemaFactory.createForClass(TableSection);

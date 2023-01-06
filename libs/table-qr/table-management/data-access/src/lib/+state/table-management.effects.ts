@@ -1,8 +1,14 @@
 import { Injectable } from '@angular/core';
+import { Organisation } from '@jafar-tech/shared/data-access';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
+
+import { loadOrgInfoSuccess } from '@jafar-tech/table-qr/organisation/data-access';
 import { TableManagementService } from '../table-management.service';
 import {
+  addTableSection,
+  addTableSectionFail,
+  addTableSectionSuccess,
   loadTables,
   loadTablesFail,
   loadTablesSuccess,
@@ -30,6 +36,38 @@ export class TableManagementEffects {
             );
           })
         )
+      )
+    );
+  });
+
+  addTableSectionEffect$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(addTableSection),
+      switchMap((payload) =>
+        this.tableManagementService
+          .createTableSection(payload.tableSectionName)
+          .pipe(
+            map((res) =>
+              addTableSectionSuccess({ organisation: res as Organisation })
+            ),
+            catchError((error) =>
+              of(
+                addTableSectionFail({
+                  errorMessage: 'Could not create category',
+                })
+              )
+            )
+          )
+      )
+    );
+  });
+
+  addCategorySuccessEffect$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(addTableSectionSuccess),
+
+      switchMap((payload) =>
+        of(loadOrgInfoSuccess({ organisation: payload.organisation }))
       )
     );
   });

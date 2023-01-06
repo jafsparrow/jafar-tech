@@ -2,7 +2,10 @@ import { BackendAuthModule } from '@jafar-tech/backend/auth';
 import { BackendOrganisationModule } from '@jafar-tech/backend/organisation';
 import { forwardRef, Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { TableSection, TableSectionSchma } from './models/table-section.schema';
+import {
+  TableSection,
+  TableSectionSchema,
+} from './models/table-section.schema';
 import { TableSectionController } from './table-section.controller';
 import { TableSectionRepository } from './table-section.repository';
 import { TableSectionService } from './table-section.service';
@@ -12,7 +15,7 @@ import { TableSectionService } from './table-section.service';
     MongooseModule.forFeature([
       {
         name: TableSection.name,
-        schema: TableSectionSchma,
+        schema: TableSectionSchema,
       },
     ]),
     forwardRef(() => BackendOrganisationModule),
@@ -20,6 +23,6 @@ import { TableSectionService } from './table-section.service';
   ],
   controllers: [TableSectionController],
   providers: [TableSectionService, TableSectionRepository],
-  exports: [TableSection],
+  exports: [],
 })
 export class BackendTableSectionModule {}

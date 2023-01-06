@@ -6,7 +6,7 @@ import { TableSectionRepository } from './table-section.repository';
 export class TableSectionService {
   constructor(private tableSectionRepo: TableSectionRepository) {}
 
-  addCategory(companyId: string, data: TableSectionDto) {
+  addTableSection(companyId: string, data: TableSectionDto) {
     return this.tableSectionRepo.createTableSection(companyId, data);
   }
 }

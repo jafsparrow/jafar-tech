@@ -7,6 +7,7 @@ import { BackendOrdersModule } from '@jafar-tech/backend/orders';
 import { BackendOrganisationModule } from '@jafar-tech/backend/organisation';
 import { BackendProductsModule } from '@jafar-tech/backend/products';
 import { BackendTableManagementModule } from '@jafar-tech/backend/table-management';
+import { BackendTableSectionModule } from '@jafar-tech/backend/table-section';
 import {
   MongoConfiguration,
   mongoConfiguration,
@@ -53,6 +54,7 @@ import { AppService } from './app.service';
     BackendCategoryModule,
     BackendOrdersModule,
     BackendTableManagementModule,
+    BackendTableSectionModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -1,7 +1,8 @@
-import { Table } from '@jafar-tech/shared/data-access';
+import { Table, TableSection } from '@jafar-tech/shared/data-access';
 import { createReducer, on } from '@ngrx/store';
 import {
   filterTable,
+  loadTableSectionSuccess,
   loadTablesFail,
   loadTablesSuccess,
 } from './table-management.actions';
@@ -13,6 +14,7 @@ export interface TableState {
   selectedTableId: number | null;
   searchTerm: number | null;
   errorMessage: string;
+  tableSections?: TableSection[];
 }
 
 const initialState: TableState = {
@@ -20,6 +22,7 @@ const initialState: TableState = {
   selectedTableId: null,
   searchTerm: null,
   errorMessage: '',
+  tableSections: [],
 };
 
 export const tableReducer = createReducer(
@@ -30,5 +33,9 @@ export const tableReducer = createReducer(
     errorMessage: '',
   })),
   on(loadTablesFail, (state, { error }) => ({ ...state, errorMessage: error })),
-  on(filterTable, (state, { searchTerm }) => ({ ...state, searchTerm }))
+  on(filterTable, (state, { searchTerm }) => ({ ...state, searchTerm })),
+  on(loadTableSectionSuccess, (state, { tableSections }) => ({
+    ...state,
+    tableSections,
+  }))
 );

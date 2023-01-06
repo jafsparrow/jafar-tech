@@ -3,10 +3,10 @@
 <div class="container">
     
         <li *ngFor="let section of sections">{{section.value}} <span><button>Delete</button></span></li>
-        <form   >
+        <form  [formGroup]="tableSectionAddFrom" (submit)="onSubmit()" >
             <label for="section-input">Section Name</label>
-            <input type="text" id="section-input" placeholder="Enter Floor Layout Section Name">
-            <button>Submit</button>
+            <input type="text" id="section-input" formControlName="sectionName" placeholder="Enter Floor Layout Section Name" >
+            <button type="submit">Submit</button>
         </form>
     
 </div>

@@ -4,6 +4,7 @@ import { Organisation } from '@jafar-tech/shared/data-access';
 import { loadTaxes } from '@jafar-tech/table-qr-cart-data-access';
 import { loadProductsSuccess } from '@jafar-tech/table-qr-products-data-access';
 import { loadCategoriesSuccess } from '@jafar-tech/table-qr/category/data-access/category';
+import { loadTableSectionSuccess } from '@jafar-tech/table-qr/table-management/data-access';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
@@ -55,6 +56,12 @@ export class OrganisationEffects {
           this.store.dispatch(
             loadCategoriesSuccess({
               categories: payload.organisation!.categories!,
+            })
+          );
+
+          this.store.dispatch(
+            loadTableSectionSuccess({
+              tableSections: payload.organisation!.tableSections!,
             })
           );
 

@@ -10,8 +10,8 @@ import {
   ProductSchema,
 } from 'libs/backend/products/src/lib/models/product.schema';
 import {
+  TableSectionSchema,
   TableSection,
-  TableSectionSchma,
 } from 'libs/backend/table-section/src/lib/models/table-section.schema';
 
 import { Document } from 'mongoose';
@@ -76,7 +76,7 @@ export class Organisation extends Document {
   @Prop({ type: [CategorySchema], default: [] })
   categories: Category[];
 
-  @Prop({ type: [TableSectionSchma], default: [] })
+  @Prop({ type: [TableSectionSchema], default: [] })
   tableSections: TableSection[];
 
   @Prop({ type: [UserSchema], default: [] })

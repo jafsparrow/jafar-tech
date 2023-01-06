@@ -22,3 +22,8 @@ export const filteredTables = createSelector(
       searchTerm ? table.id.toString().includes(searchTerm.toString()) : true
     )
 );
+
+export const selectTableSections = createSelector(
+  selectTableState,
+  (state) => state.tableSections
+);
