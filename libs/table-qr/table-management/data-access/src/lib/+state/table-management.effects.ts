@@ -9,10 +9,14 @@ import {
   addTableSection,
   addTableSectionFail,
   addTableSectionSuccess,
+  createTable,
+  createTableSuccess,
+  createUpdateTableFail,
   loadTables,
   loadTablesFail,
   loadTablesSuccess,
 } from './table-management.actions';
+import { S } from '@angular/cdk/keycodes';
 
 @Injectable()
 export class TableManagementEffects {
@@ -62,7 +66,28 @@ export class TableManagementEffects {
     );
   });
 
-  addCategorySuccessEffect$ = createEffect(() => {
+  addTableEffect$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(createTable),
+      switchMap((payload) =>
+        this.tableManagementService.createTable(payload.table).pipe(
+          map((res) => createTableSuccess()),
+          catchError((error) =>
+            of(createUpdateTableFail({ error: 'something wrong happened' }))
+          )
+        )
+      )
+    );
+  });
+
+  createTableSuccessEffect$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(createTableSuccess),
+      switchMap((payload) => of(loadTables()))
+    );
+  });
+
+  addTableSectionSuccessEffect$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(addTableSectionSuccess),
 

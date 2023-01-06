@@ -12,7 +12,7 @@ export class TableCreateDto {
 
   @IsNotEmpty()
   @IsNumber()
-  id: number;
+  tableNumber: number;
 
   @IsNotEmpty()
   password: number;

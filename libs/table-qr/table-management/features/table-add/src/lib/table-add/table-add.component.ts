@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import {
+  createTable,
+  selectTableSections,
+} from '@jafar-tech/table-qr/table-management/data-access';
+import { Store } from '@ngrx/store';
 import { TableValidatorService } from '../table-validator.service';
 
 @Component({
@@ -22,16 +27,19 @@ export class TableAddComponent implements OnInit {
       value: 'Lower Floor AC',
     },
   ];
+
+  tableSections$ = this.store.select(selectTableSections);
   constructor(
     private activatedRoute: ActivatedRoute,
-    private validatorService: TableValidatorService
+    private validatorService: TableValidatorService,
+    private store: Store
   ) {
     this.activatedRoute.paramMap.subscribe((map) => console.log(map));
   }
 
   ngOnInit(): void {
     this.tableAddForm = new FormGroup({
-      number: new FormControl('', {
+      tableNumber: new FormControl('', {
         asyncValidators: [
           this.validatorService.validate.bind(this.validatorService),
         ],
@@ -42,6 +50,9 @@ export class TableAddComponent implements OnInit {
     });
   }
   onSubmit() {
+    if (this.tableAddForm.valid) {
+      this.store.dispatch(createTable({ table: this.tableAddForm.value }));
+    }
     console.log(this.tableAddForm.value);
   }
 }

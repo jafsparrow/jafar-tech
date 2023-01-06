@@ -1,5 +1,6 @@
 export interface Table {
   id: number;
+  tableNumber?: number;
   capacity: number;
   password: number;
   isOccupied: boolean;
@@ -7,6 +8,6 @@ export interface Table {
 }
 
 export interface TableSection {
-  id: string;
+  _id: string;
   name: string;
 }

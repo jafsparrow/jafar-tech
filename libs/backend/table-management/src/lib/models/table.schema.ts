@@ -5,7 +5,7 @@ import mongoose, { Document } from 'mongoose';
 @Schema()
 export class Table extends Document {
   @Prop()
-  id: number;
+  tableNumber: number;
 
   @Prop({ unique: true, minlength: 4 })
   password: number;

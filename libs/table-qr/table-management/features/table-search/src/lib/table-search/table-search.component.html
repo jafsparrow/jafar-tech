@@ -12,10 +12,10 @@
   <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
     <mat-option
       *ngFor="let table of filterdTables$ | async"
-      [value]="table.id"
+      [value]="table.tableNumber"
       (onSelectionChange)="onSelectionChange($event, table)"
     >
-      {{ table.id }}
+      {{ table.tableNumber }}
     </mat-option>
   </mat-autocomplete>
 </mat-form-field>

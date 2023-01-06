@@ -19,7 +19,9 @@ export const filteredTables = createSelector(
   selectSearchTerm,
   (tables, searchTerm) =>
     tables.filter((table) =>
-      searchTerm ? table.id.toString().includes(searchTerm.toString()) : true
+      searchTerm
+        ? table.tableNumber!.toString().includes(searchTerm.toString())
+        : true
     )
 );
 

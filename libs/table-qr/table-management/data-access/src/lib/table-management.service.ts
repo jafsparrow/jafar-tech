@@ -24,4 +24,9 @@ export class TableManagementService {
 
     return this.http.post<Organisation>(url, value);
   }
+
+  createTable(table: Table) {
+    const url = `${this.apiUrl}/tablemanagement`;
+    return this.http.post<any>(url, table);
+  }
 }

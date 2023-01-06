@@ -24,6 +24,10 @@ export const createTable = createAction(
   props<{ table: Table }>()
 );
 
+export const createTableSuccess = createAction(
+  '[Table Management] Create Organisation Table Success'
+);
+
 export const udpateTable = createAction(
   '[Table Management] Update Organisation Table',
   props<{ table: Table }>()

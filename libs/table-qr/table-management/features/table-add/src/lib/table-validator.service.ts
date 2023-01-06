@@ -14,6 +14,7 @@ export class TableValidatorService implements AsyncValidator {
   validate(
     control: AbstractControl<any, any>
   ): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> {
+    return of(null);
     return of({ hello: 'you' });
   }
   registerOnValidatorChange?(fn: () => void): void {

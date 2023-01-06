@@ -2,7 +2,7 @@ import { IsNotEmpty } from 'class-validator';
 
 export class TableUpdateDto {
   @IsNotEmpty()
-  id: number;
+  _id: string;
 
   capacity: number;
 
