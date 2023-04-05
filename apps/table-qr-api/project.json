@@ -5,13 +5,15 @@
   "projectType": "application",
   "targets": {
     "build": {
-      "executor": "@nrwl/node:webpack",
+      "executor": "@nrwl/webpack:webpack",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/table-qr-api",
         "main": "apps/table-qr-api/src/main.ts",
         "tsConfig": "apps/table-qr-api/tsconfig.app.json",
-        "assets": ["apps/table-qr-api/src/assets"]
+        "assets": ["apps/table-qr-api/src/assets"],
+        "target": "node",
+        "compiler": "tsc"
       },
       "configurations": {
         "production": {

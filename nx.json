@@ -46,5 +46,13 @@
       "style": "scss"
     }
   },
-  "defaultProject": "table-qr"
+  "defaultProject": "table-qr",
+  "targetDefaults": {
+    "lint": {
+      "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
+    },
+    "e2e": {
+      "inputs": ["default", "^default"]
+    }
+  }
 }
