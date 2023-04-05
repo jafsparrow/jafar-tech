@@ -1,0 +1,27 @@
+{
+  "name": "table-qr-menu-features-add-menu",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/table-qr/menu/features/add-menu/src",
+  "prefix": "jafar-tech",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/table-qr/menu/features/add-menu"],
+      "options": {
+        "jestConfig": "libs/table-qr/menu/features/add-menu/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/table-qr/menu/features/add-menu/src/**/*.ts",
+          "libs/table-qr/menu/features/add-menu/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,27 @@
+{
+  "name": "table-admin-shell",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/table-admin/shell/src",
+  "prefix": "jafar-tech",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/table-admin/shell"],
+      "options": {
+        "jestConfig": "libs/table-admin/shell/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/table-admin/shell/src/**/*.ts",
+          "libs/table-admin/shell/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

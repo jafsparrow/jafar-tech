@@ -1,0 +1,27 @@
+{
+  "name": "table-qr-dashboard-features-dashboard",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/table-qr/dashboard/features/dashboard/src",
+  "prefix": "jafar-tech",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/table-qr/dashboard/features/dashboard"],
+      "options": {
+        "jestConfig": "libs/table-qr/dashboard/features/dashboard/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/table-qr/dashboard/features/dashboard/src/**/*.ts",
+          "libs/table-qr/dashboard/features/dashboard/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

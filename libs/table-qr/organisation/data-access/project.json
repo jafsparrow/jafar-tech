@@ -1,0 +1,27 @@
+{
+  "name": "table-qr-organisation-data-access",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/table-qr/organisation/data-access/src",
+  "prefix": "jafar-tech",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/table-qr/organisation/data-access"],
+      "options": {
+        "jestConfig": "libs/table-qr/organisation/data-access/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/table-qr/organisation/data-access/src/**/*.ts",
+          "libs/table-qr/organisation/data-access/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,24 @@
+{
+  "name": "cart",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/cart/src",
+  "prefix": "jafar-tech",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/cart"],
+      "options": {
+        "jestConfig": "libs/cart/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/cart/src/**/*.ts", "libs/cart/src/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}

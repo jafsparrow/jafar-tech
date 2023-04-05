@@ -1,0 +1,27 @@
+{
+  "name": "table-qr-table-management-features-table-add",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/table-qr/table-management/features/table-add/src",
+  "prefix": "jafar-tech",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/table-qr/table-management/features/table-add"],
+      "options": {
+        "jestConfig": "libs/table-qr/table-management/features/table-add/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/table-qr/table-management/features/table-add/**/*.ts",
+          "libs/table-qr/table-management/features/table-add/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

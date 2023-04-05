@@ -1,0 +1,27 @@
+{
+  "name": "table-qr-table-management-shell",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/table-qr/table-management/shell/src",
+  "prefix": "jafar-tech",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/table-qr/table-management/shell"],
+      "options": {
+        "jestConfig": "libs/table-qr/table-management/shell/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/table-qr/table-management/shell/**/*.ts",
+          "libs/table-qr/table-management/shell/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

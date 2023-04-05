@@ -1,0 +1,27 @@
+{
+  "name": "table-qr-core",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/table-qr/core/src",
+  "prefix": "jafar-tech",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/table-qr/core"],
+      "options": {
+        "jestConfig": "libs/table-qr/core/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/table-qr/core/src/**/*.ts",
+          "libs/table-qr/core/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

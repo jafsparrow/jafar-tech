@@ -1,0 +1,27 @@
+{
+  "name": "table-qr-products-features-add",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/table-qr/products/features/add/src",
+  "prefix": "jafar-tech",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/table-qr/products/features/add"],
+      "options": {
+        "jestConfig": "libs/table-qr/products/features/add/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/table-qr/products/features/add/src/**/*.ts",
+          "libs/table-qr/products/features/add/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

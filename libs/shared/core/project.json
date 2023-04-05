@@ -1,0 +1,27 @@
+{
+  "name": "shared-core",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/shared/core/src",
+  "prefix": "jafar-tech",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/shared/core"],
+      "options": {
+        "jestConfig": "libs/shared/core/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/shared/core/src/**/*.ts",
+          "libs/shared/core/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

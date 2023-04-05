@@ -1,0 +1,29 @@
+{
+  "name": "table-qr-orders-features-kitchen-order-management",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/table-qr/orders/features/kitchen-order-management/src",
+  "prefix": "jafar-tech",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/libs/table-qr/orders/features/kitchen-order-management"
+      ],
+      "options": {
+        "jestConfig": "libs/table-qr/orders/features/kitchen-order-management/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/table-qr/orders/features/kitchen-order-management/src/**/*.ts",
+          "libs/table-qr/orders/features/kitchen-order-management/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,27 @@
+{
+  "name": "table-qr-orders-features-order-list",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/table-qr/orders/features/order-list/src",
+  "prefix": "jafar-tech",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/table-qr/orders/features/order-list"],
+      "options": {
+        "jestConfig": "libs/table-qr/orders/features/order-list/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/table-qr/orders/features/order-list/src/**/*.ts",
+          "libs/table-qr/orders/features/order-list/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

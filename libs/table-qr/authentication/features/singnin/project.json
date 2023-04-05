@@ -1,0 +1,27 @@
+{
+  "name": "table-qr-authentication-features-singnin",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/table-qr/authentication/features/singnin/src",
+  "prefix": "jafar-tech",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/table-qr/authentication/features/singnin"],
+      "options": {
+        "jestConfig": "libs/table-qr/authentication/features/singnin/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/table-qr/authentication/features/singnin/src/**/*.ts",
+          "libs/table-qr/authentication/features/singnin/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
