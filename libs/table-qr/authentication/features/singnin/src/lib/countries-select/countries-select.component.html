@@ -1,0 +1,14 @@
+<div>
+  <form>
+    <mat-form-field appearance="fill">
+      <mat-label>Country</mat-label>
+      <mat-select [formControl]="countryForm" name="food">
+        <mat-option *ngFor="let country of countries" [value]="country.name">
+          <!-- <span>{{ country.flag }}</span> -->
+          {{ country.name }}
+          <!-- {{ country.region }} -->
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>

@@ -1,3 +1,5 @@
+import { FormatedCountry } from './countries';
+
 export enum UserType {
   ADMIN = 'admin',
   ONLINE = 'online',
@@ -14,6 +16,7 @@ export interface User {
   username?: string;
   userType: UserType;
   token?: string;
+  country?: FormatedCountry;
 }
 
 export interface LoginData {

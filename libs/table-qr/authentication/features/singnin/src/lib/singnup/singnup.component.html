@@ -3,9 +3,32 @@
     <div class="heading">
       <h2>Lets make your shop next Gen</h2>
     </div>
+
     <form class="signup-form" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
       <mat-form-field appearance="outline">
-        <mat-label>Name</mat-label>
+        <mat-label>You Business Name</mat-label>
+        <input matInput formControlName="businessName" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Country</mat-label>
+        <mat-select
+          formControlName="country"
+          (valueChange)="getIsdCodeOfSelectedCountry($event)"
+        >
+          <mat-option
+            *ngFor="let country of countries"
+            [value]="country.countryCode"
+          >
+            <!-- <span>{{ country.flag }}</span> -->
+            {{ country.name }}
+            <!-- {{ country.region }} -->
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Your Name</mat-label>
         <input matInput formControlName="firstName" />
       </mat-form-field>
 
@@ -16,7 +39,10 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Phone</mat-label>
-        <input matInput formControlName="phone" />
+        <!-- <span matPrefix class="isdCodePrefix"
+          >{{ isdCodeOfSelectedCountry }} &nbsp;&nbsp;&nbsp;</span
+        > -->
+        <input matInput formControlName="phone" type="tel" />
       </mat-form-field>
 
       <mat-form-field appearance="outline">
@@ -39,19 +65,20 @@
         color="primary"
         class="grow-100 load-indicator"
         type="submit"
-        [disabled]="!signUpForm.valid ||  (loginInProgressFlag$ | async)"
+        [disabled]="!signUpForm.valid || (loginInProgressFlag$ | async)"
       >
-        
-        <span *ngIf="(loginInProgressFlag$ | async) ===false">Sign Up</span>
-        <mat-spinner color="accent" class="margin-5px" diameter="25" *ngIf="loginInProgressFlag$ | async"></mat-spinner>
-        
+        <span *ngIf="(loginInProgressFlag$ | async) === false">Sign Up</span>
+        <mat-spinner
+          color="accent"
+          class="margin-5px"
+          diameter="25"
+          *ngIf="loginInProgressFlag$ | async"
+        ></mat-spinner>
       </button>
 
       <div class="error-message">
-        {{ loginErrorMessage$ | async}}
+        {{ loginErrorMessage$ | async }}
       </div>
-
-
 
       <div class="already-have">
         <a routerLink="/login">Already have an account</a>

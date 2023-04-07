@@ -1,5 +1,6 @@
 import {
   Category,
+  FormatedCountry,
   Product,
   TableSection,
   Tax,
@@ -21,5 +22,5 @@ export interface Organisation {
   isRegistrationComplete?: boolean;
   taxes?: Tax[];
   currencyCode?: string;
-  country?: string;
+  country?: FormatedCountry;
 }

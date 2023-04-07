@@ -8,6 +8,9 @@ import {
   selectLoginErrorMessage,
   selectLoginProgressState,
 } from '@jafar-tech/table-qr-authentication-data-access';
+import { CountriesService } from '../countries.service';
+import { FormatedCountry, User } from '@jafar-tech/shared/data-access';
+import { MatSelectChange } from '@angular/material/select';
 
 @Component({
   selector: 'jafar-tech-singnup',
@@ -18,22 +21,37 @@ export class SingnupComponent implements OnInit {
   loginInProgressFlag$ = this.store.select(selectLoginProgressState);
   loginErrorMessage$ = this.store.select(selectLoginErrorMessage);
   signUpForm: FormGroup;
-
-  constructor(private store: Store) {
+  isdCodeOfSelectedCountry: string = '33';
+  constructor(
+    private store: Store,
+    private countriesService: CountriesService
+  ) {
     this.signUpForm = new FormGroup({
       firstName: new FormControl('', Validators.required),
+      businessName: new FormControl('', Validators.required),
+      country: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
       phone: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
     });
+
+    this.countries = this.countriesService.getAll();
   }
+
+  countries!: FormatedCountry[];
 
   ngOnInit(): void {}
 
+  getIsdCodeOfSelectedCountry(countryCode: string) {
+    this.isdCodeOfSelectedCountry =
+      this.countriesService.getByValue(countryCode).isdCode;
+  }
+
   onSubmit() {
-    console.log(this.signUpForm.value);
     let user = this.signUpForm.value;
+    user.country = this.countriesService.getByValue(user.country);
     user.lastName = '';
+
     this.store.dispatch(signUp(user));
   }
 }

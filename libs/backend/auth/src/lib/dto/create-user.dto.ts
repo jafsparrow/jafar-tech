@@ -1,3 +1,4 @@
+import { FormatedCountry } from '@jafar-tech/shared/data-access';
 import {
   IsEmail,
   IsNotEmpty,
@@ -7,6 +8,13 @@ import {
 } from 'class-validator';
 
 export class CreateUserDto {
+  @IsNotEmpty()
+  country: FormatedCountry;
+
+  @IsNotEmpty()
+  @IsString()
+  name: string;
+
   @IsNotEmpty()
   @IsString()
   firstName: string;

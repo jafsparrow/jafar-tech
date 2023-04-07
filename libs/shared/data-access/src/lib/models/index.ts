@@ -5,3 +5,4 @@ export * from './organisation';
 export * from './taxes';
 export * from './order';
 export * from './table';
+export * from './countries';

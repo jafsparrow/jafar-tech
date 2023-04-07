@@ -1,5 +1,5 @@
 import { User, UserSchema } from '@jafar-tech/backend/auth';
-import { Tax } from '@jafar-tech/shared/data-access';
+import { FormatedCountry, Tax } from '@jafar-tech/shared/data-access';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import {
   Category,
@@ -14,7 +14,7 @@ import {
   TableSection,
 } from 'libs/backend/table-section/src/lib/models/table-section.schema';
 
-import { Document } from 'mongoose';
+import { Document, SchemaType, Types } from 'mongoose';
 
 @Schema()
 export class Organisation extends Document {
@@ -45,8 +45,8 @@ export class Organisation extends Document {
   @Prop({ default: '' })
   currencyCode: string;
 
-  @Prop({ default: '' })
-  country: string;
+  @Prop({ default: '', type: Types.Map })
+  country: FormatedCountry;
 
   @Prop({ default: [] })
   coord: string[];

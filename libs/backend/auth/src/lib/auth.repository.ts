@@ -28,9 +28,10 @@ export class AuthenticationRepository {
   async signUpNewUser(userInput: CreateUserDto): Promise<User> {
     const session = await this.connection.startSession();
     let orgData = {
-      name: userInput.firstName,
+      name: userInput.name,
       email: userInput.email,
       phone: userInput.phone,
+      country: userInput.country,
     };
     let newOrgModel = new this.organsationModel(orgData);
     try {
