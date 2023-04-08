@@ -31,7 +31,8 @@
 
 .title {
   font-size: 18px;
-  font-weight: 400;
+  font-weight: lighter;
   text-align: center;
-  margin-top: 10px;
+  margin: 20px;
+  
 }

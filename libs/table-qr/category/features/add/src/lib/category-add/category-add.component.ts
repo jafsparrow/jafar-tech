@@ -42,6 +42,16 @@ export class CategoryAddComponent implements OnInit {
       hours: [''],
     });
   }
+
+  ngOnInit(): void {
+    this.filterdDays$ = this.getDaysFormControl()!.valueChanges.pipe(
+      startWith(null),
+      map((day: string | null) =>
+        day ? this._daysFilter(day) : this.days.slice()
+      )
+    );
+  }
+
   getDaysFormControl() {
     return this.categoryForm.get('day');
   }
@@ -81,14 +91,6 @@ export class CategoryAddComponent implements OnInit {
     let newCategoryData = this.categoryForm.value;
 
     this.store.dispatch(addCategory({ category: newCategoryData }));
-  }
-  ngOnInit(): void {
-    this.filterdDays$ = this.getDaysFormControl()!.valueChanges.pipe(
-      startWith(null),
-      map((day: string | null) =>
-        day ? this._daysFilter(day) : this.days.slice()
-      )
-    );
   }
 
   private _daysFilter(value: string): string[] {

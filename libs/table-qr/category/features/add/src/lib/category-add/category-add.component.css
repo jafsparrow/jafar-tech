@@ -1,3 +1,16 @@
 .full-width-small {
   width: 100%;
 }
+
+.category-container {
+  height: 100%;
+  margin-top: 10px;
+  padding: 10px
+
+}
+
+.heading {
+  font-size: 18px;
+  font-weight: lighter;
+  margin-bottom: 10px;
+}
