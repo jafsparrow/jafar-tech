@@ -1,6 +1,14 @@
 .org-wrapper {
   background-color: rgb(242, 240, 240);
   height: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+}
+
+.full-width-small {
+  width: 100%;
 }
 
 .heading {
@@ -18,11 +26,15 @@
   margin: 5px;
   padding: 15px;
   border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 .section-title {
   text-align: center;
   font-weight: 400;
+  font-size: 18px;
+  padding: 5px;
+  padding-bottom: 10px;
 }
 
 .tax-item-container {
