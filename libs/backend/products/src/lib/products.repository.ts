@@ -90,7 +90,7 @@ export class ProductsRepository {
       },
       {
         arrayFilters: [{ 'outer._id': productId }],
-        new: false,
+        new: true,
       }
     );
 
