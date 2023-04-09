@@ -82,17 +82,39 @@ export class ProductsRepository {
     productId: string,
     product: CreateProductDto
   ) {
-    console.log('productId', productId);
+    // Note: updating the entire product subdocument with the given CreateProductDto
+    // is updating subdocument successfully but chaning the _id to a new value. This is how
+    // mongo works as it is repalcing the subdocument with the value. But if we update individual
+    // fields of the subdocument then the id won't change.
+
+    const setQueryKeyValueOfProductData = {};
+
+    Object.entries(product).map(
+      ([key, value]) =>
+        (setQueryKeyValueOfProductData[`products.$[outer].${key}`] = value)
+    );
+
     const reponse = await this.orgModel.findOneAndUpdate(
       { _id: companyId },
       {
-        $set: { [`products.$[outer]`]: product },
+        $set: setQueryKeyValueOfProductData,
       },
       {
         arrayFilters: [{ 'outer._id': productId }],
         new: true,
       }
     );
+    // Note: the below code would update the product but sets a new _id for the product. this is how mongo works when a data changes in the subdocument.
+    // const reponse = await this.orgModel.findOneAndUpdate(
+    //   { _id: companyId },
+    //   {
+    //     $set: { [`products.$[outer]`]: product },
+    //   },
+    //   {
+    //     arrayFilters: [{ 'outer._id': productId }],
+    //     new: true,
+    //   }
+    // );
 
     return reponse;
   }

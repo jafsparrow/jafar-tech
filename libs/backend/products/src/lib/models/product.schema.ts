@@ -22,6 +22,9 @@ export class Product extends Document {
   @Prop({ required: true })
   price: number;
 
+  @Prop({ default: 0 })
+  cost: number;
+
   @Prop({ default: false })
   archived: boolean;
 
