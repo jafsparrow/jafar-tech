@@ -40,7 +40,6 @@ export class BackendProductsController {
     @Param('id') productId: string
   ) {
     let companyId = req.user.companyId;
-    console.log('controller', { companyId, productId });
     return this.productService.updateProduct(companyId, productId, product);
   }
 

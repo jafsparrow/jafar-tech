@@ -94,8 +94,6 @@ export class ProductsRepository {
       }
     );
 
-    console.log('product update', reponse);
-
     return reponse;
   }
 }
