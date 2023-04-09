@@ -39,8 +39,16 @@ export class ProductService {
     return this.productRepository.bulkUpdate(companyId, data);
   }
 
-  updateProductInfo(companyId: string, data: ProductBoolFieldDto) {
+  updateProductInfo(
+    companyId: string,
+    productId: string,
+    data: ProductBoolFieldDto
+  ) {
     return this.productRepository.updateProductInfo(companyId, data);
+  }
+
+  updateProduct(companyId: string, productId: string, data: CreateProductDto) {
+    return this.productRepository.updateProduct(companyId, productId, data);
   }
 }
 

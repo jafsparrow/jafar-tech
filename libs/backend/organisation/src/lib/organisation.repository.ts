@@ -26,6 +26,7 @@ export class OrganisationRepository {
   async updateOrganisation(orgData: UpdateOrganisationDto) {
     let companyId: string = orgData._id;
     delete orgData['_id'];
+    orgData['isRegistrationComplete'] = true;
     let updateOrg = {};
     try {
       updateOrg = await this.organsationModel.findByIdAndUpdate(

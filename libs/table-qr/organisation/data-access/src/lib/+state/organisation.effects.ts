@@ -48,6 +48,7 @@ export class OrganisationEffects {
     () => {
       return this.actions$.pipe(
         ofType(loadOrgInfoSuccess),
+        tap((payload) => console.log('org success payload', payload)),
         tap((payload) => {
           this.store.dispatch(
             loadProductsSuccess({ products: payload.organisation!.products! })

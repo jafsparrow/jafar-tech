@@ -7,7 +7,7 @@ import {
   ProductBoolFieldUpdateData,
   ProductSortData,
 } from '@jafar-tech/shared/data-access';
-import { map, Observable, of } from 'rxjs';
+import { map, Observable, of, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -31,8 +31,7 @@ export class ProductsService {
     );
   }
 
-  addProduct(companyId: string, product: Product) {
-    console.log('adding a product');
+  addProduct(product: Product) {
     console.log(product);
     return this.httpClient.post(`${this.apiUrl}/products`, product);
   }
@@ -57,9 +56,11 @@ export class ProductsService {
     );
   }
 
-  // updateProduct(companyId: any, productId: string, product: Product) :Observable<Organisation> {
-  //   return this.httpClient.put
-  // }
+  updateProduct(productId: string, product: Product): Observable<Organisation> {
+    return this.httpClient
+      .patch<Organisation>(`${this.apiUrl}/products/${productId}`, product)
+      .pipe(tap((res) => console.log('ressss', res)));
+  }
 }
 
 // PRODUCTS: Product[] = [

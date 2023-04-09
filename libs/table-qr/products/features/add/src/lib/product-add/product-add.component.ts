@@ -11,6 +11,7 @@ import { ModifierGroupsEntity, Product } from '@jafar-tech/shared/data-access';
 import {
   addProduct,
   selectAddUpdateProductProgressFlag,
+  updateProduct,
 } from '@jafar-tech/table-qr-products-data-access';
 import { DialogData } from '@jafar-tech/table-qr/products/features/detail';
 import { Store } from '@ngrx/store';
@@ -47,9 +48,10 @@ export class ProductAddComponent implements OnInit {
     this.setupAddFroms();
     this.productBasicInfo.patchValue({ category: this.data.category });
     if (this.isEdit) {
+      console.log('product to dialog', this.data.product);
       this.productBasicInfo.patchValue(this.data.product);
 
-      (this.modifierGroupsForm.get('modifiers') as FormArray).clear();
+      (this.modifierGroupsForm.get('modifiers') as FormArray)?.clear();
 
       if (this.data.product.modifierGroups?.length) {
         this.data.product.modifierGroups!.forEach((modifiers) => {
@@ -63,7 +65,10 @@ export class ProductAddComponent implements OnInit {
 
           modifiers.modifiers?.forEach((modifier) => {
             let modifierItemForm = this.emptyModifierItem();
-            modifierItemForm.patchValue({description: modifier.description, price: modifier.price.toString()});
+            modifierItemForm.patchValue({
+              description: modifier.description,
+              price: modifier.price.toString(),
+            });
             (modfierGroupFrom.get('modifiers') as FormArray).push(
               modifierItemForm
             );
@@ -158,11 +163,16 @@ export class ProductAddComponent implements OnInit {
       ...this.productBasicInfo?.value,
       ...this.modifierGroupsForm.value,
     };
-    this.store.dispatch(
-      addProduct({ companyId: '6226fbdaec38a5c0bd33ec74', product: product })
-    );
-    console.log(this.productAddForm?.value);
+    this.store.dispatch(addProduct({ product: product }));
+    // console.log(this.productAddForm?.value);
   }
 
-  updateProduct() {}
+  updateProduct() {
+    let product: Product = {
+      ...this.productBasicInfo?.value,
+      ...this.modifierGroupsForm.value,
+    };
+    const productId = this.data.product._id;
+    this.store.dispatch(updateProduct({ productId, product }));
+  }
 }

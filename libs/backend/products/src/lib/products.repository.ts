@@ -76,4 +76,26 @@ export class ProductsRepository {
       }
     );
   }
+
+  async updateProduct(
+    companyId: string,
+    productId: string,
+    product: CreateProductDto
+  ) {
+    console.log('productId', productId);
+    const reponse = await this.orgModel.findOneAndUpdate(
+      { _id: companyId },
+      {
+        $set: { [`products.$[outer]`]: product },
+      },
+      {
+        arrayFilters: [{ 'outer._id': productId }],
+        new: false,
+      }
+    );
+
+    console.log('product update', reponse);
+
+    return reponse;
+  }
 }

@@ -37,6 +37,7 @@ export class MenuCategoryProductListComponent implements OnInit {
   constructor(public dialog: MatDialog) {}
 
   openDialog(product: Product) {
+    console.log('product from product add', product);
     const dialogRef = this.dialog.open(ProductAddComponent, {
       maxWidth: '100vw',
       maxHeight: '100vh',
@@ -76,7 +77,7 @@ export class MenuCategoryProductListComponent implements OnInit {
   ngOnInit(): void {
     this.sortedProducts = this.products;
 
-    console.log(this.categories);
+    // console.log(this.categories);
   }
   ngOnChanges(): void {}
 

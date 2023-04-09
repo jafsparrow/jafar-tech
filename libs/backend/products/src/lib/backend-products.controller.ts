@@ -32,20 +32,33 @@ export class BackendProductsController {
     return this.productService.createProduct(companyId, product);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Patch(':id')
-  updateProductOrder(
-    @Body() data: PatchProductIndexDto[],
-    @Param('id') companyId: string
+  updateProduct(
+    @Body() product: CreateProductDto,
+    @Req() req,
+    @Param('id') productId: string
   ) {
+    let companyId = req.user.companyId;
+    console.log('controller', { companyId, productId });
+    return this.productService.updateProduct(companyId, productId, product);
+  }
+
+  @Patch()
+  updateProductOrder(@Body() data: PatchProductIndexDto[], @Req() req) {
     // console.log(data);
+    let companyId = req.user.companyId;
     return this.productService.updateProductsIndex(companyId, data);
   }
 
   @Put(':id')
   updateProductInfo(
     @Body() data: ProductBoolFieldDto,
-    @Param('id') companyId: string
+
+    @Req() req,
+    @Param('id') productId: string
   ) {
-    return this.productService.updateProductInfo(companyId, data);
+    let companyId = req.user.companyId;
+    return this.productService.updateProductInfo(productId, companyId, data);
   }
 }

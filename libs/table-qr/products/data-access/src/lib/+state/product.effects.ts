@@ -17,10 +17,12 @@ import {
   loadProductsCategoryViceFail,
   loadProductsCategoryViceSuccess,
   productsCategoryViceLoading,
+  updateProduct,
   updateProductBooleanFail,
   updateProductBooleans,
   updateProductFail,
   updateProductSort,
+  updateProductSuccess,
 } from './product.actions';
 
 @Injectable()
@@ -54,7 +56,7 @@ export class ProductsEffects {
       ofType(addProduct),
       tap((data) => this.store.dispatch(addupdateProductInprogress())),
       switchMap((data) =>
-        this.productService.addProduct(data.companyId, data.product).pipe(
+        this.productService.addProduct(data.product).pipe(
           map((res) =>
             addProductSuccess({ organisation: res as Organisation })
           ),
@@ -121,25 +123,41 @@ export class ProductsEffects {
     );
   });
 
-  // updateProduct$ = createEffect(() => {
-  //   return this.actions$.pipe(
-  //     ofType(updateProduct),
-  //     switchMap((payload) =>
-  //       this.productService
-  //         .updateProduct(payload.companyId, payload.productId, payload.product)
-  //         .pipe(
-  //           map(
-  //             (res) => loadOrgInfoSuccess({ organisation: res }),
-  //             catchError((error) =>
-  //               of(
-  //                 updateProductFail({
-  //                   errorMessage: 'update product boolean failed',
-  //                 })
-  //               )
-  //             )
-  //           )
-  //         )
-  //     )
-  //   );
-  // });
+  updateProduct$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(updateProduct),
+      tap((p) => console.log('updating product', p)),
+      switchMap((payload) =>
+        this.productService
+          .updateProduct(payload.productId, payload.product)
+          .pipe(
+            map(
+              (res) =>
+                updateProductSuccess({ organisation: res as Organisation }),
+              catchError((error) =>
+                of(
+                  updateProductFail({
+                    errorMessage: 'update product boolean failed',
+                  })
+                )
+              )
+            )
+          )
+      )
+    );
+  });
+
+  updateProductSuccess$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(updateProductSuccess),
+      tap((data: any) => this.dialog.closeAll()),
+      tap((data: any) =>
+        this._snackBar.open('Product has been updated successfully', 'close')
+      ),
+
+      switchMap((data) =>
+        of(loadOrgInfoSuccess({ organisation: data.organisation }))
+      )
+    );
+  });
 }

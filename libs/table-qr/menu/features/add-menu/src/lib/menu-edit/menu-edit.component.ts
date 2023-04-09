@@ -37,7 +37,7 @@ export class MenuEditComponent implements OnInit, OnDestroy {
     private dialog: MatDialog
   ) {
     this.categoriesSubscription = this.categories$.subscribe((categories) => {
-      console.log('menu componet', categories);
+      // console.log('menu componet', categories);
       this.categories = [...categories];
     });
   }
