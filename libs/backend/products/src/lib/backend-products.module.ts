@@ -6,6 +6,9 @@ import { ProductsRepository } from './products.repository';
 import { ProductService } from './products.service';
 import { BackendOrganisationModule } from '@jafar-tech/backend/organisation';
 
+import { MulterModule } from '@nestjs/platform-express';
+import { ProductImageService } from './product-image.service';
+
 @Module({
   imports: [
     MongooseModule.forFeature([
@@ -14,10 +17,13 @@ import { BackendOrganisationModule } from '@jafar-tech/backend/organisation';
         schema: ProductSchema,
       },
     ]),
+    MulterModule.register({
+      dest: './files',
+    }),
     BackendOrganisationModule,
   ],
   controllers: [BackendProductsController],
-  providers: [ProductsRepository, ProductService],
+  providers: [ProductsRepository, ProductService, ProductImageService],
   exports: [],
 })
 export class BackendProductsModule {}

@@ -1,11 +1,12 @@
 import { Organisation } from '@jafar-tech/backend/organisation';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { FilterQuery, Model, ObjectId } from 'mongoose';
+import { FilterQuery, Model, MongooseError, ObjectId } from 'mongoose';
 import { CreateProductDto } from './dto/create-product-dto';
 import { PatchProductIndexDto } from './dto/patch-porduct.dto';
 import { ProductBoolFieldDto } from './dto/product-bool-field-update.dto';
 import { Product } from './models/product.schema';
+import { ProductImage } from '@jafar-tech/shared/data-access';
 @Injectable()
 export class ProductsRepository {
   constructor(
@@ -117,5 +118,23 @@ export class ProductsRepository {
     // );
 
     return reponse;
+  }
+
+  async updateProductImage(
+    companyId: string,
+    productId: string,
+    imageData: ProductImage
+  ) {
+    try {
+      const response = await this.orgModel.findOneAndUpdate(
+        { _id: companyId },
+        { $push: { 'products.$[outer].image': imageData } },
+        { arrayFilters: [{ 'outer._id': productId }] }
+      );
+
+      return response;
+    } catch (error) {
+      throw new MongooseError(error);
+    }
   }
 }

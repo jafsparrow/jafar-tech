@@ -17,7 +17,7 @@ export interface Category {
 }
 export interface Product {
   _id: string;
-  image: string;
+  image: ProductImage[];
   description: string;
   isAvailable: boolean;
   onSale: boolean;
@@ -30,6 +30,11 @@ export interface Product {
   printName?: string;
   modifierGroups?: ModifierGroupsEntity[] | null;
   indexInCategory?: number;
+}
+
+export interface ProductImage {
+  storageName: string;
+  downloadUrl: string;
 }
 export interface ModifierGroupsEntity {
   id?: string;

@@ -1,4 +1,7 @@
-import { ModifierGroupsEntity } from '@jafar-tech/shared/data-access';
+import {
+  ModifierGroupsEntity,
+  ProductImage,
+} from '@jafar-tech/shared/data-access';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, SchemaTypes } from 'mongoose';
 
@@ -10,8 +13,8 @@ export class Product extends Document {
   @Prop({ required: true })
   description: string;
 
-  @Prop({ default: null })
-  image: string;
+  @Prop({ default: [], maxlength: 3 })
+  image: ProductImage[];
 
   @Prop({ default: true })
   isAvailable: boolean;
